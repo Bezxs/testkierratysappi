@@ -1,5 +1,9 @@
 # KierrätysAppi repository rules
 
+## Active owner boundary — October 6, 2026
+
+Continue this checkout from KierratysAppi main `39f8aa6`, independently of the newer KeepItGreen repository. Do not merge, cherry-pick or copy its code, appearance, assets or fixtures. The location feature is new work against this baseline, not a port. Keep the existing name/identity/style already present here. No GitHub push is authorized by this work request; inspect actual remote URLs before any future authorized publication.
+
 ## Product invariant
 
 KierrätysAppi may help a person identify packaging and find applicable sorting guidance, but it must never present an uncertain inference as verified fact. Every displayed sorting answer must retain source, jurisdiction, checked date, rule version, verification status, confidence, and a short explanation.

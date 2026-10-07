@@ -13,7 +13,33 @@ import {
 import { z } from "zod";
 import type { ProductDataProvider, ProviderRequestContext } from "./contracts";
 
-const API_ORIGIN = "https://world.openfoodfacts.org";
+const SOURCES = [
+  {
+    type: "food",
+    id: "open-food-facts",
+    name: "Open Food Facts",
+    origin: "https://world.openfoodfacts.org",
+  },
+  {
+    type: "beauty",
+    id: "open-beauty-facts",
+    name: "Open Beauty Facts",
+    origin: "https://world.openbeautyfacts.org",
+  },
+  {
+    type: "petfood",
+    id: "open-pet-food-facts",
+    name: "Open Pet Food Facts",
+    origin: "https://world.openpetfoodfacts.org",
+  },
+  {
+    type: "product",
+    id: "open-products-facts",
+    name: "Open Products Facts",
+    origin: "https://world.openproductsfacts.org",
+  },
+] as const;
+type FactsSource = (typeof SOURCES)[number];
 const MAX_RESPONSE_BYTES = 1_000_000;
 const DEFAULT_TIMEOUT_MS = 4_500;
 const DEFAULT_MAX_REQUESTS_PER_MINUTE = 12;
@@ -42,6 +68,7 @@ const ResponseSchema = z.object({
 type FetchLike = typeof fetch;
 
 export type OpenFoodFactsProviderOptions = {
+  readonly productScope?: "food" | "all";
   readonly fetch?: FetchLike;
   readonly timeoutMs?: number;
   readonly now?: () => Date;
@@ -50,9 +77,10 @@ export type OpenFoodFactsProviderOptions = {
 };
 
 export class OpenFoodFactsProvider implements ProductDataProvider {
-  readonly id = "open-food-facts";
-  readonly displayName = "Open Food Facts";
+  readonly id: string;
+  readonly displayName: string;
 
+  readonly #productScope: "food" | "all";
   readonly #fetch: FetchLike;
   readonly #timeoutMs: number;
   readonly #now: () => Date;
@@ -61,6 +89,9 @@ export class OpenFoodFactsProvider implements ProductDataProvider {
   readonly #requestTimestamps: number[] = [];
 
   constructor(options: OpenFoodFactsProviderOptions = {}) {
+    this.#productScope = options.productScope ?? "food";
+    this.id = this.#productScope === "all" ? "open-facts" : "open-food-facts";
+    this.displayName = this.#productScope === "all" ? "Open Facts" : "Open Food Facts";
     this.#fetch = options.fetch ?? globalThis.fetch;
     this.#timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS;
     this.#now = options.now ?? (() => new Date());
@@ -74,71 +105,95 @@ export class OpenFoodFactsProvider implements ProductDataProvider {
   async findByGtin(gtin: Gtin, context: ProviderRequestContext): Promise<ProviderProductResult> {
     const canonicalGtin = GtinSchema.parse(gtin);
     const requestedAt = this.#now();
-    if (!this.#reserveProviderRequest(requestedAt.getTime())) {
-      return { status: "error", code: "rate_limited", retryable: true };
-    }
+    if (context.signal?.aborted) return { status: "error", code: "unavailable", retryable: true };
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), this.#timeoutMs);
     const abortFromCaller = () => controller.abort();
     context.signal?.addEventListener("abort", abortFromCaller, { once: true });
 
     try {
-      const url = new URL(`/api/v3/product/${canonicalGtin}`, API_ORIGIN);
-      url.searchParams.set(
-        "fields",
-        [
-          "code",
-          "product_name",
-          "product_name_fi",
-          "product_name_en",
-          "brands",
-          "packagings",
-          "image_front_url",
-        ].join(","),
-      );
-      url.searchParams.set("lc", context.language);
-      url.searchParams.set("cc", "fi");
-      url.searchParams.set("product_type", "food");
+      let source: FactsSource = SOURCES[0];
+      // One upstream lookup may route to a sister database. Never follow arbitrary URLs,
+      // fan out to every database, reset the deadline, or spend an uncounted quota token.
+      for (let hop = 0; hop < 2; hop++) {
+        if (!this.#reserveProviderRequest(this.#now().getTime())) {
+          return { status: "error", code: "rate_limited", retryable: true };
+        }
+        const url: URL = new URL(`/api/v3/product/${canonicalGtin}`, source.origin);
+        url.searchParams.set(
+          "fields",
+          [
+            "code",
+            "product_type",
+            "product_name",
+            "product_name_fi",
+            "product_name_en",
+            "brands",
+            "packagings",
+            "image_front_url",
+          ].join(","),
+        );
+        url.searchParams.set("lc", context.language);
+        url.searchParams.set("cc", "fi");
+        url.searchParams.set("product_type", hop === 0 ? this.#productScope : source.type);
 
-      const response = await this.#fetch(url, {
-        headers: {
-          Accept: "application/json",
-          "User-Agent": this.#userAgent,
-        },
-        redirect: "manual",
-        signal: controller.signal,
-      });
+        const response: Response = await this.#fetch(url, {
+          headers: {
+            Accept: "application/json",
+            "User-Agent": this.#userAgent,
+          },
+          redirect: "manual",
+          signal: controller.signal,
+        });
 
-      if (response.status === 404) {
-        return { status: "not_found" };
-      }
-      if (response.status === 429) {
-        return { status: "error", code: "rate_limited", retryable: true };
-      }
-      if (response.status >= 500) {
-        return { status: "error", code: "unavailable", retryable: true };
-      }
-      if (response.status >= 300 || !response.ok) {
-        return { status: "error", code: "invalid_response", retryable: false };
-      }
+        if ([301, 302, 307, 308].includes(response.status)) {
+          const next: FactsSource | undefined =
+            this.#productScope === "all" && hop === 0
+              ? redirectSource(response.headers.get("location"), canonicalGtin)
+              : undefined;
+          await response.body?.cancel();
+          if (!next) return { status: "error", code: "invalid_response", retryable: false };
+          source = next;
+          continue;
+        }
+        if (response.status === 404) {
+          return { status: "not_found" };
+        }
+        if (response.status === 429) {
+          return { status: "error", code: "rate_limited", retryable: true };
+        }
+        if (response.status >= 500) {
+          return { status: "error", code: "unavailable", retryable: true };
+        }
+        if (response.status >= 300 || !response.ok) {
+          return { status: "error", code: "invalid_response", retryable: false };
+        }
 
-      const payload = await readLimitedJson(response);
-      const parsed = ResponseSchema.safeParse(payload);
-      if (!parsed.success) {
-        return { status: "error", code: "invalid_response", retryable: false };
-      }
-      const returnedGtin = GtinSchema.safeParse(parsed.data.product.code);
-      if (
-        !returnedGtin.success ||
-        returnedGtin.data.padStart(14, "0") !== canonicalGtin.padStart(14, "0")
-      ) {
-        return { status: "error", code: "invalid_response", retryable: false };
-      }
+        const payload = await readLimitedJson(response);
+        const parsed = ResponseSchema.safeParse(payload);
+        if (!parsed.success) {
+          return { status: "error", code: "invalid_response", retryable: false };
+        }
+        const returnedGtin = GtinSchema.safeParse(parsed.data.product.code);
+        if (
+          !returnedGtin.success ||
+          returnedGtin.data.padStart(14, "0") !== canonicalGtin.padStart(14, "0")
+        ) {
+          return { status: "error", code: "invalid_response", retryable: false };
+        }
+        if (
+          parsed.data.product.product_type !== undefined &&
+          parsed.data.product.product_type !== source.type
+        ) {
+          return { status: "error", code: "invalid_response", retryable: false };
+        }
 
-      const product = normalizeProduct(canonicalGtin, parsed.data.product, requestedAt);
-      return { status: "found", product };
+        const product = normalizeProduct(canonicalGtin, parsed.data.product, requestedAt, source);
+        return { status: "found", product };
+      }
+      return { status: "error", code: "invalid_response", retryable: false };
     } catch (error) {
-      if (isAbortError(error)) {
+      if (controller.signal.aborted || isAbortError(error)) {
         return { status: "error", code: "unavailable", retryable: true };
       }
       return { status: "error", code: "invalid_response", retryable: false };
@@ -158,6 +213,30 @@ export class OpenFoodFactsProvider implements ProductDataProvider {
     if (this.#requestTimestamps.length >= this.#maxRequestsPerMinute) return false;
     this.#requestTimestamps.push(nowMs);
     return true;
+  }
+}
+
+function redirectSource(location: string | null, gtin: Gtin): FactsSource | undefined {
+  if (!location) return undefined;
+  try {
+    const url = new URL(location);
+    if (url.username || url.password || url.hash || url.port) return undefined;
+    if (
+      url.pathname !== `/api/v3/product/${gtin}` &&
+      url.pathname !== `/api/v3/product/${gtin}.json`
+    )
+      return undefined;
+    return SOURCES.find(
+      (source) =>
+        source.type !== "food" &&
+        [
+          source.origin,
+          source.origin.replace("://world.", "://fi."),
+          source.origin.replace("://world.", "://en."),
+        ].includes(url.origin),
+    );
+  } catch {
+    return undefined;
   }
 }
 
@@ -197,11 +276,26 @@ async function readLimitedJson(response: Response): Promise<unknown> {
   return JSON.parse(new TextDecoder().decode(bytes)) as unknown;
 }
 
-function normalizeProduct(gtin: Gtin, input: Record<string, unknown>, retrievedAt: Date) {
-  const sourceUrl = `${API_ORIGIN}/product/${gtin}`;
-  const provenance = (confidence: number, license = DATABASE_LICENSE): FieldProvenance => ({
-    sourceId: "open-food-facts",
-    sourceName: "Open Food Facts",
+function normalizeProduct(
+  gtin: Gtin,
+  input: Record<string, unknown>,
+  retrievedAt: Date,
+  source: FactsSource,
+) {
+  const sourceUrl = `${source.origin}/product/${gtin}`;
+  const databaseLicense: SourceLicense =
+    source.type === "food"
+      ? DATABASE_LICENSE
+      : {
+          id: `${source.id}-odbl-1.0`,
+          name: "Open Database License 1.0",
+          url: "https://opendatacommons.org/licenses/odbl/1-0/",
+          attributionText: `${source.name} contributors`,
+          shareAlike: true,
+        };
+  const provenance = (confidence: number, license = databaseLicense): FieldProvenance => ({
+    sourceId: source.id,
+    sourceName: source.name,
     sourceRecordId: gtin,
     sourceUrl,
     retrievedAt: retrievedAt.toISOString(),
@@ -212,7 +306,8 @@ function normalizeProduct(gtin: Gtin, input: Record<string, unknown>, retrievedA
 
   const productName = firstString(input.product_name_fi, input.product_name, input.product_name_en);
   const brands = stringList(input.brands);
-  const imageUrl = safeHttpsUrl(input.image_front_url);
+  // Sister-database image rights have not been separately reviewed; don't reuse them.
+  const imageUrl = source.type === "food" ? safeHttpsUrl(input.image_front_url) : undefined;
   const components = normalizePackaging(input.packagings, provenance);
 
   return ProductObservationSchema.parse({

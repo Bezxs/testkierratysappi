@@ -2,6 +2,15 @@
 
 These are release blockers or high-risk gates that cannot be completed without external authority, assets, accounts, contracts, devices, infrastructure or an upstream release. Exact procedures and evidence owners are in `docs/final/OWNER_ACTIONS.md`.
 
+October 7 update: OSM point data and Open Facts sibling read routing require no
+new paid service/account/key for local implementation. OA-03 licensing/contact
+review now explicitly covers beauty, pet-food and other-products recipients;
+OA-06 covers foreground-only, ephemeral device location and those transfers.
+No approval is inferred. GS1/KIVO remain inactive, not prerequisites for this
+local point directory. The interrupted native build is locally executable after
+owner-approved disk cleanup; a locked phone/trust prompt still requires Roope
+under OA-09. Do not misclassify unfinished builds as an external data blocker.
+
 | Blocker | Severity | Why external | Owner action |
 | --- | --- | --- | --- |
 | Android signed build/device/Play validation | blocker | No Java runtime, SDK/ADB, device, signing, EAS/Play authority | OA-08 |

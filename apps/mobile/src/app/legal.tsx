@@ -43,6 +43,7 @@ export default function LegalScreen() {
       <Paper>
         <AppText variant="heading">{t("privacyTitle")}</AppText>
         <AppText>{t("privacyDraft")}</AppText>
+        <AppText>{t("nearbyPrivacy")}</AppText>
       </Paper>
       <Paper style={{ borderColor: palette.brick }}>
         <AppText variant="heading">{t("deleteLocalData")}</AppText>

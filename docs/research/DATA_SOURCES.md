@@ -1,5 +1,12 @@
 # Data-source matrix
 
+October 7 implementation update: the historical August matrix below is retained
+for its access-date context. Official universal Open Facts routing now enables
+beauty/pet-food/other-product lookups, and a separate bundled OSM Finland
+directory enables nearest-point distance. Neither GS1 nor KIVO is activated.
+Current source/licence/live evidence: `free-data-sources-2026-10.md`; operational
+inventory: `../final/DATABASE_READINESS.md`.
+
 Accessed: 2026-08-10. `Unknown` means written terms or a contract must be obtained before production use.
 
 | Source | Coverage / fields | Reliability and freshness | Licence / attribution / caching | API / auth / cost | Decision |

@@ -175,7 +175,28 @@
 - Decision: follow the actual GitHub Doctor result by updating Expo to 57.0.21 and Router to 57.0.20. Resolve newly returned high XML/YAML advisories with compatible transitive patches (xmldom 0.8.15/0.9.12, js-yaml 4.3.2). Preserve the 1,440-minute strict release age, all diagnostic gates and fail-closed/no-high-exception policy. Add regression floors and a guard against disabling Expo checks.
 - Reason: the upstream compatibility response changed and the previously unavailable npm audit service resumed. All five selected releases are older than 24 hours; no major/SDK migration or new dependency capability is needed. Full 188-test validation, Doctor 20/20 and a real live security-policy pass replace the stale local evidence, but do not establish native runtime or release readiness.
 
-## Pending decisions
+## D-026 — Keep team-baseline work isolated from private experiments
+
+- Date: 2026-10-06
+- Status: owner-requested
+- Decision: branch from KierratysAppi main `39f8aa6` and retain its existing UI/identity. Do not import newer KeepItGreen code/assets/history or publish to either repository without a separate push request.
+- Reason: Roope explicitly selected the older team app as the development base.
+
+## D-027 — Bundle a separately licensed point directory and keep location on-device
+
+- Date: 2026-10-06
+- Status: source implemented; native acceptance pending
+- Decision: use an occasional bounded nationwide OSM import, distribute the complete normalized ODbL directory with attribution/transformation, and compute straight-line distance locally after a foreground-only action. Reject restricted/closed source tags; missing access, hours, accepted materials and coverage remain unverified. Warn on age of the older upstream/retrieval timestamp.
+- Reason: this supplies real point coordinates without KIVO credentials, paid infrastructure, user-coordinate transmission or consumer load on public Overpass.
+
+## D-028 — Free universal product routing without a bulk or proprietary database
+
+- Date: 2026-10-07
+- Status: source and contract implementation complete; release review remains
+- Decision: use the official `product_type=all` lookup with at most one allowlisted sibling hop and a shared 12-read/minute quota/4.5-second deadline. Rebuild requests at fixed origins, bind GTIN/type, retain source-specific ODbL metadata, omit unreviewed sibling images and preserve unknown packaging/hazards. Keep existing memory-cache retention; do not install an unused database server or mix source datasets.
+- Reason: food-only lookup excluded freely available beauty, pet-food and other product records. Publisher licensing/API documentation and a live official other-products example support this integration, not a universal coverage or production-ready claim.
+
+## Remaining pending decisions
 
 - OCR implementation and whether a cloud AI path is justified after the typed-code flow is evaluated.
 - Production hosting/database/telemetry providers after owner cost/privacy-region approval.

@@ -245,7 +245,7 @@ function ProductResult({
         <View style={styles.sourceRow}>
           <StatusPill label={result.cache.hit ? t("cachedLabel") : t("liveLabel")} tone="cobalt" />
           <AppText variant="small" muted>
-            {result.provider.name}
+            {provenance.sourceName}
           </AppText>
         </View>
         <View style={sharedStyles.tightStack}>
@@ -258,7 +258,7 @@ function ProductResult({
               {t("dataSourceLabel")}:
             </AppText>
             <InlineLink
-              label={result.provider.name}
+              label={provenance.sourceName}
               onPress={() => void Linking.openURL(provenance.sourceUrl)}
             />
           </View>

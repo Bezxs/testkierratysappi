@@ -20,6 +20,15 @@
 4. Conflicting, multiple, unknown, and undefined codes never produce guessed guidance; composites without a reviewed rule remain safe unknowns.
 5. Recognition provenance and confidence remain distinct from user-confirmed observation and the Finnish sorting-rule provenance.
 
+## Free-data and nearest-point addition
+
+1. The actual product database name, source link, licence, retrieval date and community uncertainty survive normal lookup, missing-packaging results and cache hits.
+2. Universal routing may use only the fixed supported Open Facts origins with one sibling hop, bounded response/deadline and shared quota. Wrong GTIN/type, arbitrary redirect, timeout and quota failure never become a verified product or a false successful miss.
+3. The entire bundled OSM database validates at the application boundary and retains licence, source IDs and timestamps. Old upstream data must not look fresh after a new download.
+4. Location is requested only after an explicit action, never in the background; allow/deny/services-off/timeout/cancel/retry are recoverable. The watcher is removed and results clear on leaving/backgrounding. No GPS logging, persistence, analytics or API transmission.
+5. The UI calls distance a straight-line estimate and discloses approximate fixes, incomplete coverage and unverified access/materials/hours. It never invents coordinates, open status or material suitability.
+6. Source/unit/browser evidence is distinct from actual iPhone GPS/permission acceptance; the latter remains pending until a new native client is built and observed.
+
 ## Release evidence
 
 The owner-selected display name is KeepItGreen in FI/EN visual and accessible UI, default/native locale configuration and current store drafts. The existing technical app identity and local data must survive the update. Source/browser checks do not establish installed launcher naming, renewed signing or cable-disconnected runtime; these need a rebuilt native artifact and device evidence.

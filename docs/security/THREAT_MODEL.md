@@ -40,4 +40,14 @@ Last reviewed: 2026-08-10. Scope: mobile barcode flow, public lookup API, extern
 
 ## Residual risk / gates
 
-Photo upload, accounts, admin browser UI, analytics, cloud AI, maps/location, and public corrections stay disabled until their implementation-specific controls, data processing terms, deletion/retention paths, and tests exist.
+Photo upload, accounts, admin browser UI, analytics, cloud AI, map imagery/routes, and public corrections stay disabled until their implementation-specific controls, data processing terms, deletion/retention paths, and tests exist.
+
+October 7 scoped addition: foreground-only one-shot location is active in source
+with a bundled, separately licensed point directory; it has no network/storage
+channel, removes the watcher and clears results on leaving/backgrounding.
+Approximate positions, missing access/materials/hours and stale data are not
+upgraded to certainty. Native permission/GPS acceptance is still pending.
+Universal product lookup now permits one sibling redirect only: exact fixed
+world/FI/EN origins, same GTIN/path, no credentials/port/fragment, rebuilt query,
+same deadline and counted quota. Source/type binding and sister-image omission
+prevent attributing a non-food record or unreviewed image to the food database.

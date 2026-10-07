@@ -5,7 +5,9 @@ import { parseEnvironment } from "./config";
 
 const environment = parseEnvironment(process.env);
 const service = new ProductResolutionService({
-  providers: [new OpenFoodFactsProvider({ userAgent: environment.OFF_USER_AGENT })],
+  providers: [
+    new OpenFoodFactsProvider({ userAgent: environment.OFF_USER_AGENT, productScope: "all" }),
+  ],
 });
 const app = await buildApp({
   lookupService: service,

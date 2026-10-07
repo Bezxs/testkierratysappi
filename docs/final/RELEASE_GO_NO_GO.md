@@ -1,5 +1,12 @@
 # Release decision
 
+October 7 scoped update: **NO-GO remains**. Independent team-baseline source now
+includes licensed OSM points/local distance and free Open Facts sibling routing.
+Local data access is not missing credentials, but native install/GPS acceptance,
+production HTTPS/PostgreSQL/shared quota/recovery and owner/legal/content/store
+gates remain. The September evidence below is historical. See
+`DATABASE_READINESS.md` and `TEST_EVIDENCE.md` for current, scoped evidence.
+
 Decision date: 2026-09-10
 
 Decision: **NO-GO for preview, production, TestFlight, Play testing, and public store submission**
@@ -17,7 +24,7 @@ The product is not production-ready. The current September 10 dependency set pas
 | Gate | Result | Release consequence |
 | --- | --- | --- |
 | No unresolved locally executable blocker/critical/high | **Not satisfied for GO** | Source-level high findings found in this run were repaired, but manually executable iPhone camera/accessibility/performance rows and native E2E remain incomplete |
-| Mandatory local tests | **Pass on 2026-09-10** | Format, lint, typecheck, 165 application/23 policy tests (188 total), API/package builds and 12-route web export pass with nested pnpm 11.16.0. No timeout was relaxed |
+| Mandatory local tests | **Pass on 2026-10-07** | Format, lint, typecheck, 208 application/32 policy tests (240 total), API/package builds and 13-route web export pass with nested pnpm 11.16.0. No timeout was relaxed |
 | Expo compatibility | **Pass on 2026-09-10** | Expo 57.0.21/Router 57.0.20/RN 0.86.3, frozen install, peers, install check and Doctor 1.20.1 20/20 pass; no age or diagnostic bypass. New native rebuild is pending |
 | Android release build | **No evidence** | No JDK/SDK/ADB/signing/AAB/device run |
 | iOS development/release build | **Compile/signatures/install and current development runtime smoke pass; no release evidence** | September 4's current Expo/RN client build and signatures pass. On September 7 the phone established Metro TCP connectivity; Home, manual entry and a known-product result with uncertainty and Rinki provenance passed. The first lookup correctly rendered offline because Metro still held the prior API LAN address; restarting Metro with the current `EXPO_PUBLIC_API_BASE_URL` fixed the lookup. Profile expires September 11 07:01:05 UTC; archive/TestFlight and the remaining device/release matrix remain unperformed |

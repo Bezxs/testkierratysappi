@@ -1,6 +1,15 @@
 # Current state
 
-Last updated: 2026-09-10 after owner-authorized GitHub synchronization and repairing its Expo/security gates. Full pinned-pnpm validation passes: 188 tests; Expo Doctor 20/20 and the live high/critical audit gate pass. Native rebuild, launcher relabeling and physical acceptance remain open.
+## Independent team-baseline location and free data — 2026-10-07
+
+- Continue `codex/kierratysappi-nearest-location` from team main `39f8aa6`. The September records below are historical. No newer KeepItGreen code, appearance or assets were imported; no GitHub push is authorized or performed.
+- Added explicit one-shot foreground location and local nearest-point distance using 5,753 actual Finnish OSM points imported October 6. GPS stays in device memory and clears on leaving/backgrounding; no background permission, persistence, analytics or per-user Overpass request. Point availability/materials/coverage remain uncertain and distance is straight-line.
+- Extended the existing server adapter using official Open Facts universal routing: food, beauty, pet-food and other-products databases. One allowlisted sibling hop, shared quota/deadline, original GTIN binding, per-database source/licence and safe missing-packaging/error states. FI/EN scope/privacy and result attribution reflect the new recipients. No new runtime package is needed for this extension.
+- The local PostgreSQL schema has 26 tables and five seeded rules, but the API still uses only its bounded memory cache; no persistent production database or public HTTPS deployment exists. The current anonymous features need no newly installed database server. Exact inventory/maintenance/limits: `docs/final/DATABASE_READINESS.md`.
+- Location's Expo 57.0.16 dependency is compatible with this baseline. October 6 prebuild/pods passed; the Xcode 26.6 native build was intentionally interrupted for low disk before completion. October 7 owner-approved cleanup reclaimed about 10 GB and retained the active build/rollback artifacts. Native build/sign/install/GPS acceptance remains pending, not blocked by disk now. Last known installed profile expired October 1.
+- Full `pnpm validate` passes: **240 tests (32 policy + 208 application)**, formatting/lint/strict types, package/API builds and 13 web routes. Live official-example routing and the actual browser manual flow reached Open Products Facts, displayed ODbL/source/date and safely showed missing packaging. FI/EN scope and updated privacy text were inspected; keyboard activation worked, while automated pointer clicks mis-targeted, so no pointer/native claim is made. Evidence/limits: `docs/final/TEST_EVIDENCE.md`. Production remains NO-GO; free data access does not approve licensing, content, privacy, hosting or stores.
+
+Historical checkpoint — 2026-09-10 after owner-authorized GitHub synchronization and repairing its Expo/security gates: 188 tests; Expo Doctor 20/20 and the live high/critical audit gate passed on that date. This does not supersede the October state above.
 
 ## Post-push CI repairs — 2026-09-10
 

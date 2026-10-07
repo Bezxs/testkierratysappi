@@ -1,5 +1,14 @@
 # Owner actions
 
+October 7 scope delta: OA-03's usage/contact/licence approval must name Open
+Beauty Facts, Open Pet Food Facts and Open Products Facts alongside OFF, including
+source-specific attribution and no sibling image reuse. Roope and the legal
+reviewer also review the full ODbL OSM directory/transform/attribution supplied
+under `apps/mobile/assets/data/` before distribution. OA-06 must review the
+updated FI/EN barcode-recipient notices and ephemeral foreground-only location;
+OA-09 accepts the rebuilt native permission/GPS flow. No account, paid service,
+approval or store declaration was completed by these local implementations.
+
 These are the exact owner-controlled release actions and recurring engineering gates required to move the NO-GO decision. Latest dependency/startup review: 2026-09-07. “Owner” names an accountable role; the product owner must assign a real person before execution.
 
 ## OA-01 — Production infrastructure

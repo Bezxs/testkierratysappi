@@ -126,6 +126,30 @@ export default function HomeScreen() {
       <View style={styles.utilities}>
         <Pressable
           accessibilityRole="button"
+          accessibilityLabel={t("nearbyTitle")}
+          accessibilityHint={t("nearbyHomeBody")}
+          testID="home-nearby-action"
+          onPress={() => router.push("/nearby")}
+          style={({ pressed }) => [
+            styles.utilityRow,
+            {
+              borderColor: palette.borderSubtle,
+              opacity: pressed ? interaction.pressedOpacity : 1,
+            },
+          ]}
+        >
+          <View style={sharedStyles.grow}>
+            <AppText variant="heading">{t("nearbyTitle")}</AppText>
+            <AppText variant="small" muted>
+              {t("nearbyHomeBody")}
+            </AppText>
+          </View>
+          <AppText muted accessible={false} accessibilityElementsHidden>
+            →
+          </AppText>
+        </Pressable>
+        <Pressable
+          accessibilityRole="button"
           accessibilityLabel={t("materialGuideAction")}
           testID="home-guide-action"
           onPress={() => router.push("/guide")}

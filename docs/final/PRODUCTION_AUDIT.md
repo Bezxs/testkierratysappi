@@ -1,5 +1,13 @@
 # Adversarial production-readiness audit
 
+October 7 scoped implementation follow-up, **not a new 30-lane audit**:
+team-baseline location/OSM data and universal Open Facts routing pass 240 local
+tests plus named live/browser evidence in `TEST_EVIDENCE.md`. Provider lane 5
+is no longer food-only; schema-only PostgreSQL, native GPS acceptance and
+owner/legal/production/store gates remain. No old severity is lowered or
+release readiness inferred. `DATABASE_READINESS.md` separates active sources
+from inactive GS1/KIVO and undeployed server persistence.
+
 Audit follow-up date: 2026-09-10 (GitHub synchronization and live dependency/compatibility gates; broader physical and source-review evidence retains its recorded date)
 
 Follow-up physical-iOS runs: 2026-08-10, 2026-08-22, 2026-08-26, the 2026-08-28 development-client/answer-first UI work unit, the 2026-09-04 signed-client refresh and the 2026-09-07 current-client runtime smoke. The owner authorized synchronizing the private GitHub `main` on September 10. See `PHYSICAL_IOS_VALIDATION.md`.

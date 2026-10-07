@@ -16,19 +16,19 @@ Final answers must be regenerated from the accepted signed Android/iOS binaries,
 
 ## Finnish description candidate
 
-KeepItGreen hakee elintarvikkeen pakkaustietoa viivakoodilla ja näyttää saatavilla oleville pakkauksen osille lähteisiin perustuvat lajitteluohjeet. Näet minne osa kuuluu, miten se valmistellaan, mihin sääntöön ohje perustuu ja kuinka varmaa tuotetieto on.
+KeepItGreen hakee tuotteen pakkaustietoa viivakoodilla ja näyttää saatavilla oleville pakkauksen osille lähteisiin perustuvat lajitteluohjeet. Näet minne osa kuuluu, miten se valmistellaan, mihin sääntöön ohje perustuu ja kuinka varmaa tuotetieto on.
 
 Jos tuotetta tai pakkaustietoa ei löydy, sovellus ei arvaa. Voit tarkistaa koodin, tunnistaa materiaalimerkinnän käsin tai käyttää tarkistettua yleisohjetta. Pantillinen juomapakkaus käsitellään erikseen.
 
-Perushaku ei vaadi käyttäjätiliä. Paikallinen hakuhistoria on vapaaehtoinen. Kamerakuvaa ei lähetetä viivakoodin luvussa. Tuotetiedot tulevat Open Food Facts -yhteisötietokannasta ja voivat olla puutteellisia.
+Perushaku ei vaadi käyttäjätiliä. Paikallinen hakuhistoria on vapaaehtoinen. Kamerakuvaa ei lähetetä viivakoodin luvussa. Tuotetiedot tulevat Open Food Facts-, Open Beauty Facts-, Open Pet Food Facts- tai Open Products Facts -yhteisötietokannasta ja voivat olla puutteellisia. Vapaaehtoinen sijaintihaku näyttää aineiston lähimmän kierrätyspisteen arvioidun etäisyyden linnuntietä. OpenStreetMap-pisteaineisto ei takaa kattavuutta, aukioloa tai materiaalien vastaanottoa; oma sijainti käsitellään vain laitteella.
 
 ## English description candidate
 
-KeepItGreen looks up food-product packaging by barcode and gives source-backed Finnish sorting guidance for available packaging components. It shows the destination, preparation, rule source, and confidence of the underlying product data.
+KeepItGreen looks up product packaging by barcode and gives source-backed Finnish sorting guidance for available packaging components. It shows the destination, preparation, rule source, and confidence of the underlying product data.
 
 When product or packaging data is missing, the app does not guess. Users can check the code, confirm a visible material marking manually, or open reviewed general guidance. Deposit containers are handled separately.
 
-Basic lookup needs no account. Local history is optional. Camera frames are not uploaded while scanning a barcode. Product details come from the Open Food Facts community database and may be incomplete.
+Basic lookup needs no account. Local history is optional. Camera frames are not uploaded while scanning a barcode. Product details come from the Open Food Facts, Open Beauty Facts, Open Pet Food Facts or Open Products Facts community databases and may be incomplete. Optional location search estimates straight-line distance to the nearest point in the OpenStreetMap directory. Coverage, opening hours and accepted materials are not guaranteed; your location is processed only on your device.
 
 ## Existing source assets
 
@@ -83,7 +83,13 @@ Reconfirm in Play Console from the final AAB:
 
 ## Reviewer notes candidate
 
-The camera is used only for local barcode decoding. Users see an explanation before the operating-system permission prompt and can use manual entry instead. No account, photo upload, OCR, cloud AI, public correction submission, location or advertising is present. Product data is community-sourced from Open Food Facts; Finnish packaging guidance shows sources and uncertainty. Replace this candidate with exact final URLs/build behavior and credentials-free review steps.
+The camera is used only for local barcode decoding. Users see an explanation before the operating-system permission prompt and can use manual entry instead. No account, photo upload, OCR, cloud AI, public correction submission or advertising is present. Product data is community-sourced from the four named Open Facts databases; Finnish packaging guidance shows sources and uncertainty. Foreground-only location is optional and used in memory against bundled OSM points, with no GPS upload/storage/background tracking. Verify all of this on the final native builds; current source changes have no new phone acceptance. Replace this candidate with exact final URLs/build behavior and credentials-free review steps.
+
+October 7 questionnaire delta (OWNER/LEGAL/STORE REVIEW REQUIRED): classify all
+four potential external barcode recipients, not OFF alone. Evaluate foreground
+precise/approximate location processed only on-device, the absence of location
+collection/retention, and ordinary IP disclosure on voluntary OSM browser links.
+Do not silently mark either console questionnaire complete from source review.
 
 ## Completion rule
 

@@ -2,6 +2,14 @@
 
 Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally blocked.
 
+## Current independent team-baseline work — October 7
+
+- [x] Add free licensed Finland OSM point data and privacy-preserving local distance calculation, including consent, timeout/cancel/error states and source disclosure.
+- [x] Enable bounded official Open Facts routing for non-food categories; preserve source/licence and unknown packaging, update FI/EN privacy/scope, and add routing/SSRF/quota/cache regression coverage.
+- [x] Document which data is active versus schema-only; keep OSM/product/rule data separate and do not add an unused database server.
+- [~] Complete the interrupted Xcode 26.6 native build and accept the new location/dependency flow on the iPhone. Disk space has been freed; no fresh physical pass yet.
+- [!] Production HTTPS/persistent PostgreSQL/shared quota/recovery and owner/legal/store gates below remain. Free upstream data does not supply production infrastructure.
+
 ## Phase 0 — Discovery
 
 - [x] Inspect repository and local environment.
