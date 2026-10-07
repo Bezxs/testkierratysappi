@@ -6,7 +6,11 @@ tests plus named live/browser evidence in `TEST_EVIDENCE.md`. Provider lane 5
 is no longer food-only; schema-only PostgreSQL, native GPS acceptance and
 owner/legal/production/store gates remain. No old severity is lowered or
 release readiness inferred. `DATABASE_READINESS.md` separates active sources
-from inactive GS1/KIVO and undeployed server persistence.
+from inactive GS1/KIVO and undeployed server persistence. Subsequent October 7
+native compile/sign/install passes, but iOS rejects first launch with a generic
+security/trust error. Local signing checks pass; owner trust/verification check
+and further diagnosis if needed precede any current-binary runtime/GPS pass.
+This follow-up neither lowers severity nor certifies the wider physical matrix.
 
 Audit follow-up date: 2026-09-10 (GitHub synchronization and live dependency/compatibility gates; broader physical and source-review evidence retains its recorded date)
 

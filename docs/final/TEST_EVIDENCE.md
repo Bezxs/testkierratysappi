@@ -1,5 +1,14 @@
 # Test evidence
 
+## Native renewal and installation — 2026-10-07
+
+- Source `487af03`, same independent team-baseline branch. Retained Xcode 26.6 Debug build now finishes with exit 0 and `BUILD SUCCEEDED`. Pod lock/manifest match. No application source changed in this installation work unit.
+- Strict recursive signature plus all **12 embedded framework** checks pass. Embedded profile app/team/device binding and development entitlements match; expires **October 13, 21:21:19 Finland time**. Built Info.plist declares foreground location only, no Always purpose/background mode.
+- Connected unlocked iPhone: `devicectl device install app` succeeds over the same bundle ID without uninstalling. Rollback is retained. Pre/post data-container paths differ; actual user-content retention is not independently verified.
+- First launch **fails with iOS Security rejection** (signature/entitlement/trust alternatives), despite passing local signing checks. Roope was asked to check actual developer trust/verification. No Home, GPS, camera, native source UI or release pass is inferred from installation. Exact metadata and procedure: `PHYSICAL_IOS_VALIDATION.md`.
+- API health/Metro status/iOS manifest and its exact JS launch asset pass; asset HTTP 200 and **10,956,460 bytes**. Host transport success is not evidence the phone executed it.
+- Re-ran full pinned **`pnpm validate`: exit 0**, same **240 tests**, all formatting/lint/strict types, package/API builds and 13-route export. Both the initial run and the post-documentation rerun pass; logs: ignored `work/location-2026-10-06/iphone-validate-2026-10-07.log` and `iphone-validate-final-2026-10-07.log`. No new Doctor, registry audit, native release, store, legal or production GO claim; no GitHub push.
+
 ## Independent team-baseline location/free-data work — 2026-10-06–07
 
 - Base `39f8aa6`, local `codex/kierratysappi-nearest-location`. No KeepItGreen experiment code/assets copied and no GitHub push. Team checkout is separate from the private checkout.
@@ -11,7 +20,7 @@
 - Browser screenshots inspected for the manual form and Finnish Home at the actual 319px viewport; no horizontal document overflow. Existing visual design retained. Browser pointer automation mis-targeted/no-op'd; keyboard Enter successfully exercised submit, close and locale controls. This is not a pointer, native, VoiceOver, dark/large-text, camera or GPS acceptance claim. FI Home restored and temporary viewport override reset. Screenshots were inspected in-tool, not archived as files.
 - API was rebuilt and only its verified team-preview process restarted at 3003 with the identified project User-Agent and bounded web origins. Metro remains 8093. Debug still depends on Mac/network; data bundling does not establish a standalone native release.
 - Web entry: **3,370,667 bytes / 696,736 gzip**, compared with September's 2,548,479 / 576,724. The bundled point database increases size; the existing 2 MiB warning remains, not a performance pass. Formatter max-size was raised to 3 MB so the full generated source data is checked, not excluded.
-- October 6 Expo-location prebuild/pods pass; Xcode 26.6 compile was interrupted for low disk, not a compiler success/failure. Owner-approved October 7 cleanup freed approximately 10 GB and preserved this build/rollback. Native completion, new signature/installation and physical allow/deny/retry/background/offline-location acceptance remain the next work unit. No fresh Expo Doctor, registry audit, native release, legal/store approval or production GO is claimed.
+- At the end of the data work unit, October 6 Expo-location prebuild/pods passed but Xcode 26.6 compile was interrupted for low disk. Owner-approved October 7 cleanup freed approximately 10 GB and preserved the build/rollback. The later native section above supersedes that pending build/install state, not the still-pending physical location acceptance. No fresh Expo Doctor, registry audit, native release, legal/store approval or production GO is claimed.
 
 ## Post-push Expo/security repair — 2026-09-10
 

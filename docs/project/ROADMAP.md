@@ -7,7 +7,8 @@ Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally bl
 - [x] Add free licensed Finland OSM point data and privacy-preserving local distance calculation, including consent, timeout/cancel/error states and source disclosure.
 - [x] Enable bounded official Open Facts routing for non-food categories; preserve source/licence and unknown packaging, update FI/EN privacy/scope, and add routing/SSRF/quota/cache regression coverage.
 - [x] Document which data is active versus schema-only; keep OSM/product/rule data separate and do not add an unused database server.
-- [~] Complete the interrupted Xcode 26.6 native build and accept the new location/dependency flow on the iPhone. Disk space has been freed; no fresh physical pass yet.
+- [x] Complete Xcode 26.6 Debug build, renew signing, verify app/12 frameworks and install source `487af03` over the existing app without uninstalling; profile expires October 13 at 21:21:19 Finland time.
+- [~] Accept Home/location/product-source flow on the new iPhone binary. Initial launch is rejected by iOS security; owner trust/verification check requested. Build/install is not a runtime pass, and retained local content remains unverified.
 - [!] Production HTTPS/persistent PostgreSQL/shared quota/recovery and owner/legal/store gates below remain. Free upstream data does not supply production infrastructure.
 
 ## Phase 0 — Discovery

@@ -7,9 +7,13 @@ new paid service/account/key for local implementation. OA-03 licensing/contact
 review now explicitly covers beauty, pet-food and other-products recipients;
 OA-06 covers foreground-only, ephemeral device location and those transfers.
 No approval is inferred. GS1/KIVO remain inactive, not prerequisites for this
-local point directory. The interrupted native build is locally executable after
-owner-approved disk cleanup; a locked phone/trust prompt still requires Roope
-under OA-09. Do not misclassify unfinished builds as an external data blocker.
+local point directory. The Xcode 26.6 build, signatures and installation now pass.
+The first launch is rejected by iOS security (signature/entitlements/user trust);
+local signature/profile checks pass, and **Roope** must check the developer's
+trust/verification state under Settings → General → VPN & Device Management
+(OA-09). Trust is a possible cause, not a confirmed diagnosis. **Codex** owns
+relaunch and further diagnosis if rejection persists after confirmation. This
+physical-owner action is not a missing database or paid-account requirement.
 
 | Blocker | Severity | Why external | Owner action |
 | --- | --- | --- | --- |

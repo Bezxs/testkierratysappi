@@ -1,3 +1,3 @@
 # Next action
 
-Complete the retained Xcode 26.6 iPhone development build from this team-baseline branch, renew/install it over the existing app without deleting data, and record actual foreground-location allow/deny/retry, nearest-point distance, background clearing and barcode-source UI evidence; ask Roope only for an actual unlock/trust/account prompt, preserve the rollback, and do not push or import KeepItGreen changes.
+Complete acceptance of the installed `487af03` iPhone development build: after Roope checks the developer trust/verification prompt, retry launch (diagnose the iOS security rejection if it persists) and record Home, foreground-location allow/deny/retry, nearest-point distance, background clearing and actual barcode-source UI evidence without retaining user coordinates; preserve the rollback and do not push or import KeepItGreen changes.

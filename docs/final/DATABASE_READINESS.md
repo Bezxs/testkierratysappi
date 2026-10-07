@@ -1,7 +1,8 @@
 # Database readiness — 2026-10-07
 
-This describes the local KierratysAppi feature branch, not an installed or
-production release. Source baseline: `39f8aa6`; no newer KeepItGreen code/design.
+This describes the local KierratysAppi feature branch, not a production release.
+Source baseline: `39f8aa6`; no newer KeepItGreen code/design. Implementation
+`487af03` is installed as a development build; iOS runtime acceptance is pending.
 
 | Need | Actual implementation | Cost and limitation |
 | --- | --- | --- |
@@ -40,5 +41,7 @@ backup/restore and a public HTTPS API remain unimplemented release work.
 ## Validation limits
 
 See `TEST_EVIDENCE.md` for current checks. Unit/contract tests do not verify
-phone GPS, native permission UX or whether a point is actually open. No new
-native installation, paid service, public deployment or GitHub push is claimed.
+phone GPS, native permission UX or whether a point is actually open. Native
+build/sign/install passes, but iOS rejects initial launch pending the owner
+trust/verification check and diagnosis if needed. No paid service, public
+deployment or GitHub push occurred.

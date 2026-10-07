@@ -1,10 +1,47 @@
 # Physical iOS validation
 
-Status date: 2026-09-08
+Status date: 2026-10-07
 
-Status: **PARTIALLY RUN — the current Expo 57 client launches through Metro and its Home, manual-entry and known-product result/provenance smoke passes; camera, VoiceOver, release and the wider physical matrix remain unverified on this binary**
+Status: **NEW DEVELOPMENT BUILD INSTALLED — first launch rejected by iOS security; owner trust/verification check and current-binary Home/GPS/product acceptance pending. Historical September runtime passes below do not apply to this new binary.**
 
 This report is deliberately separate from simulator, web and generated-configuration evidence. No physical-device row may become Pass without observing the named build on the recorded iPhone.
+
+## Team-baseline development installation — 2026-10-07
+
+Source: local `487af03` on `codex/kierratysappi-nearest-location`, based on team
+main `39f8aa6`. No newer KeepItGreen code/assets were imported or pushed. Version
+`0.1.0` / build `1`, bundle ID `fi.roopeaaltonen.kierratysappi`, iPhone 12 Pro Max.
+
+| Check | Result and limits |
+| --- | --- |
+| Native dependency consistency | Pass: iOS Podfile.lock equals Pods/Manifest.lock; Expo 57.0.21 and ExpoLocation 57.0.16 included |
+| Xcode 26.6 Debug compile | Pass: `17F113`, generic iOS destination, `-jobs 2`, automatic existing-team provisioning; build exit 0 and `BUILD SUCCEEDED` |
+| Signature/profile | Pass: strict recursive app check and all 12 embedded frameworks; app/team entitlements and expected device match embedded development profile |
+| Profile expiry | **2026-10-13 18:21:19 UTC / 21:21:19 Europe/Helsinki**; this is not a year-long or distribution profile |
+| Location declaration | Foreground purpose present; no Always location purpose or background modes in built Info.plist |
+| Installation | Pass: beta `devicectl device install app` over the existing bundle, no uninstall/reset; retained rollback untouched |
+| Local content retention | **Not verified**: pre/post app inventory shows a changed data-container path. Path replacement alone proves neither data loss nor retention; no private app contents were inspected |
+| Host runtime transport | API health, Metro status, iOS manifest and exact manifest launch asset pass; JavaScript response HTTP 200, 10,956,460 bytes. These are host checks, not phone startup evidence |
+| First physical launch | **Rejected**: CoreDevice 10002 → FBS Security reports invalid signature, inadequate entitlements or profile not explicitly trusted. Local integrity/profile checks pass; the specific device cause is not yet confirmed |
+| Owner action | Roope: Settings → General → VPN & Device Management → developer profile; trust/verify if offered, then open KeepItGreen and report the result. Codex: relaunch through verified Metro and diagnose further if rejection persists |
+| Home/location/product flow | **Not run on this binary** pending launch: allow/deny/retry, distance, background clearing and actual source/unknown UI remain mandatory; do not retain user coordinates/nearby results in logs/screenshots |
+| Full repository validation | Pass: 240 tests (32 policy + 208 application), format/lint/strict types, package/API builds and 13 web routes |
+
+Retained ignored evidence is under `work/location-2026-10-06/`: build log
+`build-2026-10-07.log`, validation `iphone-validate-2026-10-07.log`, and the
+`iphone-{before-install,install,after-install,launch}-2026-10-07.json` metadata.
+The native artifact is `DerivedData/Build/Products/Debug-iphoneos/KeepItGreen.app`.
+No signing secrets or user location are included in committed evidence.
+
+SHA-256 of main executable:
+`0a258884715cb99d4cd4826ba2e6bf1d929f79dd1cbc78ea87976a223ff9c0ef`.
+SHA-256 of development dylib:
+`c994df1a6dd66044e61f745bcda14314a98be87bd68a3c919146578e39a99bd8`.
+JavaScript remains served by Metro; these native hashes are not a standalone
+release-bundle identity. Mac-hosted Metro/API are still required.
+
+The sections below are dated historical evidence, including their old
+profile expiries, camera-only configuration and runtime passes.
 
 ## Latest toolchain comparison — 2026-09-08
 

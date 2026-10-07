@@ -196,6 +196,13 @@
 - Decision: use the official `product_type=all` lookup with at most one allowlisted sibling hop and a shared 12-read/minute quota/4.5-second deadline. Rebuild requests at fixed origins, bind GTIN/type, retain source-specific ODbL metadata, omit unreviewed sibling images and preserve unknown packaging/hazards. Keep existing memory-cache retention; do not install an unused database server or mix source datasets.
 - Reason: food-only lookup excluded freely available beauty, pet-food and other product records. Publisher licensing/API documentation and a live official other-products example support this integration, not a universal coverage or production-ready claim.
 
+## D-029 — Separate development installation from runtime acceptance
+
+- Date: 2026-10-07
+- Status: build/sign/install verified; runtime acceptance pending
+- Decision: keep the team baseline on Xcode 26.6, use Xcode 27 beta only for device tooling, and update the existing bundle without uninstalling. Record profile expiry and integrity separately from iOS launch, permission/GPS behavior and retained local content. Do not replace this build with newer private-repository code or bypass a device trust prompt.
+- Reason: source `487af03` compiles, verifies and installs, but iOS rejects its first launch with a generic security/trust error. A new profile and successful installation cannot justify a physical pass; the owner must check actual trust/verification, followed by a fresh runtime test.
+
 ## Remaining pending decisions
 
 - OCR implementation and whether a cloud AI path is justified after the typed-code flow is evaluated.
