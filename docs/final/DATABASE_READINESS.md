@@ -42,7 +42,7 @@ backup/restore and a public HTTPS API remain unimplemented release work.
 
 See `TEST_EVIDENCE.md` for current checks. Unit/contract tests do not verify
 phone GPS, native permission UX or whether a point is actually open. Native
-build/sign/install and post-trust process launch pass. Actual Home/GPS acceptance
-still awaits observation because XCTest UI transport is unavailable; a successful
-launch/PID is not a functional pass. No paid service, public deployment or GitHub
-push occurred.
+build/sign/install and actual native Home/nearby introduction pass. After starting
+location the helper's system-modal probe times out; permission/result and broader
+GPS acceptance remain unverified. Introductory UI does not validate point accuracy.
+No paid service, public deployment or GitHub push occurred.

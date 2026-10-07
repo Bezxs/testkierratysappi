@@ -9,7 +9,8 @@ Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally bl
 - [x] Document which data is active versus schema-only; keep OSM/product/rule data separate and do not add an unused database server.
 - [x] Complete Xcode 26.6 Debug build, renew signing, verify app/12 frameworks and install source `487af03` over the existing app without uninstalling; profile expires October 13 at 21:21:19 Finland time.
 - [x] Clear the initial launch rejection after Roope's trust/verification step; CoreDevice launch and subsequent app process presence pass.
-- [~] Accept Home/location/product-source flow on the new iPhone binary. XCTest helper signing was renewed, but UI transport is still unavailable; owner-visible Home confirmation is pending. Process presence is not GUI/GPS evidence, and retained local content remains unverified.
+- [x] On the owner's retry, inspect actual native Finnish Home and navigate to nearby introduction; semantic trees and privacy-safe screenshots confirm disclosure, OSM source and snapshot date without rebuilding/reinstalling.
+- [~] Finish native location and product-source acceptance. Starting location hits the helper's system-modal/AX timeout; OS prompt/result is not yet observable. Distance, denial/retry, background clearing, source UI and retained local content are not inferred from the passing introduction.
 - [!] Production HTTPS/persistent PostgreSQL/shared quota/recovery and owner/legal/store gates below remain. Free upstream data does not supply production infrastructure.
 
 ## Phase 0 — Discovery

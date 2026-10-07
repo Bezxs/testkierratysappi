@@ -3,7 +3,7 @@
 October 7 scoped update: **NO-GO remains**. Independent team-baseline source now
 includes licensed OSM points/local distance and free Open Facts sibling routing.
 Local data access is not missing credentials. Native build/sign/install and
-post-trust process launch pass; current-binary GUI/GPS acceptance,
+post-trust Home/nearby introduction pass; physical location completion,
 production HTTPS/PostgreSQL/shared quota/recovery and owner/legal/content/store
 gates remain. The September evidence below is historical. See
 `DATABASE_READINESS.md` and `TEST_EVIDENCE.md` for current, scoped evidence.
@@ -28,7 +28,7 @@ The product is not production-ready. The current September 10 dependency set pas
 | Mandatory local tests | **Pass on 2026-10-07** | Format, lint, typecheck, 208 application/32 policy tests (240 total), API/package builds and 13-route web export pass with nested pnpm 11.16.0. No timeout was relaxed |
 | Expo compatibility | **Doctor pass dated 2026-09-10; October build passes** | Expo 57.0.21/Router 57.0.20/RN 0.86.3 and added ExpoLocation 57.0.16 compile with matched pod lock/manifest. No fresh October Doctor pass is claimed; current native runtime is pending |
 | Android release build | **No evidence** | No JDK/SDK/ADB/signing/AAB/device run |
-| iOS development/release build | **October compile/signatures/install/process launch pass; GUI pending; no release evidence** | Source `487af03`, Xcode 26.6, app and 12 framework signatures pass. Profile expires October 13 21:21:19 Finland time. Owner trust/verification cleared the initial Security rejection; later process presence passes. The separate XCTest helper was renewed but its UI connection times out. Current Home/GPS/product smoke and local-content retention remain unverified; historical runtime passes do not certify this binary. Archive/TestFlight and wider matrix remain open |
+| iOS development/release build | **October compile/signatures/install/Home/nearby introduction pass; GPS pending; no release evidence** | Source `487af03`, Xcode 26.6, app and 12 framework signatures pass. Profile expires October 13 21:21:19 Finland time. Owner trust cleared startup; retry now yields actual native Home/nearby semantic and visual evidence. Starting location hits a helper system-modal timeout, so permission/result, background clearing, product-source UI and local-content retention remain unverified. Archive/TestFlight and wider matrix stay open |
 | Physical barcode test | **Partial** | One real EAN-13, permission/recovery and scanner-control semantics pass; EAN-8, UPC-A, unsupported UPC-E, actual torch toggle and adverse/rapid/multiple-code conditions remain |
 | Production API/database | **Absent** | Mobile production URL intentionally fails closed; no deployed service or restore drill |
 | Privacy/GDPR/terms | **Unapproved draft** | No controller/legal sign-off or hosted URLs |

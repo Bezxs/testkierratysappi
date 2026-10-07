@@ -2,11 +2,42 @@
 
 Status date: 2026-10-07
 
-Status: **POST-TRUST PROCESS LAUNCH PASSES — current-binary Home/GPS/product acceptance still pending. XCTest UI transport is unavailable after helper renewal; owner-visible evidence has been requested. Historical September runtime passes do not apply to this binary.**
+Status: **NATIVE HOME AND NEARBY INTRODUCTION PASS — the owner's retry now connects to XCTest. Starting location then hits an automation system-modal timeout; permission/result, background clearing and product-source acceptance remain pending. Historical September runtime passes do not certify those flows.**
 
 This report is deliberately separate from simulator, web and generated-configuration evidence. No physical-device row may become Pass without observing the named build on the recorded iPhone.
 
-## Post-trust follow-up — 2026-10-07
+## Owner-requested retry — 2026-10-07, 22:07 Finland time
+
+No app/helper rebuild or reinstall in this retry. Existing helper signature,
+device-unlocked state and API/Metro health pass. A fresh named session reaches
+`AGENT_DEVICE_RUNNER_LISTENER_READY` and returns Home in about 14 seconds. This
+resolves the earlier startup-transport failure for this attempt; its intermittent
+cause is not proven to be fixed generally.
+
+| Physical scenario | Result | Evidence/limit |
+| --- | --- | --- |
+| Current Finnish Home | Pass | Live tree exposes scan/manual/nearby/guide/history/privacy controls; screenshot visibly renders the team-baseline design |
+| Home → nearby introduction | Pass | Semantic tap changes route; one-shot local-only explanation, search button, coverage/material/access/hours caution, 6.10.2026 data date and OSM/ODbL attribution are present |
+| Default-size visual layout | Scoped pass | Home and intro screenshots inspected at 1284×2778; no visible text clipping. Development gear overlay remains, so these are not store assets or a full visual/large-text/dark-mode pass |
+| Start foreground location | Action performed, result unverified | Tapped the observed search control without taking a result screenshot. Alert query found none; safe result/refresh selectors did not match, then the helper reported `system_modal_probe_timeout` and `RUNNER_BUSY` |
+| Permission / distance result | Pending | Busy/failed captures do not prove denial, absent result, app crash or successful GPS. Roope was asked to handle any visible prompt (Allow Once) and report result/error without sensitive details |
+| Background clearing / denied retry / product-source UI | Not run | Must be independently observed after resolving the pending screen; unit/browser evidence is not a native pass |
+
+Privacy-safe local screenshots under ignored `work/location-2026-10-06/`:
+`iphone-home-retry-2026-10-07.png` and
+`iphone-nearby-intro-retry-2026-10-07.png`. Both precede the location request.
+No permission-map/result screenshot, coordinate, point address or exact distance
+was captured. Session diagnostics are under the tool's local
+`sessions/team-location-retry-2026-10-07/runner.log`; they record the listener
+recovery and later system-modal probe failure, not a passing GPS result.
+
+Full pinned `pnpm validate` passes after recording this retry: 240 tests,
+format/lint/strict types, package/API builds and 13 routes; log:
+`work/location-2026-10-06/iphone-retry-validate-2026-10-07.log`. Closed only the
+automation helper/session, verified no runner xcodebuild remains and confirmed
+the product still has the same running PID. No product reinstall/reset/termination.
+
+## Earlier post-trust follow-up — 2026-10-07
 
 - Roope reported the trust/verification step complete. Without an app reinstall,
   the explicit development-client deep-link launch returned success, and a

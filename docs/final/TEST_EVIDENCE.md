@@ -1,5 +1,13 @@
 # Test evidence
 
+## Owner-requested physical retry — 2026-10-07, 22:07 Finland time
+
+- On unchanged installed source `487af03`, the existing helper's signature, phone unlock and API/Metro health pass. Fresh session `team-location-retry-2026-10-07` reaches its listener and reads Home in about 14 seconds; no additional build, install, reset or source change was needed.
+- **Actual native Finnish Home and Home → nearby introduction pass** through semantic inspection/tap and screenshots. The introduction retains explicit one-shot/local-only location use, coverage/material/access/hours uncertainty, 6.10.2026 snapshot date and OSM/ODbL attribution. Inspected screenshots at 1284×2778 show no visible text clipping at the current font size; the development gear overlay is not production UI acceptance.
+- Starting location was performed, but outcome is **unverified**: alert lookup returned none; safe result/refresh selectors did not match; subsequent captures hit `system_modal_probe_timeout` / `RUNNER_BUSY`. Failed/busy captures are not proof of an absent result, denial or app defect. Asked Roope for the actual permission/result/error state. No GPS, denial/retry, background clearing or native product-source pass is inferred.
+- Evidence: ignored `work/location-2026-10-06/iphone-home-retry-2026-10-07.png` and `iphone-nearby-intro-retry-2026-10-07.png`, both captured before requesting location. No location-result/permission-map screenshot, coordinates, point address or actual distance retained. Exact scope and reproduction: `PHYSICAL_IOS_VALIDATION.md`. No GitHub push or release occurred.
+- Full pinned `pnpm validate` after the evidence update **passes, exit 0**: 240 tests, formatting/lint/strict types, package/API builds and 13 web routes. Log: ignored `work/location-2026-10-06/iphone-retry-validate-2026-10-07.log`. Closed the automation session by naming only its helper app; no runner xcodebuild remained, and a subsequent query confirmed the product's same PID still running. The app was not reinstalled, reset or terminated for this retry.
+
 ## Post-trust launch and automation limit — 2026-10-07
 
 - Roope confirmed the trust/verification step. CoreDevice then launched the same installed app successfully; a later filtered process query found KeepItGreen running. **Initial security rejection resolved**, without another product build/install. API/Metro health passes; Home/GPS/source UI is not inferred from process presence.

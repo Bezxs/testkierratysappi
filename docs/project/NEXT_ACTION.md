@@ -1,3 +1,3 @@
 # Next action
 
-Run and record the installed `487af03` iPhone acceptance flow after Roope confirms the visible Home state: Home → Lähin kierrätyspaikka → Etsi sijainnillani, foreground permission and distance, background/return clearing, denial/retry and actual barcode-source UI; use owner observations if XCTest remains unavailable, never record user coordinates, and do not rebuild/reinstall again merely for the resolved trust error or push/import KeepItGreen changes.
+Complete the pending physical location acceptance from the verified nearby screen: after Roope reports or handles any visible location prompt, verify point/distance presence without recording location details, then background clearing and denial/retry; recover from the helper's system-modal timeout rather than reinstalling the app, keep actual failures distinct from missing automation evidence, and do not push or import KeepItGreen changes.
