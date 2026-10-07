@@ -42,6 +42,7 @@ backup/restore and a public HTTPS API remain unimplemented release work.
 
 See `TEST_EVIDENCE.md` for current checks. Unit/contract tests do not verify
 phone GPS, native permission UX or whether a point is actually open. Native
-build/sign/install passes, but iOS rejects initial launch pending the owner
-trust/verification check and diagnosis if needed. No paid service, public
-deployment or GitHub push occurred.
+build/sign/install and post-trust process launch pass. Actual Home/GPS acceptance
+still awaits observation because XCTest UI transport is unavailable; a successful
+launch/PID is not a functional pass. No paid service, public deployment or GitHub
+push occurred.

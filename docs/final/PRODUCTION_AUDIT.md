@@ -7,9 +7,10 @@ is no longer food-only; schema-only PostgreSQL, native GPS acceptance and
 owner/legal/production/store gates remain. No old severity is lowered or
 release readiness inferred. `DATABASE_READINESS.md` separates active sources
 from inactive GS1/KIVO and undeployed server persistence. Subsequent October 7
-native compile/sign/install passes, but iOS rejects first launch with a generic
-security/trust error. Local signing checks pass; owner trust/verification check
-and further diagnosis if needed precede any current-binary runtime/GPS pass.
+native compile/sign/install passes. After owner trust/verification, the same
+app's launch and later process presence pass, clearing the first security error.
+The separate XCTest helper was renewed, but its UI connection still times out;
+current-binary Home/GPS acceptance awaits direct or owner observation, not a PID.
 This follow-up neither lowers severity nor certifies the wider physical matrix.
 
 Audit follow-up date: 2026-09-10 (GitHub synchronization and live dependency/compatibility gates; broader physical and source-review evidence retains its recorded date)

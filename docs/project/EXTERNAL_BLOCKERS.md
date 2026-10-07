@@ -8,12 +8,13 @@ review now explicitly covers beauty, pet-food and other-products recipients;
 OA-06 covers foreground-only, ephemeral device location and those transfers.
 No approval is inferred. GS1/KIVO remain inactive, not prerequisites for this
 local point directory. The Xcode 26.6 build, signatures and installation now pass.
-The first launch is rejected by iOS security (signature/entitlements/user trust);
-local signature/profile checks pass, and **Roope** must check the developer's
-trust/verification state under Settings → General → VPN & Device Management
-(OA-09). Trust is a possible cause, not a confirmed diagnosis. **Codex** owns
-relaunch and further diagnosis if rejection persists after confirmation. This
-physical-owner action is not a missing database or paid-account requirement.
+After **Roope** completed the actual trust/verification step, CoreDevice launch
+and later app process presence pass: that security rejection is resolved.
+**Codex** renewed the separate XCTest helper's expired profile and repaired its
+outer signature; the remaining UI connection timeout is a local tooling issue,
+not an app failure or a new external credential blocker. **Roope** supplies
+physical Home/location observations and OS permission choices under OA-09 when
+automation cannot inspect the phone. No GUI/GPS pass is inferred from a PID.
 
 | Blocker | Severity | Why external | Owner action |
 | --- | --- | --- | --- |

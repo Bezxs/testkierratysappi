@@ -2,9 +2,48 @@
 
 Status date: 2026-10-07
 
-Status: **NEW DEVELOPMENT BUILD INSTALLED — first launch rejected by iOS security; owner trust/verification check and current-binary Home/GPS/product acceptance pending. Historical September runtime passes below do not apply to this new binary.**
+Status: **POST-TRUST PROCESS LAUNCH PASSES — current-binary Home/GPS/product acceptance still pending. XCTest UI transport is unavailable after helper renewal; owner-visible evidence has been requested. Historical September runtime passes do not apply to this binary.**
 
 This report is deliberately separate from simulator, web and generated-configuration evidence. No physical-device row may become Pass without observing the named build on the recorded iPhone.
+
+## Post-trust follow-up — 2026-10-07
+
+- Roope reported the trust/verification step complete. Without an app reinstall,
+  the explicit development-client deep-link launch returned success, and a
+  subsequent filtered process query found KeepItGreen running. The prior iOS
+  Security rejection is resolved for this launch; GUI content is not inferred.
+- API health and Metro status still pass at the current LAN origins.
+- UI automation initially failed because the **separate** cached
+  AgentDeviceRunnerUITests runner profile had expired. Rebuilt the existing
+  helper with Xcode 27 beta, existing team/IDs and automatic provisioning;
+  `TEST BUILD SUCCEEDED`. The renewed helper profile expires October 14 at
+  18:51:50 UTC; **the product app still expires October 13 at 18:21:19 UTC**.
+- The incremental helper build left the outer runner's resource seal stale
+  after changing its embedded profile/test artifacts. Re-signed that exact
+  generated runner, preserving its validated identity/entitlements; recursive
+  strict signature verification then passed. No app source, bundle, user data,
+  global signing configuration or private-repository implementation changed.
+- Subsequent fresh-session XCTest startup still timed out without a readable
+  app tree. Tool diagnostics reported cancellation/termination of timed-out
+  runner processes. The later close attempt found no active automation session.
+  This is a tooling failure, **not evidence of an app crash or a GPS failure**.
+- Roope was asked whether the phone displays normal Home, an error or a
+  permission prompt. Home/location/source UI remain **Not run / awaiting owner
+  observation**. No GPS request was automated and no coordinates, nearest-point
+  result or camera frame were captured. Use the owner-assisted procedure below
+  instead of repeatedly rebuilding the app for a resolved trust problem.
+- Full pinned `pnpm validate` again passes: 240 tests, formatting/lint/types,
+  package/API builds and 13 routes. Ignored evidence:
+  `work/location-2026-10-06/iphone-post-trust-validate-2026-10-07.log`,
+  `iphone-launch-after-trust-2026-10-07.json` and
+  `runner-renewal-2026-10-07.log`. No release/Doctor/security-audit/GitHub claim.
+
+Owner-assisted procedure: confirm normal Home; open **Lähin kierrätyspaikka** →
+**Etsi sijainnillani**, choose foreground permission, and report only whether a
+point and distance labelled **Arvio linnuntietä** appear (not the name/address,
+coordinates or actual distance). Background and return: the old result should
+clear and a new search should be possible. Record observations separately;
+denial/retry and product-source UI require their own tests, not an inferred pass.
 
 ## Team-baseline development installation — 2026-10-07
 

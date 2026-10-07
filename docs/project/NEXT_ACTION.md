@@ -1,3 +1,3 @@
 # Next action
 
-Complete acceptance of the installed `487af03` iPhone development build: after Roope checks the developer trust/verification prompt, retry launch (diagnose the iOS security rejection if it persists) and record Home, foreground-location allow/deny/retry, nearest-point distance, background clearing and actual barcode-source UI evidence without retaining user coordinates; preserve the rollback and do not push or import KeepItGreen changes.
+Run and record the installed `487af03` iPhone acceptance flow after Roope confirms the visible Home state: Home → Lähin kierrätyspaikka → Etsi sijainnillani, foreground permission and distance, background/return clearing, denial/retry and actual barcode-source UI; use owner observations if XCTest remains unavailable, never record user coordinates, and do not rebuild/reinstall again merely for the resolved trust error or push/import KeepItGreen changes.

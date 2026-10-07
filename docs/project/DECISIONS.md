@@ -202,6 +202,7 @@
 - Status: build/sign/install verified; runtime acceptance pending
 - Decision: keep the team baseline on Xcode 26.6, use Xcode 27 beta only for device tooling, and update the existing bundle without uninstalling. Record profile expiry and integrity separately from iOS launch, permission/GPS behavior and retained local content. Do not replace this build with newer private-repository code or bypass a device trust prompt.
 - Reason: source `487af03` compiles, verifies and installs, but iOS rejects its first launch with a generic security/trust error. A new profile and successful installation cannot justify a physical pass; the owner must check actual trust/verification, followed by a fresh runtime test.
+- October 7 follow-up: owner confirmation followed by successful launch and persistent app process clears the trust gate without changing/reinstalling the app. Repair the separately expired XCTest helper rather than blaming/rebuilding the product; if UI transport remains unavailable, retain explicit unrun GUI/GPS rows and collect scoped owner observations without coordinates. No helper or private-repository implementation is added to the app.
 
 ## Remaining pending decisions
 

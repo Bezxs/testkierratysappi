@@ -1,5 +1,12 @@
 # Test evidence
 
+## Post-trust launch and automation limit — 2026-10-07
+
+- Roope confirmed the trust/verification step. CoreDevice then launched the same installed app successfully; a later filtered process query found KeepItGreen running. **Initial security rejection resolved**, without another product build/install. API/Metro health passes; Home/GPS/source UI is not inferred from process presence.
+- Agent-device 0.20.10 first failed to install its own cached runner because its profile had expired. Xcode 27 beta helper renewal succeeds; the changed outer resource seal was repaired using the existing signing identity/entitlements, followed by passing recursive strict verification. This is a separate testing helper, not new product code or a changed product profile.
+- Subsequent fresh-session XCTest connection still times out without an inspectable tree. No automated Home or GPS pass, screenshot, coordinate or camera capture is claimed. Owner-visible Home/error/permission confirmation requested; exact next physical procedure is in `PHYSICAL_IOS_VALIDATION.md`/OA-09. Runner transport recovery remains local tooling work, not an external database/paid-account blocker.
+- Full pinned **`pnpm validate` passes, exit 0**, 240 tests (32 policy + 208 application), all formatting/lint/strict types, package/API builds and 13 web routes, including the post-documentation rerun. Logs: ignored `work/location-2026-10-06/iphone-post-trust-validate-2026-10-07.log` and `iphone-post-trust-validate-final-2026-10-07.log`. Application source remains `487af03`; documentation only changes in this work unit. No push or production release occurred.
+
 ## Native renewal and installation — 2026-10-07
 
 - Source `487af03`, same independent team-baseline branch. Retained Xcode 26.6 Debug build now finishes with exit 0 and `BUILD SUCCEEDED`. Pod lock/manifest match. No application source changed in this installation work unit.

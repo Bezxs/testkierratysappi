@@ -8,7 +8,8 @@ Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally bl
 - [x] Enable bounded official Open Facts routing for non-food categories; preserve source/licence and unknown packaging, update FI/EN privacy/scope, and add routing/SSRF/quota/cache regression coverage.
 - [x] Document which data is active versus schema-only; keep OSM/product/rule data separate and do not add an unused database server.
 - [x] Complete Xcode 26.6 Debug build, renew signing, verify app/12 frameworks and install source `487af03` over the existing app without uninstalling; profile expires October 13 at 21:21:19 Finland time.
-- [~] Accept Home/location/product-source flow on the new iPhone binary. Initial launch is rejected by iOS security; owner trust/verification check requested. Build/install is not a runtime pass, and retained local content remains unverified.
+- [x] Clear the initial launch rejection after Roope's trust/verification step; CoreDevice launch and subsequent app process presence pass.
+- [~] Accept Home/location/product-source flow on the new iPhone binary. XCTest helper signing was renewed, but UI transport is still unavailable; owner-visible Home confirmation is pending. Process presence is not GUI/GPS evidence, and retained local content remains unverified.
 - [!] Production HTTPS/persistent PostgreSQL/shared quota/recovery and owner/legal/store gates below remain. Free upstream data does not supply production infrastructure.
 
 ## Phase 0 — Discovery
