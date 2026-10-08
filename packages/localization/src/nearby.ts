@@ -1,4 +1,8 @@
 export const nearbyFi = {
+  nearbyAddressUnknown: "Katuosoitetta ei ole aineistossa. Näet pisteen sijainnin kartalta.",
+  nearbyShowMap: "Näytä piste kartalla",
+  nearbyMapHint:
+    "Avaa kierrätyspisteen karttamerkin OpenStreetMapissa. Oma sijaintisi ei sisälly linkkiin.",
   nearbyNameUnknown: "Pisteen nimeä ei ole aineistossa",
   nearbyPointType: "Pisteen tyyppi aineistossa",
   nearbyTypeUnknown: "Tyyppiä ei ole ilmoitettu",
@@ -42,10 +46,14 @@ export const nearbyFi = {
   nearbyLinkError: "Lähdelinkkiä ei voitu avata. Tarkista verkkoyhteys ja yritä uudelleen.",
   nearbySettingsHint: "Jos käytät selainta, muuta sijaintilupa selaimen sivustoasetuksissa.",
   nearbyPrivacy:
-    "Vapaaehtoinen lähimmän pisteen haku käsittelee sijaintia vain laitteen muistissa. Lukeminen loppuu tulokseen, peruutukseen tai aikakatkaisuun; näkymästä poistuminen tai sovelluksen siirtäminen taustalle tyhjentää tuloksen. Sijaintia tai siitä laskettua etäisyyttä ei tallenneta historiaan, lähetetä palvelimelle tai analytiikkaan. OpenStreetMap-lähdelinkki välittää vain julkisen pisteen tunnisteen; selaimen verkkopyyntöön sovelletaan ulkoisen palvelun tietosuojakäytäntöä.",
+    "Vapaaehtoinen lähimmän pisteen haku käsittelee sijaintia vain laitteen muistissa. Lukeminen loppuu tulokseen, peruutukseen tai aikakatkaisuun; näkymästä poistuminen tai sovelluksen siirtäminen taustalle tyhjentää tuloksen. Sijaintia tai siitä laskettua etäisyyttä ei tallenneta historiaan, lähetetä palvelimelle tai analytiikkaan. OpenStreetMap-linkit välittävät vain julkisen kierrätyspisteen tunnisteen tai koordinaatit, eivät omaa sijaintiasi; selaimen verkkopyyntöön sovelletaan ulkoisen palvelun tietosuojakäytäntöä.",
 };
 
 export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
+  nearbyAddressUnknown: "Street address is not available. View the point's location on the map.",
+  nearbyShowMap: "Show point on map",
+  nearbyMapHint:
+    "Opens the recycling point marker in OpenStreetMap. Your location is not included in the link.",
   nearbyNameUnknown: "Point name is not available in the directory",
   nearbyPointType: "Point type reported in the directory",
   nearbyTypeUnknown: "Type not reported",
@@ -89,5 +97,5 @@ export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
   nearbyLinkError: "The source link could not be opened. Check your connection and try again.",
   nearbySettingsHint: "In a browser, change location permission in its site settings.",
   nearbyPrivacy:
-    "The optional nearest-point search processes your location in device memory only. Acquisition ends on a result, cancellation or timeout; leaving the screen or backgrounding the app clears the result. Neither location nor calculated distance is saved to history, sent to a server or analytics. OpenStreetMap source links contain only the public point ID; browser requests are subject to the external service's privacy policy.",
+    "The optional nearest-point search processes your location in device memory only. Acquisition ends on a result, cancellation or timeout; leaving the screen or backgrounding the app clears the result. Neither location nor calculated distance is saved to history, sent to a server or analytics. OpenStreetMap links contain only the public recycling point ID or coordinates, not your location; browser requests are subject to the external service's privacy policy.",
 };

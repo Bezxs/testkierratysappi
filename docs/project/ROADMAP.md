@@ -4,6 +4,9 @@ Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally bl
 
 ## Current independent team-baseline work — October 7
 
+- [x] Add marked-map destination link and explicit missing-address fallback, using public point coordinates only.
+- [~] Verify physical map handoff and updated result layout.
+
 - [x] Clarify nearest-point identity using reported name/address/type and OSM identifier, with explicit missing-name/type labels in FI/EN.
 - [~] Inspect updated identity layout on the physical iPhone; earlier permission tests do not certify this new UI.
 

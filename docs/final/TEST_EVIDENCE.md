@@ -1,5 +1,11 @@
 # Test evidence
 
+## Point map destination — 2026-10-08
+
+- Full pinned `pnpm validate` passes both before and after final privacy-copy update, exit 0: **242 tests (33 policy + 209 application)**, formatting/lint/strict types, package/API builds and 13 web routes. Logs: ignored `work/location-2026-10-06/point-map-validate-2026-10-08.log` and `point-map-validate-final-2026-10-08.log`. No new external blocker or production GO.
+
+- Regression verifies exact public-point marker URL for a point lacking an address and rejects invalid coordinates. UI retains known address and adds explicit missing-address fallback/map action. FI/EN privacy copy distinguishes public point coordinates from user location. Native handoff/visual inspection remains pending; no user coordinates captured.
+
 ## Nearest-point identity — 2026-10-08
 
 - Full pinned `pnpm validate` passes, exit 0: **241 tests (33 policy + 208 application)**, formatting/lint/strict types, package/API builds and 13 web routes. Log: ignored `work/location-2026-10-06/point-identity-validate-2026-10-08.log`. No new external blocker or production GO claim.

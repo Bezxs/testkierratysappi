@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   CollectionDirectorySchema,
   collectionPointUrl,
+  collectionPointMapUrl,
   directoryAgeDays,
   nearestCollectionPoint,
   type CollectionPoint,
@@ -28,6 +29,17 @@ const directory = {
 };
 
 describe("local collection directory contract", () => {
+  it("opens a marked map at the public point, including when its address is missing", () => {
+    expect(collectionPointMapUrl(point)).toBe(
+      "https://www.openstreetmap.org/?mlat=60&mlon=25#map=18/60/25",
+    );
+    expect(() =>
+      collectionPointMapUrl({
+        ...point,
+        coordinates: { latitude: 999, longitude: 25 },
+      }),
+    ).toThrow();
+  });
   it("does not make old upstream data fresh by downloading it again", () => {
     const parsed = CollectionDirectorySchema.parse({
       ...directory,

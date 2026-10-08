@@ -52,6 +52,11 @@ export function collectionPointUrl(point: CollectionPoint): string {
   return `https://www.openstreetmap.org/${CollectionPointSchema.parse(point).id}`;
 }
 
+export function collectionPointMapUrl(point: CollectionPoint): string {
+  const { latitude, longitude } = CollectionPointSchema.parse(point).coordinates;
+  return `https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}#map=18/${latitude}/${longitude}`;
+}
+
 export function directoryAgeDays(directory: CollectionDirectory, now = Date.now()): number {
   return Math.max(
     0,

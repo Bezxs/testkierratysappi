@@ -1,6 +1,7 @@
 import {
   CollectionDirectorySchema,
   collectionPointUrl,
+  collectionPointMapUrl,
   directoryAgeDays,
   nearestCollectionPoint,
 } from "@kierratysappi/application/collection-points";
@@ -165,7 +166,16 @@ export default function NearbyScreen() {
                   : "nearbyTypeUnknown",
             )}
           </AppText>
-          {state.result.point.address && <AppText>{state.result.point.address}</AppText>}
+          <AppText>{state.result.point.address ?? t("nearbyAddressUnknown")}</AppText>
+          <Button
+            label={t("nearbyShowMap")}
+            variant="secondary"
+            onPress={() => openUrl(collectionPointMapUrl(state.result.point))}
+            testID="nearby-map"
+          />
+          <AppText variant="small" muted>
+            {t("nearbyMapHint")}
+          </AppText>
           <AppText variant="small" muted>
             {t("nearbyPointId")}: {state.result.point.id}
           </AppText>

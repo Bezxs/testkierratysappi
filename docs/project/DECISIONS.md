@@ -207,6 +207,8 @@
 
 ## Remaining pending decisions
 
+- October 8 whereabouts: provide an explicit OpenStreetMap marker action rather than fabricate missing addresses or send the user's location to reverse-geocoding/routing services. Use existing source coordinates (area centroid caution retained); no turn-by-turn or entrance accuracy claim. Marker URL format checked against https://wiki.openstreetmap.org/wiki/Homepage on 2026-10-08.
+
 - October 8 point identification: keep the existing licensed directory rather than guessing an operator or making location-bearing reverse-geocoding requests. Expose reported kind and source identifier; explicitly label absent names/types. Owner postponed push, and target repository remains to be confirmed.
 
 - October 8 physical permission cycle: record owner actions separately from native observations. Denied explanation/settings button and restored ready-control visibility establish recovery, not fresh consent, on-site distance accuracy or complete result-text accessibility. Continue next with public-example native provider attribution.

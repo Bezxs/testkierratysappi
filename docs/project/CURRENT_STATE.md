@@ -1,5 +1,10 @@
 # Current state
 
+## Point whereabouts — 2026-10-08
+
+- Added a prominent Show point on map button using validated public point coordinates and an OpenStreetMap marker. Address is displayed when known; otherwise FI/EN explicitly explains that it is missing and directs the user to the map. No reverse-geocoding, new account/package, or user-location URL. Updated privacy disclosure for public point coordinates.
+- Physical map handoff/layout remains pending; no push or native rebuild. Source identity and uncertainty retained.
+
 ## Point identity clarification — 2026-10-08
 
 - Owner postponed pushing and requested identification of the nearest recycling point. Result now displays source-provided name/address, reported centre/container type and OSM identifier with the existing source link. Missing name/type is explicitly unknown, never invented. Existing uncertainty and local-only location behavior remain.

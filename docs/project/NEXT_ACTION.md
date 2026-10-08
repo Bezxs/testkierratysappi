@@ -1,3 +1,3 @@
 # Next action
 
-Inspect the updated nearest-point identity on iPhone after loading the current Metro bundle: verify name-or-explicit-unknown, reported type, address when available and source link without retaining location-derived details; no push until the owner confirms destination.
+Inspect the updated nearest-point result and Show point on map handoff on iPhone with the current Metro bundle, including missing-address fallback; record only non-sensitive pass/fail evidence, with no push until destination is confirmed.
