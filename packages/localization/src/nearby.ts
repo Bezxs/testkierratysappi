@@ -29,7 +29,8 @@ export const nearbyFi = {
   nearbyTypeUnknown: "Tyyppiä ei ole ilmoitettu",
   nearbyPointId: "OpenStreetMap-tunniste",
   nearbyTitle: "Lähin kierrätyspaikka",
-  nearbyHomeBody: "Etsi piste ja katso etäisyys",
+  nearbyHomeTitle: "Lähin piste",
+  nearbyHomeBody: "Etäisyys ja sijainti kartalla",
   nearbyPurpose:
     "Käytämme sijaintia kerran lähimmän aineistossa olevan pisteen löytämiseen. Etäisyys lasketaan puhelimessa. Sijaintia ei tallenneta, lähetetä tai seurata taustalla.",
   nearbyFind: "Etsi sijainnillani",
@@ -101,7 +102,8 @@ export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
   nearbyTypeUnknown: "Type not reported",
   nearbyPointId: "OpenStreetMap identifier",
   nearbyTitle: "Nearest recycling point",
-  nearbyHomeBody: "Find a point and see the distance",
+  nearbyHomeTitle: "Nearest point",
+  nearbyHomeBody: "Distance and map location",
   nearbyPurpose:
     "Use your location once to find the nearest point in the directory. Distance is calculated on your phone. Your location is not stored, uploaded or tracked in the background.",
   nearbyFind: "Find using my location",

@@ -104,7 +104,7 @@ assert.ok(sample);
     const en = await english.newPage();
     await en.goto(`${baseUrl}/`);
     await en.getByRole("radio", { name: "English", exact: true }).click();
-    await en.getByRole("button", { name: "Nearest recycling point", exact: true }).click();
+    await en.getByTestId("home-nearby-action").click();
     await en.getByTestId("nearby-find").click();
     await en.getByTestId("nearby-result").waitFor();
     await en

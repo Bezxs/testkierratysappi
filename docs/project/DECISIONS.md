@@ -219,6 +219,13 @@
 - Decision: remove the owner's identified blanket privacy sentence from Home/history without replacing it. Keep specific camera/barcode and location transfer purposes at their actions, complete legal/retention disclosures in legal, and source/uncertainty evidence with answers. Use direct FI/EN recovery instructions, not repeated status captions or internal storage/cache terms. No new design system, private import or GitHub push.
 - Reason: factual statements become promotional filler when repeated outside the relevant decision. A loading message must not imply freshly verified policy; a locally saved feedback draft must not look sent. Inspection of storage also confirms disabling history clears it, so that existing destructive effect must be explicit in the action label/style.
 
+## D-032 — Recognizable actions without visual clutter
+
+- Date: 2026-10-08
+- Status: implemented and browser-validated locally; native visual acceptance pending
+- Decision: improve Home with one original package-label scan signature, consistent native line icons and two actual nearby/guide navigation tiles. Keep manual entry immediately after scan and history quieter beneath the alternatives. Retain the existing palette/fonts, short localized copy, sources and legal/uncertainty disclosures. No private artwork, package, animation, mock preview or GitHub push.
+- Reason: removing decoration alone left a text list resembling settings. Functional icons and a limited hierarchy add recognition without slogans or fabricated maturity. Tiles must wrap for narrow screens, widen with system font scale and keep full labels; the observed Finnish large-text orphan-letter defect receives both arithmetic and rendered-word-wrap regressions. Browser checks remain distinct from native Dynamic Type/VoiceOver acceptance.
+
 ## Remaining pending decisions
 
 - October 8 publication outcome: explicit non-force push succeeds to existing public KierratysAppi main, verified remotely. Do not change visibility/settings or KeepItGreen; source sharing does not publish a running production service or certify stores/native pending flows.

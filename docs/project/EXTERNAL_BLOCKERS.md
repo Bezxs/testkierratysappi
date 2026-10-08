@@ -1,5 +1,12 @@
 # External blockers
 
+October 8 Home-recognition polish adds no external service, account, credential
+or paid-tool blocker. Codex owns the latest native Home/navigation/large-text
+check and any repairs; Roope handles actual unlock or OS prompts if required.
+No new owner action is requested now. Native visual/accessibility evidence and
+existing production gates remain open; browser success and static icon code
+do not establish Dynamic Type, VoiceOver or battery acceptance. No GitHub push.
+
 October 8 copy cleanup adds no external blocker. Codex owns the next native
 text/layout check; Roope handles any required physical unlock or OS prompt.
 No new prompt/action is requested now. Existing native camera/accessibility,

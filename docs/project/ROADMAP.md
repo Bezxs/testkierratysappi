@@ -4,6 +4,10 @@ Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally bl
 
 ## Current independent team-baseline work — October 8
 
+- [x] Improve Home recognition with an original package-label scan drawing, native line icons, real nearby/guide tiles and quieter history; preserve plain FI/EN copy and contextual notices without private imports or new dependencies.
+- [x] Pass 276-test pinned validation and both actual-UI browser runners; add nine font-scale/layout cases, two design-policy cases, focused Enter navigation and rendered word-wrap regression after repairing a Finnish large-text orphan letter.
+- [~] Verify this latest Home on the existing iPhone through Metro 8093, including native light/dark/large text and navigation to manual/guide/nearby introduction. No latest physical visual pass or GitHub push is inferred.
+
 - [x] October 8 whole-app FI/EN copy cleanup: remove blanket Home/history reassurance and repeated captions, replace internal storage/cache language, preserve contextual consent/uncertainty/legal/source notices, and name history's existing destructive action accurately.
 - [x] Pass 265-test pinned validation and both actual-UI browser runners; regress loading, ambiguous/unknown material codes, local unsent feedback and history disable/clear. Latest native text/layout acceptance remains the next action.
 

@@ -209,6 +209,30 @@ async function largeText(page) {
         ),
       );
       assert.ok(await page.getByTestId("home-legal-action").isVisible());
+      assert.equal(await page.getByTestId("scan-package-mark").getAttribute("aria-hidden"), "true");
+      for (const kind of ["manual", "nearby", "guide", "history"])
+        assert.equal(
+          await page.getByTestId("action-icon-" + kind).getAttribute("aria-hidden"),
+          "true",
+        );
+      const nearbyTile = await page.getByTestId("home-nearby-action").boundingBox();
+      const guideTile = await page.getByTestId("home-guide-action").boundingBox();
+      assert.ok(Math.abs(nearbyTile.y - guideTile.y) < 1, "Phone navigation tiles share a row");
+      await page.getByTestId("home-guide-action").focus();
+      await page.waitForFunction(
+        () =>
+          getComputedStyle(document.querySelector('[data-testid="home-guide-action"]'))
+            .borderTopColor === "rgb(36, 77, 60)",
+      );
+      await page.getByTestId("home-guide-action").press("Enter");
+      await page
+        .getByRole("heading", {
+          name: language === "fi" ? "Lajitteluopas" : "Sorting guide",
+          exact: true,
+        })
+        .waitFor();
+      await page.goto(baseUrl);
+      await page.getByTestId("home-screen").waitFor();
       await shot(page, language + "-home");
       for (const id of [
         "home-scan-action",
@@ -447,11 +471,38 @@ async function largeText(page) {
         await shot(page, language + "-dark-" + (route || "home"));
         await largeText(page);
         await shot(page, language + "-large-" + (route || "home"));
+        if (route === "") {
+          const title = page
+            .getByTestId("home-guide-action")
+            .getByText(language === "fi" ? "Lajitteluopas" : "Sorting guide", { exact: true });
+          assert.ok(
+            await title.evaluate((el) => {
+              const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+              while (walker.nextNode()) {
+                const text = walker.currentNode;
+                for (const match of text.textContent.matchAll(/\S+/g)) {
+                  const range = document.createRange();
+                  range.setStart(text, match.index);
+                  range.setEnd(text, match.index + match[0].length);
+                  if (range.getClientRects().length > 1) return false;
+                }
+              }
+              return true;
+            }),
+            "Guide tile title must wrap between words, not orphan a letter at 130% text",
+          );
+        }
         await page.emulateMedia({ colorScheme: "light" });
       }
       await page.goto(baseUrl);
       await page.setViewportSize({ width: 320, height: 740 });
       await shot(page, language + "-home-320");
+      const narrowNearby = await page.getByTestId("home-nearby-action").boundingBox();
+      const narrowGuide = await page.getByTestId("home-guide-action").boundingBox();
+      assert.ok(
+        narrowGuide.y > narrowNearby.y + narrowNearby.height,
+        "Narrow navigation tiles stack",
+      );
       await page.setViewportSize({ width: 1280, height: 800 });
       await shot(page, language + "-home-wide");
       assert.deepEqual(errors, []);

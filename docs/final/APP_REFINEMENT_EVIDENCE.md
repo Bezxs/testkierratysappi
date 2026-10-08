@@ -1,5 +1,56 @@
 # Whole-app refinement evidence — 2026-10-08
 
+## Follow-up: Home recognition without clutter
+
+Following `74b772f`, improved Home's visual recognition with original native
+pin/book/clock/keypad line icons, a non-scannable package-label drawing in the
+primary scan action, two real nearby/guide navigation tiles and quieter history.
+Manual entry remains directly after scan. Existing theme/fonts, short FI/EN
+copy, contextual purposes, provenance, uncertainty and legal-review markers
+remain. No emoji collage, slogan, private-repository import, new dependency,
+fake data, animation or changed provider/location/storage behavior.
+
+Validation:
+
+- Full pinned `pnpm validate`: exit 0, **276 tests (43 Node policy + 233
+  application)**, formatting/lint/strict types, package/API builds and 13 web
+  routes. Final log: ignored
+  `work/location-2026-10-06/home-recognition-validate-final.log`.
+- Nine new pure layout tests cover screen widths, normal/enlarged system font
+  scales, narrow-screen bounds and stacking. Two new policy cases cover static
+  native/decorative linework and accessible, uncapped real navigation tiles.
+  Narrow mobile design policy passes 11/11. These are source/arithmetic checks,
+  not physical screen-reader or Dynamic Type acceptance.
+- Whole-app actual-Metro runner passes FI/EN, decorative `aria-hidden`, visible
+  focus border and Enter navigation to the real guide, side-by-side tiles at
+  390 px and stacking at 320 px, plus existing invalid/no-request, recovery,
+  source/uncertainty, confirmation, history/draft/legal and dark/large flows.
+- Nearby runner passes again for FI/EN, synthetic public-point GPS, offline
+  local search, map-first layout, unknown fallback, expanded semantics, dark
+  switching and 130% synthetic text. Its Home entry uses the stable test ID
+  after shortening the navigation label. No user GPS or production fixture data.
+- Inspected `fi-home.png`, `fi-home-320.png`, `en-home.png`, `en-dark-home.png`,
+  `fi-large-home.png` and `en-large-home.png` in ignored
+  `work/app-refinement-qa/`. Screenshots are browser viewport views inside a
+  scroll container, not native captures. Standard phone Home fits its viewport;
+  narrow/enlarged text uses ordinary scrolling, with no horizontal overflow.
+- Visual inspection found the actual Finnish guide heading splitting its last
+  letter at synthetic 130%. Reduced tile title sizing to 17/23, added native
+  font-scale-responsive tile width and a per-word rendered wrapping regression.
+  The first regression incorrectly required the entire English title on one
+  line; corrected it to allow normal between-word wrapping while rejecting
+  split words. Both language runs then pass. A nearby runner's obsolete label
+  locator was also updated; neither locator issue was a product defect.
+- Latest exported entry `entry-43f853768dfc657ef0262fe297d11f61.js`:
+  **3,375,116 bytes / 698,216 gzip**, still above the existing 2 MiB warning.
+  Static controls add no timed animation; battery/performance were not measured.
+
+No native build/sign/install, GitHub push, new external blocker or production
+GO. Latest iPhone appearance, Dynamic Type, VoiceOver, camera/torch and OS
+address/map handoff remain pending. Reproduction uses the commands below;
+Codex owns the next native Home/navigation check through Metro 8093 and Roope
+handles any actual unlock/OS prompt.
+
 ## Follow-up: whole-app copy cleanup
 
 Following `a406292`, reviewed all eleven functional routes and shared sorting

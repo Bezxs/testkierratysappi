@@ -6,7 +6,7 @@ An anonymous Finnish packaging-sorting utility, not a marketing site or a mature
 
 First pass: keep the accessible Atkinson family and the pine accent, but replace the repeated brand/eyebrow/card stacks with a consistent back row, normal document sections and focused forms. Display 32/36, page title 26/32, section 19/25, body 17/25, utility 14/20; IBM Plex Mono is for codes, not decorative all-caps headings. Light palette: canvas `#F5F7F2`, paper `#FFFFFF`, ink `#20352D`, secondary `#59665E`, action `#244D3C`, caution `#8D5700`; retain semantic error colors and the existing dark equivalents. Buttons 56 pt, targets at least 44 pt, 10–16 pt corner radii, no shadows, gradients or new motion.
 
-One signature: a real barcode mark beside the primary scan action. Everything else is quiet, left-aligned and practical. Home has a compact wordmark/language switch, one invitation, one scan control and a plain list of secondary actions; detail pages have the same navigation rhythm.
+One signature: a barcode-shaped mark beside the primary scan action, not a real scannable code. Everything else is quiet, left-aligned and practical. Home has a compact wordmark/language switch, one invitation, one scan control and a plain list of secondary actions; detail pages have the same navigation rhythm.
 
 ```text
 Home                         Detail
@@ -43,3 +43,53 @@ Retain material-code limitations rather than imply it identifies a bin.
 Explicitly label history's existing clearing effect and unsent feedback.
 Versioned sorting content and substantive legal drafts were reviewed but not
 rewritten in this copy-only pass. Tests protect those boundaries.
+
+## Follow-up: recognition without clutter
+
+Brief: the owner wants the current app improved after the overly plain Home
+was identified. Its single job remains starting a packaging lookup, with the
+nearest-point and general-guide alternatives easy to recognize. Do not restore
+the removed privacy slogan, add unverified data or borrow private-repo assets.
+
+First-pass tokens: keep canvas `#F5F7F2`, ink `#20352D`, secondary `#59665E`,
+pine action `#244D3C`, soft pine `#E5EDE2` and white `#FFFFFF`, with existing
+dark equivalents. Atkinson bold is for the invitation and scan label,
+Atkinson semibold/regular for navigation/detail, IBM Plex Mono for actual
+codes. Use the existing 8/12/16/24 spacing and 10/16 radii. Draw a consistent
+1.8 pt outline icon set with native Views; no font, image or native dependency.
+
+Signature: the scan action carries an original package-label drawing with a
+small non-scannable barcode. Nearby and guide get two actual navigation tiles,
+not a decorative feature-card dashboard. Manual fallback stays directly below
+scan; history is quieter and full-width. Tiles wrap to one column on narrow
+screens and grow with text instead of truncating it.
+
+```text
+wordmark                         FI EN
+Sort a package
+short existing explanation
+[ Scan package           package label ]
+  keypad  Enter code manually          ›
+  existing packaging-data limitation
+[ pin                   ] [ open book  ]
+[ nearest point         ] [ guide      ]
+[ distance / map        ] [ offline    ]
+  clock   History                     ›
+privacy / Finland
+```
+
+Second-pass critique: three identical text rows looked like settings, but
+restoring a large hero, emoji collage, slogan or fake map would not resolve
+the task. Limit visual emphasis to scanning and the two real alternatives;
+use recognisable original linework and keep reading/result screens restrained.
+No shadows, gradients, animation, badges or invented maturity signals.
+
+Implemented critique: retain 26/32 for the scan label but use 17/23 for tile
+headings so the Finnish compound title stays intact at tested synthetic 130%
+text. The first visual pass found an orphaned final letter and was repaired,
+not accepted. Shared Screen width/padding feed a bounded tile-width function;
+native system font scale widens tiles and triggers stacking without capping
+font size. Decorative linework has no focus target; buttons retain a single
+localized name/hint, pressed feedback and visible keyboard-focus border.
+Latest browser/layout evidence is in `docs/final/APP_REFINEMENT_EVIDENCE.md`;
+physical iPhone appearance remains pending.

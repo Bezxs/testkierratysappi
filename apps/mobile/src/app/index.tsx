@@ -1,8 +1,16 @@
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import { BarcodeMark } from "@/components/packaging-mark";
-import { ActionRow, AppText, BrandLockup, InlineLink, Screen, sharedStyles } from "@/components/ui";
+import { ActionIcon, ScanPackageMark } from "@/components/action-icon";
+import {
+  ActionRow,
+  AppText,
+  BrandLockup,
+  InlineLink,
+  NavigationTile,
+  Screen,
+  sharedStyles,
+} from "@/components/ui";
 import { isHistoryEnabled } from "@/features/history/storage";
 import { useScanSession } from "@/features/scan/session-context";
 import { useLanguage } from "@/i18n/language-context";
@@ -79,23 +87,17 @@ export default function HomeScreen() {
           },
         ]}
       >
-        <View
-          accessible={false}
-          accessibilityElementsHidden
-          importantForAccessibility="no-hide-descendants"
-          aria-hidden
-        >
-          <BarcodeMark color={palette.onStrong} />
-        </View>
         <View style={sharedStyles.grow}>
-          <AppText variant="heading" style={{ color: palette.onStrong }}>
+          <AppText variant="title" style={{ color: palette.onStrong }}>
             {t("scanAction")}
           </AppText>
         </View>
+        <ScanPackageMark color={palette.onStrong} />
       </Pressable>
       <ActionRow
         label={t("manualEntry")}
         detail={t("gtinHint")}
+        leading={<ActionIcon kind="manual" />}
         onPress={() => router.push("/manual")}
         testID="home-manual-action"
       />
@@ -104,25 +106,28 @@ export default function HomeScreen() {
       </AppText>
 
       <View style={styles.utilities}>
-        <ActionRow
-          label={t("nearbyTitle")}
+        <NavigationTile
+          label={t("nearbyHomeTitle")}
           detail={t("nearbyHomeBody")}
+          icon={<ActionIcon kind="nearby" />}
           onPress={() => router.push("/nearby")}
           testID="home-nearby-action"
         />
-        <ActionRow
+        <NavigationTile
           label={t("homeGuideTitle")}
           detail={t("homeGuideBody")}
+          icon={<ActionIcon kind="guide" />}
           onPress={() => router.push("/guide")}
           testID="home-guide-action"
         />
-        <ActionRow
-          label={t("historyTitle")}
-          detail={historyEnabled ? t("homeHistoryOn") : t("homeHistoryOff")}
-          onPress={() => router.push("/history")}
-          testID="home-history-action"
-        />
       </View>
+      <ActionRow
+        label={t("historyTitle")}
+        detail={historyEnabled ? t("homeHistoryOn") : t("homeHistoryOff")}
+        leading={<ActionIcon kind="history" />}
+        onPress={() => router.push("/history")}
+        testID="home-history-action"
+      />
 
       <View style={styles.footer}>
         <View style={styles.footerLinks}>
@@ -157,18 +162,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  intro: { paddingTop: spacing.xl, paddingBottom: spacing.lg, gap: spacing.sm },
+  intro: { paddingTop: spacing.lg, paddingBottom: spacing.lg, gap: spacing.sm },
   scanAction: {
-    minHeight: 100,
+    minHeight: 134,
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: radius.md,
-    padding: spacing.lg,
-    gap: spacing.lg,
+    borderRadius: radius.lg,
+    padding: 20,
+    gap: spacing.md,
   },
   scope: { paddingTop: spacing.sm },
-  utilities: { paddingTop: spacing.lg },
-  footer: { marginTop: spacing.xl, gap: spacing.xs },
+  utilities: {
+    paddingTop: spacing.lg,
+    paddingBottom: spacing.xs,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: spacing.sm,
+  },
+  footer: { marginTop: spacing.lg, gap: spacing.xs },
   footerLinks: {
     flexDirection: "row",
     flexWrap: "wrap",

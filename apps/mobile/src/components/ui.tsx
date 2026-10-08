@@ -1,4 +1,4 @@
-import type { PropsWithChildren, ReactNode } from "react";
+import { type PropsWithChildren, type ReactNode, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -10,10 +10,12 @@ import {
   type TextStyle,
   View,
   type ViewStyle,
+  useWindowDimensions,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useLanguage } from "@/i18n/language-context";
 import { controls, interaction, radius, spacing, typography, useAppTheme } from "@/theme/tokens";
+import { navigationTileMinimumWidth, screenLayout } from "./navigation-layout";
 
 type TextVariant = "display" | "title" | "heading" | "body" | "small" | "label" | "mono";
 
@@ -188,11 +190,13 @@ export function Chevron({ back = false }: { readonly back?: boolean }) {
 export function ActionRow({
   label,
   detail,
+  leading,
   onPress,
   testID,
 }: {
   readonly label: string;
   readonly detail?: string;
+  readonly leading?: ReactNode;
   readonly onPress: () => void;
   readonly testID?: string;
 }) {
@@ -209,6 +213,16 @@ export function ActionRow({
         { borderColor: palette.borderSubtle, opacity: pressed ? interaction.pressedOpacity : 1 },
       ]}
     >
+      {leading && (
+        <View
+          accessible={false}
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+          aria-hidden
+        >
+          {leading}
+        </View>
+      )}
       <View style={sharedStyles.grow}>
         <AppText variant="label">{label}</AppText>
         {detail && (
@@ -218,6 +232,66 @@ export function ActionRow({
         )}
       </View>
       <Chevron />
+    </Pressable>
+  );
+}
+
+/** A real navigation action, with flexible height and a single accessible name. */
+export function NavigationTile({
+  label,
+  detail,
+  icon,
+  onPress,
+  testID,
+}: {
+  readonly label: string;
+  readonly detail: string;
+  readonly icon: ReactNode;
+  readonly onPress: () => void;
+  readonly testID: string;
+}) {
+  const { palette } = useAppTheme();
+  const { width, fontScale } = useWindowDimensions();
+  const minimumWidth = navigationTileMinimumWidth(width, fontScale);
+  const [focused, setFocused] = useState(false);
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      accessibilityHint={detail}
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
+      onPress={onPress}
+      testID={testID}
+      style={({ pressed }) => [
+        styles.navigationTile,
+        {
+          minWidth: minimumWidth,
+          flexBasis: minimumWidth,
+          backgroundColor: pressed ? palette.pineSoft : palette.surface,
+          borderColor: focused ? palette.actionLink : palette.borderSubtle,
+        },
+      ]}
+    >
+      <View style={styles.tileTop}>
+        <View
+          accessible={false}
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+          aria-hidden
+        >
+          {icon}
+        </View>
+        <Chevron />
+      </View>
+      <View style={sharedStyles.tightStack}>
+        <AppText variant="heading" style={styles.tileTitle}>
+          {label}
+        </AppText>
+        <AppText variant="small" muted>
+          {detail}
+        </AppText>
+      </View>
     </Pressable>
   );
 }
@@ -434,7 +508,7 @@ export const sharedStyles = StyleSheet.create({
   stack: { gap: spacing.md },
   tightStack: { gap: spacing.xs },
   row: { flexDirection: "row", alignItems: "center", gap: spacing.sm },
-  grow: { flex: 1 },
+  grow: { flex: 1, minWidth: 0 },
 });
 
 const textStyles = StyleSheet.create<Record<TextVariant, TextStyle>>({
@@ -452,9 +526,9 @@ const styles = StyleSheet.create({
   scrollContent: { flexGrow: 1, alignItems: "center" },
   content: {
     width: "100%",
-    maxWidth: 560,
+    maxWidth: screenLayout.maxWidth,
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: screenLayout.horizontalPadding,
     paddingTop: spacing.sm,
     paddingBottom: spacing.xxl,
   },
@@ -514,6 +588,22 @@ const styles = StyleSheet.create({
     minHeight: 60,
     paddingVertical: spacing.md,
   },
+  navigationTile: {
+    flexBasis: 160,
+    flexGrow: 1,
+    minWidth: 160,
+    borderRadius: radius.lg,
+    borderWidth: 1,
+    padding: spacing.md,
+    gap: spacing.md,
+    minHeight: 152,
+  },
+  tileTop: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  tileTitle: { fontSize: 17, lineHeight: 23 },
   choiceIndicator: {
     width: 18,
     height: 18,

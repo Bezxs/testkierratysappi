@@ -1,5 +1,27 @@
 # Test evidence
 
+## Home recognition and visual polish — 2026-10-08
+
+- Pinned `pnpm validate`: exit 0, **276 tests (43 policy + 233 application)**,
+  formatting/lint/strict types, package/API builds and 13-route web export.
+  Ignored final log: `work/location-2026-10-06/home-recognition-validate-final.log`.
+- Nine new tile width/font-scale/stacking tests and two source-policy cases;
+  narrow mobile design policy passes 11/11. Native icons are decorative with
+  no extra focus targets, no animation or new package. Source/arithmetic checks
+  do not establish physical Dynamic Type/VoiceOver.
+- Both optional actual-Metro browser runners pass FI/EN and existing safe
+  error/source/local-data flows. Added hidden-icon checks, visible keyboard
+  focus/Enter guide navigation, 390 px two-column / 320 px stacked tiles and
+  per-word wrapping at 130% synthetic text. Home also checked at 1280 px.
+  Light/dark/large screenshots inspected; an actual Finnish orphan-letter
+  defect was repaired and regressed. No user data/location captured.
+- Latest web entry: 3,375,116 bytes / 698,216 gzip, above the existing warning
+  budget, not a performance or battery pass. Detailed repairs/reproduction:
+  `APP_REFINEMENT_EVIDENCE.md`.
+- No latest native appearance/camera/accessibility/geocoding acceptance,
+  signing/install, live security/provider audit, GitHub CI, push or release.
+  Existing production NO-GO and owner gates unchanged; native Home is next.
+
 ## Whole-app copy cleanup — 2026-10-08
 
 - Pinned `pnpm validate`: exit 0, **265 tests (41 policy + 224 application)**,

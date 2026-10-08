@@ -33,25 +33,27 @@ test("redesigned Home retains accessible primary, fallback and utility actions i
     positions,
     [...positions].sort((a, b) => a - b),
   );
+  const controls = [...home.matchAll(/<(Pressable|ActionRow|NavigationTile)\b/g)].map(
+    (match, index, matches) => ({
+      kind: match[1],
+      source: home.slice(match.index, matches[index + 1]?.index),
+    }),
+  );
   for (const id of ids) {
-    const control = [...home.matchAll(/<Pressable\b[\s\S]*?(?=>)|<ActionRow\b[\s\S]*?\/>/g)].find(
-      ([source]) => source.includes(`testID="${id}"`),
-    );
+    const control = controls.find(({ source }) => source.includes(`testID="${id}"`));
     assert.ok(control, `missing ${id}`);
-    if (control[0].startsWith("<ActionRow")) {
-      assert.match(control[0], /label=\{t\(/);
-      assert.match(control[0], /onPress=/);
+    if (control.kind !== "Pressable") {
+      assert.match(control.source, /label=\{t\(/);
+      assert.match(control.source, /onPress=/);
       const ui = readFileSync("apps/mobile/src/components/ui.tsx", "utf8");
-      const row = ui.slice(
-        ui.indexOf("export function ActionRow"),
-        ui.indexOf("export function ChoiceIndicator"),
-      );
+      const start = ui.indexOf(`export function ${control.kind}`);
+      const row = ui.slice(start, ui.indexOf("export function", start + 16));
       assert.match(row, /accessibilityRole="button"/);
       assert.match(row, /accessibilityLabel=\{label\}/);
       assert.match(row, /testID=\{testID\}/);
     } else {
-      assert.match(control[0], /accessibilityRole="button"/);
-      assert.match(control[0], /accessibilityLabel=/);
+      assert.match(control.source, /accessibilityRole="button"/);
+      assert.match(control.source, /accessibilityLabel=/);
     }
   }
 });
@@ -162,4 +164,43 @@ test("loading and error states explain the task once without asserting a fresh r
   assert.match(result, /testID="result-primary-action"/);
   assert.match(result, /testID="result-secondary-action"/);
   assert.match(readFileSync("apps/mobile/src/app/feedback.tsx", "utf8"), /t\("draftNotSent"\)/);
+});
+
+test("recognition icons are original, decorative native linework with no motion or emoji dependency", () => {
+  const icons = readFileSync("apps/mobile/src/components/action-icon.tsx", "utf8");
+  for (const kind of ["nearby", "guide", "history", "manual"])
+    assert.ok(icons.includes(`"${kind}"`));
+  assert.equal((icons.match(/importantForAccessibility="no-hide-descendants"/g) ?? []).length, 2);
+  assert.equal((icons.match(/accessibilityElementsHidden/g) ?? []).length, 2);
+  assert.equal((icons.match(/aria-hidden/g) ?? []).length, 2);
+  assert.equal((icons.match(/pointerEvents="none"/g) ?? []).length, 2);
+  assert.match(icons, /const strokeWidth = 1\.8/);
+  assert.doesNotMatch(
+    icons,
+    /\p{Extended_Pictographic}|setInterval|withRepeat|Animated|\.png|react-native-svg/u,
+  );
+});
+
+test("Home tiles label real destinations and adapt without hiding or capping text", () => {
+  const home = readFileSync("apps/mobile/src/app/index.tsx", "utf8");
+  assert.equal((home.match(/<NavigationTile\b/g) ?? []).length, 2);
+  assert.match(home, /<ScanPackageMark color=\{palette.onStrong\}/);
+  for (const kind of ["manual", "nearby", "guide", "history"])
+    assert.ok(home.includes(`<ActionIcon kind="${kind}"`));
+  assert.match(home, /flexWrap: "wrap"/);
+  const ui = readFileSync("apps/mobile/src/components/ui.tsx", "utf8");
+  const tile = ui.slice(
+    ui.indexOf("export function NavigationTile"),
+    ui.indexOf("export function ChoiceIndicator"),
+  );
+  assert.match(tile, /accessibilityLabel=\{label\}/);
+  assert.match(tile, /accessibilityHint=\{detail\}/);
+  assert.match(tile, /pressed \? palette.pineSoft/);
+  assert.match(tile, /navigationTileMinimumWidth\(width, fontScale\)/);
+  assert.match(tile, /minWidth: minimumWidth/);
+  assert.match(tile, /onFocus=\{\(\) => setFocused\(true\)\}/);
+  assert.match(tile, /focused \? palette.actionLink/);
+  assert.doesNotMatch(tile, /numberOfLines=|adjustsFontSizeToFit|maxFontSizeMultiplier=/);
+  assert.match(ui, /minWidth: 160/);
+  assert.match(ui, /minHeight: 152/);
 });

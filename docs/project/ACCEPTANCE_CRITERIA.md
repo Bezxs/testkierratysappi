@@ -39,6 +39,14 @@ synthetic GPS do not certify native Dynamic Type, VoiceOver or real geocoding.
 
 ## Release evidence
 
+October 8 Home-recognition polish requires real labelled navigation controls,
+decorative icons excluded from screen-reader focus, visible keyboard focus and
+full FI/EN labels without font-scaling caps. Tiles wrap at narrow widths and
+adapt to system font scale; wrapping must not orphan a letter at the tested
+130% browser size. Scan/manual remain first, followed by nearby/guide/history.
+No new slogan, fabricated preview or hidden contextual disclosure. Arithmetic
+and browser checks do not establish physical Dynamic Type or VoiceOver.
+
 October 8 copy cleanup requires no blanket privacy slogan on Home/history,
 one clear loading/error explanation with actionable recovery, ordinary FI/EN
 wording and explicit naming of history's disable-and-clear effect. Camera and
