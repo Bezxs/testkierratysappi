@@ -2,6 +2,8 @@
 
 Status date: 2026-10-08
 
+Latest permission-cycle delta: **DENIAL AND RESTORATION PASS**. Roope changes app-specific permission to Never; native search exposes the complete Finnish denial explanation and settings control. Closing returns to Home. After the owner restores While Using, search reaches the ready-only refresh button with wait exit 0 and explicit visibility pass. No fresh consent-dialog, exact result-text or physical accuracy claim. Earlier pending-denial statements below are historical.
+
 Status: **HOME, NEARBY INTRODUCTION, REPEATED LOCATION READY STATE AND SAME-PROCESS BACKGROUND CLEARING PASS. Exact result text, fresh consent, denial/retry, physical accuracy and native product-source acceptance remain pending. Historical September runtime passes do not certify those flows.**
 
 ## Latest recovery — 2026-10-08

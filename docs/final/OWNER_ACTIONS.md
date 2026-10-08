@@ -1,5 +1,7 @@
 # Owner actions
 
+October 8 permission-cycle completion supersedes earlier denial/restoration requests below: owner-assisted Never → While Using change yields native denied explanation/settings control and then a passing ready-only refresh-control check. No further owner permission change is currently requested. Native provider attribution is next; fresh consent, exact result text, physical accuracy and production NO-GO gates remain unresolved. No new external blocker, reinstall or push.
+
 October 8 OA-09 update supersedes the October 7 prompt request below: two native searches reach ready state and same-process background clearing passes. Next, Roope sets this app's location permission to Never in iPhone Settings → Privacy & Security → Location Services; Codex checks denial recovery, then Roope restores foreground permission for retry. Do not send location details. No reinstall required; native source-text/provider acceptance remains pending.
 
 October 7 scope delta: OA-03's usage/contact/licence approval must name Open

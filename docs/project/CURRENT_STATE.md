@@ -2,6 +2,10 @@
 
 ## Physical location recovery — 2026-10-08
 
+- Permission-restoration check now passes: after Roope reports restoring While Using the App, native search reaches the ready-only **Päivitä sijainti** control (wait exit 0 and explicit visibility pass). Together with the observed denied message/settings control and Home navigation, this completes the scoped denial/restoration cycle without reinstalling or changing source. No coordinates or result details recorded. Pending wording below is historical to the earlier attempt.
+
+- Subsequent owner-assisted Never-permission test passes native denied-state rendering: full Finnish explanation plus **Avaa asetukset** appear; close returns to Home. Permission restoration/retry remains the next action. Other-feature controls are present, but their actual operation is not inferred from presence.
+
 - Restored stopped local API (3003) and Metro (8093); LAN health, iOS manifest and its exact launch asset pass (HTTP 200, 10,954,638 bytes). Relaunched the unchanged installed team-baseline application using its development-client URL. No reinstall, implementation import or GitHub push.
 - Native Home → nearby introduction works. Two foreground location searches reach the ready-only **Päivitä sijainti** button. Backgrounding and returning restores **Etsi sijainnillani** with the same application PID (7054), verifying ready-state clearing without process restart. Permission was already available; a fresh OS consent dialog was not observed.
 - Exact result text assertions remain unverified: unrestricted labels were ambiguous and role="text" did not match. No result screenshot, coordinates, point address or exact distance was recorded. Denial/retry, native product-source UI and physical distance/accuracy ground truth remain pending. This supersedes October 7's inability to observe a ready result, not the remaining production NO-GO gates.

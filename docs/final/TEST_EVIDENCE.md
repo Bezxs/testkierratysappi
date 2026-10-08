@@ -2,6 +2,12 @@
 
 ## Physical location recovery — 2026-10-08
 
+- Post-permission-cycle full pinned `pnpm validate` passes, exit 0: same 240 tests, formatting/lint/strict types, package/API builds and 13 routes. Ignored log: `work/location-2026-10-06/iphone-permission-validate-2026-10-08.log`. Application code remains unchanged.
+
+- Permission restored: owner reports While Using the App; session `team-denial-2026-10-08` returns to nearby and searches. Exact ready-only button wait exits 0 and `is visible 'role="button" label="Päivitä sijainti"'` reports Passed. Scoped denial/restoration cycle passes. Closed only the named testing helper, not the product; no reinstall, location details or push. Earlier pending-restoration statements below describe the pre-restoration attempt.
+
+- Subsequent owner-assisted denial test: Roope reported setting the app-specific location permission to Never. Session `team-denial-2026-10-08` taps the native search control and observes the full Finnish `nearbyPermission` message and **Avaa asetukset** button in a settled UI diff. Closing the screen returns to Home with scan/manual/guide controls present. Denied-state rendering and Home navigation pass; actual use of other features and permission restoration/retry are not yet verified. No location data captured.
+
 - Full pinned `pnpm validate` passes, exit 0: 240 tests (32 policy + 208 application), formatting/lint/strict types, package/API builds and 13 web routes. Log: ignored `work/location-2026-10-06/iphone-validate-2026-10-08.log`. Closed only the named automation helper/session afterward; local API/Metro remain available. No new live dependency-audit, release-build or store claim.
 
 - Local API/Metro had stopped; restarted existing team-baseline artifacts. LAN health and iOS manifest/launch asset pass (HTTP 200, 10,954,638 bytes). Explicit development-client relaunch succeeds; native automation subsequently reads Home and nearby introduction.

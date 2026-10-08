@@ -1,3 +1,3 @@
 # Next action
 
-Verify physical iPhone location-denial recovery: set this application's location permission to Never with the owner, confirm the localized denied state, restore foreground permission and repeat the search; keep coordinates/results out of evidence, and do not reinstall, push or import KeepItGreen changes.
+Verify the native manual-product flow with public GTIN 3760044183738: confirm Open Products Facts source/licence/date and safe missing-packaging behavior on the installed team-baseline app; repair any reproducible local failure, without importing KeepItGreen changes or pushing.

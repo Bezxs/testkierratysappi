@@ -4,6 +4,8 @@ Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally bl
 
 ## Current independent team-baseline work — October 7
 
+- [x] October 8: owner-assisted Never → While Using permission cycle; native denied explanation/settings control, Home return and restored search ready-control visibility pass.
+
 - [x] Add free licensed Finland OSM point data and privacy-preserving local distance calculation, including consent, timeout/cancel/error states and source disclosure.
 - [x] Enable bounded official Open Facts routing for non-food categories; preserve source/licence and unknown packaging, update FI/EN privacy/scope, and add routing/SSRF/quota/cache regression coverage.
 - [x] Document which data is active versus schema-only; keep OSM/product/rule data separate and do not add an unused database server.
