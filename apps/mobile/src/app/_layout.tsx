@@ -13,7 +13,7 @@ import { useReducedMotion } from "react-native-reanimated";
 import { navigationAnimation } from "@/features/accessibility/motion";
 import { ScanSessionProvider } from "@/features/scan/session-context";
 import { LanguageProvider } from "@/i18n/language-context";
-import { useAppTheme } from "@/theme/tokens";
+import { AppThemeProvider, useAppTheme } from "@/theme/tokens";
 
 void SplashScreen.preventAutoHideAsync();
 
@@ -49,10 +49,12 @@ export default function RootLayout() {
   if (!fontsLoaded && !fontError) return null;
 
   return (
-    <LanguageProvider>
-      <ScanSessionProvider>
-        <Navigation />
-      </ScanSessionProvider>
-    </LanguageProvider>
+    <AppThemeProvider>
+      <LanguageProvider>
+        <ScanSessionProvider>
+          <Navigation />
+        </ScanSessionProvider>
+      </LanguageProvider>
+    </AppThemeProvider>
   );
 }

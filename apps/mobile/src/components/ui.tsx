@@ -136,7 +136,9 @@ export function Button({
       accessibilityRole="button"
       accessibilityLabel={label}
       accessibilityHint={accessibilityHint}
-      accessibilityState={{ disabled, busy }}
+      accessibilityState={{ disabled: disabled || busy, busy }}
+      aria-busy={busy}
+      aria-disabled={disabled || busy}
       disabled={disabled || busy}
       onPress={onPress}
       testID={testID}
@@ -251,6 +253,7 @@ export function InlineLink({
   testID,
   color,
   role = "link",
+  expanded,
 }: {
   readonly label: string;
   readonly onPress: () => void;
@@ -258,6 +261,7 @@ export function InlineLink({
   readonly testID?: string;
   readonly color?: string;
   readonly role?: "link" | "button";
+  readonly expanded?: boolean;
 }) {
   const { palette } = useAppTheme();
   return (
@@ -265,6 +269,8 @@ export function InlineLink({
       accessibilityRole={role}
       accessibilityLabel={label}
       accessibilityHint={accessibilityHint}
+      accessibilityState={expanded === undefined ? undefined : { expanded }}
+      aria-expanded={expanded}
       onPress={onPress}
       hitSlop={8}
       testID={testID}

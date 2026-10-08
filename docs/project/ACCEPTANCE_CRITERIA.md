@@ -22,6 +22,14 @@
 
 ## Free-data and nearest-point addition
 
+UX refinement acceptance: the map action is primary and fits the standard-size
+390×844 browser viewport; technical metadata is expandable with announced state,
+while uncertainty, source/licence/date and essential access/material cautions
+remain visible. Optional native address lookup discloses public-point transfer
+before the action and distinguishes an area estimate from a verified address.
+Live theme changes must update text and surfaces together. Browser scaling and
+synthetic GPS do not certify native Dynamic Type, VoiceOver or real geocoding.
+
 1. The actual product database name, source link, licence, retrieval date and community uncertainty survive normal lookup, missing-packaging results and cache hits.
 2. Universal routing may use only the fixed supported Open Facts origins with one sibling hop, bounded response/deadline and shared quota. Wrong GTIN/type, arbitrary redirect, timeout and quota failure never become a verified product or a false successful miss.
 3. The entire bundled OSM database validates at the application boundary and retains licence, source IDs and timestamps. Old upstream data must not look fresh after a new download.

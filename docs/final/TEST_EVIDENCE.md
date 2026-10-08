@@ -1,5 +1,14 @@
 # Test evidence
 
+## Nearby UX and theme coherence — 2026-10-08
+
+- Final post-runner/shared-disabled-state rerun also passes, exit 0: same 249 tests and all validation gates. Log: ignored `work/location-2026-10-06/nearby-ux-validate-complete-2026-10-08.log`. Committed browser runner also passes using Enter to expand the focused details control, then collapses it again. No new physical-device evidence.
+
+- Full pinned `pnpm validate` passes, exit 0: **249 tests (36 policy + 213 application)**, formatting/lint/strict types, builds and 13 web routes. Passing log: ignored `work/location-2026-10-06/nearby-ux-validate-final-2026-10-08.log`. Three new policy cases protect primary map ordering, visible uncertainty/optional consent/loading, expanded ARIA and single reactive theme.
+- Optional committed runner `scripts/qa/nearby-ux-browser.cjs` runs against actual Metro 8093 with installed Playwright/Chrome. Synthetic geolocation is at a public bundled point; no user location or native result is read. FI/EN, unknown metadata, map button within the initial 390×844 viewport, details false→true→false, offline local re-search, precise/approximate display and reduced-motion preference pass. Screenshot inspection covers FI light/dark, EN and 130% synthetic browser text with no horizontal overflow; not iOS Dynamic Type.
+- Browser run initially exposed missing aria-expanded, repaired with explicit ARIA in addition to native state. Live dark-switch assertion then failed: text/surfaces inconsistent. Shared root AppThemeProvider fixes it; exact screen background RGB(20,34,27) now passes after the media change. Initial QA selector for English incorrectly used button instead of radio and was repaired; this was a test selector issue, not a product defect.
+- Screenshots are ignored `work/nearby-ux-qa/{fi-light,fi-dark,fi-large,en}.png`; source runner and rerun procedure: `docs/design/NEARBY_UX.md`. No native OS address lookup/map handoff, actual VoiceOver, release build/store or production GO claim. No new network dependency or push.
+
 ## Optional point-area address — 2026-10-08
 
 - Full pinned `pnpm validate` passes after removing an undeclared Zod import from the mobile normalizer and using explicit runtime guards: **246 tests (33 policy + 213 application)**, formatting/lint/strict types, package/API builds and 13 routes. Initial typecheck failure is retained in ignored `point-address-validate-2026-10-08.log`; passing run: `work/location-2026-10-06/point-address-validate-final-2026-10-08.log`. Disclosure also appears in the privacy screen. Native service/handoff remains pending; no push.

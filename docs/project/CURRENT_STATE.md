@@ -1,5 +1,12 @@
 # Current state
 
+## Nearby UX refinement — 2026-10-08
+
+- Refocused the nearby result around point identity, compact straight-line distance and primary map action. Short pre-permission purpose remains visible before search; optional address lookup retains pre-action recipient disclosure and explicit loading text. Accuracy/source ID/full caveats are accessible expandable details, with unverified status, short materials/access/hours caution and source/date still visible. Refresh becomes secondary after the result; no decorative motion or new dependency.
+- Browser QA caught a live theme-switch defect (some text changed to dark colors while surfaces stayed light). Replaced per-component scheme subscriptions with one root AppThemeProvider; an exact computed-background assertion now passes. Added native expanded state plus web aria-expanded/busy/disabled semantics to shared controls.
+- Full pinned validation passes: **249 tests (36 policy + 213 application)**, formatting/lint/strict types, builds and 13 routes. Playwright on the actual Metro UI passes FI/EN, map action within the initial 390×844 viewport, unknown fallback, keyboard-expandable details, offline local lookup and dark switch. Light/dark and 130% synthetic text screenshots inspected; this is not native Dynamic Type/VoiceOver or actual OS address/map handoff acceptance. Uses a synthetic fix at a public directory point, never user GPS.
+- Reproducible optional browser runner: `scripts/qa/nearby-ux-browser.cjs`; scope/design evidence: `docs/design/NEARBY_UX.md`. Native implementation remains JS-only on the existing installed binary; no new native build/install or GitHub push.
+
 ## Optional point-area address completion — 2026-10-08
 
 - Added owner-requested native address completion via the already-installed Expo Location reverse-geocoding API. Explicit optional button sends only the public collection point coordinates to the OS map service, never the user's fix. Display is an area/address estimate, not a verified point name/address; bounded fields, five-second wait, cancellation/late-result protection and safe unavailable fallback. No lookup on web, no new dependency/account/paid API or public Nominatim integration.

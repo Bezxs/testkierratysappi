@@ -1,4 +1,5 @@
 import { useColorScheme } from "react-native";
+import { createContext, createElement, useContext, useMemo, type PropsWithChildren } from "react";
 import { type AppPalette, darkPalette, lightPalette } from "./palettes";
 
 export { darkPalette, lightPalette } from "./palettes";
@@ -82,7 +83,17 @@ export const elevation = {
   raised: 2,
 } as const;
 
-export function useAppTheme(): { palette: AppPalette; isDark: boolean } {
+type AppTheme = { palette: AppPalette; isDark: boolean };
+const AppThemeContext = createContext<AppTheme | undefined>(undefined);
+
+export function AppThemeProvider({ children }: PropsWithChildren) {
   const isDark = useColorScheme() === "dark";
-  return { palette: isDark ? darkPalette : lightPalette, isDark };
+  const value = useMemo(() => ({ palette: isDark ? darkPalette : lightPalette, isDark }), [isDark]);
+  return createElement(AppThemeContext.Provider, { value }, children);
+}
+
+export function useAppTheme(): AppTheme {
+  const theme = useContext(AppThemeContext);
+  if (!theme) throw new Error("AppThemeProvider is required");
+  return theme;
 }

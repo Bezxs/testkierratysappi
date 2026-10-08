@@ -4,6 +4,10 @@ Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally bl
 
 ## Current independent team-baseline work — October 7
 
+- [x] Refocus nearby UX around identity/distance/map, shorten pre-search explanation and progressively disclose metadata without hiding uncertainty.
+- [x] Repair inconsistent live dark-mode switching with a single root theme provider; verify FI/EN, expanded semantics, offline lookup and synthetic large-text browser states.
+- [~] Native updated layout, OS address lookup/map handoff and native large-text/VoiceOver acceptance remain.
+
 - [x] Add explicit optional native public-point reverse-geocoding with bounded normalization, timeout/cancellation, area-estimate disclosure and safe failure.
 - [~] Verify actual native address completion/visual flow and map handoff.
 

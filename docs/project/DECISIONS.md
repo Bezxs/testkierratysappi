@@ -207,6 +207,9 @@
 
 ## Remaining pending decisions
 
+- October 8 UX: use progressive disclosure for technical metadata, not for essential uncertainty or optional lookup consent. Keep public-source/date/licence visible; map is the single primary result action and refresh is secondary. Preserve baseline Atkinson typography/palette and shared components; no private-repository imports, decorative animation or fabricated map preview.
+- October 8 theme: one AppThemeProvider owns the color-scheme subscription and publishes a shared palette. Browser reproduction showed inconsistent per-component colors on a live scheme change; shared context repairs the observed defect. Keep native accessibilityState and explicit web ARIA semantics together because RN Web did not expose expanded state from accessibilityState alone.
+
 - October 8: prefer installed OS geocoding over integrating public Nominatim. Its current policy requires a deliberate responsible developer decision, app-wide rate/caching and switchability; no bulk enrichment or generic public endpoint added (https://operations.osmfoundation.org/policies/nominatim/, accessed 2026-10-08). Optional user-triggered OS lookup sends public point coordinates only, once per result; five-second UI deadline does not cancel native provider work. Area estimate must never replace source-provided point name or pretend to be a verified official address.
 
 - October 8 whereabouts: provide an explicit OpenStreetMap marker action rather than fabricate missing addresses or send the user's location to reverse-geocoding/routing services. Use existing source coordinates (area centroid caution retained); no turn-by-turn or entrance accuracy claim. Marker URL format checked against https://wiki.openstreetmap.org/wiki/Homepage on 2026-10-08.

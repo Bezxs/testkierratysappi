@@ -44,6 +44,43 @@ test("location native configuration is foreground-only with localised purpose", 
     config.android.blockedPermissions.includes("android.permission.ACCESS_BACKGROUND_LOCATION"),
   );
 });
+test("nearby makes map primary, keeps uncertainty visible and progressively discloses metadata", () => {
+  const screen = read("apps/mobile/src/app/nearby.tsx");
+  const map = screen.slice(
+    screen.indexOf('label={t("nearbyShowMap")}'),
+    screen.indexOf('testID="nearby-map"'),
+  );
+  assert.doesNotMatch(map, /variant="secondary"/u);
+  assert.match(map, /accessibilityHint/u);
+  assert.match(screen, /expanded=\{detailsOpen\}/u);
+  assert.match(screen, /detailsOpen &&/u);
+  assert.match(screen, /nearbyQuickCaution/u);
+  assert.match(screen, /nearbyUnverified/u);
+  assert.ok(screen.indexOf('testID="nearby-map"') < screen.indexOf('t("nearbyPointId")'));
+  assert.match(
+    read("apps/mobile/src/components/ui.tsx"),
+    /accessibilityState=\{expanded === undefined \? undefined : \{ expanded \}\}/u,
+  );
+  assert.match(read("apps/mobile/src/components/ui.tsx"), /aria-expanded=\{expanded\}/u);
+});
+test("optional address lookup retains consent and explicit loading without automatic acquisition", () => {
+  const screen = read("apps/mobile/src/app/nearby.tsx");
+  assert.match(screen, /nearbyAddressConsent/u);
+  assert.match(screen, /nearbyAddressLoading/u);
+  assert.match(screen, /onPress=\{\(\) => void completeAddress\(\)\}/u);
+  assert.match(screen, /nearbyAddressSource/u);
+  assert.match(screen, /setDetailsOpen\(false\)/u);
+  assert.match(screen, /setPrivacyOpen\(false\)/u);
+});
+test("all surfaces share one reactive theme so live color-scheme changes stay coherent", () => {
+  const tokens = read("apps/mobile/src/theme/tokens.ts");
+  const layout = read("apps/mobile/src/app/_layout.tsx");
+  assert.match(tokens, /AppThemeProvider/u);
+  assert.match(tokens, /useContext\(AppThemeContext\)/u);
+  assert.equal((tokens.match(/useColorScheme\(\)/gu) ?? []).length, 1);
+  assert.match(layout, /<AppThemeProvider>/u);
+  assert.match(read("apps/mobile/src/components/ui.tsx"), /aria-busy=\{busy\}/u);
+});
 test("nearby screen has explicit acquisition, cleanup and no location network/storage channel", () => {
   const screen = read("apps/mobile/src/app/nearby.tsx");
   const device = read("apps/mobile/src/features/nearby/device-location.ts");

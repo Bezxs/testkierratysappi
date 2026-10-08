@@ -1,5 +1,21 @@
 export const nearbyFi = {
-  nearbyCompleteAddress: "Täydennä sijaintitieto",
+  nearbyIntro:
+    "Etsi lähin aineistossa oleva piste. Oma sijaintisi käsitellään vain puhelimessa, eikä sitä tallenneta tai lähetetä.",
+  nearbyQuickCaution: "Tarkista pisteen materiaalit, käyttöoikeus ja aukiolo ennen lähtöä.",
+  nearbyLocationOnMap: "Pisteen sijainti näkyy kartalla.",
+  nearbyAddressConsent:
+    "Haku välittää vain kierrätyspisteen koordinaatit laitteen karttapalvelulle.",
+  nearbyAddressLoading: "Haetaan osoitearviota…",
+  nearbyShortMapHint: "Avautuu OpenStreetMapissa. Oma sijaintisi ei sisälly linkkiin.",
+  nearbyMore: "Pisteen tiedot ja tarkkuus",
+  nearbyLess: "Piilota lisätiedot",
+  nearbyPrivacyMore: "Sijainti ja aineiston tiedot",
+  nearbyPrivacyLess: "Piilota sijainti- ja aineistotiedot",
+  nearbyAddressLabel: "Lähialueen osoitearvio",
+  nearbyAddressSource: "Laitteen karttapalvelu · ei pisteen varmennettu osoite",
+  nearbyResultShort: "Arvio lähimmästä pisteestä",
+  nearbyDistanceShort: "Linnuntietä · arvio",
+  nearbyCompleteAddress: "Hae osoitearvio",
   nearbyAddressEstimate: "Lähialueen osoitearvio · laitteen karttapalvelu",
   nearbyAddressFailed: "Osoitearviota ei saatu. Näet pisteen kartalta.",
   nearbyAddressDisclosure:
@@ -24,7 +40,7 @@ export const nearbyFi = {
   nearbyResult: "Lähin piste tällä sijaintiarviolla",
   nearbyGeneric: "Kierrätyspiste",
   nearbyCentre: "Kierrätysasema",
-  nearbyContainer: "Kierrätysastia tai -piste",
+  nearbyContainer: "Keräyspiste",
   nearbyAccuracy: "Sijainnin ilmoitettu tarkkuus",
   nearbyApproximate: "Sijainti on epätarkka. Lähimpien pisteiden järjestys voi vaihdella.",
   nearbyCaution:
@@ -55,7 +71,23 @@ export const nearbyFi = {
 };
 
 export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
-  nearbyCompleteAddress: "Complete location details",
+  nearbyIntro:
+    "Find the nearest point in the directory. Your location stays on your phone and is not saved or uploaded.",
+  nearbyQuickCaution: "Check accepted materials, access and opening hours before travelling.",
+  nearbyLocationOnMap: "View the point's location on the map.",
+  nearbyAddressConsent:
+    "Lookup sends only the recycling point coordinates to the device map service.",
+  nearbyAddressLoading: "Looking up an address estimate…",
+  nearbyShortMapHint: "Opens OpenStreetMap. Your location is not included in the link.",
+  nearbyMore: "Point details and accuracy",
+  nearbyLess: "Hide details",
+  nearbyPrivacyMore: "Location and directory information",
+  nearbyPrivacyLess: "Hide location and directory information",
+  nearbyAddressLabel: "Nearby address estimate",
+  nearbyAddressSource: "Device map service · not a verified point address",
+  nearbyResultShort: "Estimated nearest point",
+  nearbyDistanceShort: "Straight line · estimate",
+  nearbyCompleteAddress: "Look up address estimate",
   nearbyAddressEstimate: "Nearby address estimate · device map service",
   nearbyAddressFailed: "Address estimate unavailable. View the point on the map.",
   nearbyAddressDisclosure:
@@ -80,7 +112,7 @@ export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
   nearbyResult: "Nearest point for this location estimate",
   nearbyGeneric: "Recycling point",
   nearbyCentre: "Recycling centre",
-  nearbyContainer: "Recycling container or point",
+  nearbyContainer: "Collection point",
   nearbyAccuracy: "Reported location accuracy",
   nearbyApproximate: "Your location is approximate. The order of nearby points may vary.",
   nearbyCaution:

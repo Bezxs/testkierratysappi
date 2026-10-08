@@ -1,5 +1,14 @@
 # Adversarial production-readiness audit
 
+## Scoped UX findings repaired — 2026-10-08
+
+Not a new 30-lane audit; production NO-GO unchanged.
+
+| ID | Severity | Evidence and affected flow/files | Reproduction | Remediation/status |
+| --- | --- | --- | --- | --- |
+| UX-001 | medium | Browser live theme change left surfaces light with some dark-mode text; screenshot and computed-background timeout. `theme/tokens.ts`, root layout, shared UI | Run `scripts/qa/nearby-ux-browser.cjs`; load nearby then change light → dark | Locally repaired with one root theme provider; exact dark-background assertion and inspected screenshot now pass; native switch not claimed |
+| UX-002 | medium | Nearby disclosure button exposed no `aria-expanded` despite native accessibilityState; browser expected false but received null. `components/ui.tsx`, nearby details | Read the details control attribute, then expand using keyboard | Locally repaired with explicit ARIA alongside native state; false/true/false browser checks and policy regression pass |
+
 October 8 permission-cycle completion supersedes earlier denial/restoration requests below: owner-assisted Never → While Using change yields native denied explanation/settings control and then a passing ready-only refresh-control check. No further owner permission change is currently requested. Native provider attribution is next; fresh consent, exact result text, physical accuracy and production NO-GO gates remain unresolved. No new external blocker, reinstall or push.
 
 October 8 evidence delta, not a new audit: native location ready-state and same-process background clearing pass after restoring local services. This supersedes the historical October 7 inability to observe a ready result below. Exact native explanation/source text, denial recovery and the broader production gates remain pending; no finding is downgraded solely to obtain GO.

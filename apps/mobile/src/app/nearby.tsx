@@ -11,7 +11,7 @@ import * as Location from "expo-location";
 import { useCallback, useRef, useState } from "react";
 import { AppState, Linking, Platform, StyleSheet, View } from "react-native";
 import snapshot from "@/assets/data/finland-recycling.json";
-import { AppText, BrandLockup, Button, InlineLink, Paper, Screen } from "@/components/ui";
+import { AppText, BrandLockup, Button, InlineLink, Paper, Rule, Screen } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { readDeviceLocation } from "@/features/nearby/device-location";
 import { displayDistance, LocationIssue } from "@/features/nearby/location-session";
@@ -39,6 +39,8 @@ export default function NearbyScreen() {
   const { t, language } = useLanguage();
   const [state, setState] = useState<State>({ status: "idle" });
   const [linkError, setLinkError] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
   const active = useRef<AbortController | null>(null);
   const addressRequest = useRef<AbortController | null>(null);
   const [address, setAddress] = useState<{
@@ -50,6 +52,8 @@ export default function NearbyScreen() {
     addressRequest.current?.abort();
     addressRequest.current = null;
     setAddress({ status: "idle", text: null });
+    setDetailsOpen(false);
+    setPrivacyOpen(false);
     active.current?.abort();
     active.current = null;
     setState({ status: "idle" });
@@ -70,6 +74,7 @@ export default function NearbyScreen() {
 
   const find = async () => {
     if (active.current) return;
+    setDetailsOpen(false);
     addressRequest.current?.abort();
     addressRequest.current = null;
     setAddress({ status: "idle", text: null });
@@ -117,6 +122,7 @@ export default function NearbyScreen() {
     const controller = new AbortController();
     addressRequest.current = controller;
     setAddress({ status: "loading", text: null });
+    announceAccessibility(t("nearbyAddressLoading"));
     const text = await resolvePointAddress(
       state.result.point,
       Location.reverseGeocodeAsync,
@@ -148,14 +154,16 @@ export default function NearbyScreen() {
         <AppText variant="title" accessibilityRole="header">
           {t("nearbyTitle")}
         </AppText>
-        <AppText muted>{t("nearbyPurpose")}</AppText>
+        {state.status !== "ready" && <AppText muted>{t("nearbyIntro")}</AppText>}
       </View>
-      <Button
-        label={t(state.status === "ready" ? "nearbyRefresh" : "nearbyFind")}
-        onPress={() => void find()}
-        busy={state.status === "loading"}
-        testID="nearby-find"
-      />
+      {state.status !== "ready" && (
+        <Button
+          label={t("nearbyFind")}
+          onPress={() => void find()}
+          busy={state.status === "loading"}
+          testID="nearby-find"
+        />
+      )}
       {state.status === "loading" && (
         <>
           <AppText accessibilityLiveRegion="polite">{t("nearbyLoading")}</AppText>
@@ -182,85 +190,136 @@ export default function NearbyScreen() {
       {state.status === "ready" && (
         <Paper testID="nearby-result">
           <AppText variant="small" muted>
-            {t("nearbyResult")}
+            {t("nearbyResultShort")}
           </AppText>
           <AppText variant="heading" accessibilityRole="header">
             {state.result.point.name ?? t("nearbyGeneric")}
           </AppText>
-          <AppText>
-            {t("nearbyPointType")}:{" "}
-            {t(
-              state.result.point.kind === "centre"
-                ? "nearbyCentre"
-                : state.result.point.kind === "container"
-                  ? "nearbyContainer"
-                  : "nearbyTypeUnknown",
-            )}
-          </AppText>
-          {state.result.point.address ? (
-            <AppText>{state.result.point.address}</AppText>
-          ) : (
-            <>
-              {address.text && (
-                <AppText>
-                  {t("nearbyAddressEstimate")}: {address.text}
-                </AppText>
-              )}
-              {address.status === "done" && !address.text && (
-                <AppText>{t("nearbyAddressFailed")}</AppText>
-              )}
-              {Platform.OS !== "web" && address.status !== "done" && (
-                <Button
-                  label={t("nearbyCompleteAddress")}
-                  variant="secondary"
-                  busy={address.status === "loading"}
-                  onPress={() => void completeAddress()}
-                />
-              )}
-              <AppText variant="small" muted>
-                {t("nearbyAddressDisclosure")}
-              </AppText>
-            </>
+          {state.result.point.name && state.result.point.kind !== "unknown" && (
+            <AppText variant="small" muted>
+              {t(state.result.point.kind === "centre" ? "nearbyCentre" : "nearbyContainer")}
+            </AppText>
           )}
-          <Button
-            label={t("nearbyShowMap")}
-            variant="secondary"
-            onPress={() => openUrl(collectionPointMapUrl(state.result.point))}
-            testID="nearby-map"
-          />
-          <AppText variant="small" muted>
-            {t("nearbyMapHint")}
-          </AppText>
-          <AppText variant="small" muted>
-            {t("nearbyPointId")}: {state.result.point.id}
-          </AppText>
-          <View style={styles.stack}>
+          <View style={styles.distance}>
             <AppText variant="display">
               {displayDistance(state.result.distanceMeters, language)}
             </AppText>
-            <AppText>{t("nearbyEstimate")}</AppText>
             <AppText variant="small" muted>
-              {t("nearbyAccuracy")}: ±{Math.max(1, Math.ceil(state.result.accuracy / 10) * 10)} m
+              {t("nearbyDistanceShort")}
             </AppText>
           </View>
+          {state.result.point.address ? (
+            <AppText>{state.result.point.address}</AppText>
+          ) : (
+            <View style={styles.stack}>
+              {address.text ? (
+                <>
+                  <AppText variant="small" muted>
+                    {t("nearbyAddressLabel")}
+                  </AppText>
+                  <AppText>{address.text}</AppText>
+                  <AppText variant="small" muted>
+                    {t("nearbyAddressSource")}
+                  </AppText>
+                </>
+              ) : (
+                <AppText muted>
+                  {t(address.status === "done" ? "nearbyAddressFailed" : "nearbyLocationOnMap")}
+                </AppText>
+              )}
+            </View>
+          )}
+          <Button
+            label={t("nearbyShowMap")}
+            onPress={() => openUrl(collectionPointMapUrl(state.result.point))}
+            accessibilityHint={t("nearbyMapHint")}
+            testID="nearby-map"
+          />
+          <AppText variant="small" muted>
+            {t("nearbyShortMapHint")}
+          </AppText>
+          {!state.result.point.address && Platform.OS !== "web" && address.status !== "done" && (
+            <View style={styles.stack}>
+              <AppText variant="small" muted>
+                {t("nearbyAddressConsent")}
+              </AppText>
+              <Button
+                label={t("nearbyCompleteAddress")}
+                variant="quiet"
+                busy={address.status === "loading"}
+                onPress={() => void completeAddress()}
+                testID="nearby-address"
+              />
+              {address.status === "loading" && (
+                <AppText variant="small" accessibilityLiveRegion="polite">
+                  {t("nearbyAddressLoading")}
+                </AppText>
+              )}
+            </View>
+          )}
+          <Rule />
           {state.result.accuracy > 100 && <AppText>{t("nearbyApproximate")}</AppText>}
           <AppText variant="small" muted>
             {t("nearbyUnverified")}
           </AppText>
+          <AppText variant="small">{t("nearbyQuickCaution")}</AppText>
           <InlineLink
-            label={t("nearbyDetails")}
-            accessibilityHint={t("nearbyExternalHint")}
-            onPress={() => openUrl(collectionPointUrl(state.result.point))}
+            label={t(detailsOpen ? "nearbyLess" : "nearbyMore")}
+            role="button"
+            expanded={detailsOpen}
+            onPress={() => setDetailsOpen((open) => !open)}
+            testID="nearby-details-toggle"
           />
+          {detailsOpen && (
+            <View style={styles.stack} testID="nearby-details">
+              <AppText variant="small" muted>
+                {t("nearbyPointType")}:{" "}
+                {t(
+                  state.result.point.kind === "centre"
+                    ? "nearbyCentre"
+                    : state.result.point.kind === "container"
+                      ? "nearbyContainer"
+                      : "nearbyTypeUnknown",
+                )}
+              </AppText>
+              {!state.result.point.name && (
+                <AppText variant="small" muted>
+                  {t("nearbyNameUnknown")}
+                </AppText>
+              )}
+              <AppText variant="small" muted>
+                {t("nearbyPointId")}: {state.result.point.id}
+              </AppText>
+              <AppText variant="small" muted>
+                {t("nearbyAccuracy")}: ±{Math.max(1, Math.ceil(state.result.accuracy / 10) * 10)} m
+              </AppText>
+              <AppText variant="small" muted>
+                {t("nearbyCaution")}
+              </AppText>
+              <AppText variant="small" muted>
+                {t("nearbyAddressDisclosure")}
+              </AppText>
+              <InlineLink
+                label={t("nearbyDetails")}
+                accessibilityHint={t("nearbyExternalHint")}
+                onPress={() => openUrl(collectionPointUrl(state.result.point))}
+              />
+            </View>
+          )}
         </Paper>
+      )}
+      {state.status === "ready" && (
+        <Button
+          label={t("nearbyRefresh")}
+          variant="quiet"
+          onPress={() => void find()}
+          testID="nearby-find"
+        />
       )}
       {linkError && <AppText accessibilityRole="alert">{t("nearbyLinkError")}</AppText>}
       <View style={styles.provenance}>
         <AppText variant="small" muted>
           {t("nearbyScope")}
-        </AppText>
-        <AppText variant="small" muted>
-          {t("nearbyCaution")}
         </AppText>
         {directory.success && (
           <>
@@ -277,6 +336,26 @@ export default function NearbyScreen() {
             />
           </>
         )}
+        <InlineLink
+          label={t(privacyOpen ? "nearbyPrivacyLess" : "nearbyPrivacyMore")}
+          role="button"
+          expanded={privacyOpen}
+          onPress={() => setPrivacyOpen((open) => !open)}
+          testID="nearby-privacy-toggle"
+        />
+        {privacyOpen && (
+          <View style={styles.stack}>
+            <AppText variant="small" muted>
+              {t("nearbyPurpose")}
+            </AppText>
+            <AppText variant="small" muted>
+              {t("nearbyCaution")}
+            </AppText>
+            <AppText variant="small" muted>
+              {t("nearbyAddressDisclosure")}
+            </AppText>
+          </View>
+        )}
       </View>
     </Screen>
   );
@@ -290,7 +369,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     gap: spacing.sm,
   },
-  intro: { gap: spacing.md, paddingTop: spacing.lg },
+  intro: { gap: spacing.sm, paddingTop: spacing.sm },
+  distance: { flexDirection: "row", alignItems: "baseline", flexWrap: "wrap", gap: spacing.sm },
   stack: { gap: spacing.xs },
   provenance: { gap: spacing.sm, paddingTop: spacing.sm },
 });
