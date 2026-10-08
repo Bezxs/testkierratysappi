@@ -1,5 +1,11 @@
 # Test evidence
 
+## Nearest-point identity — 2026-10-08
+
+- Full pinned `pnpm validate` passes, exit 0: **241 tests (33 policy + 208 application)**, formatting/lint/strict types, package/API builds and 13 web routes. Log: ignored `work/location-2026-10-06/point-identity-validate-2026-10-08.log`. No new external blocker or production GO claim.
+
+- Added a policy regression covering source-provided name, explicit unknown fallback, centre/container/unknown type, address and source identifier rendering. Narrow policy suite passes 4 tests. This is source-level coverage, not a physical layout/accessibility pass. No new native result capture or location details retained; existing device evidence predates this UI change.
+
 ## Physical location recovery — 2026-10-08
 
 - Post-permission-cycle full pinned `pnpm validate` passes, exit 0: same 240 tests, formatting/lint/strict types, package/API builds and 13 routes. Ignored log: `work/location-2026-10-06/iphone-permission-validate-2026-10-08.log`. Application code remains unchanged.

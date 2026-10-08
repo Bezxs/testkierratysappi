@@ -1,5 +1,10 @@
 # Current state
 
+## Point identity clarification — 2026-10-08
+
+- Owner postponed pushing and requested identification of the nearest recycling point. Result now displays source-provided name/address, reported centre/container type and OSM identifier with the existing source link. Missing name/type is explicitly unknown, never invented. Existing uncertainty and local-only location behavior remain.
+- No native rebuild or new physical result-layout evidence yet. Existing device passes precede this UI change; nearest-result source/visual acceptance remains pending. No GitHub push.
+
 ## Physical location recovery — 2026-10-08
 
 - Permission-restoration check now passes: after Roope reports restoring While Using the App, native search reaches the ready-only **Päivitä sijainti** control (wait exit 0 and explicit visibility pass). Together with the observed denied message/settings control and Home navigation, this completes the scoped denial/restoration cycle without reinstalling or changing source. No coordinates or result details recorded. Pending wording below is historical to the earlier attempt.

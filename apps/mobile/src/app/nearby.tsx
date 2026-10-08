@@ -153,9 +153,22 @@ export default function NearbyScreen() {
             {t("nearbyResult")}
           </AppText>
           <AppText variant="heading" accessibilityRole="header">
-            {state.result.point.name ?? t("nearbyGeneric")}
+            {state.result.point.name ?? t("nearbyNameUnknown")}
+          </AppText>
+          <AppText>
+            {t("nearbyPointType")}:{" "}
+            {t(
+              state.result.point.kind === "centre"
+                ? "nearbyCentre"
+                : state.result.point.kind === "container"
+                  ? "nearbyContainer"
+                  : "nearbyTypeUnknown",
+            )}
           </AppText>
           {state.result.point.address && <AppText>{state.result.point.address}</AppText>}
+          <AppText variant="small" muted>
+            {t("nearbyPointId")}: {state.result.point.id}
+          </AppText>
           <View style={styles.stack}>
             <AppText variant="display">
               {displayDistance(state.result.distanceMeters, language)}

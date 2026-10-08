@@ -4,6 +4,9 @@ Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally bl
 
 ## Current independent team-baseline work — October 7
 
+- [x] Clarify nearest-point identity using reported name/address/type and OSM identifier, with explicit missing-name/type labels in FI/EN.
+- [~] Inspect updated identity layout on the physical iPhone; earlier permission tests do not certify this new UI.
+
 - [x] October 8: owner-assisted Never → While Using permission cycle; native denied explanation/settings control, Home return and restored search ready-control visibility pass.
 
 - [x] Add free licensed Finland OSM point data and privacy-preserving local distance calculation, including consent, timeout/cancel/error states and source disclosure.

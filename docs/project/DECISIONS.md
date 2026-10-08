@@ -207,6 +207,8 @@
 
 ## Remaining pending decisions
 
+- October 8 point identification: keep the existing licensed directory rather than guessing an operator or making location-bearing reverse-geocoding requests. Expose reported kind and source identifier; explicitly label absent names/types. Owner postponed push, and target repository remains to be confirmed.
+
 - October 8 physical permission cycle: record owner actions separately from native observations. Denied explanation/settings button and restored ready-control visibility establish recovery, not fresh consent, on-site distance accuracy or complete result-text accessibility. Continue next with public-example native provider attribution.
 
 - October 8: recover stopped local API/Metro before another installation or signing change. Verify native ready-state and same-process background clearing using non-sensitive controls; inconclusive text selectors do not establish a source-text pass. Keep denial recovery as the next physical action and preserve all earlier dated evidence.

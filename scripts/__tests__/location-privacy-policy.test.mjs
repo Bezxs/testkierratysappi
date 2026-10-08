@@ -3,6 +3,25 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const read = (path) => readFileSync(new URL(`../../${path}`, import.meta.url), "utf8");
+test("nearest result identifies the source point without inventing missing names or types", () => {
+  const screen = read("apps/mobile/src/app/nearby.tsx");
+  assert.match(screen, /point\.name \?\? t\("nearbyNameUnknown"\)/u);
+  for (const key of [
+    "nearbyPointType",
+    "nearbyCentre",
+    "nearbyContainer",
+    "nearbyTypeUnknown",
+    "nearbyPointId",
+  ])
+    assert.ok(screen.includes(key));
+  assert.match(screen, /state\.result\.point\.id/u);
+  assert.match(screen, /state\.result\.point\.address/u);
+  for (const text of [
+    "Pisteen nimeä ei ole aineistossa",
+    "Point name is not available in the directory",
+  ])
+    assert.ok(read("packages/localization/src/nearby.ts").includes(text));
+});
 test("location native configuration is foreground-only with localised purpose", () => {
   const config = JSON.parse(read("apps/mobile/app.json")).expo;
   const plugin = config.plugins.find((p) => Array.isArray(p) && p[0] === "expo-location")[1];

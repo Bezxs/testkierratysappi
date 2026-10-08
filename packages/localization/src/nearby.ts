@@ -1,4 +1,8 @@
 export const nearbyFi = {
+  nearbyNameUnknown: "Pisteen nimeä ei ole aineistossa",
+  nearbyPointType: "Pisteen tyyppi aineistossa",
+  nearbyTypeUnknown: "Tyyppiä ei ole ilmoitettu",
+  nearbyPointId: "Pisteen lähdetunniste",
   nearbyTitle: "Lähin kierrätyspaikka",
   nearbyHomeBody: "Etäisyys omasta sijainnistasi · Suomen pisteet",
   nearbyPurpose:
@@ -42,6 +46,10 @@ export const nearbyFi = {
 };
 
 export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
+  nearbyNameUnknown: "Point name is not available in the directory",
+  nearbyPointType: "Point type reported in the directory",
+  nearbyTypeUnknown: "Type not reported",
+  nearbyPointId: "Point source identifier",
   nearbyTitle: "Nearest recycling point",
   nearbyHomeBody: "Distance from your location · Finnish points",
   nearbyPurpose:
