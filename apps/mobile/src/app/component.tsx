@@ -43,7 +43,6 @@ const DEPOSITS = [
 
 export default function ManualComponentScreen() {
   const router = useRouter();
-  const { palette } = useAppTheme();
   const { language, t } = useLanguage();
   const [material, setMaterial] = useState<MaterialFamily>();
   const [shape, setShape] = useState<PackagingShape>("unknown");
@@ -134,9 +133,11 @@ export default function ManualComponentScreen() {
             <SortingResultCard result={result} />
           </View>
         )}
-        <AppText variant="small" muted style={{ color: palette.muted }}>
-          {t("localObservation")}
-        </AppText>
+        {result && (
+          <AppText variant="small" muted>
+            {t("localObservation")}
+          </AppText>
+        )}
       </View>
     </Screen>
   );

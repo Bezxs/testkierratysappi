@@ -27,3 +27,19 @@ Second-pass critique: a big green hero with an arrow circle, decorative packagin
 ## Validation scope
 
 Inspect the real Expo web UI before/after at phone widths, Finnish/English, light/dark and synthetic large text. Exercise manual errors/recovery, component choices, material-code confirmation, local history/drafts, legal markers and local nearby search in isolated browser contexts. Browser fixtures are test-only; they are not application data. Run the existing nearby regression and full pinned `pnpm validate`. Browser evidence does not certify camera quality, native font scaling, VoiceOver, geocoding or a production release.
+
+## Follow-up copy pass
+
+The owner identified Home's three-part privacy sentence as unwanted filler.
+First pass: read the rendered copy and FI/EN translation maps across Home,
+manual, scan, result, material-code, component, guide, nearby, history, feedback
+and legal. Keep the existing visual system; shorten repeated labels and
+replace internal vocabulary with the user's actual task or next action.
+
+Second-pass critique: privacy and uncertainty are not inherently filler.
+Remove the Home/history slogan and duplicate scan/error/loading captions, not
+permission purposes, recipient disclosures, legal review or provenance.
+Retain material-code limitations rather than imply it identifies a bin.
+Explicitly label history's existing clearing effect and unsent feedback.
+Versioned sorting content and substantive legal drafts were reviewed but not
+rewritten in this copy-only pass. Tests protect those boundaries.

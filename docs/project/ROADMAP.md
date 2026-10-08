@@ -2,7 +2,10 @@
 
 Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally blocked.
 
-## Current independent team-baseline work — October 7
+## Current independent team-baseline work — October 8
+
+- [x] October 8 whole-app FI/EN copy cleanup: remove blanket Home/history reassurance and repeated captions, replace internal storage/cache language, preserve contextual consent/uncertainty/legal/source notices, and name history's existing destructive action accurately.
+- [x] Pass 265-test pinned validation and both actual-UI browser runners; regress loading, ambiguous/unknown material codes, local unsent feedback and history disable/clear. Latest native text/layout acceptance remains the next action.
 
 - [x] October 8 whole-app utility refinement: common navigation/type/controls, simpler Home, flat guide/legal/history sections, explicit material choices, focused forms and source-preserving results. No private imports or new dependencies.
 - [x] Add history status/date regressions and whole-app isolated FI/EN browser journeys; repair large-text overflow, retain nearby QA and pass 261-test pinned validation.
@@ -32,7 +35,7 @@ Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally bl
 - [x] Clear the initial launch rejection after Roope's trust/verification step; CoreDevice launch and subsequent app process presence pass.
 - [x] On the owner's retry, inspect actual native Finnish Home and navigate to nearby introduction; semantic trees and privacy-safe screenshots confirm disclosure, OSM source and snapshot date without rebuilding/reinstalling.
 - [x] October 8: native location reaches ready twice; background/foreground clears ready state in the same process after restoring stopped local API/Metro.
-- [~] Finish denial/retry, exact native result/source text, product-source acceptance and retained local content checks. No fresh permission-dialog, physical distance accuracy or complete device matrix pass is inferred.
+- [~] Finish exact native result/source text, product-source acceptance and retained local content checks. Denial/restoration has passed; no fresh permission-dialog, physical distance accuracy or complete device matrix pass is inferred.
 - [!] Production HTTPS/persistent PostgreSQL/shared quota/recovery and owner/legal/store gates below remain. Free upstream data does not supply production infrastructure.
 
 ## Phase 0 — Discovery

@@ -1,5 +1,26 @@
 # Test evidence
 
+## Whole-app copy cleanup — 2026-10-08
+
+- Pinned `pnpm validate`: exit 0, **265 tests (41 policy + 224 application)**,
+  formatting/lint/types, package/API builds and 13-route web export. Ignored log:
+  `work/location-2026-10-06/plain-language-validate.log`.
+- Narrow mobile design policy 9/9 and localization 6/6 pass. Four new regressions
+  retain contextual purpose/legal/uncertainty while preventing blanket Home
+  reassurance, false rule-review loading copy, hidden history clearing and
+  ambiguous local-feedback status.
+- Both optional actual-Metro browser runners pass FI/EN, recovery/results/source
+  fields, material-code confirmation/ambiguity/unknown, local history enable and
+  disable/clear, unsent drafts, legal markers, offline guide/nearby, dark mode,
+  130% synthetic text and Home 320/390/1280 widths. User data/location untouched;
+  all products in isolated UI tests are labelled QA fixtures.
+- Updated light/dark/large screenshots inspected; detail and QA-authoring repairs
+  are in `APP_REFINEMENT_EVIDENCE.md`. Web entry is 3,368,747 bytes / 695,441 gzip;
+  remains above budget, not a performance pass.
+- No latest native-device text/layout, camera, VoiceOver, Dynamic Type or OS
+  geocoding/map-handoff pass. No signing/reinstall/GitHub push; no new external
+  blocker or release-readiness change.
+
 ## Whole-app refinement — 2026-10-08
 
 - Full pinned local validation passes: **261 tests (39 policy + 222 application)**,

@@ -28,4 +28,24 @@ describe("localization", () => {
     expect(translate("fi", "cameraAction")).toBe("Avaa kamera");
     expect(localizedText("en", { fi: "Lasi", en: "Glass" })).toBe("Glass");
   });
+
+  it("uses explicit local-history and unsent-feedback action copy in both languages", () => {
+    expect(translate("fi", "disableHistory")).toBe("Lopeta tallennus ja tyhjennä historia");
+    expect(translate("en", "disableHistory")).toBe("Stop saving and clear history");
+    expect(translate("fi", "draftNotSent")).toBe("Palautetta ei ole lähetetty.");
+    expect(translate("en", "draftNotSent")).toBe("Feedback has not been sent.");
+  });
+
+  it("removes blanket reassurance while retaining contextual disclosures and uncertainty", () => {
+    for (const language of ["fi", "en"] as const) {
+      expect(messages[language]).not.toHaveProperty("privacySummary");
+      expect(messages[language]).not.toHaveProperty("loadingDetail");
+      expect(translate(language, "cameraPurpose")).toContain("Open Facts");
+      expect(translate(language, "nearbyPrivacy")).toContain("OpenStreetMap");
+      expect(translate(language, "privacyDraft")).toContain("Open Food Facts");
+      expect(translate(language, "legalReview")).toMatch(/JURIDISTA|LEGAL/);
+    }
+    expect(translate("fi", "materialCodeRecognizedBody")).toContain("pelkkä koodi ei kerro");
+    expect(translate("en", "materialCodeRecognizedBody")).toContain("code alone does not tell");
+  });
 });

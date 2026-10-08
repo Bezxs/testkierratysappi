@@ -1,5 +1,56 @@
 # Whole-app refinement evidence — 2026-10-08
 
+## Follow-up: whole-app copy cleanup
+
+Following `a406292`, reviewed all eleven functional routes and shared sorting
+presentation in Finnish and English. Removed the owner-identified blanket
+privacy sentence from both Home and history, the scan-button subtitle,
+duplicate error captions and the loading claim of fresh rule review. No
+replacement slogan or new design system. Plain wording now describes saved
+lookups, offline retry, material-code limitations, nearby errors and unsent
+feedback. History's existing disable-and-clear effect is explicit, with a
+destructive style; its storage implementation is unchanged.
+
+Camera/barcode and location purposes remain at their relevant actions.
+Optional address consent, uncertainty, licences/rule metadata and legal-review
+markers remain. Legal/retention drafts, native OS-purpose strings, versioned
+sorting content and provider/location infrastructure were not changed.
+
+Validation:
+
+- Full pinned `pnpm validate`: exit 0, **265 tests (41 Node policy + 224
+  application)**, formatting/lint/strict types, package/API builds and 13 web
+  routes. Log: ignored `work/location-2026-10-06/plain-language-validate.log`.
+- Narrow mobile design policy: 9/9. Localization: 6/6. Four new cases protect
+  disclosure placement, removal of blanket reassurance/false loading claims,
+  explicit history clearing and unsent feedback in both languages.
+- Updated whole-app browser runner passes FI/EN, including observed loading,
+  invalid input/no API call, missing/unavailable/offline/results, provenance,
+  material-code confirmation and ambiguous/unknown states, history opt-in and
+  disable/clear, unsent local drafts and legal markers. Test contexts contain
+  QA fixtures only; no actual user data was deleted.
+- Nearby browser runner passes again with public-point synthetic coordinates,
+  offline lookup, uncertainty/metadata, keyboard semantics, dark switching and
+  synthetic large text. No user's location was read or captured.
+- Inspected updated Home, camera permission, provider failure, material-code
+  errors, history and feedback screenshots, plus English/dark/large views and
+  nearby dark/large. Camera-purpose and saved-history controls now also have
+  130% synthetic-text regression screenshots. Existing Home 320/390/1280 and
+  eight reading/form-route FI/EN dark/large checks pass. Screenshot scope is
+  the browser viewport inside a scroll container, not a full native capture.
+- The first extended QA attempt used an incorrect fixture (`05`, which is a
+  recognized numeric code) and was cancelled after checking parser tests.
+  Changed to ambiguous `PAP`. The next attempt timed out because an alert's
+  text is not its accessible name; corrected the locator to filter alert text.
+  Final runner passes; neither test-authoring issue was an app failure.
+- Web entry: **3,368,747 bytes / 695,441 gzip**, still above the existing 2 MiB
+  warning budget. This is size evidence, not measured performance.
+
+No package/account/paid action, private-repository import, GitHub push or
+native build/sign/install. Latest native text/layout, camera, VoiceOver,
+Dynamic Type and OS address/map-handoff acceptance remain pending; production
+NO-GO and owner gates are unchanged.
+
 ## Outcome and scope
 
 Local UI implementation and browser validation complete; latest physical

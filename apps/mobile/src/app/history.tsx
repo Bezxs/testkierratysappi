@@ -20,11 +20,10 @@ import {
 } from "@/features/history/storage";
 import { useScanSession } from "@/features/scan/session-context";
 import { useLanguage } from "@/i18n/language-context";
-import { spacing, useAppTheme } from "@/theme/tokens";
+import { spacing } from "@/theme/tokens";
 
 export default function HistoryScreen() {
   const router = useRouter();
-  const { palette } = useAppTheme();
   const { language, t } = useLanguage();
   const { lookupBarcode } = useScanSession();
   const [enabled, setEnabled] = useState(false);
@@ -65,7 +64,7 @@ export default function HistoryScreen() {
       <PageIntro title={t("historyTitle")} body={enabled ? t("historyOn") : t("historyOff")} />
       <Button
         label={enabled ? t("disableHistory") : t("enableHistory")}
-        variant={enabled ? "secondary" : "primary"}
+        variant={enabled ? "danger" : "primary"}
         onPress={() => void toggle()}
       />
       <View style={styles.list}>
@@ -87,9 +86,6 @@ export default function HistoryScreen() {
       {entries.length > 0 && (
         <Button label={t("clearHistory")} variant="danger" onPress={confirmClear} />
       )}
-      <AppText variant="small" style={{ color: palette.muted }}>
-        {t("privacySummary")}
-      </AppText>
     </Screen>
   );
 }

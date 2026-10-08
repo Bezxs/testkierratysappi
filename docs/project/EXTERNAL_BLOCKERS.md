@@ -1,5 +1,11 @@
 # External blockers
 
+October 8 copy cleanup adds no external blocker. Codex owns the next native
+text/layout check; Roope handles any required physical unlock or OS prompt.
+No new prompt/action is requested now. Existing native camera/accessibility,
+legal/content/hosting/store gates remain; neither browser passes nor simpler
+wording changes release readiness. No GitHub push is authorized.
+
 October 8 whole-app refinement introduces no account, credential, paid-tool or
 data-service blocker. Latest native visual/device acceptance remains unrun:
 Codex owns the scoped iPhone checks/repairs; Roope handles any actual unlock,

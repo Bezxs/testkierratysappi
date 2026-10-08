@@ -184,6 +184,7 @@ async function largeText(page) {
         requests++;
         assert.equal(route.request().postDataJSON().gtin, gtin);
         if (scenario === "offline") return route.abort("internetdisconnected");
+        if (scenario === "not_found") await new Promise((resolve) => setTimeout(resolve, 600));
         const body =
           scenario === "resolved"
             ? resolved
@@ -202,6 +203,12 @@ async function largeText(page) {
       await page.goto(baseUrl);
       await page.getByTestId("home-screen").waitFor();
       if (language === "en") await page.getByTestId("language-en").click();
+      assert.ok(
+        !(await page.locator("body").innerText()).includes(
+          language === "fi" ? "Ei tiliä." : "No account.",
+        ),
+      );
+      assert.ok(await page.getByTestId("home-legal-action").isVisible());
       await shot(page, language + "-home");
       for (const id of [
         "home-scan-action",
@@ -216,7 +223,20 @@ async function largeText(page) {
       await page.getByTestId("home-scan-action").click();
       await page.getByTestId("scanner-permission-screen").waitFor();
       assert.ok(await page.getByTestId("scanner-permission-manual-action").isVisible());
+      await page
+        .getByText(language === "fi" ? "Kameran käyttölupa" : "Camera access", { exact: true })
+        .waitFor();
+      assert.ok((await page.locator("body").innerText()).includes("Open Facts"));
       await shot(page, language + "-camera-purpose");
+      await page.emulateMedia({ colorScheme: "dark" });
+      await page.waitForFunction(
+        () =>
+          getComputedStyle(document.getElementById("app-screen-surface")).backgroundColor ===
+          "rgb(20, 34, 27)",
+      );
+      await largeText(page);
+      await shot(page, language + "-camera-purpose-dark-large");
+      await page.emulateMedia({ colorScheme: "light" });
       await page.getByTestId("scanner-permission-manual-action").click();
       await page.getByTestId("manual-entry-screen").waitFor();
       assert.equal(
@@ -240,6 +260,10 @@ async function largeText(page) {
         await page.goto(baseUrl + "/manual");
         await page.getByTestId("manual-gtin-input").fill(gtin);
         await page.getByTestId("manual-submit-action").click();
+        if (state === "not_found") {
+          await page.getByTestId("result-loading-screen").waitFor();
+          await shot(page, language + "-result-loading");
+        }
         await page
           .getByTestId(
             state === "offline"
@@ -302,17 +326,43 @@ async function largeText(page) {
         .click();
       await page.getByTestId("sorting-result-resolved").waitFor();
       await shot(page, language + "-material-code");
+      for (const [code, title, name] of [
+        [
+          "PAP",
+          language === "fi" ? "Koodissa on vielä epäselvyyttä" : "The code is still ambiguous",
+          "ambiguous",
+        ],
+        [
+          "not-a-code",
+          language === "fi" ? "Koodia ei tunnistettu" : "Code not recognized",
+          "unknown",
+        ],
+      ]) {
+        await page.getByRole("textbox").fill(code);
+        await page
+          .getByRole("button", {
+            name: language === "fi" ? "Tarkista koodi" : "Check code",
+            exact: true,
+          })
+          .click();
+        await page.getByRole("alert").filter({ hasText: title }).waitFor();
+        assert.equal(await page.getByTestId("sorting-result-resolved").count(), 0);
+        await shot(page, language + "-material-code-" + name);
+      }
       await page.goto(baseUrl + "/history");
       await page
         .getByText(
-          language === "fi" ? "Paikallinen historia on pois päältä." : "Local history is off.",
+          language === "fi"
+            ? "Hakuja ei tallenneta historiaan."
+            : "Lookups are not saved to history.",
           { exact: true },
         )
         .waitFor();
       await shot(page, language + "-history-empty");
       await page
         .getByRole("button", {
-          name: language === "fi" ? "Ota paikallinen historia käyttöön" : "Enable local history",
+          name:
+            language === "fi" ? "Tallenna haut tähän laitteeseen" : "Save lookups on this device",
           exact: true,
         })
         .click();
@@ -325,6 +375,26 @@ async function largeText(page) {
       await page.getByRole("button", { name: "QA fixture — two parts", exact: true }).waitFor();
       assert.ok(!(await page.locator("body").innerText()).includes("packaging_missing"));
       await shot(page, language + "-history-saved");
+      await largeText(page);
+      await shot(page, language + "-history-saved-large");
+      await page
+        .getByRole("button", {
+          name:
+            language === "fi"
+              ? "Lopeta tallennus ja tyhjennä historia"
+              : "Stop saving and clear history",
+          exact: true,
+        })
+        .click();
+      await page
+        .getByText(language === "fi" ? "Ei tallennettuja hakuja." : "No saved lookups.", {
+          exact: true,
+        })
+        .waitFor();
+      assert.equal(
+        await page.getByRole("button", { name: "QA fixture — two parts", exact: true }).count(),
+        0,
+      );
       await page.goto(baseUrl + "/feedback");
       await page
         .getByRole("radio", {
@@ -339,6 +409,12 @@ async function largeText(page) {
         })
         .click();
       await page.getByRole("alert").waitFor();
+      await page
+        .getByText(
+          language === "fi" ? "Palautetta ei ole lähetetty." : "Feedback has not been sent.",
+          { exact: true },
+        )
+        .waitFor();
       await shot(page, language + "-feedback-local");
       await page.goto(baseUrl + "/legal");
       await page

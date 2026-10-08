@@ -69,7 +69,6 @@ export default function HomeScreen() {
       <Pressable
         accessibilityRole="button"
         accessibilityLabel={t("scanAction")}
-        accessibilityHint={t("cameraPurpose")}
         testID="home-scan-action"
         onPress={() => router.push("/scan")}
         style={({ pressed }) => [
@@ -91,9 +90,6 @@ export default function HomeScreen() {
         <View style={sharedStyles.grow}>
           <AppText variant="heading" style={{ color: palette.onStrong }}>
             {t("scanAction")}
-          </AppText>
-          <AppText variant="small" style={{ color: palette.onStrong }}>
-            {t("scanActionDetail")}
           </AppText>
         </View>
       </Pressable>
@@ -129,9 +125,6 @@ export default function HomeScreen() {
       </View>
 
       <View style={styles.footer}>
-        <AppText variant="small" muted>
-          {t("privacySummary")}
-        </AppText>
         <View style={styles.footerLinks}>
           <InlineLink
             label={t("legalAction")}

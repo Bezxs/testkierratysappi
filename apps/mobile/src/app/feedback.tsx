@@ -123,7 +123,7 @@ export default function FeedbackScreen() {
             <AppText variant="heading" style={{ color: palette.pine }} accessibilityRole="alert">
               {t("draftSaved")}
             </AppText>
-            <AppText>{t("localOnly")}</AppText>
+            <AppText>{t("draftNotSent")}</AppText>
           </Paper>
         )}
       </View>

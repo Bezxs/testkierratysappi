@@ -1,6 +1,6 @@
 export const nearbyFi = {
   nearbyIntro:
-    "Etsi lähin aineistossa oleva piste. Oma sijaintisi käsitellään vain puhelimessa, eikä sitä tallenneta tai lähetetä.",
+    "Etsi lähin tunnettu kierrätyspiste sijaintisi avulla. Sijaintia ei tallenneta eikä lähetetä.",
   nearbyQuickCaution: "Tarkista pisteen materiaalit, käyttöoikeus ja aukiolo ennen lähtöä.",
   nearbyLocationOnMap: "Pisteen sijainti näkyy kartalla.",
   nearbyAddressConsent:
@@ -25,11 +25,11 @@ export const nearbyFi = {
   nearbyMapHint:
     "Avaa kierrätyspisteen karttamerkin OpenStreetMapissa. Oma sijaintisi ei sisälly linkkiin.",
   nearbyNameUnknown: "Pisteen nimeä ei ole aineistossa",
-  nearbyPointType: "Pisteen tyyppi aineistossa",
+  nearbyPointType: "Pisteen tyyppi",
   nearbyTypeUnknown: "Tyyppiä ei ole ilmoitettu",
-  nearbyPointId: "Pisteen lähdetunniste",
+  nearbyPointId: "OpenStreetMap-tunniste",
   nearbyTitle: "Lähin kierrätyspaikka",
-  nearbyHomeBody: "Etäisyys omasta sijainnistasi · Suomen pisteet",
+  nearbyHomeBody: "Etsi piste ja katso etäisyys",
   nearbyPurpose:
     "Käytämme sijaintia kerran lähimmän aineistossa olevan pisteen löytämiseen. Etäisyys lasketaan puhelimessa. Sijaintia ei tallenneta, lähetetä tai seurata taustalla.",
   nearbyFind: "Etsi sijainnillani",
@@ -41,7 +41,7 @@ export const nearbyFi = {
   nearbyGeneric: "Kierrätyspiste",
   nearbyCentre: "Kierrätysasema",
   nearbyContainer: "Keräyspiste",
-  nearbyAccuracy: "Sijainnin ilmoitettu tarkkuus",
+  nearbyAccuracy: "Sijainnin tarkkuusarvio",
   nearbyApproximate: "Sijainti on epätarkka. Lähimpien pisteiden järjestys voi vaihdella.",
   nearbyCaution:
     "Luettelo voi olla puutteellinen. Tarkista vastaanotettavat materiaalit, käyttöoikeus ja aukiolo ennen lähtöä. Etäisyys ei ole kulkureitti; aluekohteen sijainti voi olla sen keskipiste, ei sisäänkäynti.",
@@ -53,7 +53,7 @@ export const nearbyFi = {
   nearbyDetails: "Avaa pisteen lähdetiedot",
   nearbyExternalHint: "Avaa OpenStreetMapin selaimessa. Oma sijaintisi ei sisälly linkkiin.",
   nearbyPermission:
-    "Sijaintilupaa ei annettu. Voit yrittää uudelleen tai sallia sijainnin sovelluksen asetuksissa. Muut toiminnot toimivat ilman lupaa.",
+    "Sijaintilupaa ei annettu. Yritä uudelleen tai salli sijainti sovelluksen asetuksissa.",
   nearbyServices:
     "Laitteen sijaintipalvelut ovat pois päältä. Ota ne käyttöön asetuksissa ja yritä uudelleen.",
   nearbyTimeout:
@@ -61,7 +61,7 @@ export const nearbyFi = {
   nearbyUnavailable:
     "Sijaintia ei saada nyt. Tarkista laitteen tai selaimen sijaintiasetukset ja yritä uudelleen.",
   nearbyDataError:
-    "Paikallista kierrätyspisteaineistoa ei voida käyttää. Päivitä sovellus. Emme arvaa lähintä pistettä.",
+    "Kierrätyspisteiden tietoja ei voitu avata. Päivitä sovellus ja yritä uudelleen.",
   nearbyNoResult:
     "Aineistossa ei ole pistettä 100 kilometrin säteellä tästä sijaintiarviosta. Aineisto kattaa vain Suomeen merkittyjä pisteitä eikä ole täydellinen.",
   nearbyLinkError: "Lähdelinkkiä ei voitu avata. Tarkista verkkoyhteys ja yritä uudelleen.",
@@ -72,7 +72,7 @@ export const nearbyFi = {
 
 export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
   nearbyIntro:
-    "Find the nearest point in the directory. Your location stays on your phone and is not saved or uploaded.",
+    "Use your location to find the nearest known recycling point. Your location is not saved or uploaded.",
   nearbyQuickCaution: "Check accepted materials, access and opening hours before travelling.",
   nearbyLocationOnMap: "View the point's location on the map.",
   nearbyAddressConsent:
@@ -97,11 +97,11 @@ export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
   nearbyMapHint:
     "Opens the recycling point marker in OpenStreetMap. Your location is not included in the link.",
   nearbyNameUnknown: "Point name is not available in the directory",
-  nearbyPointType: "Point type reported in the directory",
+  nearbyPointType: "Point type",
   nearbyTypeUnknown: "Type not reported",
-  nearbyPointId: "Point source identifier",
+  nearbyPointId: "OpenStreetMap identifier",
   nearbyTitle: "Nearest recycling point",
-  nearbyHomeBody: "Distance from your location · Finnish points",
+  nearbyHomeBody: "Find a point and see the distance",
   nearbyPurpose:
     "Use your location once to find the nearest point in the directory. Distance is calculated on your phone. Your location is not stored, uploaded or tracked in the background.",
   nearbyFind: "Find using my location",
@@ -113,7 +113,7 @@ export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
   nearbyGeneric: "Recycling point",
   nearbyCentre: "Recycling centre",
   nearbyContainer: "Collection point",
-  nearbyAccuracy: "Reported location accuracy",
+  nearbyAccuracy: "Estimated location accuracy",
   nearbyApproximate: "Your location is approximate. The order of nearby points may vary.",
   nearbyCaution:
     "The directory may be incomplete. Check accepted materials, access and opening hours before travelling. Distance is not a route; an area may be represented by its centre, not its entrance.",
@@ -126,14 +126,13 @@ export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
   nearbyExternalHint:
     "Opens OpenStreetMap in your browser. Your location is not included in the link.",
   nearbyPermission:
-    "Location permission was not granted. Try again or allow location in the app settings. Other features work without permission.",
+    "Location permission was not granted. Try again or allow location in the app settings.",
   nearbyServices: "Device location services are off. Turn them on in settings and try again.",
   nearbyTimeout:
     "No location was available within 20 seconds. Move to a more open area and try again.",
   nearbyUnavailable:
     "Location is unavailable. Check your device or browser location settings and try again.",
-  nearbyDataError:
-    "The local recycling directory cannot be used. Update the app. We will not guess the nearest point.",
+  nearbyDataError: "Recycling point information could not be opened. Update the app and try again.",
   nearbyNoResult:
     "No point in the directory is within 100 kilometres of this location estimate. This incomplete directory only covers points mapped in Finland.",
   nearbyLinkError: "The source link could not be opened. Check your connection and try again.",

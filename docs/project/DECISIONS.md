@@ -212,6 +212,13 @@
 - Decision: honor the owner's whole-app request through consistent back navigation, a single functional barcode signature, readable flat sections, restrained geometry and plain FI/EN copy. Retain the baseline palette/fonts and actual early-stage functionality. Do not add demo badges or fabricated maturity signals, hide legal/uncertainty notices, import private experiments, change dependencies or push without fresh authorization.
 - Reason: the previous repeated brand headers, large decorative marks, uppercase captions and card stacks obscured the task. Short material labels and flexible radio layouts avoid Finnish compound-word clipping under synthetic large text. History's product-found status must not imply verified packaging guidance. Sources, rule metadata and local-only feedback limitations remain explicit.
 
+## D-031 — Put disclosures at the decision, not in a Home slogan
+
+- Date: 2026-10-08
+- Status: implemented and browser-validated locally; native copy/layout acceptance pending
+- Decision: remove the owner's identified blanket privacy sentence from Home/history without replacing it. Keep specific camera/barcode and location transfer purposes at their actions, complete legal/retention disclosures in legal, and source/uncertainty evidence with answers. Use direct FI/EN recovery instructions, not repeated status captions or internal storage/cache terms. No new design system, private import or GitHub push.
+- Reason: factual statements become promotional filler when repeated outside the relevant decision. A loading message must not imply freshly verified policy; a locally saved feedback draft must not look sent. Inspection of storage also confirms disabling history clears it, so that existing destructive effect must be explicit in the action label/style.
+
 ## Remaining pending decisions
 
 - October 8 publication outcome: explicit non-force push succeeds to existing public KierratysAppi main, verified remotely. Do not change visibility/settings or KeepItGreen; source sharing does not publish a running production service or certify stores/native pending flows.

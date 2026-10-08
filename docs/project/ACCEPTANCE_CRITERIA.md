@@ -35,9 +35,17 @@ synthetic GPS do not certify native Dynamic Type, VoiceOver or real geocoding.
 3. The entire bundled OSM database validates at the application boundary and retains licence, source IDs and timestamps. Old upstream data must not look fresh after a new download.
 4. Location is requested only after an explicit action, never in the background; allow/deny/services-off/timeout/cancel/retry are recoverable. The watcher is removed and results clear on leaving/backgrounding. No GPS logging, persistence, analytics or API transmission.
 5. The UI calls distance a straight-line estimate and discloses approximate fixes, incomplete coverage and unverified access/materials/hours. It never invents coordinates, open status or material suitability.
-6. Source/unit/browser evidence is distinct from actual iPhone GPS/permission acceptance; the latter remains pending until a new native client is built and observed.
+6. Source/unit/browser evidence is distinct from actual iPhone GPS/permission acceptance. The October 7 build and October 8 basic ready/denial/restoration checks do not establish latest native source/address/map-handoff UI acceptance or on-site distance accuracy; those remain pending.
 
 ## Release evidence
+
+October 8 copy cleanup requires no blanket privacy slogan on Home/history,
+one clear loading/error explanation with actionable recovery, ordinary FI/EN
+wording and explicit naming of history's disable-and-clear effect. Camera and
+location purposes stay before their actions; material-code confirmation,
+uncertainty, source metadata, unsent-feedback status, retention disclosures and
+legal review markers must not be removed as cosmetic clutter. Browser copy
+checks do not establish latest native text/layout acceptance.
 
 The October 8 whole-app refinement requires consistent labelled back navigation,
 a primary scan/manual path before secondary actions, explicit radio selections,

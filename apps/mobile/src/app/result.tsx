@@ -47,9 +47,6 @@ export default function ResultScreen() {
         <AppText variant="title" style={styles.centerText}>
           {t("loading")}
         </AppText>
-        <AppText muted style={styles.centerText}>
-          {t("loadingDetail")}
-        </AppText>
         <AppText variant="mono" muted>
           {state.gtin}
         </AppText>
@@ -60,10 +57,8 @@ export default function ResultScreen() {
   if (state.status === "offline") {
     return (
       <StateScreen
-        eyebrow={t("offlineEyebrow")}
         title={t("offlineTitle")}
         body={t("offlineBody")}
-        tone="amber"
         code={state.gtin}
         primary={{ label: t("retry"), onPress: () => void lookupBarcode(state.gtin, "manual") }}
         secondary={{ label: t("materialGuideAction"), onPress: () => router.push("/guide") }}
@@ -76,10 +71,8 @@ export default function ResultScreen() {
   if (state.status === "invalid") {
     return (
       <StateScreen
-        eyebrow={t("invalidEyebrow")}
         title={t("checkCode")}
         body={t("invalidGtin")}
-        tone="brick"
         primary={{ label: t("manualEntry"), onPress: () => router.replace("/manual") }}
         close={startOver}
         testID="result-invalid-screen"
@@ -90,10 +83,8 @@ export default function ResultScreen() {
   if (state.status !== "complete") {
     return (
       <StateScreen
-        eyebrow={t("emptyScanEyebrow")}
         title={t("cameraTitle")}
         body={t("introBody")}
-        tone="cobalt"
         primary={{ label: t("scanAction"), onPress: () => router.replace("/scan") }}
         close={startOver}
         testID="result-empty-screen"
@@ -105,10 +96,8 @@ export default function ResultScreen() {
   if (result.status === "not_found") {
     return (
       <StateScreen
-        eyebrow={t("unknownProductEyebrow")}
         title={t("notFoundTitle")}
         body={t("notFoundBody")}
-        tone="amber"
         code={result.gtin}
         primary={{ label: t("checkCode"), onPress: () => router.replace("/manual") }}
         secondary={{ label: t("materialGuideAction"), onPress: () => router.push("/guide") }}
@@ -121,10 +110,8 @@ export default function ResultScreen() {
   if (result.status === "provider_unavailable") {
     return (
       <StateScreen
-        eyebrow={t("unavailableSourceEyebrow")}
         title={t("providerUnavailableTitle")}
         body={t("providerUnavailableBody")}
-        tone="brick"
         code={result.gtin}
         primary={{ label: t("retry"), onPress: () => void lookupBarcode(result.gtin, "manual") }}
         secondary={{ label: t("materialGuideAction"), onPress: () => router.push("/guide") }}
@@ -186,9 +173,6 @@ function ProductResult({
             onPress={() => router.push("/component")}
             testID="result-manual-component-action"
           />
-          <AppText variant="small" muted>
-            {t("materialCodeLocalNote")}
-          </AppText>
         </View>
       ) : (
         <View style={styles.resultStack}>
@@ -277,10 +261,8 @@ function ProductResult({
 }
 
 type StateScreenProps = {
-  readonly eyebrow: string;
   readonly title: string;
   readonly body: string;
-  readonly tone: "amber" | "brick" | "cobalt";
   readonly code?: string;
   readonly primary: { readonly label: string; readonly onPress: () => void };
   readonly secondary?: { readonly label: string; readonly onPress: () => void };
@@ -288,23 +270,12 @@ type StateScreenProps = {
   readonly testID: string;
 };
 
-function StateScreen({
-  eyebrow,
-  title,
-  body,
-  tone,
-  code,
-  primary,
-  secondary,
-  close,
-  testID,
-}: StateScreenProps) {
+function StateScreen({ title, body, code, primary, secondary, close, testID }: StateScreenProps) {
   const { t } = useLanguage();
   return (
     <Screen testID={testID}>
       <PageHeader onBack={close} label={t("close")} testID="result-close-action" />
       <View style={styles.stateBody}>
-        <StatusPill label={eyebrow} tone={tone} />
         <AppText variant="title" accessibilityRole="header">
           {title}
         </AppText>

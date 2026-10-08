@@ -134,3 +134,32 @@ test("original decorative package marks do not claim an unknown material or ente
   assert.match(source, /!material \|\| material === "unknown"/);
   assert.doesNotMatch(source, /setInterval|withRepeat|requestAnimationFrame/);
 });
+
+test("privacy purpose stays at the relevant action, not as blanket Home/history reassurance", () => {
+  for (const screen of ["index", "history"]) {
+    assert.doesNotMatch(
+      readFileSync(`apps/mobile/src/app/${screen}.tsx`, "utf8"),
+      /privacySummary/,
+    );
+  }
+  const home = readFileSync("apps/mobile/src/app/index.tsx", "utf8");
+  assert.match(home, /testID="home-legal-action"/);
+  assert.doesNotMatch(home, /scanActionDetail|cameraPurpose/);
+  assert.match(readFileSync("apps/mobile/src/app/scan.tsx", "utf8"), /t\("cameraPurpose"\)/);
+  const nearby = readFileSync("apps/mobile/src/app/nearby.tsx", "utf8");
+  assert.match(nearby, /t\("nearbyIntro"\)/);
+  assert.match(nearby, /t\("nearbyAddressConsent"\)/);
+  const legal = readFileSync("apps/mobile/src/app/legal.tsx", "utf8");
+  for (const key of ["privacyDraft", "nearbyPrivacy", "nearbyAddressDisclosure", "legalReview"])
+    assert.ok(legal.includes(`t("${key}")`));
+});
+
+test("loading and error states explain the task once without asserting a fresh rule review", () => {
+  const result = readFileSync("apps/mobile/src/app/result.tsx", "utf8");
+  assert.doesNotMatch(result, /loadingDetail|eyebrow=/);
+  assert.match(result, /t\("loading"\)/);
+  assert.match(result, /t\("offlineBody"\)/);
+  assert.match(result, /testID="result-primary-action"/);
+  assert.match(result, /testID="result-secondary-action"/);
+  assert.match(readFileSync("apps/mobile/src/app/feedback.tsx", "utf8"), /t\("draftNotSent"\)/);
+});
