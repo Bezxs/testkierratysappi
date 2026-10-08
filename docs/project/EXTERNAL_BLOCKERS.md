@@ -1,5 +1,7 @@
 # External blockers
 
+October 8 update: no new external blocker. Restoring local API/Metro permits native location ready-state and same-process background-clearing checks to pass. Denial recovery still needs an owner-assisted app-specific permission change; exact result text/native provider UI remain pending. Earlier October 7 automation limitations below are historical, not a currently reproduced ready-state blocker.
+
 These are release blockers or high-risk gates that cannot be completed without external authority, assets, accounts, contracts, devices, infrastructure or an upstream release. Exact procedures and evidence owners are in `docs/final/OWNER_ACTIONS.md`.
 
 October 7 update: OSM point data and Open Facts sibling read routing require no

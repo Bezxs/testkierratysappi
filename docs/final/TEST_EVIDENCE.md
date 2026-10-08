@@ -1,5 +1,13 @@
 # Test evidence
 
+## Physical location recovery — 2026-10-08
+
+- Full pinned `pnpm validate` passes, exit 0: 240 tests (32 policy + 208 application), formatting/lint/strict types, package/API builds and 13 web routes. Log: ignored `work/location-2026-10-06/iphone-validate-2026-10-08.log`. Closed only the named automation helper/session afterward; local API/Metro remain available. No new live dependency-audit, release-build or store claim.
+
+- Local API/Metro had stopped; restarted existing team-baseline artifacts. LAN health and iOS manifest/launch asset pass (HTTP 200, 10,954,638 bytes). Explicit development-client relaunch succeeds; native automation subsequently reads Home and nearby introduction.
+- Two search actions followed by `wait 'role="button" label="Päivitä sijainti"' 25000` return exit 0. Source restricts that button to the ready state. Background/foreground then exposes `role="button" label="Etsi sijainnillani"`, with product PID 7054 unchanged: scoped native clearing pass, not a process-reset inference.
+- Source/explanation label checks are inconclusive (unqualified selectors ambiguous; role="text" selectors unmatched). No full result tree/screenshot, coordinates, nearest-point details or exact distance retained. Fresh consent, denied recovery, physical accuracy and native provider UI remain unverified. Installed source remains 487af03; no push, reinstall or production GO.
+
 ## Owner-requested physical retry — 2026-10-07, 22:07 Finland time
 
 - On unchanged installed source `487af03`, the existing helper's signature, phone unlock and API/Metro health pass. Fresh session `team-location-retry-2026-10-07` reaches its listener and reads Home in about 14 seconds; no additional build, install, reset or source change was needed.

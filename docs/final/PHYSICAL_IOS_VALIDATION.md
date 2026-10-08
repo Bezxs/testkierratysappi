@@ -1,8 +1,19 @@
 # Physical iOS validation
 
-Status date: 2026-10-07
+Status date: 2026-10-08
 
-Status: **NATIVE HOME AND NEARBY INTRODUCTION PASS — the owner's retry now connects to XCTest. Starting location then hits an automation system-modal timeout; permission/result, background clearing and product-source acceptance remain pending. Historical September runtime passes do not certify those flows.**
+Status: **HOME, NEARBY INTRODUCTION, REPEATED LOCATION READY STATE AND SAME-PROCESS BACKGROUND CLEARING PASS. Exact result text, fresh consent, denial/retry, physical accuracy and native product-source acceptance remain pending. Historical September runtime passes do not certify those flows.**
+
+## Latest recovery — 2026-10-08
+
+Restored stopped Mac API/Metro and relaunched the unchanged installed application.
+Two searches reach the ready-only refresh control (exact button selector, wait exit 0).
+Home/background then ordinary foreground launch restores the search control while
+application PID 7054 remains unchanged. This verifies ready-state clearing, not
+a fresh consent-dialog or location accuracy test. Exact explanatory-text selectors
+were ambiguous or unmatched and therefore are not recorded as passed. No location
+result screenshot, coordinates, nearest-point address or exact distance retained.
+Earlier dated failures below remain historical evidence. No product reinstall or push.
 
 This report is deliberately separate from simulator, web and generated-configuration evidence. No physical-device row may become Pass without observing the named build on the recorded iPhone.
 

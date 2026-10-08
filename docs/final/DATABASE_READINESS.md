@@ -1,5 +1,7 @@
 # Database readiness — 2026-10-07
 
+October 8 device-evidence update: two foreground searches reach ready state and same-process background clearing passes. Earlier October 7 automation limitations below are historical. This does not verify point accuracy, opening hours, fresh consent, denied recovery or production database readiness.
+
 This describes the local KierratysAppi feature branch, not a production release.
 Source baseline: `39f8aa6`; no newer KeepItGreen code/design. Implementation
 `487af03` is installed as a development build; iOS runtime acceptance is pending.

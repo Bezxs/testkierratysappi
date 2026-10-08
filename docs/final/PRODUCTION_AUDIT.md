@@ -1,5 +1,7 @@
 # Adversarial production-readiness audit
 
+October 8 evidence delta, not a new audit: native location ready-state and same-process background clearing pass after restoring local services. This supersedes the historical October 7 inability to observe a ready result below. Exact native explanation/source text, denial recovery and the broader production gates remain pending; no finding is downgraded solely to obtain GO.
+
 October 7 scoped implementation follow-up, **not a new 30-lane audit**:
 team-baseline location/OSM data and universal Open Facts routing pass 240 local
 tests plus named live/browser evidence in `TEST_EVIDENCE.md`. Provider lane 5

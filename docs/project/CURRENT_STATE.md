@@ -1,5 +1,11 @@
 # Current state
 
+## Physical location recovery — 2026-10-08
+
+- Restored stopped local API (3003) and Metro (8093); LAN health, iOS manifest and its exact launch asset pass (HTTP 200, 10,954,638 bytes). Relaunched the unchanged installed team-baseline application using its development-client URL. No reinstall, implementation import or GitHub push.
+- Native Home → nearby introduction works. Two foreground location searches reach the ready-only **Päivitä sijainti** button. Backgrounding and returning restores **Etsi sijainnillani** with the same application PID (7054), verifying ready-state clearing without process restart. Permission was already available; a fresh OS consent dialog was not observed.
+- Exact result text assertions remain unverified: unrestricted labels were ambiguous and role="text" did not match. No result screenshot, coordinates, point address or exact distance was recorded. Denial/retry, native product-source UI and physical distance/accuracy ground truth remain pending. This supersedes October 7's inability to observe a ready result, not the remaining production NO-GO gates.
+
 ## Independent team-baseline location and free data — 2026-10-07
 
 - Continue `codex/kierratysappi-nearest-location` from team main `39f8aa6`. The September records below are historical. No newer KeepItGreen code, appearance or assets were imported; no GitHub push is authorized or performed.

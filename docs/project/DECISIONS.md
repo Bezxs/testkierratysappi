@@ -207,6 +207,8 @@
 
 ## Remaining pending decisions
 
+- October 8: recover stopped local API/Metro before another installation or signing change. Verify native ready-state and same-process background clearing using non-sensitive controls; inconclusive text selectors do not establish a source-text pass. Keep denial recovery as the next physical action and preserve all earlier dated evidence.
+
 - OCR implementation and whether a cloud AI path is justified after the typed-code flow is evaluated.
 - Production hosting/database/telemetry providers after owner cost/privacy-region approval.
 - Whether a distributable web build is in launch scope; if yes, the current 2.55 MB entry requires optimization and deployed performance evidence.

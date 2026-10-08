@@ -1,5 +1,7 @@
 # Owner actions
 
+October 8 OA-09 update supersedes the October 7 prompt request below: two native searches reach ready state and same-process background clearing passes. Next, Roope sets this app's location permission to Never in iPhone Settings → Privacy & Security → Location Services; Codex checks denial recovery, then Roope restores foreground permission for retry. Do not send location details. No reinstall required; native source-text/provider acceptance remains pending.
+
 October 7 scope delta: OA-03's usage/contact/licence approval must name Open
 Beauty Facts, Open Pet Food Facts and Open Products Facts alongside OFF, including
 source-specific attribution and no sibling image reuse. Roope and the legal

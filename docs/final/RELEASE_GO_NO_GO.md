@@ -1,5 +1,7 @@
 # Release decision
 
+October 8 delta: **NO-GO remains**. Native searches reach ready state twice and background/foreground clears it without restarting the process. Earlier October 7 GPS/background-pending descriptions below are superseded only for these scoped checks. Fresh consent, denial recovery, exact result text, physical accuracy, provider UI and release/store/production gates remain unverified.
+
 October 7 scoped update: **NO-GO remains**. Independent team-baseline source now
 includes licensed OSM points/local distance and free Open Facts sibling routing.
 Local data access is not missing credentials. Native build/sign/install and
