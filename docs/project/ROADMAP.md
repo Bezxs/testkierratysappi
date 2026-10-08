@@ -4,7 +4,7 @@ Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally bl
 
 ## Current independent team-baseline work — October 7
 
-- [~] October 8 owner-authorized fast-forward publication of this independent work to KierratysAppi main; remote SHA and CI remain separate evidence.
+- [x] October 8 owner-authorized fast-forward publication of this independent work to KierratysAppi main; remote SHA verified. Local 249-test validation passes; GitHub CI remains separate evidence.
 
 - [x] Refocus nearby UX around identity/distance/map, shorten pre-search explanation and progressively disclose metadata without hiding uncertainty.
 - [x] Repair inconsistent live dark-mode switching with a single root theme provider; verify FI/EN, expanded semantics, offline lookup and synthetic large-text browser states.

@@ -207,6 +207,8 @@
 
 ## Remaining pending decisions
 
+- October 8 publication outcome: explicit non-force push succeeds to existing public KierratysAppi main, verified remotely. Do not change visibility/settings or KeepItGreen; source sharing does not publish a running production service or certify stores/native pending flows.
+
 - October 8 sharing authorization: Roope explicitly requested current changes in KierratysAppi, so use an explicit `HEAD:refs/heads/main` push to the verified team remote only if it remains a fast-forward. Keep local feature branch and KeepItGreen remote untouched. This does not revoke the prohibition on future automatic sharing or authorize production release.
 
 - October 8 UX: use progressive disclosure for technical metadata, not for essential uncertainty or optional lookup consent. Keep public-source/date/licence visible; map is the single primary result action and refresh is secondary. Preserve baseline Atkinson typography/palette and shared components; no private-repository imports, decorative animation or fabricated map preview.

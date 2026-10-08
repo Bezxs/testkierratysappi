@@ -2,6 +2,9 @@
 
 ## Authorized team publication preflight — 2026-10-08
 
+- Fresh full pinned `pnpm validate` passes, exit 0: 249 tests (36 policy + 213 application), format/lint/strict types, package/API builds and 13 routes. Log: ignored `work/location-2026-10-06/team-push-validate-2026-10-08.log`.
+- Actual `git push origin HEAD:refs/heads/main` succeeds without force: `39f8aa6..3df2437`. Remote main confirmed `3df2437be5df3c20a1e7134867f9a966f691543f`. GitHub API identifies existing repository as public/default main; visibility unchanged. Immediate workflow query returns no runs yet, not a CI success. Follow-up evidence commit belongs to the same explicitly authorized sharing step; no private-repository push or production release.
+
 - Explicit owner authorization names KierratysAppi. Fresh remote main is `39f8aa65b72befcb43c5c1440dbca1b02b335edf`, an ancestor of implementation `0324c0d0f78f0218b5c95c4b33c8df20eac12a98` (0 remote-only / 10 local-only commits). Reviewed history/diff, clean worktree and passing aggregate whitespace check. Changed filename inventory includes no environment/credential artifacts, screenshots/work directories or built native app. Not a secret-scanner or production release pass.
 
 ## Nearby UX and theme coherence — 2026-10-08

@@ -2,6 +2,9 @@
 
 ## Authorized team-repository publication — 2026-10-08
 
+- Push succeeded: `39f8aa6..3df2437` fast-forward to the existing public `roopeaal/KierratysAppi/main`; `git ls-remote` confirms `3df2437be5df3c20a1e7134867f9a966f691543f`. This follow-up records the outcome in the same authorized sharing step. Repository visibility unchanged; KeepItGreen remote/branches untouched. GitHub CI was not yet listed in the immediate post-push query, so no CI pass is inferred.
+- Fresh full pinned `pnpm validate` passes before sharing: 249 tests and all local validation/build gates. Native updated UI/geocoding/map-handoff and production release gates still pending.
+
 - Roope explicitly requested pushing current changes to `roopeaal/KierratysAppi`, superseding the earlier hold for this sharing step only. Destination verified as `origin=https://github.com/roopeaal/KierratysAppi.git`, remote default `main`; fresh fetch/ls-remote shows `39f8aa6`, 0 remote-only / 10 local-only commits before this control update. Fast-forward publication to main; no private KeepItGreen synchronization, mirror, force push, settings change or release authorization.
 - Reviewed the ten-commit independent team-baseline history and 59-file aggregate diff: location/OSM data, Open Facts routing, UI refinements and evidence. Worktree clean before publication preparation; no ignored work/screenshots/native binaries/profiles included. Changed filenames contain no environment/credential artifacts; this is not a secret-scanner claim.
 - Actual push/remote SHA and CI evidence are recorded separately in `docs/final/TEST_EVIDENCE.md`; native geocoding/map handoff and existing production NO-GO remain pending. Future pushes still need explicit authorization.
