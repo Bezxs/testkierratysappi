@@ -1,5 +1,9 @@
 # Test evidence
 
+## Authorized team publication preflight — 2026-10-08
+
+- Explicit owner authorization names KierratysAppi. Fresh remote main is `39f8aa65b72befcb43c5c1440dbca1b02b335edf`, an ancestor of implementation `0324c0d0f78f0218b5c95c4b33c8df20eac12a98` (0 remote-only / 10 local-only commits). Reviewed history/diff, clean worktree and passing aggregate whitespace check. Changed filename inventory includes no environment/credential artifacts, screenshots/work directories or built native app. Not a secret-scanner or production release pass.
+
 ## Nearby UX and theme coherence — 2026-10-08
 
 - Final post-runner/shared-disabled-state rerun also passes, exit 0: same 249 tests and all validation gates. Log: ignored `work/location-2026-10-06/nearby-ux-validate-complete-2026-10-08.log`. Committed browser runner also passes using Enter to expand the focused details control, then collapses it again. No new physical-device evidence.

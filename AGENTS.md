@@ -2,7 +2,7 @@
 
 ## Active owner boundary — October 6, 2026
 
-Continue this checkout from KierratysAppi main `39f8aa6`, independently of the newer KeepItGreen repository. Do not merge, cherry-pick or copy its code, appearance, assets or fixtures. The location feature is new work against this baseline, not a port. Keep the existing name/identity/style already present here. No GitHub push is authorized by this work request; inspect actual remote URLs before any future authorized publication.
+Continue this checkout from KierratysAppi main `39f8aa6`, independently of the newer KeepItGreen repository. Do not merge, cherry-pick or copy its code, appearance, assets or fixtures. The location feature is new work against this baseline, not a port. Keep the existing name/identity/style already present here. Roope explicitly authorized publishing this independent branch's current changes to KierratysAppi on October 8. This is one sharing step, not permission for future automatic pushes, private-repository synchronization or production publication; inspect actual remote URLs before every authorized publication.
 
 ## Product invariant
 

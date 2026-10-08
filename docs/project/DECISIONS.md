@@ -207,6 +207,8 @@
 
 ## Remaining pending decisions
 
+- October 8 sharing authorization: Roope explicitly requested current changes in KierratysAppi, so use an explicit `HEAD:refs/heads/main` push to the verified team remote only if it remains a fast-forward. Keep local feature branch and KeepItGreen remote untouched. This does not revoke the prohibition on future automatic sharing or authorize production release.
+
 - October 8 UX: use progressive disclosure for technical metadata, not for essential uncertainty or optional lookup consent. Keep public-source/date/licence visible; map is the single primary result action and refresh is secondary. Preserve baseline Atkinson typography/palette and shared components; no private-repository imports, decorative animation or fabricated map preview.
 - October 8 theme: one AppThemeProvider owns the color-scheme subscription and publishes a shared palette. Browser reproduction showed inconsistent per-component colors on a live scheme change; shared context repairs the observed defect. Keep native accessibilityState and explicit web ARIA semantics together because RN Web did not expose expanded state from accessibilityState alone.
 

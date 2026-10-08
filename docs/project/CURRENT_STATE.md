@@ -1,5 +1,11 @@
 # Current state
 
+## Authorized team-repository publication — 2026-10-08
+
+- Roope explicitly requested pushing current changes to `roopeaal/KierratysAppi`, superseding the earlier hold for this sharing step only. Destination verified as `origin=https://github.com/roopeaal/KierratysAppi.git`, remote default `main`; fresh fetch/ls-remote shows `39f8aa6`, 0 remote-only / 10 local-only commits before this control update. Fast-forward publication to main; no private KeepItGreen synchronization, mirror, force push, settings change or release authorization.
+- Reviewed the ten-commit independent team-baseline history and 59-file aggregate diff: location/OSM data, Open Facts routing, UI refinements and evidence. Worktree clean before publication preparation; no ignored work/screenshots/native binaries/profiles included. Changed filenames contain no environment/credential artifacts; this is not a secret-scanner claim.
+- Actual push/remote SHA and CI evidence are recorded separately in `docs/final/TEST_EVIDENCE.md`; native geocoding/map handoff and existing production NO-GO remain pending. Future pushes still need explicit authorization.
+
 ## Nearby UX refinement — 2026-10-08
 
 - Refocused the nearby result around point identity, compact straight-line distance and primary map action. Short pre-permission purpose remains visible before search; optional address lookup retains pre-action recipient disclosure and explicit loading text. Accuracy/source ID/full caveats are accessible expandable details, with unverified status, short materials/access/hours caution and source/date still visible. Refresh becomes secondary after the result; no decorative motion or new dependency.
