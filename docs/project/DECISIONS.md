@@ -207,6 +207,8 @@
 
 ## Remaining pending decisions
 
+- October 8: prefer installed OS geocoding over integrating public Nominatim. Its current policy requires a deliberate responsible developer decision, app-wide rate/caching and switchability; no bulk enrichment or generic public endpoint added (https://operations.osmfoundation.org/policies/nominatim/, accessed 2026-10-08). Optional user-triggered OS lookup sends public point coordinates only, once per result; five-second UI deadline does not cancel native provider work. Area estimate must never replace source-provided point name or pretend to be a verified official address.
+
 - October 8 whereabouts: provide an explicit OpenStreetMap marker action rather than fabricate missing addresses or send the user's location to reverse-geocoding/routing services. Use existing source coordinates (area centroid caution retained); no turn-by-turn or entrance accuracy claim. Marker URL format checked against https://wiki.openstreetmap.org/wiki/Homepage on 2026-10-08.
 
 - October 8 point identification: keep the existing licensed directory rather than guessing an operator or making location-bearing reverse-geocoding requests. Expose reported kind and source identifier; explicitly label absent names/types. Owner postponed push, and target repository remains to be confirmed.

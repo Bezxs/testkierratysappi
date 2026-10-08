@@ -1,5 +1,10 @@
 # Current state
 
+## Optional point-area address completion — 2026-10-08
+
+- Added owner-requested native address completion via the already-installed Expo Location reverse-geocoding API. Explicit optional button sends only the public collection point coordinates to the OS map service, never the user's fix. Display is an area/address estimate, not a verified point name/address; bounded fields, five-second wait, cancellation/late-result protection and safe unavailable fallback. No lookup on web, no new dependency/account/paid API or public Nominatim integration.
+- Unnamed-point heading now says Kierrätyspiste rather than emphasizing missing metadata. Map marker and source/type/provenance remain. OS geocoding cannot be forcibly cancelled after dispatch; late results are ignored. Native lookup may require network and platform service availability; real device address/visual acceptance is pending. No push.
+
 ## Point whereabouts — 2026-10-08
 
 - Added a prominent Show point on map button using validated public point coordinates and an OpenStreetMap marker. Address is displayed when known; otherwise FI/EN explicitly explains that it is missing and directs the user to the map. No reverse-geocoding, new account/package, or user-location URL. Updated privacy disclosure for public point coordinates.

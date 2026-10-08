@@ -4,6 +4,9 @@ Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally bl
 
 ## Current independent team-baseline work — October 7
 
+- [x] Add explicit optional native public-point reverse-geocoding with bounded normalization, timeout/cancellation, area-estimate disclosure and safe failure.
+- [~] Verify actual native address completion/visual flow and map handoff.
+
 - [x] Add marked-map destination link and explicit missing-address fallback, using public point coordinates only.
 - [~] Verify physical map handoff and updated result layout.
 

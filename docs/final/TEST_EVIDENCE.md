@@ -1,5 +1,11 @@
 # Test evidence
 
+## Optional point-area address — 2026-10-08
+
+- Full pinned `pnpm validate` passes after removing an undeclared Zod import from the mobile normalizer and using explicit runtime guards: **246 tests (33 policy + 213 application)**, formatting/lint/strict types, package/API builds and 13 routes. Initial typecheck failure is retained in ignored `point-address-validate-2026-10-08.log`; passing run: `work/location-2026-10-06/point-address-validate-final-2026-10-08.log`. Disclosure also appears in the privacy screen. Native service/handoff remains pending; no push.
+
+- Added four tests: bounded address normalization/POI-name exclusion, exact public-coordinate-only lookup and unavailable/offline handling, stalled-provider deadline, pre-abort/in-flight cancellation. Existing identity policy updated for generic unnamed-point heading. No real reverse-geocoding result or physical layout/map-handoff pass claimed; no user coordinates recorded.
+
 ## Point map destination — 2026-10-08
 
 - Full pinned `pnpm validate` passes both before and after final privacy-copy update, exit 0: **242 tests (33 policy + 209 application)**, formatting/lint/strict types, package/API builds and 13 web routes. Logs: ignored `work/location-2026-10-06/point-map-validate-2026-10-08.log` and `point-map-validate-final-2026-10-08.log`. No new external blocker or production GO.

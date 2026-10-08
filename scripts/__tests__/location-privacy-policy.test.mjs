@@ -5,7 +5,7 @@ import test from "node:test";
 const read = (path) => readFileSync(new URL(`../../${path}`, import.meta.url), "utf8");
 test("nearest result identifies the source point without inventing missing names or types", () => {
   const screen = read("apps/mobile/src/app/nearby.tsx");
-  assert.match(screen, /point\.name \?\? t\("nearbyNameUnknown"\)/u);
+  assert.match(screen, /point\.name \?\? t\("nearbyGeneric"\)/u);
   for (const key of [
     "nearbyPointType",
     "nearbyCentre",

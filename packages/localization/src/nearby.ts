@@ -1,4 +1,9 @@
 export const nearbyFi = {
+  nearbyCompleteAddress: "Täydennä sijaintitieto",
+  nearbyAddressEstimate: "Lähialueen osoitearvio · laitteen karttapalvelu",
+  nearbyAddressFailed: "Osoitearviota ei saatu. Näet pisteen kartalta.",
+  nearbyAddressDisclosure:
+    "Vapaaehtoinen osoitehaku välittää julkisen pisteen koordinaatit laitteen karttapalvelulle, ei omaa sijaintiasi. Arvio voi tarkoittaa viereistä katua tai rakennusta, ei pisteen virallista osoitetta.",
   nearbyAddressUnknown: "Katuosoitetta ei ole aineistossa. Näet pisteen sijainnin kartalta.",
   nearbyShowMap: "Näytä piste kartalla",
   nearbyMapHint:
@@ -50,6 +55,11 @@ export const nearbyFi = {
 };
 
 export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
+  nearbyCompleteAddress: "Complete location details",
+  nearbyAddressEstimate: "Nearby address estimate · device map service",
+  nearbyAddressFailed: "Address estimate unavailable. View the point on the map.",
+  nearbyAddressDisclosure:
+    "Optional address lookup sends the public point coordinates to the device map service, not your location. The estimate may describe a nearby street or building, not the point's official address.",
   nearbyAddressUnknown: "Street address is not available. View the point's location on the map.",
   nearbyShowMap: "Show point on map",
   nearbyMapHint:

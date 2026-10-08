@@ -7,6 +7,7 @@ import {
 } from "@kierratysappi/application/collection-points";
 import type { MessageKey } from "@kierratysappi/localization";
 import { useFocusEffect, useRouter } from "expo-router";
+import * as Location from "expo-location";
 import { useCallback, useRef, useState } from "react";
 import { AppState, Linking, Platform, StyleSheet, View } from "react-native";
 import snapshot from "@/assets/data/finland-recycling.json";
@@ -14,6 +15,7 @@ import { AppText, BrandLockup, Button, InlineLink, Paper, Screen } from "@/compo
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { readDeviceLocation } from "@/features/nearby/device-location";
 import { displayDistance, LocationIssue } from "@/features/nearby/location-session";
+import { resolvePointAddress } from "@/features/nearby/point-address";
 import { useLanguage } from "@/i18n/language-context";
 import { spacing } from "@/theme/tokens";
 
@@ -38,8 +40,16 @@ export default function NearbyScreen() {
   const [state, setState] = useState<State>({ status: "idle" });
   const [linkError, setLinkError] = useState(false);
   const active = useRef<AbortController | null>(null);
+  const addressRequest = useRef<AbortController | null>(null);
+  const [address, setAddress] = useState<{
+    status: "idle" | "loading" | "done";
+    text: string | null;
+  }>({ status: "idle", text: null });
 
   const clear = useCallback(() => {
+    addressRequest.current?.abort();
+    addressRequest.current = null;
+    setAddress({ status: "idle", text: null });
     active.current?.abort();
     active.current = null;
     setState({ status: "idle" });
@@ -60,6 +70,9 @@ export default function NearbyScreen() {
 
   const find = async () => {
     if (active.current) return;
+    addressRequest.current?.abort();
+    addressRequest.current = null;
+    setAddress({ status: "idle", text: null });
     setLinkError(false);
     if (!directory.success) {
       setState({ status: "error", message: "nearbyDataError" });
@@ -98,6 +111,24 @@ export default function NearbyScreen() {
       setLinkError(true);
       announceAccessibility(t("nearbyLinkError"), "high");
     });
+  };
+  const completeAddress = async () => {
+    if (state.status !== "ready" || address.status !== "idle" || addressRequest.current) return;
+    const controller = new AbortController();
+    addressRequest.current = controller;
+    setAddress({ status: "loading", text: null });
+    const text = await resolvePointAddress(
+      state.result.point,
+      Location.reverseGeocodeAsync,
+      controller.signal,
+    );
+    if (!controller.signal.aborted) {
+      setAddress({ status: "done", text });
+      announceAccessibility(
+        text ? `${t("nearbyAddressEstimate")}: ${text}` : t("nearbyAddressFailed"),
+      );
+    }
+    if (addressRequest.current === controller) addressRequest.current = null;
   };
 
   return (
@@ -154,7 +185,7 @@ export default function NearbyScreen() {
             {t("nearbyResult")}
           </AppText>
           <AppText variant="heading" accessibilityRole="header">
-            {state.result.point.name ?? t("nearbyNameUnknown")}
+            {state.result.point.name ?? t("nearbyGeneric")}
           </AppText>
           <AppText>
             {t("nearbyPointType")}:{" "}
@@ -166,7 +197,31 @@ export default function NearbyScreen() {
                   : "nearbyTypeUnknown",
             )}
           </AppText>
-          <AppText>{state.result.point.address ?? t("nearbyAddressUnknown")}</AppText>
+          {state.result.point.address ? (
+            <AppText>{state.result.point.address}</AppText>
+          ) : (
+            <>
+              {address.text && (
+                <AppText>
+                  {t("nearbyAddressEstimate")}: {address.text}
+                </AppText>
+              )}
+              {address.status === "done" && !address.text && (
+                <AppText>{t("nearbyAddressFailed")}</AppText>
+              )}
+              {Platform.OS !== "web" && address.status !== "done" && (
+                <Button
+                  label={t("nearbyCompleteAddress")}
+                  variant="secondary"
+                  busy={address.status === "loading"}
+                  onPress={() => void completeAddress()}
+                />
+              )}
+              <AppText variant="small" muted>
+                {t("nearbyAddressDisclosure")}
+              </AppText>
+            </>
+          )}
           <Button
             label={t("nearbyShowMap")}
             variant="secondary"
