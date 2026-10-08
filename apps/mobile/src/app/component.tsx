@@ -5,17 +5,17 @@ import type {
   PackagingShape,
 } from "@kierratysappi/domain";
 import { localizedText } from "@kierratysappi/localization";
-import { sortPackagingComponent, type SortingResult } from "@kierratysappi/recycling-engine";
+import { type SortingResult, sortPackagingComponent } from "@kierratysappi/recycling-engine";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import { SortingResultCard } from "@/components/sorting-result";
 import {
   AppText,
-  BrandLockup,
   Button,
-  Eyebrow,
-  InlineLink,
+  ChoiceIndicator,
+  PageHeader,
+  PageIntro,
   Screen,
   sharedStyles,
 } from "@/components/ui";
@@ -24,10 +24,10 @@ import { useLanguage } from "@/i18n/language-context";
 import { radius, spacing, useAppTheme } from "@/theme/tokens";
 
 const MATERIALS = [
-  ["plastic", "materialPlastic"],
-  ["carton", "materialCarton"],
-  ["glass", "materialGlass"],
-  ["metal", "materialMetal"],
+  ["plastic", "materialPlasticChoice"],
+  ["carton", "materialCartonChoice"],
+  ["glass", "materialGlassChoice"],
+  ["metal", "materialMetalChoice"],
 ] as const;
 const SHAPES = [
   ["bottle", "shapeBottle"],
@@ -96,56 +96,48 @@ export default function ManualComponentScreen() {
 
   return (
     <Screen>
-      <View style={styles.header}>
-        <BrandLockup compact />
-        <InlineLink label={t("close")} onPress={() => router.back()} role="button" />
-      </View>
-      <View style={styles.intro}>
-        <Eyebrow>{t("manualObservationEyebrow")}</Eyebrow>
-        <AppText variant="title" accessibilityRole="header">
-          {t("selectMaterialTitle")}
-        </AppText>
-        <AppText muted>{t("selectMaterialBody")}</AppText>
-      </View>
-
-      <ChoiceGroup
-        label={t("selectMaterialTitle")}
-        value={material}
-        choices={MATERIALS.map(([value, label]) => ({ value, label: t(label) }))}
-        onChange={(value) => {
-          setMaterial(value as MaterialFamily);
-          setResult(undefined);
-        }}
-      />
-      <ChoiceGroup
-        label={t("shapeLabel")}
-        value={shape}
-        choices={SHAPES.map(([value, label]) => ({ value, label: t(label) }))}
-        onChange={(value) => {
-          setShape(value as PackagingShape);
-          setResult(undefined);
-        }}
-      />
-      {(shape === "bottle" || shape === "can") && (
+      <PageHeader onBack={() => router.back()} />
+      <PageIntro title={t("selectMaterialTitle")} body={t("selectMaterialBody")} />
+      <View style={styles.form}>
         <ChoiceGroup
-          label={t("depositLabel")}
-          value={deposit}
-          choices={DEPOSITS.map(([value, label]) => ({ value, label: t(label) }))}
+          label={t("materialFieldLabel")}
+          value={material}
+          choices={MATERIALS.map(([value, label]) => ({ value, label: t(label) }))}
           onChange={(value) => {
-            setDeposit(value as DepositReturnStatus);
+            setMaterial(value as MaterialFamily);
             setResult(undefined);
           }}
         />
-      )}
-      <Button label={t("showGuidance")} onPress={evaluate} disabled={!material} />
-      {result && (
-        <View style={styles.result} accessibilityLiveRegion="polite">
-          <SortingResultCard result={result} />
-        </View>
-      )}
-      <AppText variant="small" muted style={{ color: palette.muted }}>
-        {t("localObservation")}
-      </AppText>
+        <ChoiceGroup
+          label={t("shapeLabel")}
+          value={shape}
+          choices={SHAPES.map(([value, label]) => ({ value, label: t(label) }))}
+          onChange={(value) => {
+            setShape(value as PackagingShape);
+            setResult(undefined);
+          }}
+        />
+        {(shape === "bottle" || shape === "can") && (
+          <ChoiceGroup
+            label={t("depositLabel")}
+            value={deposit}
+            choices={DEPOSITS.map(([value, label]) => ({ value, label: t(label) }))}
+            onChange={(value) => {
+              setDeposit(value as DepositReturnStatus);
+              setResult(undefined);
+            }}
+          />
+        )}
+        <Button label={t("showGuidance")} onPress={evaluate} disabled={!material} />
+        {result && (
+          <View style={styles.result} accessibilityLiveRegion="polite">
+            <SortingResultCard result={result} />
+          </View>
+        )}
+        <AppText variant="small" muted style={{ color: palette.muted }}>
+          {t("localObservation")}
+        </AppText>
+      </View>
     </Screen>
   );
 }
@@ -177,6 +169,7 @@ function ChoiceGroup({
               onPress={() => onChange(choice.value)}
               style={({ pressed }) => [
                 styles.choice,
+                choices.length === 3 ? styles.compactChoice : styles.gridChoice,
                 {
                   backgroundColor: selected ? palette.pineSoft : palette.surface,
                   borderColor: selected ? palette.pine : palette.line,
@@ -184,7 +177,11 @@ function ChoiceGroup({
                 },
               ]}
             >
-              <AppText variant="label" style={{ color: selected ? palette.pine : palette.ink }}>
+              <ChoiceIndicator selected={selected} />
+              <AppText
+                variant="label"
+                style={{ color: selected ? palette.pine : palette.ink, flex: 1, minWidth: 0 }}
+              >
                 {choice.label}
               </AppText>
             </Pressable>
@@ -196,21 +193,20 @@ function ChoiceGroup({
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: spacing.md,
-  },
-  intro: { paddingTop: spacing.xxl, paddingBottom: spacing.lg, gap: spacing.sm },
+  form: { gap: spacing.lg },
   choices: { flexDirection: "row", flexWrap: "wrap", gap: spacing.xs },
+  gridChoice: { flexBasis: "46%", flexGrow: 1 },
+  compactChoice: { flexBasis: "25%", flexGrow: 1 },
   choice: {
     minHeight: 48,
     borderWidth: 1,
-    borderRadius: radius.pill,
-    paddingHorizontal: spacing.md,
+    borderRadius: radius.sm,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing.xs,
+    paddingHorizontal: spacing.sm,
     paddingVertical: spacing.sm,
-    justifyContent: "center",
+    justifyContent: "flex-start",
   },
   result: { paddingTop: spacing.lg },
 });

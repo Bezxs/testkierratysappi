@@ -1,5 +1,29 @@
 # Test evidence
 
+## Whole-app refinement — 2026-10-08
+
+- Full pinned local validation passes: **261 tests (39 policy + 222 application)**,
+  format/lint/strict types, package/API builds and 13 web routes. Nine new
+  history-presentation and three new design-policy regressions. Final log:
+  ignored `work/location-2026-10-06/app-refinement-validate.log`.
+- Both actual-UI browser runners pass with installed Playwright/Chrome.
+  FI/EN, manual invalid/no-request and keyboard activation, distinct product
+  failure/offline/missing states, two-component resolved/unknown fixture with
+  provenance/licence, local ambiguity/confirmation/history/drafts/legal markers,
+  dark/130% synthetic text and 320/390/1280 Home widths. Nearby retains map-first,
+  offline/source/unknown safeguards using synthetic public-point GPS.
+- Current Metro iOS manifest and its exact launch asset both return HTTP 200;
+  development JS bundle is 10,958,874 bytes. Local API `/v1/health` returns
+  `status=ok`, version 0.1.0. This establishes local service/bundle generation,
+  not new physical startup or a native/release build.
+- Final exported web entry `entry-817cc3f3545fc2533f84ad89cd3d8437.js`:
+  3,372,352 bytes / 696,516 bytes gzip, still above the existing 2 MiB warning
+  budget. No measured load-time, native performance or battery improvement claim.
+- Visual inspection, exact reproducible commands, repaired overflow/test-selector
+  defects and fixture limitations: `APP_REFINEMENT_EVIDENCE.md`. No new native
+  build/device acceptance, performance/battery benchmark, live provider/security
+  audit, GitHub CI or release claim. No push in this work unit.
+
 ## Authorized team publication preflight — 2026-10-08
 
 - Fresh full pinned `pnpm validate` passes, exit 0: 249 tests (36 policy + 213 application), format/lint/strict types, package/API builds and 13 routes. Log: ignored `work/location-2026-10-06/team-push-validate-2026-10-08.log`.

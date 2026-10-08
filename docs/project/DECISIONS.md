@@ -205,6 +205,13 @@
 - October 7 follow-up: owner confirmation followed by successful launch and persistent app process clears the trust gate without changing/reinstalling the app. Repair the separately expired XCTest helper rather than blaming/rebuilding the product; if UI transport remains unavailable, retain explicit unrun GUI/GPS rows and collect scoped owner observations without coordinates. No helper or private-repository implementation is added to the app.
 - October 7 retry: a fresh session now verifies native Home/nearby introduction without another repair. Capture only pre-location screenshots and use result-presence checks rather than copying location-derived text. A subsequent system-modal accessibility timeout does not prove permission denial, missing results or an app defect; request the owner's actual prompt/result observation before assigning those outcomes.
 
+## D-030 — A modest utility, not a marketing dashboard
+
+- Date: 2026-10-08
+- Status: implemented locally; latest native visual acceptance pending
+- Decision: honor the owner's whole-app request through consistent back navigation, a single functional barcode signature, readable flat sections, restrained geometry and plain FI/EN copy. Retain the baseline palette/fonts and actual early-stage functionality. Do not add demo badges or fabricated maturity signals, hide legal/uncertainty notices, import private experiments, change dependencies or push without fresh authorization.
+- Reason: the previous repeated brand headers, large decorative marks, uppercase captions and card stacks obscured the task. Short material labels and flexible radio layouts avoid Finnish compound-word clipping under synthetic large text. History's product-found status must not imply verified packaging guidance. Sources, rule metadata and local-only feedback limitations remain explicit.
+
 ## Remaining pending decisions
 
 - October 8 publication outcome: explicit non-force push succeeds to existing public KierratysAppi main, verified remotely. Do not change visibility/settings or KeepItGreen; source sharing does not publish a running production service or certify stores/native pending flows.

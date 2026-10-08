@@ -51,6 +51,7 @@ export function Screen({
   const content = <View style={[styles.content, style]}>{children}</View>;
   return (
     <SafeAreaView
+      nativeID="app-screen-surface"
       accessibilityLanguage={language === "fi" ? "fi-FI" : "en"}
       style={[styles.safeArea, { backgroundColor: palette.bgCanvas }]}
       edges={["top", "bottom"]}
@@ -60,7 +61,7 @@ export function Screen({
         <ScrollView
           contentContainerStyle={styles.scrollContent}
           keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator
         >
           {content}
         </ScrollView>
@@ -93,6 +94,148 @@ export function BrandLockup({ compact = false }: { readonly compact?: boolean })
           </AppText>
         )}
       </View>
+    </View>
+  );
+}
+
+/** Quiet navigation for subpages; the main wordmark belongs on Home. */
+export function PageHeader({
+  onBack,
+  label,
+  testID,
+}: {
+  readonly onBack: () => void;
+  readonly label?: string;
+  readonly testID?: string;
+}) {
+  const { palette } = useAppTheme();
+  const { t } = useLanguage();
+  const backLabel = label ?? t("back");
+  return (
+    <View style={[styles.pageHeader, { borderColor: palette.borderSubtle }]}>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={backLabel}
+        onPress={onBack}
+        testID={testID}
+        style={({ pressed }) => [
+          styles.backAction,
+          { opacity: pressed ? interaction.pressedOpacity : 1 },
+        ]}
+      >
+        <Chevron back />
+        <AppText variant="label">{backLabel}</AppText>
+      </Pressable>
+      <AppText variant="small" muted style={styles.headerWordmark}>
+        {t("appName")}
+      </AppText>
+    </View>
+  );
+}
+
+export function PageIntro({ title, body }: { readonly title: string; readonly body?: string }) {
+  return (
+    <View style={styles.pageIntro}>
+      <AppText variant="title" accessibilityRole="header">
+        {title}
+      </AppText>
+      {body && <AppText muted>{body}</AppText>}
+    </View>
+  );
+}
+
+export function DocumentSection({
+  children,
+  style,
+  testID,
+}: PropsWithChildren<{
+  readonly style?: StyleProp<ViewStyle>;
+  readonly testID?: string;
+}>) {
+  const { palette } = useAppTheme();
+  return (
+    <View
+      style={[styles.documentSection, { borderColor: palette.borderSubtle }, style]}
+      testID={testID}
+    >
+      {children}
+    </View>
+  );
+}
+
+export function Chevron({ back = false }: { readonly back?: boolean }) {
+  const { palette } = useAppTheme();
+  return (
+    <View
+      accessible={false}
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+      aria-hidden
+    >
+      <View
+        style={[
+          styles.chevron,
+          {
+            borderColor: palette.textSecondary,
+            transform: [{ rotate: back ? "135deg" : "-45deg" }],
+          },
+        ]}
+      />
+    </View>
+  );
+}
+
+export function ActionRow({
+  label,
+  detail,
+  onPress,
+  testID,
+}: {
+  readonly label: string;
+  readonly detail?: string;
+  readonly onPress: () => void;
+  readonly testID?: string;
+}) {
+  const { palette } = useAppTheme();
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      accessibilityHint={detail}
+      onPress={onPress}
+      testID={testID}
+      style={({ pressed }) => [
+        styles.actionRow,
+        { borderColor: palette.borderSubtle, opacity: pressed ? interaction.pressedOpacity : 1 },
+      ]}
+    >
+      <View style={sharedStyles.grow}>
+        <AppText variant="label">{label}</AppText>
+        {detail && (
+          <AppText variant="small" muted>
+            {detail}
+          </AppText>
+        )}
+      </View>
+      <Chevron />
+    </Pressable>
+  );
+}
+
+export function ChoiceIndicator({ selected }: { readonly selected: boolean }) {
+  const { palette } = useAppTheme();
+  return (
+    <View
+      style={[
+        styles.choiceIndicator,
+        { borderColor: selected ? palette.actionPrimary : palette.borderStrong },
+      ]}
+      accessible={false}
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+      aria-hidden
+    >
+      {selected && <View style={[styles.choiceDot, { backgroundColor: palette.actionPrimary }]} />}
     </View>
   );
 }
@@ -312,7 +455,7 @@ const styles = StyleSheet.create({
     maxWidth: 560,
     flex: 1,
     paddingHorizontal: 20,
-    paddingTop: spacing.md,
+    paddingTop: spacing.sm,
     paddingBottom: spacing.xxl,
   },
   brand: { flexDirection: "row", alignItems: "center", gap: 10, flexShrink: 1 },
@@ -336,6 +479,50 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   paper: { borderWidth: 1, borderRadius: radius.lg, padding: 20, gap: spacing.md },
+  pageHeader: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: spacing.xs,
+    paddingBottom: spacing.xs,
+    borderBottomWidth: 1,
+  },
+  backAction: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing.sm,
+    minHeight: controls.minimumTouchTarget,
+    paddingRight: spacing.sm,
+    flexShrink: 1,
+  },
+  headerWordmark: { flexShrink: 1 },
+  pageIntro: { paddingTop: spacing.lg, paddingBottom: spacing.lg, gap: spacing.xs },
+  documentSection: { borderTopWidth: 1, paddingVertical: 20, gap: spacing.sm },
+  chevron: {
+    width: 8,
+    height: 8,
+    borderBottomWidth: 1.5,
+    borderRightWidth: 1.5,
+    marginHorizontal: 3,
+  },
+  actionRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing.md,
+    borderBottomWidth: 1,
+    minHeight: 60,
+    paddingVertical: spacing.md,
+  },
+  choiceIndicator: {
+    width: 18,
+    height: 18,
+    borderWidth: 1.5,
+    borderRadius: 9,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  choiceDot: { width: 8, height: 8, borderRadius: 4 },
   sectionHeader: {
     flexDirection: "row",
     alignItems: "center",

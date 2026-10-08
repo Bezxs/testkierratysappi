@@ -1,17 +1,17 @@
 import {
   CollectionDirectorySchema,
-  collectionPointUrl,
   collectionPointMapUrl,
+  collectionPointUrl,
   directoryAgeDays,
   nearestCollectionPoint,
 } from "@kierratysappi/application/collection-points";
 import type { MessageKey } from "@kierratysappi/localization";
-import { useFocusEffect, useRouter } from "expo-router";
 import * as Location from "expo-location";
+import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
 import { AppState, Linking, Platform, StyleSheet, View } from "react-native";
 import snapshot from "@/assets/data/finland-recycling.json";
-import { AppText, BrandLockup, Button, InlineLink, Paper, Rule, Screen } from "@/components/ui";
+import { AppText, Button, InlineLink, PageHeader, Paper, Rule, Screen } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { readDeviceLocation } from "@/features/nearby/device-location";
 import { displayDistance, LocationIssue } from "@/features/nearby/location-session";
@@ -139,17 +139,12 @@ export default function NearbyScreen() {
 
   return (
     <Screen testID="nearby-screen" style={styles.screen}>
-      <View style={styles.header}>
-        <BrandLockup compact />
-        <InlineLink
-          label={t("close")}
-          role="button"
-          onPress={() => {
-            clear();
-            router.back();
-          }}
-        />
-      </View>
+      <PageHeader
+        onBack={() => {
+          clear();
+          router.back();
+        }}
+      />
       <View style={styles.intro}>
         <AppText variant="title" accessibilityRole="header">
           {t("nearbyTitle")}
@@ -363,12 +358,6 @@ export default function NearbyScreen() {
 
 const styles = StyleSheet.create({
   screen: { gap: spacing.md },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: spacing.sm,
-  },
   intro: { gap: spacing.sm, paddingTop: spacing.sm },
   distance: { flexDirection: "row", alignItems: "baseline", flexWrap: "wrap", gap: spacing.sm },
   stack: { gap: spacing.xs },

@@ -1,5 +1,5 @@
+import { createContext, createElement, type PropsWithChildren, useContext, useMemo } from "react";
 import { useColorScheme } from "react-native";
-import { createContext, createElement, useContext, useMemo, type PropsWithChildren } from "react";
 import { type AppPalette, darkPalette, lightPalette } from "./palettes";
 
 export { darkPalette, lightPalette } from "./palettes";
@@ -16,33 +16,33 @@ export const spacing = {
 
 export const radius = {
   sm: 8,
-  md: 14,
-  lg: 22,
+  md: 10,
+  lg: 16,
   pill: 999,
 } as const;
 
 export const typography = {
   display: {
     fontFamily: "Atkinson_700Bold",
-    fontSize: 34,
-    lineHeight: 38,
-    letterSpacing: -0.8,
+    fontSize: 32,
+    lineHeight: 36,
+    letterSpacing: -0.5,
   },
   title: {
     fontFamily: "Atkinson_700Bold",
-    fontSize: 28,
-    lineHeight: 34,
-    letterSpacing: -0.4,
+    fontSize: 26,
+    lineHeight: 32,
+    letterSpacing: -0.3,
   },
   heading: {
     fontFamily: "Atkinson_600SemiBold",
-    fontSize: 20,
-    lineHeight: 26,
+    fontSize: 19,
+    lineHeight: 25,
   },
   body: {
     fontFamily: "Atkinson_400Regular",
     fontSize: 17,
-    lineHeight: 24,
+    lineHeight: 25,
   },
   small: {
     fontFamily: "Atkinson_400Regular",
@@ -52,13 +52,13 @@ export const typography = {
   label: {
     fontFamily: "Atkinson_600SemiBold",
     fontSize: 16,
-    lineHeight: 20,
+    lineHeight: 22,
   },
   mono: {
     fontFamily: "IBMPlexMono_600SemiBold",
-    fontSize: 12,
-    lineHeight: 17,
-    letterSpacing: 0.8,
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: 0.2,
   },
 } as const;
 

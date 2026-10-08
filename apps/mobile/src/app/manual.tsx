@@ -1,8 +1,7 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Keyboard, StyleSheet, TextInput, View } from "react-native";
-import { BarcodeMark } from "@/components/packaging-mark";
-import { AppText, BrandLockup, Button, InlineLink, Screen, sharedStyles } from "@/components/ui";
+import { AppText, Button, PageHeader, PageIntro, Screen, sharedStyles } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { useScanSession } from "@/features/scan/session-context";
 import { useLanguage } from "@/i18n/language-context";
@@ -30,23 +29,9 @@ export default function ManualEntryScreen() {
 
   return (
     <Screen testID="manual-entry-screen">
-      <View style={styles.header}>
-        <BrandLockup compact />
-        <InlineLink
-          label={t("close")}
-          onPress={() => router.back()}
-          role="button"
-          testID="manual-close-action"
-        />
-      </View>
+      <PageHeader onBack={() => router.back()} testID="manual-close-action" />
+      <PageIntro title={t("manualEntry")} body={t("manualLocation")} />
       <View style={styles.body}>
-        <View style={[styles.codeIllustration, { backgroundColor: palette.pineSoft }]}>
-          <BarcodeMark color={palette.textPrimary} large />
-        </View>
-        <AppText variant="title" accessibilityRole="header">
-          {t("manualEntry")}
-        </AppText>
-        <AppText muted>{t("manualLocation")}</AppText>
         <View style={sharedStyles.tightStack}>
           <AppText variant="label" nativeID="gtin-label">
             {t("gtinLabel")}
@@ -106,20 +91,7 @@ export default function ManualEntryScreen() {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: spacing.md,
-  },
-  body: { paddingTop: spacing.xl, gap: spacing.lg },
-  codeIllustration: {
-    width: 108,
-    height: 96,
-    borderRadius: radius.lg,
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  body: { gap: spacing.lg },
   input: {
     minHeight: controls.inputMinHeight,
     borderWidth: 2,

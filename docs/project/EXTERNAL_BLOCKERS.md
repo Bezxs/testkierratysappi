@@ -1,5 +1,12 @@
 # External blockers
 
+October 8 whole-app refinement introduces no account, credential, paid-tool or
+data-service blocker. Latest native visual/device acceptance remains unrun:
+Codex owns the scoped iPhone checks/repairs; Roope handles any actual unlock,
+trust or permission action under OA-09. Browser fixture/scaling evidence is not
+physical-device evidence. Existing production owner/legal/hosting/store gates
+are unchanged; no GitHub push or release is authorized by this UI request.
+
 October 8 UX refinement: no new external account/credential/paid-service blocker. Actual iPhone OS geocoding/map handoff and native Dynamic Type/VoiceOver evidence remain device validation work, not covered by browser success. Existing production gates remain unchanged.
 
 October 8 optional OS address completion introduces no credential/paid-account blocker. It depends on native map-service/network availability and requires physical acceptance; failure safely retains the map destination. Public Nominatim was not integrated. Production readiness unchanged.

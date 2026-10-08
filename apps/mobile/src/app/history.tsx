@@ -2,21 +2,21 @@ import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import {
+  ActionRow,
   AppText,
-  BrandLockup,
   Button,
-  Eyebrow,
-  InlineLink,
-  Paper,
+  DocumentSection,
+  PageHeader,
+  PageIntro,
   Screen,
-  sharedStyles,
 } from "@/components/ui";
+import { formatHistoryDate, historyStatusMessageKey } from "@/features/history/presentation";
 import {
   clearHistory,
+  type HistoryEntry,
   isHistoryEnabled,
   readHistory,
   setHistoryEnabled,
-  type HistoryEntry,
 } from "@/features/history/storage";
 import { useScanSession } from "@/features/scan/session-context";
 import { useLanguage } from "@/i18n/language-context";
@@ -25,7 +25,7 @@ import { spacing, useAppTheme } from "@/theme/tokens";
 export default function HistoryScreen() {
   const router = useRouter();
   const { palette } = useAppTheme();
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const { lookupBarcode } = useScanSession();
   const [enabled, setEnabled] = useState(false);
   const [entries, setEntries] = useState<HistoryEntry[]>([]);
@@ -61,17 +61,8 @@ export default function HistoryScreen() {
 
   return (
     <Screen>
-      <View style={styles.header}>
-        <BrandLockup compact />
-        <InlineLink label={t("close")} onPress={() => router.back()} role="button" />
-      </View>
-      <View style={styles.intro}>
-        <Eyebrow>{t("localOnly").toUpperCase()}</Eyebrow>
-        <AppText variant="title" accessibilityRole="header">
-          {t("historyTitle")}
-        </AppText>
-        <AppText muted>{enabled ? t("historyOn") : t("historyOff")}</AppText>
-      </View>
+      <PageHeader onBack={() => router.back()} />
+      <PageIntro title={t("historyTitle")} body={enabled ? t("historyOn") : t("historyOff")} />
       <Button
         label={enabled ? t("disableHistory") : t("enableHistory")}
         variant={enabled ? "secondary" : "primary"}
@@ -79,29 +70,17 @@ export default function HistoryScreen() {
       />
       <View style={styles.list}>
         {entries.length === 0 ? (
-          <Paper>
+          <DocumentSection>
             <AppText muted>{t("emptyHistory")}</AppText>
-          </Paper>
+          </DocumentSection>
         ) : (
           entries.map((entry) => (
-            <Paper key={`${entry.gtin}-${entry.scannedAt}`}>
-              <View style={[sharedStyles.row, { justifyContent: "space-between" }]}>
-                <View style={sharedStyles.grow}>
-                  <AppText variant="heading">{entry.productName ?? entry.gtin}</AppText>
-                  <AppText variant="mono" muted>
-                    {entry.gtin}
-                  </AppText>
-                  <AppText variant="small" muted>
-                    {entry.scannedAt.slice(0, 10)} · {entry.resultStatus}
-                  </AppText>
-                </View>
-                <InlineLink
-                  label={t("openResult")}
-                  onPress={() => void openEntry(entry.gtin)}
-                  role="button"
-                />
-              </View>
-            </Paper>
+            <ActionRow
+              key={`${entry.gtin}-${entry.scannedAt}`}
+              label={entry.productName ?? entry.gtin}
+              detail={`${formatHistoryDate(entry.scannedAt, language) ?? t("historyDateUnknown")} · ${t(historyStatusMessageKey(entry.resultStatus))}\n${entry.gtin}`}
+              onPress={() => void openEntry(entry.gtin)}
+            />
           ))
         )}
       </View>
@@ -116,12 +95,5 @@ export default function HistoryScreen() {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: spacing.md,
-  },
-  intro: { paddingTop: spacing.xxl, paddingBottom: spacing.lg, gap: spacing.sm },
-  list: { paddingVertical: spacing.lg, gap: spacing.md },
+  list: { paddingVertical: spacing.lg },
 });

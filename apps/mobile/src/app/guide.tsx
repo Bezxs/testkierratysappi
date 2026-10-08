@@ -1,11 +1,11 @@
 import { useRouter } from "expo-router";
 import { Linking, StyleSheet, View } from "react-native";
-import { PackagingMark } from "@/components/packaging-mark";
 import {
   AppText,
-  BrandLockup,
-  Eyebrow,
+  DocumentSection,
   InlineLink,
+  PageHeader,
+  PageIntro,
   Paper,
   Screen,
   sharedStyles,
@@ -26,28 +26,16 @@ export default function GuideScreen() {
   const { t } = useLanguage();
   return (
     <Screen>
-      <View style={styles.header}>
-        <BrandLockup compact />
-        <InlineLink label={t("close")} onPress={() => router.back()} role="button" />
-      </View>
-      <View style={styles.intro}>
-        <Eyebrow>{t("materialGuideEyebrow")}</Eyebrow>
-        <AppText variant="title" accessibilityRole="header">
-          {t("materialGuideTitle")}
-        </AppText>
-        <AppText muted>{t("materialGuideBody")}</AppText>
-      </View>
+      <PageHeader onBack={() => router.back()} />
+      <PageIntro title={t("materialGuideTitle")} body={t("materialGuideBody")} />
       <View style={styles.grid}>
-        {GUIDE.map(([title, body, material]) => (
-          <Paper key={title} style={styles.guideCard}>
-            <View style={sharedStyles.row}>
-              <PackagingMark material={material} />
-              <AppText variant="heading" style={sharedStyles.grow}>
-                {t(title)}
-              </AppText>
-            </View>
+        {GUIDE.map(([title, body]) => (
+          <DocumentSection key={title}>
+            <AppText variant="heading" accessibilityRole="header">
+              {t(title)}
+            </AppText>
             <AppText>{t(body)}</AppText>
-          </Paper>
+          </DocumentSection>
         ))}
       </View>
       <Paper
@@ -56,8 +44,8 @@ export default function GuideScreen() {
         <AppText style={{ color: palette.amber }}>{t("depositCaution")}</AppText>
       </Paper>
       <View style={sharedStyles.tightStack}>
-        <AppText variant="mono" muted>
-          {t("ruleSourceLabel").toUpperCase()}
+        <AppText variant="small" muted>
+          {t("ruleSourceLabel")}
         </AppText>
         <InlineLink
           label="Suomen Pakkauskierrätys RINKI Oy"
@@ -74,13 +62,5 @@ export default function GuideScreen() {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: spacing.md,
-  },
-  intro: { paddingTop: spacing.xl, paddingBottom: spacing.lg, gap: spacing.sm },
-  grid: { gap: spacing.md, paddingBottom: spacing.md },
-  guideCard: { borderWidth: 0 },
+  grid: { paddingBottom: spacing.sm },
 });

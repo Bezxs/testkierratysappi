@@ -1,0 +1,393 @@
+// Isolated UI regression fixtures. Never application/provider seed data.
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
+const modulePath = process.env.PLAYWRIGHT_MODULE_PATH;
+const executablePath = process.env.BROWSER_EXECUTABLE_PATH;
+if (!modulePath || !executablePath) throw new Error("Set installed Playwright and browser paths.");
+const { chromium } = require(modulePath);
+const baseUrl = process.env.APP_QA_URL ?? "http://127.0.0.1:8093";
+const evidence = path.resolve("work/app-refinement-qa");
+fs.mkdirSync(evidence, { recursive: true });
+const gtin = "3017620422003"; // Public example, not a user's scan.
+const provenance = {
+  sourceId: "qa-only",
+  sourceName: "QA fixture provider",
+  sourceRecordId: gtin,
+  sourceUrl: "https://example.test/qa",
+  retrievedAt: "2026-10-08T12:00:00.000Z",
+  confidence: 0.65,
+  verificationStatus: "mock",
+  license: {
+    id: "qa-only",
+    name: "QA-only fixture",
+    url: "https://example.test/license",
+    attributionText: "Not real product data",
+    shareAlike: false,
+  },
+};
+const observed = (value) => ({ value, provenance });
+const part = {
+  id: "qa-plastic",
+  packagingStatus: observed("packaging"),
+  materialFamily: observed("plastic"),
+  shape: observed("other"),
+  conditions: { hazardousResidue: "unknown", pressurized: "unknown", emptied: "unknown" },
+};
+const unknownPart = { ...part, id: "qa-unknown", materialFamily: observed("unknown") };
+const confidence = { tier: "medium", score: 0.65, reasons: ["QA fixture"] };
+const trace = { evaluatedBranches: ["qa"], decisiveFields: ["materialFamily"] };
+const rule = {
+  id: "qa-rule",
+  version: "qa-only-v1",
+  jurisdiction: "FI",
+  sourceName: "QA rule fixture",
+  sourceUrl: "https://example.test/rule",
+  checkedAt: "2026-10-08",
+  effectiveFrom: "2026-10-08",
+  verificationStatus: "verified",
+};
+const product = {
+  gtin,
+  name: observed("QA fixture — two parts"),
+  packagingCompleteness: observed("partial"),
+  packagingComponents: [part, unknownPart],
+};
+const common = {
+  gtin,
+  product,
+  provider: { id: "qa-only", name: "QA fixture provider" },
+  cache: {
+    hit: false,
+    storedAt: "2026-10-08T12:00:00.000Z",
+    expiresAt: "2026-10-08T18:00:00.000Z",
+  },
+};
+const resolved = {
+  ...common,
+  status: "resolved",
+  components: [
+    {
+      observation: part,
+      sorting: {
+        status: "resolved",
+        componentId: part.id,
+        confidence,
+        trace,
+        destination: {
+          id: "plastic_packaging",
+          label: { fi: "QA — muovinkeräys", en: "QA — plastic collection" },
+        },
+        preparation: { fi: "QA-valmistelu", en: "QA preparation" },
+        explanation: { fi: "QA-selitys, ei oikea ohje", en: "QA explanation, not real guidance" },
+        exceptions: [],
+        rule,
+      },
+    },
+    {
+      observation: unknownPart,
+      sorting: {
+        status: "unknown",
+        componentId: unknownPart.id,
+        confidence: { tier: "unknown", score: 0, reasons: ["QA fixture"] },
+        trace,
+        reason: "material_missing",
+        nextAction: { fi: "QA — tarkista osa", en: "QA — check the part" },
+        sources: [],
+      },
+    },
+  ],
+};
+const missing = {
+  ...common,
+  status: "packaging_missing",
+  product: { ...product, packagingComponents: [], packagingCompleteness: observed("unknown") },
+  missingFields: ["packagingComponents"],
+};
+
+async function layout(page) {
+  await page.evaluate(() => document.fonts.ready);
+  assert.ok(
+    await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+    "Horizontal page overflow",
+  );
+  const overflow = await page.evaluate(() =>
+    [...document.querySelectorAll("div, input, textarea")]
+      .filter((el) => {
+        const box = el.getBoundingClientRect();
+        return (
+          box.width > 0 && box.height > 0 && (box.left < -1 || box.right > window.innerWidth + 1)
+        );
+      })
+      .map((el) => ({
+        text: el.textContent.slice(0, 80),
+        role: el.getAttribute("role"),
+        width: el.getBoundingClientRect().width,
+      })),
+  );
+  assert.deepEqual(overflow, [], "Clipped/overflowing layout elements");
+}
+async function shot(page, name) {
+  await page.evaluate(() => {
+    for (const el of document.querySelectorAll("div"))
+      if (el.scrollHeight > el.clientHeight) el.scrollTop = 0;
+  });
+  try {
+    await layout(page);
+  } catch (e) {
+    await page.screenshot({ path: path.join(evidence, "failure-" + name + ".png") });
+    throw new Error(name + ": " + e.message);
+  }
+  await page.screenshot({ path: path.join(evidence, name + ".png"), fullPage: true });
+}
+async function largeText(page) {
+  // Synthetic web text scaling, not native Dynamic Type acceptance.
+  await page.evaluate(() => {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const elements = new Set();
+    while (walker.nextNode())
+      if (walker.currentNode.textContent.trim()) elements.add(walker.currentNode.parentElement);
+    const sizes = [...elements].map((el) => {
+      const s = getComputedStyle(el);
+      return [el, parseFloat(s.fontSize), parseFloat(s.lineHeight)];
+    });
+    for (const [el, size, line] of sizes) {
+      el.style.fontSize = size * 1.3 + "px";
+      el.style.lineHeight = (Number.isFinite(line) ? line : size * 1.4) * 1.3 + "px";
+    }
+  });
+}
+
+(async () => {
+  const browser = await chromium.launch({ executablePath, headless: true });
+  try {
+    for (const language of ["fi", "en"]) {
+      const context = await browser.newContext({
+        viewport: { width: 390, height: 844 },
+        reducedMotion: "reduce",
+      });
+      const page = await context.newPage();
+      const errors = [];
+      page.on("pageerror", (e) => errors.push(e.message));
+      let scenario = "not_found";
+      let requests = 0;
+      await context.route("**/v1/recycling/lookup", async (route) => {
+        if (route.request().method() === "OPTIONS")
+          return route.fulfill({
+            status: 204,
+            headers: {
+              "access-control-allow-origin": "*",
+              "access-control-allow-methods": "POST",
+              "access-control-allow-headers": "content-type",
+            },
+          });
+        requests++;
+        assert.equal(route.request().postDataJSON().gtin, gtin);
+        if (scenario === "offline") return route.abort("internetdisconnected");
+        const body =
+          scenario === "resolved"
+            ? resolved
+            : scenario === "packaging_missing"
+              ? missing
+              : scenario === "not_found"
+                ? { status: "not_found", gtin }
+                : { status: "provider_unavailable", gtin, retryable: true };
+        await route.fulfill({
+          status: scenario === "not_found" ? 404 : scenario === "provider_unavailable" ? 503 : 200,
+          contentType: "application/json",
+          headers: { "access-control-allow-origin": "*" },
+          body: JSON.stringify(body),
+        });
+      });
+      await page.goto(baseUrl);
+      await page.getByTestId("home-screen").waitFor();
+      if (language === "en") await page.getByTestId("language-en").click();
+      await shot(page, language + "-home");
+      for (const id of [
+        "home-scan-action",
+        "home-manual-action",
+        "home-nearby-action",
+        "home-guide-action",
+        "home-history-action",
+      ]) {
+        const box = await page.getByTestId(id).boundingBox();
+        assert.ok(box.height >= 44 && box.width >= 44, "Home touch target");
+      }
+      await page.getByTestId("home-scan-action").click();
+      await page.getByTestId("scanner-permission-screen").waitFor();
+      assert.ok(await page.getByTestId("scanner-permission-manual-action").isVisible());
+      await shot(page, language + "-camera-purpose");
+      await page.getByTestId("scanner-permission-manual-action").click();
+      await page.getByTestId("manual-entry-screen").waitFor();
+      assert.equal(
+        await page.getByTestId("manual-submit-action").getAttribute("aria-disabled"),
+        "true",
+      );
+      await page.getByTestId("manual-gtin-input").fill("123");
+      await page.getByTestId("manual-submit-action").focus();
+      await page.getByTestId("manual-submit-action").press("Enter");
+      await page.getByRole("alert").waitFor();
+      assert.equal(requests, 0, "Invalid code never reaches API");
+      await shot(page, language + "-manual-invalid");
+      for (const state of [
+        "not_found",
+        "provider_unavailable",
+        "offline",
+        "packaging_missing",
+        "resolved",
+      ]) {
+        scenario = state;
+        await page.goto(baseUrl + "/manual");
+        await page.getByTestId("manual-gtin-input").fill(gtin);
+        await page.getByTestId("manual-submit-action").click();
+        await page
+          .getByTestId(
+            state === "offline"
+              ? "result-offline-screen"
+              : state === "not_found"
+                ? "result-not-found-screen"
+                : state === "provider_unavailable"
+                  ? "result-provider-unavailable-screen"
+                  : "product-result-screen",
+          )
+          .waitFor();
+        if (state === "resolved") {
+          assert.equal(await page.getByTestId("sorting-result-resolved").count(), 1);
+          assert.equal(await page.getByTestId("sorting-result-unknown").count(), 1);
+          await page.getByText("QA rule fixture", { exact: true }).waitFor();
+          await page.getByText("QA-only fixture", { exact: true }).waitFor();
+          assert.ok((await page.locator("body").innerText()).includes("qa-only-v1"));
+        }
+        await shot(page, language + "-result-" + state);
+      }
+      await page.goto(baseUrl + "/guide");
+      await page.getByRole("heading").first().waitFor();
+      await context.setOffline(true);
+      assert.equal(await page.getByRole("heading").count(), 5);
+      await shot(page, language + "-guide-offline");
+      await context.setOffline(false);
+      await page.goto(baseUrl + "/component");
+      const plastic = page.getByRole("radio", {
+        name: language === "fi" ? "Muovi" : "Plastic",
+        exact: true,
+      });
+      await plastic.click();
+      assert.equal(await plastic.getAttribute("aria-checked"), "true");
+      await page
+        .getByRole("radio", { name: language === "fi" ? "Pullo" : "Bottle", exact: true })
+        .click();
+      await page
+        .getByRole("button", {
+          name: language === "fi" ? "Näytä ohje" : "Show guidance",
+          exact: true,
+        })
+        .click();
+      await page.getByTestId("sorting-result-ambiguous").waitFor();
+      await shot(page, language + "-component-ambiguous");
+      await page.goto(baseUrl + "/material-code");
+      await page.getByRole("textbox").fill("05 PP");
+      await page
+        .getByRole("button", {
+          name: language === "fi" ? "Tarkista koodi" : "Check code",
+          exact: true,
+        })
+        .click();
+      assert.equal(await page.getByTestId("sorting-result-resolved").count(), 0);
+      await page
+        .getByRole("button", {
+          name:
+            language === "fi" ? "Näen tämän koodin pakkauksessa" : "I see this code on the package",
+          exact: true,
+        })
+        .click();
+      await page.getByTestId("sorting-result-resolved").waitFor();
+      await shot(page, language + "-material-code");
+      await page.goto(baseUrl + "/history");
+      await page
+        .getByText(
+          language === "fi" ? "Paikallinen historia on pois päältä." : "Local history is off.",
+          { exact: true },
+        )
+        .waitFor();
+      await shot(page, language + "-history-empty");
+      await page
+        .getByRole("button", {
+          name: language === "fi" ? "Ota paikallinen historia käyttöön" : "Enable local history",
+          exact: true,
+        })
+        .click();
+      scenario = "packaging_missing";
+      await page.goto(baseUrl + "/manual");
+      await page.getByTestId("manual-gtin-input").fill(gtin);
+      await page.getByTestId("manual-submit-action").click();
+      await page.getByTestId("packaging-missing-result").waitFor();
+      await page.goto(baseUrl + "/history");
+      await page.getByRole("button", { name: "QA fixture — two parts", exact: true }).waitFor();
+      assert.ok(!(await page.locator("body").innerText()).includes("packaging_missing"));
+      await shot(page, language + "-history-saved");
+      await page.goto(baseUrl + "/feedback");
+      await page
+        .getByRole("radio", {
+          name: language === "fi" ? "Tieto puuttuu" : "Information missing",
+          exact: true,
+        })
+        .click();
+      await page
+        .getByRole("button", {
+          name: language === "fi" ? "Tallenna luonnos laitteelle" : "Save draft on device",
+          exact: true,
+        })
+        .click();
+      await page.getByRole("alert").waitFor();
+      await shot(page, language + "-feedback-local");
+      await page.goto(baseUrl + "/legal");
+      await page
+        .getByText(
+          language === "fi"
+            ? "LUONNOS — ODOTTAA JURIDISTA TARKISTUSTA"
+            : "DRAFT — REQUIRES LEGAL REVIEW",
+          { exact: true },
+        )
+        .waitFor();
+      await shot(page, language + "-legal");
+      for (const route of [
+        "",
+        "manual",
+        "component",
+        "feedback",
+        "guide",
+        "material-code",
+        "history",
+        "legal",
+      ]) {
+        await page.goto(baseUrl + "/" + route);
+        await page.getByText("KeepItGreen", { exact: true }).first().waitFor();
+        await page.emulateMedia({ colorScheme: "dark" });
+        await page.waitForFunction(
+          () =>
+            getComputedStyle(document.getElementById("app-screen-surface")).backgroundColor ===
+            "rgb(20, 34, 27)",
+        );
+        await shot(page, language + "-dark-" + (route || "home"));
+        await largeText(page);
+        await shot(page, language + "-large-" + (route || "home"));
+        await page.emulateMedia({ colorScheme: "light" });
+      }
+      await page.goto(baseUrl);
+      await page.setViewportSize({ width: 320, height: 740 });
+      await shot(page, language + "-home-320");
+      await page.setViewportSize({ width: 1280, height: 800 });
+      await shot(page, language + "-home-wide");
+      assert.deepEqual(errors, []);
+      await context.close();
+    }
+    console.log(
+      "PASS: isolated FI/EN UI flows, invalid-no-request, missing/unavailable/offline/resolved/unknown, provenance, confirmation, ambiguity, local history/draft/legal markers, touch targets, dark/130% synthetic text, 320/390/1280 widths. No user GPS or production fixture data.",
+    );
+  } finally {
+    await browser.close();
+  }
+})().catch((e) => {
+  console.error(e.stack);
+  process.exitCode = 1;
+});

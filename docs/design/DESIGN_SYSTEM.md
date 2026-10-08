@@ -1,6 +1,6 @@
 # Design system — Packaging utility
 
-Updated 2026-09-10. The implementation in `apps/mobile/src/theme/` is authoritative; this replaces the stale Material Ledger token description.
+Updated 2026-10-08. The implementation in `apps/mobile/src/theme/` is authoritative. Whole-app rationale and two-pass design plan: `APP_REFINEMENT.md`.
 
 ## Color
 
@@ -23,15 +23,17 @@ Green/amber/brick/blue status pairs remain separate semantic tokens, tested for 
 
 Atkinson Hyperlegible Next: regular 400 for body, semibold 600 for controls/section headings, bold 700 for display/titles. IBM Plex Mono 600 is reserved for identifiers and confidence values.
 
-Base scale: display 34/38, title 28/34, heading 20/26, body 17/24, small 14/20, label 16/20, mono 12/17. No font-scaling cap. Do not add fixed text heights or line-count clipping.
+Base scale: display 32/36, title 26/32, heading 19/25, body 17/25, small 14/20, label 16/22, mono 13/18. No font-scaling cap. Do not add fixed text heights or line-count clipping. Plain utility captions use Atkinson rather than decorative uppercase mono.
 
-The reading column is at most 560 points with 20-point side gutters. Main spacing is 4/8/12/16/24/32/48; reading surfaces use 20-point inset. Surface radius 22, controls 14, small status labels 8. Minimum targets 44, normal buttons 56 high and manual-entry row 60 high. Safe areas remain native.
+The reading column is at most 560 points with 20-point side gutters. Main spacing is 4/8/12/16/24/32/48; reading surfaces use 20-point inset. Surface radius 16, controls 10, small status labels 8. Minimum targets 44, normal buttons 56 high and secondary rows 60 high. Safe areas and scroll indicators remain native.
 
 ## Hierarchy
 
-Home: compact brand/language → task introduction → prominent scan → manual entry → privacy → guide/history → legal/jurisdiction.
+Home: compact brand/language → task introduction → compact barcode scan action → manual entry/coverage limit → nearby/guide/history rows → privacy/legal/jurisdiction.
 
-Result: task title and compact product name/community qualification → part identity → destination or safe recovery → confidence → preparation/explanation/exceptions → complete source, jurisdiction, checked date, rule version and verification. No part is hidden or dropped. Provider identity, retrieved date, OFF attribution and licence links follow.
+Subpages use one compact labelled back row with a quiet app name, not repeated brand lockups. Page titles and short purposes precede forms. Guide/legal content and history are separated reading/list sections, not decorative card stacks. Material/shape radios have visible indicators and flexible two-column layouts with short material names.
+
+Result: product name/community qualification → part identity → prominent destination or safe recovery → confidence → preparation/explanation/exceptions → complete source, jurisdiction, checked date, rule version and verification. No part is hidden or dropped. Provider identity, retrieved date, actual database attribution and licence links follow.
 
 General material drawings are decorative. Unknown material uses a question mark, not an invented material. They are hidden from native and web accessibility trees via platform-appropriate properties.
 
@@ -45,4 +47,4 @@ Existing numerical engine confidence remains visible alongside its textual tier;
 
 ## Visual QA
 
-Browser evidence spans Finnish/English and 320/390/1280-wide viewports, with exact flow/date limitations recorded in `docs/final/design-refresh-evidence.md`. Dark-palette contrast is automated; native dark/large-text and camera appearance are not yet visually accepted. Follow that evidence file rather than inferring native readiness from a web screenshot.
+Latest browser evidence spans Finnish/English whole-app flows at 390 points, Home at 320/1280, live dark switching and 130% synthetic text. Exact scope, fixtures, failures/repairs and screenshots: `docs/final/APP_REFINEMENT_EVIDENCE.md`. Existing dark-palette contrast tests pass; latest native dark/large-text/camera appearance remains unaccepted. Historical September evidence remains date-scoped in `docs/final/design-refresh-evidence.md`.

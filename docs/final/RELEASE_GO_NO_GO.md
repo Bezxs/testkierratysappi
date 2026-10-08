@@ -1,5 +1,11 @@
 # Release decision
 
+October 8 whole-app refinement: local implementation, **261 tests** and scoped
+actual-UI FI/EN browser journeys pass. Production remains **NO-GO**. Latest
+native appearance/camera/accessibility, OS address/map handoff and existing
+owner/legal/store/hosting gates are not closed by the new design. No push,
+release build or production publication occurred.
+
 October 8 UX delta: browser refinement and two local medium UX defects are repaired
 and tested (249 tests plus optional actual-UI browser QA). Production remains
 **NO-GO**; native updated layout, OS geocoding/map handoff, accessibility/device and

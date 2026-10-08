@@ -3,8 +3,15 @@ import { useRouter } from "expo-router";
 import { useRef, useState } from "react";
 import { Linking, Pressable, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { BarcodeMark } from "@/components/packaging-mark";
-import { AppText, Button, InlineLink, Screen, sharedStyles } from "@/components/ui";
+import {
+  AppText,
+  Button,
+  InlineLink,
+  PageHeader,
+  PageIntro,
+  Screen,
+  sharedStyles,
+} from "@/components/ui";
 import { SUPPORTED_BARCODE_TYPES } from "@/features/scan/barcode-formats";
 import { useScanSession } from "@/features/scan/session-context";
 import { useLanguage } from "@/i18n/language-context";
@@ -36,31 +43,14 @@ export default function ScannerScreen() {
   if (!permission?.granted) {
     return (
       <Screen testID="scanner-permission-screen">
-        <View style={styles.permissionHeader}>
-          <AppText variant="mono" style={{ color: palette.pine }}>
-            {t("cameraEyebrow")}
-          </AppText>
-          <InlineLink
-            label={t("close")}
-            onPress={() => router.back()}
-            role="button"
-            testID="scanner-close-action"
-          />
-        </View>
+        <PageHeader onBack={() => router.back()} label={t("close")} testID="scanner-close-action" />
+        <PageIntro
+          title={t("cameraPermissionTitle")}
+          body={permission?.canAskAgain === false ? t("cameraDenied") : t("cameraPermissionBody")}
+        />
         <View style={styles.permissionBody}>
-          <View
-            style={[
-              styles.permissionGlyph,
-              { borderColor: palette.pine, backgroundColor: palette.pineSoft },
-            ]}
-          >
-            <BarcodeMark color={palette.actionPrimary} />
-          </View>
-          <AppText variant="title" accessibilityRole="header">
-            {t("cameraPermissionTitle")}
-          </AppText>
-          <AppText>
-            {permission?.canAskAgain === false ? t("cameraDenied") : t("cameraPermissionBody")}
+          <AppText variant="small" muted>
+            {t("cameraPurpose")}
           </AppText>
           <View style={[sharedStyles.stack, styles.permissionActions]}>
             {permission?.canAskAgain === false ? (
@@ -118,6 +108,7 @@ export default function ScannerScreen() {
           accessibilityRole="button"
           accessibilityLabel={torchEnabled ? t("torchTurnOff") : t("torchTurnOn")}
           accessibilityState={{ selected: torchEnabled }}
+          aria-pressed={torchEnabled}
           hitSlop={8}
           onPress={() => setTorchEnabled((enabled) => !enabled)}
           testID="scanner-torch-action"
@@ -178,7 +169,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xs,
     borderWidth: 1,
     borderColor: "rgba(255, 255, 255, 0.72)",
-    borderRadius: radius.pill,
+    borderRadius: radius.sm,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -204,14 +195,6 @@ const styles = StyleSheet.create({
     paddingTop: spacing.lg,
     gap: spacing.lg,
   },
-  permissionHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
-  permissionBody: { paddingTop: spacing.xl, gap: spacing.lg },
-  permissionGlyph: {
-    width: 86,
-    height: 86,
-    borderRadius: radius.lg,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  permissionActions: { marginTop: spacing.md },
+  permissionBody: { gap: spacing.lg },
+  permissionActions: { gap: spacing.sm },
 });

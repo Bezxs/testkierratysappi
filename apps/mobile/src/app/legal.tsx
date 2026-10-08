@@ -1,7 +1,15 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
-import { AppText, BrandLockup, Button, Eyebrow, InlineLink, Paper, Screen } from "@/components/ui";
+import {
+  AppText,
+  Button,
+  DocumentSection,
+  PageHeader,
+  PageIntro,
+  Screen,
+  StatusPill,
+} from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { clearAllLocalData } from "@/features/history/storage";
 import { useLanguage } from "@/i18n/language-context";
@@ -30,23 +38,20 @@ export default function LegalScreen() {
   };
   return (
     <Screen>
-      <View style={styles.header}>
-        <BrandLockup compact />
-        <InlineLink label={t("close")} onPress={() => router.back()} role="button" />
+      <PageHeader onBack={() => router.back()} />
+      <PageIntro title={t("legalAction")} />
+      <View style={styles.review}>
+        <StatusPill label={t("legalReview")} tone="amber" />
       </View>
-      <View style={styles.intro}>
-        <Eyebrow color={palette.brick}>{t("legalReview")}</Eyebrow>
-        <AppText variant="title" accessibilityRole="header">
-          {t("legalAction")}
+      <DocumentSection>
+        <AppText variant="heading" accessibilityRole="header">
+          {t("privacyTitle")}
         </AppText>
-      </View>
-      <Paper>
-        <AppText variant="heading">{t("privacyTitle")}</AppText>
         <AppText>{t("privacyDraft")}</AppText>
         <AppText>{t("nearbyPrivacy")}</AppText>
         <AppText>{t("nearbyAddressDisclosure")}</AppText>
-      </Paper>
-      <Paper style={{ borderColor: palette.brick }}>
+      </DocumentSection>
+      <DocumentSection>
         <AppText variant="heading">{t("deleteLocalData")}</AppText>
         <AppText>{t("deleteLocalDataBody")}</AppText>
         <Button label={t("deleteLocalData")} variant="danger" onPress={confirmDeletion} />
@@ -55,21 +60,15 @@ export default function LegalScreen() {
             {t("localDataDeleted")}
           </AppText>
         )}
-      </Paper>
-      <Paper>
+      </DocumentSection>
+      <DocumentSection>
         <AppText variant="heading">{t("termsTitle")}</AppText>
         <AppText>{t("termsDraft")}</AppText>
-      </Paper>
+      </DocumentSection>
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: spacing.md,
-  },
-  intro: { paddingTop: spacing.xxl, paddingBottom: spacing.lg, gap: spacing.sm },
+  review: { paddingBottom: spacing.lg },
 });

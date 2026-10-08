@@ -8,9 +8,9 @@ import { PackagingMark } from "@/components/packaging-mark";
 import { SortingResultCard } from "@/components/sorting-result";
 import {
   AppText,
-  BrandLockup,
   Button,
   InlineLink,
+  PageHeader,
   Paper,
   Rule,
   Screen,
@@ -153,21 +153,16 @@ function ProductResult({
 
   return (
     <Screen testID="product-result-screen">
-      <View style={styles.header}>
-        <BrandLockup compact />
-        <InlineLink
-          label={t("close")}
-          onPress={onClose}
-          role="button"
-          testID="result-close-action"
-        />
-      </View>
+      <PageHeader onBack={onClose} label={t("close")} testID="result-close-action" />
 
       <View style={styles.answerIntro}>
-        <AppText variant="title" accessibilityRole="header">
-          {t("resultTitle")}
+        <AppText variant="small" muted>
+          {t("productDetailsTitle")}
         </AppText>
-        <AppText variant="heading">{name}</AppText>
+        <AppText variant="title" accessibilityRole="header">
+          {name}
+        </AppText>
+        {brand && <AppText muted>{brand}</AppText>}
         <AppText variant="small" muted>
           {t("resultScope")}
         </AppText>
@@ -191,13 +186,7 @@ function ProductResult({
             onPress={() => router.push("/component")}
             testID="result-manual-component-action"
           />
-          <Button
-            label={t("feedbackMissing")}
-            variant="secondary"
-            onPress={() => router.push("/feedback?category=missing_data")}
-            testID="result-missing-feedback-action"
-          />
-          <AppText variant="small" muted style={styles.centerText}>
+          <AppText variant="small" muted>
             {t("materialCodeLocalNote")}
           </AppText>
         </View>
@@ -223,7 +212,12 @@ function ProductResult({
       )}
 
       <View style={styles.nextActions}>
-        <Button label={t("scanAnother")} onPress={onClose} testID="result-scan-another-action" />
+        <Button
+          label={t("scanAnother")}
+          variant={result.status === "packaging_missing" ? "secondary" : "primary"}
+          onPress={onClose}
+          testID="result-scan-another-action"
+        />
         <Button
           label={t("correctionAction")}
           variant="secondary"
@@ -236,14 +230,14 @@ function ProductResult({
         <Rule />
         <SectionHeader title={t("productDetailsTitle")} />
         <View style={sharedStyles.tightStack}>
-          <AppText variant="heading">{name}</AppText>
-          {brand && <AppText muted>{brand}</AppText>}
           <AppText variant="mono" muted>
             {result.gtin}
           </AppText>
         </View>
         <View style={styles.sourceRow}>
-          <StatusPill label={result.cache.hit ? t("cachedLabel") : t("liveLabel")} tone="cobalt" />
+          <AppText variant="small" muted>
+            {result.cache.hit ? t("cachedLabel") : t("liveLabel")}
+          </AppText>
           <AppText variant="small" muted>
             {provenance.sourceName}
           </AppText>
@@ -308,10 +302,7 @@ function StateScreen({
   const { t } = useLanguage();
   return (
     <Screen testID={testID}>
-      <View style={styles.header}>
-        <BrandLockup compact />
-        <InlineLink label={t("close")} onPress={close} role="button" testID="result-close-action" />
-      </View>
+      <PageHeader onBack={close} label={t("close")} testID="result-close-action" />
       <View style={styles.stateBody}>
         <StatusPill label={eyebrow} tone={tone} />
         <AppText variant="title" accessibilityRole="header">
@@ -374,15 +365,9 @@ function componentLabel(
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: spacing.md,
-  },
   centered: { justifyContent: "center", alignItems: "center", gap: spacing.md },
   centerText: { textAlign: "center" },
-  stateBody: { paddingTop: spacing.xxl, gap: spacing.lg },
+  stateBody: { paddingTop: spacing.lg, gap: spacing.md },
   stateActions: { marginTop: spacing.md },
   answerIntro: { paddingTop: spacing.lg, gap: spacing.xs },
   sourceRow: {
@@ -396,5 +381,5 @@ const styles = StyleSheet.create({
   nextActions: { paddingTop: spacing.xl, gap: spacing.md },
   productSummary: { paddingTop: spacing.xl, gap: spacing.md },
   disclosureRow: { flexDirection: "row", alignItems: "center", flexWrap: "wrap", gap: spacing.xs },
-  componentBlock: { gap: spacing.sm, borderWidth: 0 },
+  componentBlock: { gap: spacing.sm },
 });

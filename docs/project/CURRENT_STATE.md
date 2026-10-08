@@ -1,5 +1,12 @@
 # Current state
 
+## Whole-app utility refinement — 2026-10-08
+
+- Roope requested a more intentionally made, cohesive app with a modest early-stage scope, without demo labels. Refined all ten functional subpages plus Home in this independent team worktree; no newer private KeepItGreen implementation, artwork or design was imported. Compact scan action, ordinary secondary rows, common back navigation, flatter reading sections, clearer form choices and answer-first results replace repeated brand/eyebrow/card decoration. Existing display/technical identity is unchanged.
+- Preserved provider attribution/licences, every component and rule's confidence/explanation/source/jurisdiction/date/version/verification, material-code confirmation, anonymous use and local-only location/drafts. Legal-review markers remain. History now localizes status/date without implying a found product has verified sorting; invalid dates have an explicit fallback. “New lookup” correctly describes the existing return-to-Home action.
+- Local pinned validation: **261 tests (39 policy + 222 application)**, formatting/lint/strict types, package/API builds and 13-route web export. Optional actual-UI browser runners pass FI/EN, error/recovery states, provenance, local history/drafts, consent/confirmation, nearby offline search, keyboard/ARIA, dark switching and 130% synthetic text; Home also checked at 320/390/1280 widths. A large-text material-label overflow was found, repaired and rechecked. Exact evidence/limitations: `docs/final/APP_REFINEMENT_EVIDENCE.md`.
+- No new package, native build/install, account, payment, external publication or GitHub push. The existing Metro serves these JS changes; current phone rendering is not newly verified. Native camera/large-text/VoiceOver/geocoding/map handoff and existing production NO-GO gates remain open. Browser product fixtures are explicitly QA-only and never runtime data.
+
 ## Authorized team-repository publication — 2026-10-08
 
 - Push succeeded: `39f8aa6..3df2437` fast-forward to the existing public `roopeaal/KierratysAppi/main`; `git ls-remote` confirms `3df2437be5df3c20a1e7134867f9a966f691543f`. This follow-up records the outcome in the same authorized sharing step. Repository visibility unchanged; KeepItGreen remote/branches untouched. GitHub CI was not yet listed in the immediate post-push query, so no CI pass is inferred.

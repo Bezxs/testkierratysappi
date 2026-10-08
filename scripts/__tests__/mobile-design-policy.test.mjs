@@ -22,6 +22,7 @@ test("redesigned Home retains accessible primary, fallback and utility actions i
   const ids = [
     "home-scan-action",
     "home-manual-action",
+    "home-nearby-action",
     "home-guide-action",
     "home-history-action",
   ];
@@ -33,13 +34,71 @@ test("redesigned Home retains accessible primary, fallback and utility actions i
     [...positions].sort((a, b) => a - b),
   );
   for (const id of ids) {
-    const control = [...home.matchAll(/<Pressable\b[\s\S]*?(?=>)/g)].find(([source]) =>
-      source.includes(`testID="${id}"`),
+    const control = [...home.matchAll(/<Pressable\b[\s\S]*?(?=>)|<ActionRow\b[\s\S]*?\/>/g)].find(
+      ([source]) => source.includes(`testID="${id}"`),
     );
     assert.ok(control, `missing ${id}`);
-    assert.match(control[0], /accessibilityRole="button"/);
-    assert.match(control[0], /accessibilityLabel=/);
+    if (control[0].startsWith("<ActionRow")) {
+      assert.match(control[0], /label=\{t\(/);
+      assert.match(control[0], /onPress=/);
+      const ui = readFileSync("apps/mobile/src/components/ui.tsx", "utf8");
+      const row = ui.slice(
+        ui.indexOf("export function ActionRow"),
+        ui.indexOf("export function ChoiceIndicator"),
+      );
+      assert.match(row, /accessibilityRole="button"/);
+      assert.match(row, /accessibilityLabel=\{label\}/);
+      assert.match(row, /testID=\{testID\}/);
+    } else {
+      assert.match(control[0], /accessibilityRole="button"/);
+      assert.match(control[0], /accessibilityLabel=/);
+    }
   }
+});
+
+test("all subpages use the same labelled navigation without repeated brand cards", () => {
+  for (const screen of [
+    "manual",
+    "scan",
+    "result",
+    "guide",
+    "material-code",
+    "component",
+    "nearby",
+    "history",
+    "feedback",
+    "legal",
+  ]) {
+    const source = readFileSync(`apps/mobile/src/app/${screen}.tsx`, "utf8");
+    assert.match(source, /<PageHeader\b/);
+    assert.doesNotMatch(source, /BrandLockup/);
+  }
+  const ui = readFileSync("apps/mobile/src/components/ui.tsx", "utf8");
+  const header = ui.slice(
+    ui.indexOf("export function PageHeader"),
+    ui.indexOf("export function PageIntro"),
+  );
+  assert.match(header, /accessibilityLabel=\{backLabel\}/);
+  assert.match(ui, /minHeight: controls.minimumTouchTarget/);
+});
+
+test("forms preserve readable scalable text and strong focus boundaries", () => {
+  for (const screen of ["manual", "material-code", "feedback"]) {
+    const source = readFileSync(`apps/mobile/src/app/${screen}.tsx`, "utf8");
+    assert.match(source, /palette.borderStrong/);
+    assert.match(source, /onFocus=|onFocus =/);
+    assert.match(source, /onBlur=|onBlur =/);
+    assert.doesNotMatch(source, /maxFontSizeMultiplier=|adjustsFontSizeToFit|numberOfLines=/);
+  }
+});
+
+test("guide and legal are reading sections and history never prints an internal enum", () => {
+  for (const screen of ["guide", "legal"])
+    assert.match(readFileSync(`apps/mobile/src/app/${screen}.tsx`, "utf8"), /<DocumentSection/);
+  const history = readFileSync("apps/mobile/src/app/history.tsx", "utf8");
+  assert.match(history, /t\(historyStatusMessageKey\(entry.resultStatus\)\)/);
+  assert.doesNotMatch(history, /\{entry.resultStatus\}/);
+  assert.match(readFileSync("apps/mobile/src/app/legal.tsx", "utf8"), /t\("legalReview"\)/);
 });
 
 test("embedded sorting presentation retains uncertainty, preparation and all provenance fields", () => {

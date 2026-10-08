@@ -1,7 +1,15 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
 import { Pressable, StyleSheet, TextInput, View } from "react-native";
-import { AppText, BrandLockup, Button, Eyebrow, InlineLink, Paper, Screen } from "@/components/ui";
+import {
+  AppText,
+  Button,
+  ChoiceIndicator,
+  PageHeader,
+  PageIntro,
+  Paper,
+  Screen,
+} from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { saveFeedbackDraft } from "@/features/history/storage";
 import { useLanguage } from "@/i18n/language-context";
@@ -25,6 +33,7 @@ export default function FeedbackScreen() {
   const [category, setCategory] = useState<string | undefined>(initialCategory);
   const [note, setNote] = useState("");
   const [saved, setSaved] = useState(false);
+  const [focused, setFocused] = useState(false);
 
   const save = async () => {
     if (!category) return;
@@ -40,100 +49,104 @@ export default function FeedbackScreen() {
 
   return (
     <Screen>
-      <View style={styles.header}>
-        <BrandLockup compact />
-        <InlineLink label={t("close")} onPress={() => router.back()} role="button" />
-      </View>
-      <View style={styles.intro}>
-        <Eyebrow>{t("feedbackEyebrow")}</Eyebrow>
-        <AppText variant="title" accessibilityRole="header">
-          {t("feedbackTitle")}
+      <PageHeader onBack={() => router.back()} />
+      <PageIntro title={t("feedbackTitle")} body={t("feedbackBody")} />
+      <View style={styles.form}>
+        <View
+          style={styles.categories}
+          accessibilityRole="radiogroup"
+          accessibilityLabel={t("feedbackCategory")}
+        >
+          {CATEGORIES.map(([value, key]) => {
+            const selected = category === value;
+            return (
+              <Pressable
+                key={value}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: selected }}
+                aria-checked={selected}
+                onPress={() => {
+                  setCategory(value);
+                  setSaved(false);
+                }}
+                style={({ pressed }) => [
+                  styles.category,
+                  {
+                    backgroundColor: selected ? palette.pineSoft : palette.surface,
+                    borderColor: selected ? palette.pine : palette.line,
+                    opacity: pressed ? 0.7 : 1,
+                  },
+                ]}
+              >
+                <ChoiceIndicator selected={selected} />
+                <AppText
+                  variant="label"
+                  style={{ color: selected ? palette.pine : palette.ink, flexShrink: 1 }}
+                >
+                  {t(key)}
+                </AppText>
+              </Pressable>
+            );
+          })}
+        </View>
+        <AppText variant="label" nativeID="feedback-note">
+          {t("feedbackNote")}
         </AppText>
-        <AppText muted>{t("feedbackBody")}</AppText>
+        <AppText variant="small" muted>
+          {t("feedbackPrivacyCaution")}
+        </AppText>
+        <TextInput
+          accessibilityLabel={t("feedbackNote")}
+          accessibilityLabelledBy="feedback-note"
+          multiline
+          maxLength={2_000}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          onChangeText={(value) => {
+            setNote(value);
+            setSaved(false);
+          }}
+          style={[
+            styles.input,
+            {
+              backgroundColor: palette.surfaceRaised,
+              borderColor: focused ? palette.actionPrimary : palette.borderStrong,
+              color: palette.ink,
+            },
+          ]}
+          textAlignVertical="top"
+          value={note}
+        />
+        <Button label={t("saveDraft")} onPress={() => void save()} disabled={!category} />
+        {saved && (
+          <Paper style={{ backgroundColor: palette.pineSoft }}>
+            <AppText variant="heading" style={{ color: palette.pine }} accessibilityRole="alert">
+              {t("draftSaved")}
+            </AppText>
+            <AppText>{t("localOnly")}</AppText>
+          </Paper>
+        )}
       </View>
-      <View style={styles.categories} accessibilityRole="radiogroup">
-        {CATEGORIES.map(([value, key]) => {
-          const selected = category === value;
-          return (
-            <Pressable
-              key={value}
-              accessibilityRole="radio"
-              accessibilityState={{ checked: selected }}
-              aria-checked={selected}
-              onPress={() => {
-                setCategory(value);
-                setSaved(false);
-              }}
-              style={({ pressed }) => [
-                styles.category,
-                {
-                  backgroundColor: selected ? palette.cobaltSoft : palette.surface,
-                  borderColor: selected ? palette.cobalt : palette.line,
-                  opacity: pressed ? 0.7 : 1,
-                },
-              ]}
-            >
-              <AppText variant="label" style={{ color: selected ? palette.cobalt : palette.ink }}>
-                {t(key)}
-              </AppText>
-            </Pressable>
-          );
-        })}
-      </View>
-      <AppText variant="label" nativeID="feedback-note">
-        {t("feedbackNote")}
-      </AppText>
-      <AppText variant="small" muted>
-        {t("feedbackPrivacyCaution")}
-      </AppText>
-      <TextInput
-        accessibilityLabel={t("feedbackNote")}
-        accessibilityLabelledBy="feedback-note"
-        multiline
-        maxLength={2_000}
-        onChangeText={(value) => {
-          setNote(value);
-          setSaved(false);
-        }}
-        style={[
-          styles.input,
-          { backgroundColor: palette.surfaceRaised, borderColor: palette.line, color: palette.ink },
-        ]}
-        textAlignVertical="top"
-        value={note}
-      />
-      <Button label={t("saveDraft")} onPress={() => void save()} disabled={!category} />
-      {saved && (
-        <Paper style={{ backgroundColor: palette.pineSoft }}>
-          <AppText variant="heading" style={{ color: palette.pine }} accessibilityRole="alert">
-            {t("draftSaved")}
-          </AppText>
-          <AppText>{t("localOnly")}</AppText>
-        </Paper>
-      )}
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: spacing.md,
-  },
-  intro: { paddingTop: spacing.xxl, paddingBottom: spacing.lg, gap: spacing.sm },
+  form: { gap: spacing.md },
   categories: { gap: spacing.xs },
   category: {
     minHeight: 52,
     borderWidth: 1,
     borderRadius: radius.md,
     paddingHorizontal: spacing.md,
-    justifyContent: "center",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing.sm,
+    paddingVertical: spacing.sm,
   },
   input: {
     minHeight: 140,
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: radius.md,
     padding: spacing.md,
     fontFamily: "Atkinson_400Regular",

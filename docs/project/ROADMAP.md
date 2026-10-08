@@ -4,6 +4,10 @@ Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally bl
 
 ## Current independent team-baseline work — October 7
 
+- [x] October 8 whole-app utility refinement: common navigation/type/controls, simpler Home, flat guide/legal/history sections, explicit material choices, focused forms and source-preserving results. No private imports or new dependencies.
+- [x] Add history status/date regressions and whole-app isolated FI/EN browser journeys; repair large-text overflow, retain nearby QA and pass 261-test pinned validation.
+- [~] Accept this latest whole-app UI on the physical iPhone, including native large text/dark mode, scanner and nearby map/address flows; no new native evidence is inferred from browser checks.
+
 - [x] October 8 owner-authorized fast-forward publication of this independent work to KierratysAppi main; remote SHA verified. Local 249-test validation passes; GitHub CI remains separate evidence.
 
 - [x] Refocus nearby UX around identity/distance/map, shorten pre-search explanation and progressively disclose metadata without hiding uncertainty.

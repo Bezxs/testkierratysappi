@@ -1,7 +1,7 @@
 import {
   MATERIAL_CODE_INPUT_MAX_LENGTH,
-  parseMaterialIdentificationCode,
   type MaterialCodeParseResult,
+  parseMaterialIdentificationCode,
   type RecognizedMaterialCode,
 } from "@kierratysappi/domain";
 import { localizedText } from "@kierratysappi/localization";
@@ -12,10 +12,10 @@ import { Keyboard, Linking, StyleSheet, TextInput, View } from "react-native";
 import { SortingResultCard } from "@/components/sorting-result";
 import {
   AppText,
-  BrandLockup,
   Button,
-  Eyebrow,
   InlineLink,
+  PageHeader,
+  PageIntro,
   Paper,
   Rule,
   Screen,
@@ -34,6 +34,7 @@ export default function MaterialCodeScreen() {
   const [value, setValue] = useState("");
   const [attempt, setAttempt] = useState<MaterialCodeParseResult>();
   const [sorting, setSorting] = useState<SortingResult>();
+  const [focused, setFocused] = useState(false);
 
   const parse = () => {
     Keyboard.dismiss();
@@ -64,18 +65,8 @@ export default function MaterialCodeScreen() {
 
   return (
     <Screen>
-      <View style={styles.header}>
-        <BrandLockup compact />
-        <InlineLink label={t("close")} onPress={() => router.back()} role="button" />
-      </View>
-
-      <View style={styles.hero}>
-        <Eyebrow>{t("materialCodeEyebrow")}</Eyebrow>
-        <AppText variant="title" accessibilityRole="header">
-          {t("materialCodeTitle")}
-        </AppText>
-        <AppText muted>{t("materialCodeBody")}</AppText>
-      </View>
+      <PageHeader onBack={() => router.back()} />
+      <PageIntro title={t("materialCodeTitle")} body={t("materialCodeBody")} />
 
       <View style={styles.form}>
         <View style={sharedStyles.tightStack}>
@@ -97,6 +88,8 @@ export default function MaterialCodeScreen() {
               setSorting(undefined);
             }}
             onSubmitEditing={parse}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
             placeholder="05 PP"
             placeholderTextColor={palette.faint}
             returnKeyType="search"
@@ -105,7 +98,11 @@ export default function MaterialCodeScreen() {
               {
                 backgroundColor: palette.surfaceRaised,
                 borderColor:
-                  attempt && attempt.status !== "recognized" ? palette.brick : palette.line,
+                  attempt && attempt.status !== "recognized"
+                    ? palette.brick
+                    : focused
+                      ? palette.actionPrimary
+                      : palette.borderStrong,
                 color: palette.ink,
               },
             ]}
@@ -120,7 +117,7 @@ export default function MaterialCodeScreen() {
           onPress={parse}
           disabled={value.trim().length === 0}
         />
-        <AppText variant="small" muted style={styles.centerText}>
+        <AppText variant="small" muted>
           {t("materialCodeLocalNote")}
         </AppText>
       </View>
@@ -173,19 +170,17 @@ function RecognizedCode({
             { backgroundColor: palette.surfaceRaised, borderColor: palette.ink },
           ]}
         >
-          <AppText variant="mono" muted>
+          <AppText variant="small" muted>
             {recognition.precision === "exact" ? t("identifierExact") : t("identifierGroup")}
           </AppText>
-          <AppText style={styles.code} adjustsFontSizeToFit numberOfLines={1}>
-            {recognition.canonicalCode}
-          </AppText>
+          <AppText style={styles.code}>{recognition.canonicalCode}</AppText>
           <AppText variant="heading">{localizedText(language, recognition.materialName)}</AppText>
         </View>
         <AppText>{t("materialCodeRecognizedBody")}</AppText>
         <Rule />
         <View style={sharedStyles.tightStack}>
-          <AppText variant="mono" muted>
-            {t("materialCodeSource").toUpperCase()}
+          <AppText variant="small" muted>
+            {t("materialCodeSource")}
           </AppText>
           <InlineLink
             label={recognition.source.sourceName}
@@ -226,8 +221,8 @@ function UnresolvedCode({
       <AppText>{ambiguous ? t("materialCodeAmbiguousBody") : t("materialCodeUnknownBody")}</AppText>
       {ambiguous && attempt.candidateCodes.length > 0 && (
         <View style={sharedStyles.tightStack}>
-          <AppText variant="mono" muted>
-            {t("materialCodeCandidates").toUpperCase()}
+          <AppText variant="small" muted>
+            {t("materialCodeCandidates")}
           </AppText>
           <AppText>{attempt.candidateCodes.join(" · ")}</AppText>
         </View>
@@ -238,14 +233,7 @@ function UnresolvedCode({
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: spacing.md,
-  },
-  hero: { paddingTop: spacing.xxl, gap: spacing.sm },
-  form: { paddingTop: spacing.xl, gap: spacing.md },
+  form: { gap: spacing.md },
   input: {
     minHeight: 60,
     borderWidth: 2,
@@ -255,19 +243,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
     letterSpacing: 1.2,
   },
-  centerText: { textAlign: "center" },
   result: { paddingTop: spacing.xl },
   codePlate: {
-    borderWidth: 2,
-    borderStyle: "dashed",
+    borderLeftWidth: 3,
     borderRadius: radius.md,
-    padding: spacing.lg,
+    padding: spacing.md,
     gap: spacing.xs,
   },
   code: {
     fontFamily: "IBMPlexMono_600SemiBold",
-    fontSize: 36,
-    lineHeight: 43,
+    fontSize: 28,
+    lineHeight: 36,
     letterSpacing: -1,
   },
 });

@@ -39,6 +39,15 @@ synthetic GPS do not certify native Dynamic Type, VoiceOver or real geocoding.
 
 ## Release evidence
 
+The October 8 whole-app refinement requires consistent labelled back navigation,
+a primary scan/manual path before secondary actions, explicit radio selections,
+readable FI/EN fields without font-scaling caps, recoverable errors and localized
+history dates/statuses. Product identity must not imply verified sorting. All
+component/rule/provider attribution and legal-review markers remain. Isolated
+browser fixtures must never enter runtime data; no demo labels or fabricated
+points, metrics or maturity claims are added. Browser acceptance is separate
+from latest native appearance, camera, Dynamic Type and VoiceOver checks.
+
 The owner-selected display name is KeepItGreen in FI/EN visual and accessible UI, default/native locale configuration and current store drafts. The existing technical app identity and local data must survive the update. Source/browser checks do not establish installed launcher naming, renewed signing or cable-disconnected runtime; these need a rebuilt native artifact and device evidence.
 
 The September visual refresh additionally requires scan/manual actions before secondary content, truthful empty-history status, native and web selected-radio semantics, and retention of every component's uncertainty and source evidence. Browser screenshots and source-policy/contrast checks do not satisfy the separate physical dark-mode, largest-text, camera or screen-reader acceptance below. Current results are recorded in `docs/final/design-refresh-evidence.md`.
