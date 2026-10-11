@@ -1,5 +1,22 @@
 # External blockers
 
+October 11: this is currently a school assignment, per Roope. A legal-review
+banner or lawyer approval is not a blocker for this scoped classroom UI task;
+the runtime now presents factual data-use information, not draft terms. The
+production/store gates below remain future-public-release scope and unapproved.
+
+Nearby expansion adds no paid account, credential, package or native capability.
+A live OSM download failed; genuine cached October 6 raw data enabled v2 material
+enrichment with original dates, so this did not block implementation. Missing
+material reports (3,828 of 5,753 records), names/addresses and physical reception
+remain upstream evidence gaps, not values Codex can invent. Codex owns periodic
+manual refresh/review under the existing source licence and the latest native
+one-press/list/privacy checks; Roope handles any actual unlock/permission prompts.
+Browser fixtures are synthetic public-point GPS, not latest iPhone acceptance.
+No GitHub push, signing renewal, install or production publication is authorized
+by this task. The existing development profile expiry is October 13, 21:21:19
+Helsinki; no new profile-expiry finding is inferred from a JS-only change.
+
 October 8 Home-recognition polish adds no external service, account, credential
 or paid-tool blocker. Codex owns the latest native Home/navigation/large-text
 check and any repairs; Roope handles actual unlock or OS prompts if required.

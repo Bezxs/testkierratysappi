@@ -442,13 +442,13 @@ async function largeText(page) {
       await shot(page, language + "-feedback-local");
       await page.goto(baseUrl + "/legal");
       await page
-        .getByText(
-          language === "fi"
-            ? "LUONNOS — ODOTTAA JURIDISTA TARKISTUSTA"
-            : "DRAFT — REQUIRES LEGAL REVIEW",
-          { exact: true },
-        )
+        .getByText(language === "fi" ? "Tietojen käyttö" : "Use of information", { exact: true })
         .waitFor();
+      assert.doesNotMatch(
+        await page.locator("body").innerText(),
+        /JURIDISTA TARKISTUSTA|LEGAL REVIEW|Käyttöehdot|Terms of use/,
+      );
+      assert.match(await page.locator("body").innerText(), /Open Food Facts/);
       await shot(page, language + "-legal");
       for (const route of [
         "",
@@ -463,11 +463,23 @@ async function largeText(page) {
         await page.goto(baseUrl + "/" + route);
         await page.getByText("KeepItGreen", { exact: true }).first().waitFor();
         await page.emulateMedia({ colorScheme: "dark" });
-        await page.waitForFunction(
-          () =>
-            getComputedStyle(document.getElementById("app-screen-surface")).backgroundColor ===
-            "rgb(20, 34, 27)",
-        );
+        await page
+          .waitForFunction(
+            () =>
+              getComputedStyle(document.getElementById("app-screen-surface")).backgroundColor ===
+              "rgb(20, 34, 27)",
+            null,
+            { timeout: 10000 },
+          )
+          .catch(async (error) => {
+            const observed = await page.evaluate(() => ({
+              url: location.pathname,
+              dark: matchMedia("(prefers-color-scheme: dark)").matches,
+              background: getComputedStyle(document.getElementById("app-screen-surface"))
+                .backgroundColor,
+            }));
+            throw new Error(`${error.message}: ${JSON.stringify(observed)}`);
+          });
         await shot(page, language + "-dark-" + (route || "home"));
         await largeText(page);
         await shot(page, language + "-large-" + (route || "home"));
@@ -509,7 +521,7 @@ async function largeText(page) {
       await context.close();
     }
     console.log(
-      "PASS: isolated FI/EN UI flows, invalid-no-request, missing/unavailable/offline/resolved/unknown, provenance, confirmation, ambiguity, local history/draft/legal markers, touch targets, dark/130% synthetic text, 320/390/1280 widths. No user GPS or production fixture data.",
+      "PASS: isolated FI/EN UI flows, invalid-no-request, missing/unavailable/offline/resolved/unknown, provenance, confirmation, ambiguity, local history/draft/factual privacy, touch targets, dark/130% synthetic text, 320/390/1280 widths. No user GPS or production fixture data.",
     );
   } finally {
     await browser.close();

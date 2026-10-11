@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { normalizeRecyclingSnapshot, recyclingQuery } from "../import-recycling-points.mjs";
@@ -20,6 +21,33 @@ test("OSM importer rejects partial results, duplicates, bad coordinates and sour
   ]) {
     assert.throws(() => normalizeRecyclingSnapshot(bad, date));
   }
+});
+test("OSM material import retains explicit yes/no only, never broad-to-specific inference", () => {
+  const result = normalizeRecyclingSnapshot(
+    payload([
+      {
+        ...node,
+        tags: {
+          amenity: "recycling",
+          operator: "Reported operator",
+          "recycling:plastic": "yes",
+          "recycling:plastic_bottles": "no",
+          "recycling:glass": "maybe",
+          "recycling:paper": "true",
+          "recycling:cardboard": "Yes",
+          "recycling:made_up": "yes",
+        },
+      },
+    ]),
+    date,
+  );
+  assert.equal(result.version, 2);
+  assert.equal(result.points[0].operator, "Reported operator");
+  assert.deepEqual(result.points[0].reportedMaterials, ["plastic"]);
+  assert.deepEqual(result.points[0].reportedExclusions, ["plasticBottles"]);
+  const empty = normalizeRecyclingSnapshot(payload([node]), date).points[0];
+  assert.deepEqual(empty.reportedMaterials, []);
+  assert.deepEqual(empty.reportedExclusions, []);
 });
 test("OSM importer excludes restricted/closed points and preserves unknown access", () => {
   const restricted = ["private", "customers", "no", "permit"].map((access, i) => ({
@@ -65,4 +93,28 @@ test("checked-in OSM snapshot is nonempty, finite, unique and explicitly license
     assert.ok(Number.isFinite(p.coordinates.latitude) && Number.isFinite(p.coordinates.longitude));
     assert.ok(["unknown", "reported_public"].includes(p.access));
   }
+});
+
+test("cached import refuses to pretend a saved source was freshly retrieved", () => {
+  const snapshotUrl = new URL(
+    "../../apps/mobile/assets/data/finland-recycling.json",
+    import.meta.url,
+  );
+  const before = readFileSync(snapshotUrl, "utf8");
+  assert.throws(
+    () =>
+      execFileSync(
+        process.execPath,
+        [
+          new URL("../import-recycling-points.mjs", import.meta.url).pathname,
+          "unused-cached-source.json",
+        ],
+        { stdio: "pipe" },
+      ),
+    /original retrieval date/,
+  );
+  assert.equal(readFileSync(snapshotUrl, "utf8"), before);
+  const result = normalizeRecyclingSnapshot(payload([node]), date);
+  assert.equal(result.retrievedAt, date);
+  assert.equal(result.dataTimestamp, "2026-10-06T00:00:00Z");
 });

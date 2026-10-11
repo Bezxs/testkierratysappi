@@ -11,6 +11,7 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import { useReducedMotion } from "react-native-reanimated";
 import { navigationAnimation } from "@/features/accessibility/motion";
+import { NearbySearchProvider } from "@/features/nearby/search-context";
 import { ScanSessionProvider } from "@/features/scan/session-context";
 import { LanguageProvider } from "@/i18n/language-context";
 import { AppThemeProvider, useAppTheme } from "@/theme/tokens";
@@ -52,7 +53,9 @@ export default function RootLayout() {
     <AppThemeProvider>
       <LanguageProvider>
         <ScanSessionProvider>
-          <Navigation />
+          <NearbySearchProvider>
+            <Navigation />
+          </NearbySearchProvider>
         </ScanSessionProvider>
       </LanguageProvider>
     </AppThemeProvider>

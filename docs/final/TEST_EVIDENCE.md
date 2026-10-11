@@ -1,5 +1,35 @@
 # Test evidence
 
+## One-press nearby points and school-scope privacy — 2026-10-11
+
+- Pinned `pnpm validate` exits 0: **293 tests (47 policy + 246 application)**,
+  formatting/lint/strict types, package/API builds and 13-route web export.
+  Final ignored log: `work/nearby-points-validate-2026-10-11-final.log`.
+  Narrow importer 6/6 and mobile 107/107 pass. New distance/material/schema,
+  cached-date, intent, localized-label and appearance-store regressions cover
+  the behavior; source policies preserve optional consent and visible evidence.
+- Both expanded actual-Metro browser runners pass FI/EN, one-press versus direct
+  URL, five independently ranked real IDs, known/missing/excluded reception,
+  source/date/non-verification, first-map viewport, offline local refresh,
+  denial/cancellation/timeout and watcher cleanup, keyboard details, live dark,
+  320/390 and 130% synthetic text. Whole-app existing fixture/result/local-data
+  flows and factual Privacy pass at 320/390/1280 widths. Updated visuals inspected.
+- Real browser loading/theme race repaired: dark media with light surface after
+  navigation/loading now passes exact computed-background checks with a shared
+  external-store subscription/recheck. Corrected the QA-only cleanup assertion
+  to account for Expo's two underlying subscription removals, without relaxing
+  application teardown tests. Full procedures/limitations:
+  `NEARBY_POINTS_EVIDENCE.md`.
+- Live OSM refresh failed; genuine October 6 raw cache re-normalized as v2 with
+  original dates. 5,753 records, 1,925 affirmative-report and 292 exclusion-bearing
+  records; missing values remain unknown. No user GPS or production test fixtures.
+- Final web entry `entry-337e32ce1a5208173ad1253c33e0f5e0.js`: 3,802,800 bytes /
+  719,815 gzip. It remains above warning budget, not a performance/battery pass.
+  No latest native permission/list/layout/accessibility/address/map acceptance,
+  signing/install, remote CI, live security/provider audit, GitHub push or release.
+  No legal-review blocker is imposed on this school UI task; future public
+  production NO-GO remains separate. Native scoped acceptance is next.
+
 ## Home recognition and visual polish — 2026-10-08
 
 - Pinned `pnpm validate`: exit 0, **276 tests (43 policy + 233 application)**,

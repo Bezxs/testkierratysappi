@@ -6,9 +6,12 @@ const point: CollectionPoint = {
   id: "node/1",
   coordinates: { latitude: 60, longitude: 25 },
   name: null,
+  operator: null,
   address: null,
   kind: "unknown",
   access: "unknown",
+  reportedMaterials: [],
+  reportedExclusions: [],
 };
 afterEach(() => vi.useRealTimers());
 it("normalizes bounded street/locality without mistaking POI names for point identity", () => {

@@ -12,6 +12,7 @@ import {
   sharedStyles,
 } from "@/components/ui";
 import { isHistoryEnabled } from "@/features/history/storage";
+import { useNearbySearch } from "@/features/nearby/search-context";
 import { useScanSession } from "@/features/scan/session-context";
 import { useLanguage } from "@/i18n/language-context";
 import { controls, interaction, radius, spacing, useAppTheme } from "@/theme/tokens";
@@ -21,6 +22,7 @@ export default function HomeScreen() {
   const { palette } = useAppTheme();
   const { language, setLanguage, t } = useLanguage();
   const { reset } = useScanSession();
+  const { requestSearch } = useNearbySearch();
   const [historyEnabled, setHistoryState] = useState(false);
 
   useFocusEffect(
@@ -110,7 +112,10 @@ export default function HomeScreen() {
           label={t("nearbyHomeTitle")}
           detail={t("nearbyHomeBody")}
           icon={<ActionIcon kind="nearby" />}
-          onPress={() => router.push("/nearby")}
+          onPress={() => {
+            requestSearch();
+            router.push("/nearby");
+          }}
           testID="home-nearby-action"
         />
         <NavigationTile

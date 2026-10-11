@@ -1,5 +1,14 @@
 # Release decision
 
+October 11 scope clarification: Roope is building a school assignment, not
+requesting store/production publication. The runtime legal-review banner and
+draft terms are removed; factual privacy/deletion/source information remains.
+No lawyer review is required to continue this classroom task. This does not
+approve future production documents or alter the production **NO-GO** below.
+One-press nearby/list/material changes are locally validated in
+`NEARBY_POINTS_EVIDENCE.md`; latest native acceptance remains pending. No push,
+native build/install or public production publication was performed.
+
 October 8 whole-app refinement: local implementation, **261 tests** and scoped
 actual-UI FI/EN browser journeys pass. Production remains **NO-GO**. Latest
 native appearance/camera/accessibility, OS address/map handoff and existing

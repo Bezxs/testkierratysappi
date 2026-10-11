@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
   CollectionDirectorySchema,
+  CollectionPointSchema,
   collectionPointUrl,
   collectionPointMapUrl,
   directoryAgeDays,
   nearestCollectionPoint,
+  nearestCollectionPoints,
   type CollectionPoint,
 } from "../collection-points";
 
@@ -12,12 +14,15 @@ const point: CollectionPoint = {
   id: "node/1",
   coordinates: { latitude: 60, longitude: 25 },
   name: null,
+  operator: null,
   address: null,
   access: "unknown",
   kind: "unknown",
+  reportedMaterials: [],
+  reportedExclusions: [],
 };
 const directory = {
-  version: 1,
+  version: 2,
   source: "OpenStreetMap contributors",
   attributionUrl: "https://www.openstreetmap.org/copyright",
   license: "ODbL-1.0",
@@ -29,6 +34,61 @@ const directory = {
 };
 
 describe("local collection directory contract", () => {
+  it("ranks five nearby alternatives by distance, without promoting a named or material-tagged point", () => {
+    const list = Object.freeze(
+      Array.from({ length: 7 }, (_, i) => ({
+        ...point,
+        id: `node/${i + 1}`,
+        coordinates: { latitude: 60 + i / 100, longitude: 25 },
+      })),
+    );
+    expect(nearestCollectionPoints(list, point.coordinates).map((p) => p.point.id)).toEqual([
+      "node/1",
+      "node/2",
+      "node/3",
+      "node/4",
+      "node/5",
+    ]);
+    expect(list[0]).toEqual(point);
+    expect(
+      nearestCollectionPoints([{ ...point, id: "node/3" }, point], point.coordinates).map(
+        (p) => p.point.id,
+      ),
+    ).toEqual(["node/1", "node/3"]);
+  });
+  it("keeps empty/far lists empty and validates limits and coordinates", () => {
+    expect(nearestCollectionPoints([], point.coordinates)).toEqual([]);
+    expect(
+      nearestCollectionPoints(
+        [{ ...point, coordinates: { latitude: 65, longitude: 25 } }],
+        point.coordinates,
+      ),
+    ).toEqual([]);
+    for (const limit of [0, 21, 1.5, NaN])
+      expect(() => nearestCollectionPoints([point], point.coordinates, limit)).toThrow();
+    expect(() => nearestCollectionPoints([point], { latitude: NaN, longitude: 25 })).toThrow();
+  });
+  it("retains exact material reports and explicit exclusions without inference", () => {
+    const parsed = CollectionPointSchema.parse({
+      ...point,
+      reportedMaterials: ["plastic"],
+      reportedExclusions: ["plasticBottles"],
+    });
+    expect(parsed.reportedMaterials).toEqual(["plastic"]);
+    expect(parsed.reportedExclusions).toEqual(["plasticBottles"]);
+  });
+  it("rejects legacy, unknown, duplicate and conflicting material reports", () => {
+    expect(CollectionDirectorySchema.safeParse({ ...directory, version: 1 }).success).toBe(false);
+    for (const reportedMaterials of [["madeUp"], ["glass", "glass"], undefined])
+      expect(CollectionPointSchema.safeParse({ ...point, reportedMaterials }).success).toBe(false);
+    expect(
+      CollectionPointSchema.safeParse({
+        ...point,
+        reportedMaterials: ["paper"],
+        reportedExclusions: ["paper"],
+      }).success,
+    ).toBe(false);
+  });
   it("opens a marked map at the public point, including when its address is missing", () => {
     expect(collectionPointMapUrl(point)).toBe(
       "https://www.openstreetmap.org/?mlat=60&mlon=25#map=18/60/25",

@@ -2,6 +2,14 @@
 
 Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally blocked.
 
+## Current independent team-baseline work — October 11
+
+- [x] Make Home nearby a single purpose-labelled action using a recent consume-once in-memory intent; plain URL/background return do not start acquisition.
+- [x] Display up to five distance-ranked real records with explicit affirmative/excluded material reports, missing-data fallback, identity/address/map and source/date/licence/non-verification; re-normalize the authentic cache without advancing its dates.
+- [x] Replace the school project's runtime legal-review banner/draft terms with factual privacy/retention/deletion/source limitations, per Roope's explicit request; future production approvals remain unclaimed.
+- [x] Repair the browser loading/scheme-change race; pass 293-test pinned validation and both expanded actual-UI browser runners. No new dependency, paid account, native build/install, private import or push.
+- [~] Verify the latest one-press nearby/list/Privacy flow on the existing iPhone with native permissions, dark/large text and map handoff; record no GPS/point/distance details. Browser evidence is not native acceptance.
+
 ## Current independent team-baseline work — October 8
 
 - [x] Improve Home recognition with an original package-label scan drawing, native line icons, real nearby/guide tiles and quieter history; preserve plain FI/EN copy and contextual notices without private imports or new dependencies.

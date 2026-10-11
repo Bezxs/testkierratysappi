@@ -1,4 +1,40 @@
-# Nearby UX refinement — 2026-10-08
+# Nearby UX refinement
+
+## One action and useful alternatives — 2026-10-11
+
+Home now says **Lähimmät pisteet** and discloses use of location in its subtitle.
+Its press sets a short-lived, consume-once in-memory search intent, then navigates.
+The focused screen starts acquisition only for that explicit recent action. An
+ordinary direct URL/deep link has no intent and keeps a manual search action;
+back/remount/background return must not silently acquire a new fix. OS permission
+still applies on first use. No persisted intent, route flag or location tracking.
+
+Display up to five actual directory records within 100 km, sorted by straight-line
+distance with stable ID ties. Cards show reported identity/operator, source address
+or map destination, distance, explicit material reception/exclusions or missing-data
+text. Material information is not hidden behind technical details. Never favor
+named/material-rich records while calling them the closest or fabricate grouping
+of nearby bins. Map is primary for the first record; refresh is quiet below the list.
+Source, original fetch date and shared non-verification/caution precede the cards.
+Accuracy/source IDs/full caveats and optional OS address lookup remain expandable;
+that lookup still needs its own action and recipient disclosure.
+
+The school-project Privacy page now provides factual transfers/retention/deletion
+and sorting-source limitations, not a draft contract or legal-review banner. This
+honors Roope's explicit request, without claiming approved production documents.
+No school/demo badge, private design import, new package, motion or push.
+
+The existing single theme provider now uses a synchronous external snapshot with
+subscription/recheck instead of RN Web's initial-state/effect-only scheme hook.
+Browser QA reproduced a missed scheme change during page loading; this repairs
+that timing gap without delaying or reloading the user's task.
+
+Current validation/reproduction/limits: `docs/final/NEARBY_POINTS_EVIDENCE.md`.
+The existing browser runner below now also covers one-press Home versus direct URL,
+five independently distance-ranked records, known/missing/excluded materials and
+denied/cancelled/timed-out acquisition. Physical native acceptance remains separate.
+
+## Original refinement — 2026-10-08
 
 Scope: independent KierratysAppi baseline. No KeepItGreen experiment import or push.
 The redesign-existing-projects and emil-design-eng workflows informed this focused

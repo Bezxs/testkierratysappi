@@ -189,13 +189,12 @@ const fi = {
   feedbackPrivacyCaution: "Älä kirjoita nimeä, yhteystietoja tai muuta henkilötietoa luonnokseen.",
   saveDraft: "Tallenna luonnos laitteelle",
   draftSaved: "Luonnos tallennettu",
-  legalAction: "Tietosuoja ja ehdot",
-  privacyTitle: "Tietosuojailmoitus",
-  termsTitle: "Käyttöehdot",
-  legalReview: "LUONNOS — ODOTTAA JURIDISTA TARKISTUSTA",
-  privacyDraft:
+  legalAction: "Tietosuoja",
+  privacyTitle: "Tietojen käyttö",
+  sortingInformationTitle: "Lajitteluohjeista",
+  privacyInformation:
     "Perushaku ei vaadi tiliä. Viivakoodi lähetetään KeepItGreenin palvelimelle ja edelleen Open Food Factsille. Tuotetyypin mukaan haku voidaan ohjata Open Beauty Facts-, Open Pet Food Facts- tai Open Products Facts -tietokantaan. Näiden yhteisötiedot voivat olla puutteellisia. Palvelin voi säilyttää viivakoodiin liittyvää hakutulosta prosessimuistissa enintään kuusi tuntia ja IP-osoitetta väärinkäytön estoon enintään minuutin; rutiinipyyntöjä ei lokiteta. Mainos- tai käyttöanalytiikkaa ei ole. Historia ja palauteluonnokset ovat paikallisia, mutta käyttöjärjestelmän varmuuskopio voi sisältää ne; kaikki paikalliset tiedot voi poistaa alta.",
-  termsDraft:
+  sortingInformation:
     "Lajitteluohje perustuu ilmoitettuihin lähteisiin ja voi vaatia pakkauksen tarkistamista. Paikallinen jätehuolto ja pakkauksen vaarallisuusohjeet ovat etusijalla.",
   deleteLocalData: "Poista kaikki paikalliset tiedot",
   deleteLocalDataBody:
@@ -401,13 +400,12 @@ const en: Record<keyof typeof fi, string> = {
     "Do not include your name, contact details, or other personal data in the draft.",
   saveDraft: "Save draft on device",
   draftSaved: "Draft saved",
-  legalAction: "Privacy and terms",
-  privacyTitle: "Privacy notice",
-  termsTitle: "Terms of use",
-  legalReview: "DRAFT — REQUIRES LEGAL REVIEW",
-  privacyDraft:
+  legalAction: "Privacy",
+  privacyTitle: "Use of information",
+  sortingInformationTitle: "About sorting guidance",
+  privacyInformation:
     "Basic lookup needs no account. The barcode is sent to the KeepItGreen server and then to Open Food Facts. Depending on the product type, lookup may be routed to Open Beauty Facts, Open Pet Food Facts or Open Products Facts. These community databases may be incomplete. The server may retain a barcode-linked lookup result in process memory for up to six hours and an IP address for abuse prevention for up to one minute; routine requests are not logged. There is no advertising or usage analytics. History and feedback drafts are local, but an operating-system backup may include them; all local data can be deleted below.",
-  termsDraft:
+  sortingInformation:
     "Guidance is based on the cited sources and may require checking the package. Local waste-service and hazardous-product instructions take precedence.",
   deleteLocalData: "Delete all local data",
   deleteLocalDataBody:

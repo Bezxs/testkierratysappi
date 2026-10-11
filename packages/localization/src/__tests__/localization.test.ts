@@ -17,7 +17,11 @@ describe("localization", () => {
   it("uses KeepItGreen consistently in both languages and privacy/deletion copy", () => {
     for (const language of ["fi", "en"] as const) {
       expect(translate(language, "appName")).toBe("KeepItGreen");
-      for (const key of ["privacyDraft", "deleteLocalDataBody", "localDataDeleted"] as const) {
+      for (const key of [
+        "privacyInformation",
+        "deleteLocalDataBody",
+        "localDataDeleted",
+      ] as const) {
         expect(translate(language, key)).toContain("KeepItGreen");
       }
       expect(Object.values(messages[language]).join(" ")).not.toContain("KierrätysAppi");
@@ -42,8 +46,10 @@ describe("localization", () => {
       expect(messages[language]).not.toHaveProperty("loadingDetail");
       expect(translate(language, "cameraPurpose")).toContain("Open Facts");
       expect(translate(language, "nearbyPrivacy")).toContain("OpenStreetMap");
-      expect(translate(language, "privacyDraft")).toContain("Open Food Facts");
-      expect(translate(language, "legalReview")).toMatch(/JURIDISTA|LEGAL/);
+      expect(translate(language, "privacyInformation")).toContain("Open Food Facts");
+      expect(messages[language]).not.toHaveProperty("legalReview");
+      expect(messages[language]).not.toHaveProperty("termsDraft");
+      expect(translate(language, "privacyInformation")).not.toMatch(/JURIDISTA|LEGAL REVIEW/);
     }
     expect(translate("fi", "materialCodeRecognizedBody")).toContain("pelkkä koodi ei kerro");
     expect(translate("en", "materialCodeRecognizedBody")).toContain("code alone does not tell");

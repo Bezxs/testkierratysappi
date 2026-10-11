@@ -1,19 +1,11 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Alert, StyleSheet, View } from "react-native";
-import {
-  AppText,
-  Button,
-  DocumentSection,
-  PageHeader,
-  PageIntro,
-  Screen,
-  StatusPill,
-} from "@/components/ui";
+import { Alert } from "react-native";
+import { AppText, Button, DocumentSection, PageHeader, PageIntro, Screen } from "@/components/ui";
 import { announceAccessibility } from "@/features/accessibility/announcements";
 import { clearAllLocalData } from "@/features/history/storage";
 import { useLanguage } from "@/i18n/language-context";
-import { spacing, useAppTheme } from "@/theme/tokens";
+import { useAppTheme } from "@/theme/tokens";
 
 export default function LegalScreen() {
   const router = useRouter();
@@ -40,14 +32,11 @@ export default function LegalScreen() {
     <Screen>
       <PageHeader onBack={() => router.back()} />
       <PageIntro title={t("legalAction")} />
-      <View style={styles.review}>
-        <StatusPill label={t("legalReview")} tone="amber" />
-      </View>
       <DocumentSection>
         <AppText variant="heading" accessibilityRole="header">
           {t("privacyTitle")}
         </AppText>
-        <AppText>{t("privacyDraft")}</AppText>
+        <AppText>{t("privacyInformation")}</AppText>
         <AppText>{t("nearbyPrivacy")}</AppText>
         <AppText>{t("nearbyAddressDisclosure")}</AppText>
       </DocumentSection>
@@ -62,13 +51,9 @@ export default function LegalScreen() {
         )}
       </DocumentSection>
       <DocumentSection>
-        <AppText variant="heading">{t("termsTitle")}</AppText>
-        <AppText>{t("termsDraft")}</AppText>
+        <AppText variant="heading">{t("sortingInformationTitle")}</AppText>
+        <AppText>{t("sortingInformation")}</AppText>
       </DocumentSection>
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({
-  review: { paddingBottom: spacing.lg },
-});

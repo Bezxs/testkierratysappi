@@ -226,7 +226,15 @@
 - Decision: improve Home with one original package-label scan signature, consistent native line icons and two actual nearby/guide navigation tiles. Keep manual entry immediately after scan and history quieter beneath the alternatives. Retain the existing palette/fonts, short localized copy, sources and legal/uncertainty disclosures. No private artwork, package, animation, mock preview or GitHub push.
 - Reason: removing decoration alone left a text list resembling settings. Functional icons and a limited hierarchy add recognition without slogans or fabricated maturity. Tiles must wrap for narrow screens, widen with system font scale and keep full labels; the observed Finnish large-text orphan-letter defect receives both arithmetic and rendered-word-wrap regressions. Browser checks remain distinct from native Dynamic Type/VoiceOver acceptance.
 
-## Remaining pending decisions
+## D-033 — One nearby action, explicit material reports and school-scope privacy
+
+- Date: 2026-10-11
+- Status: implemented locally; native acceptance remains separate
+- Decision: Home's nearby press is the explicit purpose-labelled location action. A short-lived consume-once in-memory intent starts the focused screen; direct/deep links and background returns alone never acquire location. Rank up to five real records within 100 km by distance, without name/material preference. Normalize exact OSM affirmative/excluded material reports and reported operator into a v2 contract; missing/unsupported information stays unknown. Preserve genuine October 6 source dates when enriching the cached database after the live import fails. Never infer general-material acceptance as packaging/deposit eligibility or a sorting rule.
+- School scope: Roope explicitly says there will be no legal review. Remove the runtime review banner and draft-contract presentation; keep factual recipients, retention, local deletion and guidance limitations. Internal future-production drafts/gates remain unapproved, not requirements for continuing this classroom UI task.
+- UI engineering: repair the browser-observed scheme-change/loading race in the existing single theme provider using React's external-store subscription/recheck. Keep native Appearance, existing palette and source/material uncertainty; no private import, new package, motion, signing/install or GitHub push.
+
+## Remaining pending decisions (historical / production)
 
 - October 8 publication outcome: explicit non-force push succeeds to existing public KierratysAppi main, verified remotely. Do not change visibility/settings or KeepItGreen; source sharing does not publish a running production service or certify stores/native pending flows.
 

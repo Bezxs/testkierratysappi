@@ -100,7 +100,9 @@ test("guide and legal are reading sections and history never prints an internal 
   const history = readFileSync("apps/mobile/src/app/history.tsx", "utf8");
   assert.match(history, /t\(historyStatusMessageKey\(entry.resultStatus\)\)/);
   assert.doesNotMatch(history, /\{entry.resultStatus\}/);
-  assert.match(readFileSync("apps/mobile/src/app/legal.tsx", "utf8"), /t\("legalReview"\)/);
+  const legal = readFileSync("apps/mobile/src/app/legal.tsx", "utf8");
+  assert.match(legal, /t\("privacyInformation"\)/);
+  assert.doesNotMatch(legal, /legalReview|termsDraft|privacyDraft|StatusPill/);
 });
 
 test("embedded sorting presentation retains uncertainty, preparation and all provenance fields", () => {
@@ -150,9 +152,17 @@ test("privacy purpose stays at the relevant action, not as blanket Home/history 
   assert.match(readFileSync("apps/mobile/src/app/scan.tsx", "utf8"), /t\("cameraPurpose"\)/);
   const nearby = readFileSync("apps/mobile/src/app/nearby.tsx", "utf8");
   assert.match(nearby, /t\("nearbyIntro"\)/);
-  assert.match(nearby, /t\("nearbyAddressConsent"\)/);
+  assert.match(
+    readFileSync("apps/mobile/src/components/nearby-point-card.tsx", "utf8"),
+    /t\("nearbyAddressConsent"\)/,
+  );
   const legal = readFileSync("apps/mobile/src/app/legal.tsx", "utf8");
-  for (const key of ["privacyDraft", "nearbyPrivacy", "nearbyAddressDisclosure", "legalReview"])
+  for (const key of [
+    "privacyInformation",
+    "nearbyPrivacy",
+    "nearbyAddressDisclosure",
+    "sortingInformation",
+  ])
     assert.ok(legal.includes(`t("${key}")`));
 });
 

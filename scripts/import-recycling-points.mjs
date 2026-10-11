@@ -6,6 +6,40 @@ export const recyclingQuery =
   '[out:json][timeout:35];area["ISO3166-1"="FI"]["boundary"="administrative"]["admin_level"="2"]->.country;nwr["amenity"="recycling"](area.country);out center tags;out count;';
 const limit = 12_000_000;
 
+// Exact affirmative/negative reports only. Do not infer packaging from general material tags.
+export const recyclingMaterials = {
+  glass: "glass",
+  glass_bottles: "glassBottles",
+  plastic: "plastic",
+  plastic_packaging: "plasticPackaging",
+  plastic_bottles: "plasticBottles",
+  paper: "paper",
+  paper_packaging: "paperPackaging",
+  cardboard: "cardboard",
+  cartons: "cartons",
+  beverage_cartons: "beverageCartons",
+  metal: "metal",
+  metal_packaging: "metalPackaging",
+  small_metal: "smallMetal",
+  scrap_metal: "scrapMetal",
+  cans: "cans",
+  aluminium: "aluminium",
+  batteries: "batteries",
+  car_batteries: "carBatteries",
+  electrical_appliances: "electricalAppliances",
+  small_electrical_appliances: "smallElectricalAppliances",
+  clothes: "clothes",
+  textiles: "textiles",
+  shoes: "shoes",
+  wood: "wood",
+  garden_waste: "gardenWaste",
+  food_waste: "foodWaste",
+  hazardous_waste: "hazardousWaste",
+  fluorescent_tubes: "fluorescentTubes",
+  light_bulbs: "lightBulbs",
+  tyres: "tyres",
+};
+
 function cleanText(value, max) {
   if (typeof value !== "string") return null;
   const text = value.replace(/[\p{Cc}\p{Cf}]/gu, "").trim();
@@ -74,14 +108,21 @@ export function normalizeRecyclingSnapshot(payload, retrievedAt) {
       id,
       coordinates: { latitude: location.lat, longitude: location.lon },
       name: cleanText(tags["name:fi"] ?? tags.name, 160),
+      operator: cleanText(tags.operator, 160),
       address: cleanText([streetLine, city].filter(Boolean).join(", "), 240),
       access: tags.access === undefined ? "unknown" : "reported_public",
       kind: ["container", "centre"].includes(tags.recycling_type) ? tags.recycling_type : "unknown",
+      reportedMaterials: Object.entries(recyclingMaterials)
+        .filter(([key]) => tags[`recycling:${key}`] === "yes")
+        .map(([, value]) => value),
+      reportedExclusions: Object.entries(recyclingMaterials)
+        .filter(([key]) => tags[`recycling:${key}`] === "no")
+        .map(([, value]) => value),
     });
   }
   if (!points.length) throw new Error("Empty directory");
   return {
-    version: 1,
+    version: 2,
     source: "OpenStreetMap contributors",
     attributionUrl: "https://www.openstreetmap.org/copyright",
     license: "ODbL-1.0",
@@ -93,9 +134,14 @@ export function normalizeRecyclingSnapshot(payload, retrievedAt) {
   };
 }
 
-async function importSnapshot(inputPath) {
+async function importSnapshot(inputPath, cachedRetrievedAt) {
   let raw;
   if (inputPath) {
+    if (!cachedRetrievedAt || !Number.isFinite(Date.parse(cachedRetrievedAt))) {
+      throw new Error(
+        "Cached source import requires its original retrieval date as the third argument",
+      );
+    }
     raw = await readFile(inputPath);
   } else {
     const response = await fetch("https://overpass-api.de/api/interpreter", {
@@ -108,7 +154,8 @@ async function importSnapshot(inputPath) {
       },
       body: new URLSearchParams({ data: recyclingQuery }),
     });
-    if (!response.ok || !response.body) throw new Error("OSM download unavailable");
+    if (!response.ok || !response.body)
+      throw new Error(`OSM download unavailable (${response.status})`);
     const chunks = [];
     let size = 0;
     for await (const chunk of response.body) {
@@ -121,7 +168,7 @@ async function importSnapshot(inputPath) {
   if (raw.byteLength > limit) throw new Error("OSM input exceeds limit");
   const snapshot = normalizeRecyclingSnapshot(
     JSON.parse(raw.toString("utf8")),
-    new Date().toISOString(),
+    inputPath ? new Date(cachedRetrievedAt).toISOString() : new Date().toISOString(),
   );
   const directory = new URL("../apps/mobile/assets/data/", import.meta.url);
   await mkdir(directory, { recursive: true });
@@ -130,5 +177,5 @@ async function importSnapshot(inputPath) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  await importSnapshot(process.argv[2]);
+  await importSnapshot(process.argv[2], process.argv[3]);
 }

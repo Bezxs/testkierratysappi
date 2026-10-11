@@ -1,5 +1,13 @@
-import { createContext, createElement, type PropsWithChildren, useContext, useMemo } from "react";
-import { useColorScheme } from "react-native";
+import {
+  createContext,
+  createElement,
+  type PropsWithChildren,
+  useContext,
+  useMemo,
+  useSyncExternalStore,
+} from "react";
+import { Appearance } from "react-native";
+import { createColorSchemeStore } from "./color-scheme-store";
 import { type AppPalette, darkPalette, lightPalette } from "./palettes";
 
 export { darkPalette, lightPalette } from "./palettes";
@@ -85,9 +93,18 @@ export const elevation = {
 
 type AppTheme = { palette: AppPalette; isDark: boolean };
 const AppThemeContext = createContext<AppTheme | undefined>(undefined);
+const colorSchemeStore = createColorSchemeStore({
+  read: Appearance.getColorScheme,
+  subscribe: (listener) => Appearance.addChangeListener(listener),
+});
 
 export function AppThemeProvider({ children }: PropsWithChildren) {
-  const isDark = useColorScheme() === "dark";
+  const isDark =
+    useSyncExternalStore(
+      colorSchemeStore.subscribe,
+      colorSchemeStore.getSnapshot,
+      colorSchemeStore.getServerSnapshot,
+    ) === "dark";
   const value = useMemo(() => ({ palette: isDark ? darkPalette : lightPalette, isDark }), [isDark]);
   return createElement(AppThemeContext.Provider, { value }, children);
 }

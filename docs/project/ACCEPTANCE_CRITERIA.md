@@ -22,6 +22,23 @@
 
 ## Free-data and nearest-point addition
 
+October 11 school-scope addition supersedes the earlier runtime legal-banner
+retention requirements below: Privacy contains factual recipients, retention,
+local deletion and guidance limits, not unapproved terms or a review notice.
+This is not a production-document approval.
+
+The Home nearby action starts the search in one press, subject to OS permission;
+a recent in-memory action is consumed once and cannot be replayed by a URL,
+remount or background return. Direct URLs require a new manual action. Show up
+to five real nearest records within 100 km with reported reception/exclusions
+visible per record; missing/broad material tags never become specific packaging
+or deposit acceptance. Preserve source IDs, v2 runtime validation, source/licence,
+original dates, uncertainty and source-address/map destination. Filter neither
+names nor material metadata to misrepresent distance order. Cached enrichment
+must not advance the source retrieval date. Scheme changes during loading and
+after hydration must update the existing shared theme without leaving stale
+surfaces. Native permission/list/layout/map acceptance remains separate.
+
 UX refinement acceptance: the map action is primary and fits the standard-size
 390×844 browser viewport; technical metadata is expandable with announced state,
 while uncertainty, source/licence/date and essential access/material cautions
