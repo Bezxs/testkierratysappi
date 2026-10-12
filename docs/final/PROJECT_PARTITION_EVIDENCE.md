@@ -16,7 +16,7 @@ Moved existing code, not duplicated it. Extracted the application package's look
 collection contracts into their own pure shared package. API/mobile import those
 public schemas and keep the existing v1 endpoint/method/body/results. Backend
 request JSON schema is generated from the shared strict body schema. New part
-READMEs/AGENTS and `docs/project/TEAM_STRUCTURE.md` describe roles, commands,
+READMEs/AGENTS and `docs/project/TEAM_STRUCTURE.md` describe responsibilities, commands,
 cross-part change/version procedure and separate branch/worktree workflow.
 
 The mandatory AST/import/public-export/DAG guard checks normal/type/import-type/
@@ -99,5 +99,5 @@ No new Xcode native build/sign/install, wider physical nearby/map/permission/
 VoiceOver/Dynamic Type/battery acceptance, database hosting, paid action, live
 provider/advisory re-audit, remote CI or publication. Existing profile expires
 October 19, 12:49:04 Helsinki. No user contents/credentials were read or deleted.
-The remaining latest native flow is still the next action. Owner assigns people,
-approves sharing/settings separately; no roles or approvals were fabricated.
+The remaining latest native flow is still the next action. Sharing/settings need
+separate authorization; no remote approvals or personal assignments were configured.

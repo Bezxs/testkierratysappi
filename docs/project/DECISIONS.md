@@ -246,8 +246,15 @@
 - Date: 2026-10-12
 - Status: implemented and locally validated; no push/remote settings change
 - Decision: use mobile/app+localization, backend/API+application+providers+database, and shared/contracts+domain+sorting policy. Extract contract schemas from application; mobile/API use public shared exports and preserve the v1 wire endpoint/method/body/results. Derive backend request JSON schema from the same contract, do not duplicate model logic. Enforce lane dependencies, declared public imports, cycles and compiler/symlink escape checks; run independent part/dependency validations plus mandatory whole integration and CI part jobs.
-- Limits: folders do not create three pinned independent releases or prevent intended shared policy/contract effects. Breaking v1 changes require coordinated versioning; use separate branches/worktrees for people rather than editing one checkout concurrently. Root tools/lockfile/CI/docs are shared integration ownership. Roope assigns actual teammates and authorizes pushes/settings separately; no fabricated CODEOWNERS identities or branch-protection enforcement.
+- Limits: folders do not create three pinned independent releases or prevent intended shared policy/contract effects. Breaking v1 changes require coordinated versioning; use separate branches/worktrees for people rather than editing one checkout concurrently. Root tools/lockfile/CI/docs are shared integration ownership. Pushes/settings require separate authorization; no CODEOWNERS identities or branch-protection enforcement were configured.
 - Continuity: move existing code/assets without private imports or dependency-version changes. Preserve data/rule/migration bytes and native app identity; keep an ignored local compatibility link for existing generated Xcode paths, while clean source/CI uses the new paths. Restore local services and verify browser/host bundle/current phone Home separately from fresh native builds and remaining GPS/camera/accessibility acceptance.
+
+## D-036 — Describe implementation responsibilities, not personal assignments
+
+- Date: 2026-10-12
+- Status: documentation clarification; implementation unchanged
+- Decision: remove personal role-assignment instructions and describe the complete technical scope of mobile, backend and the shared sorting core. Document actual independent development/test paths and the shared-contract/live-service requirements. Existing boundaries and CI gates already enforce the architectural division.
+- Limits: parallel implementation requires agreed inputs/outputs; folders do not remove runtime or shared-library dependencies. Do not invent who wrote an area, alter commit authors or rewrite actual evidence. No new native acceptance, remote CI result or GitHub publication is implied by the wording change.
 
 ## Remaining pending decisions (historical / production, continued)
 

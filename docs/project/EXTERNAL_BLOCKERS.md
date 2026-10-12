@@ -1,11 +1,11 @@
 # External blockers
 
 October 12 three-part organization adds no external credential/account/payment
-or data-source blocker. Code is locally partitioned and validated. Roope assigns
-the three role holders and separately authorizes GitHub push/branch protection
-if wanted; missing role names/settings do not block the local organization and
-no fake GitHub teams/CODEOWNERS identities were supplied. New CI jobs are source
-configuration, not a remote-CI pass or enforced branch protection.
+or data-source blocker. Code is locally partitioned and validated; each part's
+implementation scope is documented without personal role assignments.
+GitHub push/branch protection requires separate authorization; settings do not
+block the local organization. No GitHub teams/CODEOWNERS identities were configured.
+New CI jobs are source configuration, not a remote-CI pass or enforced branch protection.
 
 Existing installed-client Home works through relocated Metro; fresh native build
 generation and the remaining device matrix are separate. Before a later clean

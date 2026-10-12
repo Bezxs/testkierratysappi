@@ -1,17 +1,17 @@
-# Kolmen osan työnjako — 2026-10-12
+# Kolme toteutuskokonaisuutta — 2026-10-12
 
 ## Vastuut
 
-| Työalue | Tiedostot | Omistajarooli |
+| Työalue | Tiedostot | Toteutuksen sisältö |
 | --- | --- | --- |
-| Sovellus | `mobile/app`, `mobile/localization` | Mobile-kehittäjä |
-| Palvelin | `backend/api`, `backend/application`, `backend/data-providers`, `backend/database` | Backend-kehittäjä |
-| Ydin | `shared/contracts`, `shared/domain`, `shared/recycling-engine` | Ydin/rajapintakehittäjä |
+| Sovellus | `mobile/app`, `mobile/localization` | Näkymät, navigointi, kamera, sijainti, paikallinen historia ja käännökset |
+| Palvelin | `backend/api`, `backend/application`, `backend/data-providers`, `backend/database` | Tuotehaku, tietolähteet, välimuisti, API:n suojaus ja tietokantaskeema |
+| Lajitteluydin | `shared/contracts`, `shared/domain`, `shared/recycling-engine` | Tietomallit, koodien validointi, rajapintasopimukset ja lähteistetyt lajittelusäännöt |
 
-Roope määrittää henkilöt rooleihin. Keksittyjä GitHub-tunnuksia, tiimejä tai
-CODEOWNERS-hyväksyntöjä ei ole lisätty. Tämä on yksi Git-repo ja yksi yhteinen
-integraatio; ei kolme divergenttiä kopiota. Rootin lockfile, työkalut, CI ja
-dokumentaatio sovitaan yhdessä. Projektinhallinnan muistiinpanot päivitetään
+Tämä on yksi Git-repo ja yksi yhteinen integraatio; ei kolme erillistä kopiota.
+Jokaisella osalla on oma toteutus, testit ja tarkistuskomento.
+Rootin lockfile, työkalut, CI ja dokumentaatio sovitaan yhdessä.
+Projektinhallinnan muistiinpanot päivitetään
 rootin AGENTS.md:n mukaan myös yhden osan työssä.
 
 ## Riippuvuudet
@@ -30,7 +30,24 @@ Jokainen osa saa muuttaa sisäistä toteutustaan oman julkisen sopimuksensa sis�
 Backendin HTTP-vastauksen sopimus ja offline-lajittelu ovat tarkoituksellisesti
 yhteisiä, joten niiden muutos voi vaikuttaa mobileen. Nollavaikutuksia ei luvata.
 
-## Kolmen henkilön käytännön työ
+## Kuinka itsenäisiä osat ovat?
+
+Osat voi toteuttaa ja testata rinnakkain, kun yhteiset syötteet ja vastaukset on
+sovittu. Nykyiset sopimukset löytyvät `shared/contracts`-paketista; niitä ei
+kopioida eri muodoissa kunkin osan sisälle.
+
+| Osa | Mitä voi tehdä ilman muita käynnissä olevia osia? | Mitä yhdistäminen tarvitsee? |
+| --- | --- | --- |
+| Sovellus | Näkymät, paikalliset toiminnot ja offline-ohjeet; tuotehaun käyttöliittymä HTTP-testivastauksilla | Shared-paketit ja oikeaan online-tuotehakuun backendin HTTP-rajapinta |
+| Palvelin | API:n, providerien ja välimuistin testit sekä migraatiotestit ilman puhelinsovellusta | Shared-paketit ja sovittu HTTP-sopimus; elävä tuotehaku käyttää ulkoisia tietolähteitä |
+| Lajitteluydin | Tietomallit, koodien validointi, lajittelupäätökset, provenienssi ja sopimustestit ilman sovellusta tai palvelinta | Sovelluksen ja palvelimen yhteensopivuustarkistus ennen yhteisten sopimusten tai sääntöjen muutosta |
+
+Testivastaukset ovat vain testityökaluissa, eivät sovelluksen oikeaa tuotetietoa.
+Tämä on toteutusten erottelu, ei kolme täysin riippumatonta asennusta.
+Koko sovelluksen online-polku tarvitsee osien yhteistoimintaa; yhteinen lockfile ja työkalut
+säilyvät monorepon juurella.
+
+## Osien käytännön kehittäminen
 
 1. Valitse omalle työlle haara, esimerkiksi `codex/mobile-<aihe>`,
    `codex/backend-<aihe>` tai `codex/shared-<aihe>` yhteisestä sovitusta commitista.
@@ -47,8 +64,8 @@ yhteisiä, joten niiden muutos voi vaikuttaa mobileen. Nollavaikutuksia ei luvat
    toisen kehittäjän vastuulle siirrettävä vihreä muutos.
 5. Reviewaa diff ja jaa vain erikseen sovittuun repoon/haaraan. Tämä rakenteen
    muuttaminen ei valtuuta GitHub-pushia. GitHubin päähaaran suojaus/vaaditut
-   tarkistukset eivät tule voimaan pelkällä workflow-tiedostolla; Roope määrittää
-   ne erikseen, jos haluaa. Älä väitä hyväksyntöjä tai etä-CI:tä tehdyiksi.
+   tarkistukset eivät tule voimaan pelkällä workflow-tiedostolla; ne otetaan
+   käyttöön erikseen GitHubin asetuksista. Älä väitä hyväksyntöjä tai etä-CI:tä tehdyiksi.
 
 ## Sopimuksen muuttaminen
 

@@ -1,5 +1,18 @@
 # Test evidence
 
+## Partition documentation clarification — 2026-10-12
+
+- Removed personal role-assignment wording and documented actual independent
+  implementation/test paths and shared-contract/runtime requirements. Checked
+  current package manifests, dependency direction rules, scoped commands and the
+  existing isolated HTTP browser fixture runner; no production fixtures added.
+- Re-ran full pinned `pnpm validate`, exit 0: **307 tests (58 policy + 249
+  application)**, boundary/format/lint/strict types, package/API builds and
+  13-route web export pass. Ignored log: `work/partition-clarification-validate.log`.
+- Documentation-only change; no new behavior/test cases, dependency updates,
+  signing/install, browser/native acceptance, Git-history rewrite or GitHub push.
+  Earlier physical/browser evidence and remaining acceptance scope stay intact.
+
 ## Three-part source ownership — 2026-10-12
 
 - Full pinned `pnpm validate` exits 0: **307 tests (58 policy + 249 application)**,
