@@ -1,6 +1,48 @@
 # Physical iOS validation
 
-Status date: 2026-10-08
+Status date: 2026-10-12
+
+## Current owner-requested renewal — 2026-10-12
+
+Source `4e79895` on the independent team-baseline branch. This renewal does not
+import newer KeepItGreen code/assets or authorize a push/release. Preserved the
+existing ID, Personal Team, version 0.1.0/build 1 and native dependencies.
+
+| Check | Result and scope |
+| --- | --- |
+| Native consistency/build | Pass: Podfile.lock equals Pods/Manifest.lock; Xcode 26.6 `17F113`, iOS 26.5 SDK, Debug generic iOS destination, two build jobs, cached DerivedData and automatic existing-team provisioning produce `BUILD SUCCEEDED` |
+| Actual profile renewal | Pass: created 2026-10-12 09:49:04 UTC; expires **2026-10-19 09:49:04 UTC / 12:49:04 Europe/Helsinki**. This is seven-day development provisioning, not a distribution or year-end profile |
+| App/framework signatures | Pass: strict recursive app plus all 12 embedded-framework checks; expected device is included; app/profile/team entitlements match |
+| Native privacy configuration | Pass: foreground location purpose present, no Always purpose or background modes |
+| Replacement installation | Pass: beta CoreDevice install outcome success for the unchanged bundle; no uninstall/reset. Strictly verified previous app retained as rollback, exactly one validated old cached profile moved to a recoverable backup; no revocation or broad cache deletion |
+| Physical startup | Pass: CoreDevice accepts launch using current dev-client URL; later exact-PID query still finds the app; no owner trust/account prompt was needed |
+| Actual latest Finnish Home | Pass: live XCTest-assisted tree shows scan/manual/plural nearby/guide/history/Privacy; named visible nearby-button assertion passes. Screenshot at 1284×2778 inspected: current baseline icons/tiles/material subtitle render, with development/tool overlays still visible |
+| Local-content retention | Not verified: data-container path changes; no private contents inspected or explicitly deleted. Path comparison alone proves neither retention nor loss |
+| Runtime host | Pass: restarted API 3003/Metro 8093; LAN health/status/iOS manifest/exact launch asset are healthy. JS bundle HTTP 200, 11,602,981 bytes, latest nearby keys present. This is still a Metro/API-dependent Debug client |
+| Latest nearby/material/map/Privacy contents, dark/large text | Not run in this renewal. No GPS or camera acquisition. Home/control presence does not establish these flows, native VoiceOver, accuracy, battery, cable-disconnected or Mac-independent operation |
+| Local validation | Pass: pinned `pnpm validate`, 293 tests (47 policy + 246 application), formatting/lint/types, package/API builds and 13-route web export; no new release/Doctor/security-audit/remote-CI claim |
+
+Ignored local evidence under `work/ios-renewal-2026-10-12/`: build/validation logs,
+install/inventory/launch/PID metadata, `iphone-home.png`, rollback app and old
+profile. Device identifiers/profiles/binaries/screenshots are not committed.
+Temporary bootstrap inventory is local OS-temp diagnostics, not analytics.
+Keep recovery artifacts through the next successful renewal; remove only exact
+validated targets during separately authorized cleanup. No secrets were printed.
+
+Tooling corrections: profile dates/data prevent whole-plist JSON conversion, so
+extract selected metadata; parse entitlement JSON rather than dotted-key paths.
+CoreDevice executable is a URL, not a string for `CONTAINS`, so use the exact
+launched PID predicate. Agent-device resolves the physical device by its observed
+name and rejects simulator-only runtime-hint flags; plain physical `open` succeeds
+after CoreDevice has launched the dev-client URL. These were diagnostic/tooling
+errors, not app failures or reasons to reinstall again.
+
+Next manual renewal must occur before October 19 at 12:49 Helsinki; no recurring
+automation has been created. Earlier October 13 and September profile statements
+below are historical, not the current installed expiry. Remaining native flow
+acceptance and public production gates remain separate.
+
+## Earlier physical evidence — October 8 and before
 
 Latest permission-cycle delta: **DENIAL AND RESTORATION PASS**. Roope changes app-specific permission to Never; native search exposes the complete Finnish denial explanation and settings control. Closing returns to Home. After the owner restores While Using, search reaches the ready-only refresh button with wait exit 0 and explicit visibility pass. No fresh consent-dialog, exact result-text or physical accuracy claim. Earlier pending-denial statements below are historical.
 

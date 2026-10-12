@@ -1,5 +1,34 @@
 # Test evidence
 
+## Owner-requested development signing renewal — 2026-10-12
+
+- Source `4e79895`, unchanged native dependencies and matched pods. Xcode 26.6
+  Debug build exits 0 / `BUILD SUCCEEDED`; new embedded profile creation
+  2026-10-12 09:49:04 UTC and expiry **2026-10-19 09:49:04 UTC / 12:49:04 Helsinki**.
+  Old app/profile kept recoverably; no broad deletion/uninstall/reset or push.
+- Strict recursive app and all 12 framework signatures pass; expected device,
+  app/team entitlements and foreground-only declaration match. Beta CoreDevice
+  replacement install outcome success, physical launch and later exact-PID
+  presence pass. Container path changed; local-content retention not inspected.
+- Actual Finnish Home and exact **Lähimmät pisteet** visible-button assertion
+  pass using the physical XCTest helper. Home screenshot inspected at 1284×2778;
+  native icons/tiles/material subtitle/Privacy control present, development/tool
+  overlays remain. No GPS/camera acquisition, nearby/material/map/Privacy-content,
+  dark/large-text/VoiceOver, battery, disconnected-wire or release acceptance.
+- Restored stopped API/Metro at current LAN origin; health/status/iOS manifest
+  and exact launch bundle HTTP 200, 11,602,981 bytes and latest nearby keys.
+  Actual bundle also contains the current LAN API origin. After closing the
+  automation session, CoreDevice foreground launch still succeeds with the same
+  product PID, leaving the app open; no active automation session is retained.
+  This is still a Mac-hosted-runtime-dependent Debug client, not standalone.
+- Full pinned `pnpm validate` exit 0: **293 tests (47 policy + 246 application)**,
+  format/lint/strict types, package/API builds and 13-route export. Ignored log:
+  `work/ios-renewal-2026-10-12/validate-final.log`. No new runtime behavior or dependency
+  change; no new unit-case/Doctor/live security/provider/remote-CI claim needed.
+- Detailed procedure, corrected diagnostic/tooling errors and evidence scope:
+  `PHYSICAL_IOS_VALIDATION.md`. No new external blocker or GitHub push. Manual
+  next renewal before October 19, 12:49 Helsinki; no scheduled automation.
+
 ## One-press nearby points and school-scope privacy — 2026-10-11
 
 - Pinned `pnpm validate` exits 0: **293 tests (47 policy + 246 application)**,

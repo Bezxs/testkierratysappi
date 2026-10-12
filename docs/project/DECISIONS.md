@@ -234,6 +234,13 @@
 - School scope: Roope explicitly says there will be no legal review. Remove the runtime review banner and draft-contract presentation; keep factual recipients, retention, local deletion and guidance limitations. Internal future-production drafts/gates remain unapproved, not requirements for continuing this classroom UI task.
 - UI engineering: repair the browser-observed scheme-change/loading race in the existing single theme provider using React's external-store subscription/recheck. Keep native Appearance, existing palette and source/material uncertainty; no private import, new package, motion, signing/install or GitHub push.
 
+## D-034 — Renew the exact development installation, not the product scope
+
+- Date: 2026-10-12
+- Status: renewed native build/install/Home verified
+- Decision: honor Roope's explicit renewal using the existing Personal Team, bundle ID, matched pods and Xcode 26.6 SDK. Preserve a verified rollback app and move only the validated old app-specific cached profile into a recoverable backup; automatic provisioning obtains a genuinely new October 19 expiry. Keep Xcode beta scoped to device/automation tooling. Install over the existing app, without uninstall/reset, dependency/private-code import, global configuration change, account purchase or GitHub push.
+- Evidence boundary: verify the embedded profile, 12 frameworks, entitlements/device binding and actual Home separately from future GPS/map/permission/dark/large-text acceptance. Restore local Metro/API because this is a Debug client; do not promise Mac-independent operation or a renewed profile from installation success alone. Changed container paths do not prove data retention/loss. No recurring renewal is scheduled; Roope requests the next before the recorded expiry.
+
 ## Remaining pending decisions (historical / production)
 
 - October 8 publication outcome: explicit non-force push succeeds to existing public KierratysAppi main, verified remotely. Do not change visibility/settings or KeepItGreen; source sharing does not publish a running production service or certify stores/native pending flows.

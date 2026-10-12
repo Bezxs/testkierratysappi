@@ -1,5 +1,16 @@
 # External blockers
 
+October 12 renewal is complete for the scoped development installation, with no
+new account/credential/payment/trust blocker: existing Xcode account renews the
+profile, build/sign/install/physical launch/current Home pass. Installed profile
+now expires **October 19 at 12:49:04 Helsinki**, superseding October 13 below.
+**Roope + Codex** own manual renewal before expiry; no automation is scheduled.
+**Codex** owns remaining native nearby/material/map/Privacy/layout acceptance;
+**Roope** handles any actual unlock/OS permission prompt when required. No GPS
+or camera acquisition happened in this maintenance run. Debug still relies on
+Mac-hosted Metro/API and network reachability; no independent/untethered-device
+pass is inferred. Public production gates remain separate from this school task.
+
 October 11: this is currently a school assignment, per Roope. A legal-review
 banner or lawyer approval is not a blocker for this scoped classroom UI task;
 the runtime now presents factual data-use information, not draft terms. The

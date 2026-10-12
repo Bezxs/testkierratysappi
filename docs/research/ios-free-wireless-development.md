@@ -1,5 +1,22 @@
 # Free wireless iPhone development
 
+## Current installation update — 2026-10-12
+
+The actual embedded Personal-Team profile was renewed from the original team
+baseline, with no new policy research or account purchase. Created October 12
+09:49:04 UTC; expires **October 19 09:49:04 UTC / 12:49:04 Helsinki**. Xcode 26.6
+Debug build, app/12-framework signatures, device binding, replacement install,
+physical launch and latest Home pass; no uninstall/reset or GitHub push.
+Exact procedure/evidence: `docs/final/PHYSICAL_IOS_VALIDATION.md`.
+
+API 3003 and Metro 8093 were restored at the current Mac LAN origin. This remains
+a Mac-runtime/network-dependent Debug client. Cable-disconnected operation was
+not re-tested; a new signature does not establish it. Request manual renewal
+before October 19, 12:49 Helsinki; no recurring automation exists. Profile dates
+and host-runtime details in the September section below are historical.
+
+## Previously researched platform constraints
+
 Checked: 2026-09-10. Scope: the owner's KeepItGreen development installation, not store distribution or a new hosting authorization.
 
 ## Verified platform limits

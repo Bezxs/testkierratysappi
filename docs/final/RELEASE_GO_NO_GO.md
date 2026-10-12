@@ -1,5 +1,13 @@
 # Release decision
 
+October 12: the owner's development signing renewal passes native Debug build,
+new embedded expiry (October 19, 12:49:04 Helsinki), strict app/12-framework
+signatures, replacement install, physical launch and current Finnish Home.
+No latest GPS/material/map/Privacy-content, wider accessibility/performance,
+wireless/standalone or release archive acceptance is inferred. This maintenance
+does not change public-production **NO-GO**, create a scheduled renewal or
+authorize GitHub sharing/store publication. School-scope work remains separate.
+
 October 11 scope clarification: Roope is building a school assignment, not
 requesting store/production publication. The runtime legal-review banner and
 draft terms are removed; factual privacy/deletion/source information remains.

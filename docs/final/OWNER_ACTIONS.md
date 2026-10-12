@@ -1,5 +1,19 @@
 # Owner actions
 
+October 12 development renewal is complete under Roope's explicit request.
+Current profile expires **October 19 at 12:49:04 Helsinki**, not October 13.
+Build/signatures/install/physical launch/latest Home pass. **Roope** requests
+the next renewal before that time, keeps the phone connected/unlocked for the
+procedure and handles any actual account/trust prompt; **Codex** validates the
+existing team/ID and embedded expiry, rebuilds with Xcode 26.6, verifies all
+frameworks, installs over the app without uninstall/reset, starts current
+Metro/API and verifies Home. No new account/payment or prompt is required now.
+No automatic renewal has been scheduled. Remaining nearby/material/map/Privacy
+contents and native permission/layout acceptance remain Codex's next scoped
+work, with Roope handling actual OS permission actions when required; do not
+send GPS/point/distance data. Production/store owner actions below are a separate
+future scope, not a lawyer-review requirement for this school assignment.
+
 October 8 whole-app refinement adds no new account/paid-tool action. Under OA-09,
 **Codex** checks the current Metro 8093 bundle on the existing iPhone client:
 Home → manual → guide and nearby map/address controls, light/dark/large text;

@@ -2,6 +2,13 @@
 
 Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally blocked.
 
+## Current development-device maintenance — October 12
+
+- [x] Owner-requested early renewal using the existing team/ID/Xcode 26.6, a recoverable single-profile cache move and unchanged native dependencies; renewed embedded profile expires October 19 at 12:49:04 Helsinki.
+- [x] Native Debug build, app/12-framework strict signatures, device/entitlement matching, replacement install, physical launch/still-running PID and actual latest Finnish Home/nearby-button visual/semantic check pass. No uninstall, private import, account/payment, global Xcode change or push.
+- [x] Restore local API/Metro, check current iOS manifest/launch bundle and pass 293-test pinned validation. Local-content retention is unverified despite no explicit deletion; no GPS/camera acquisition or wireless/Mac-independent claim.
+- [~] Remaining native five-point/material/map/Privacy-content, permission recovery, background clearing, dark/large-text acceptance is next. Manual next renewal is needed before October 19, 12:49 Helsinki; no recurring automation exists.
+
 ## Current independent team-baseline work — October 11
 
 - [x] Make Home nearby a single purpose-labelled action using a recent consume-once in-memory intent; plain URL/background return do not start acquisition.
