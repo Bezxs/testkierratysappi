@@ -6,7 +6,7 @@
 2. Mobile/backend do not import each other's code. Shared depends on neither consumer nor UI/server runtime; only declared public exports cross packages. Cycles, computed/private/cross-relative imports and compiler/symlink escapes fail the mandatory guard.
 3. Each part has a scoped validation and CI job. Mobile scope excludes the server/database, backend scope excludes the mobile consumer, shared scope excludes both consumers. Full integration remains mandatory, especially for shared changes.
 4. Existing POST v1 request/defaults/results, source/uncertainty, local-device data/identity, rules, migration and point data survive relocation; frozen contract plus existing consumer regressions pass. Do not promise mathematical zero side effects or hide intended shared coupling.
-5. Source relocation does not imply GitHub publication/settings, fresh native signing/build/store readiness, a deployed database or a completed wider physical matrix. Separate worktrees/branches and actual owner assignments are documented without fabricated approvals.
+5. Source relocation does not imply GitHub publication/settings, fresh native signing/build/store readiness, a deployed database or a completed wider physical matrix. Separate worktrees/branches and implementation responsibilities are documented; approvals/settings require separate evidence.
 
 ## Core vertical slice
 

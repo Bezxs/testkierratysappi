@@ -1,5 +1,24 @@
 # Test evidence
 
+## Explicit KierratysAppi main publication — 2026-10-12
+
+- Verified actual `origin` fetch/push URL, default `main` and unchanged public
+  visibility. Fresh fetch: 0 remote-only / 7 local-only commits; reviewed history
+  and 195-file aggregate diff. Whitespace checks pass; changed-file metadata has
+  no ignored work/native-output/private environment/signing artifacts. This is
+  not an exhaustive secret scan. KeepItGreen and remote settings untouched.
+- Fresh full pinned `pnpm validate` exits 0: **307 tests (58 policy + 249
+  application)**, boundaries/format/lint/types, package/API builds and 13-route
+  web export. Ignored log: `work/team-push-2026-10-12-validate.log`.
+- Non-force `git push origin HEAD:refs/heads/main` succeeds, `b9c3ac7..7e6d5bd`.
+  Independent `git ls-remote origin refs/heads/main` matches local source SHA
+  `7e6d5bd919e7a0cb0cf2095797575e751c3a1ac5`. Outcome documentation follows in
+  this same authorized sharing step; no future automatic push is authorized.
+- Source-push GitHub runs [38244798816](https://github.com/roopeaal/KierratysAppi/actions/runs/38244798816)
+  and [38244798714](https://github.com/roopeaal/KierratysAppi/actions/runs/38244798714)
+  were `in_progress` when checked, not passed evidence. No new native build/
+  install/signing, browser/device acceptance or production release is claimed.
+
 ## Partition documentation clarification — 2026-10-12
 
 - Removed personal role-assignment wording and documented actual independent

@@ -1,5 +1,11 @@
 # External blockers
 
+October 12 source publication adds no external blocker: the explicitly authorized
+non-force main push succeeds and the remote SHA is verified. GitHub checks were
+in progress when inspected, not accepted as passed. No repository settings,
+production infrastructure, signing or remaining native acceptance were changed.
+KeepItGreen remains untouched; future pushes need separate authorization.
+
 October 12 three-part organization adds no external credential/account/payment
 or data-source blocker. Code is locally partitioned and validated; each part's
 implementation scope is documented without personal role assignments.

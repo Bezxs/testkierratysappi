@@ -2,6 +2,12 @@
 
 Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally blocked.
 
+## Current authorized team publication — October 12
+
+- [x] Review seven independent local commits and the 195-file aggregate diff; verify origin URL/public visibility/main and fast-forward ancestry without importing KeepItGreen or changing repository settings.
+- [x] Pass fresh 307-test full local validation and publish `b9c3ac7..7e6d5bd` to KierratysAppi main; verify remote SHA. Publish the outcome documentation in the same authorized sharing step.
+- [~] Source-push GitHub checks were in progress at the recorded snapshot, not certified successful. Wider native acceptance remains the single next implementation action; future pushes require new authorization.
+
 ## Current three-part ownership work — October 12
 
 - [x] Relocate code into mobile/backend/shared with explicit responsibility READMEs/AGENTS; extract pure public contracts so consumers never import each other's internals. Preserve runtime IDs/data/rules/migration/dependency versions and v1 wire compatibility.

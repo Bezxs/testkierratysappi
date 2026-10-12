@@ -256,6 +256,13 @@
 - Decision: remove personal role-assignment instructions and describe the complete technical scope of mobile, backend and the shared sorting core. Document actual independent development/test paths and the shared-contract/live-service requirements. Existing boundaries and CI gates already enforce the architectural division.
 - Limits: parallel implementation requires agreed inputs/outputs; folders do not remove runtime or shared-library dependencies. Do not invent who wrote an area, alter commit authors or rewrite actual evidence. No new native acceptance, remote CI result or GitHub publication is implied by the wording change.
 
+## D-037 — Publish current independent team work only on explicit request
+
+- Date: 2026-10-12
+- Status: source main push succeeded and remote SHA verified
+- Decision: the owner's new push request authorizes this branch's current independent KierratysAppi history and outcome documentation to the verified existing `origin` main. Fresh fetch has zero remote-only commits; non-force fast-forward preserves existing history. Keep local feature branch and KeepItGreen untouched; do not mirror, alter authors/history, create remote experiment branches, change settings or publish a production release.
+- Evidence: fresh 307-test full local validation; source push `b9c3ac7..7e6d5bd` and matching remote `7e6d5bd919e7a0cb0cf2095797575e751c3a1ac5`. Remote runs are only an in-progress snapshot, not a green claim. Future publication needs separate explicit authorization; native acceptance and production gates remain unchanged.
+
 ## Remaining pending decisions (historical / production, continued)
 
 - October 8 publication outcome: explicit non-force push succeeds to existing public KierratysAppi main, verified remotely. Do not change visibility/settings or KeepItGreen; source sharing does not publish a running production service or certify stores/native pending flows.

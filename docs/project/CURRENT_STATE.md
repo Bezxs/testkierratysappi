@@ -1,5 +1,12 @@
 # Current state
 
+## Authorized team main publication — 2026-10-12
+
+- Owner explicitly requested pushing the current independent KierratysAppi changes. Verified the actual origin fetch/push URL as `https://github.com/roopeaal/KierratysAppi.git`, existing public visibility and default `main`. Fresh fetch showed zero remote-only and seven local-only commits. Reviewed that history and the 195-file aggregate diff, including relocation, prior UI/nearby improvements and evidence. No private KeepItGreen synchronization, force/mirror push, new branch, repository setting change or production release.
+- Non-force `HEAD:refs/heads/main` push succeeded: `b9c3ac7..7e6d5bd`; `git ls-remote` independently confirms `7e6d5bd919e7a0cb0cf2095797575e751c3a1ac5`. The three code roots and all current implementation/documentation are now published. This follow-up records the outcome in the same authorized sharing step. Future pushes still require separate authorization.
+- Fresh full pinned `pnpm validate` exits 0: 307 tests, boundary/format/lint/strict types, package/API builds and 13-route web export. Git whitespace checks pass; changed-file metadata contains no ignored work/native output/private environment/signing artifacts. This filename check is not a secret-scanner claim. Exact local log: `work/team-push-2026-10-12-validate.log`.
+- GitHub runs 38244798816 and 38244798714 for the source push were in progress when checked; no remote-CI success is inferred. Wider physical nearby/material/map/Privacy/layout acceptance and production gates remain separate. No signing/install, new dependency or external blocker in this publication.
+
 ## Three-part responsibility clarification — 2026-10-12
 
 - Replaced personal role-assignment instructions in the partition documentation with three concrete implementation scopes. `TEAM_STRUCTURE.md` now explains how mobile can exercise UI with isolated HTTP test responses, backend can validate without a mobile client, and the pure shared core can validate without either consumer. Runtime source, dependencies and public contracts are unchanged.
