@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const easUrl = new URL("../../apps/mobile/eas.json", import.meta.url);
-const packageUrl = new URL("../../apps/mobile/package.json", import.meta.url);
+const easUrl = new URL("../../mobile/app/eas.json", import.meta.url);
+const packageUrl = new URL("../../mobile/app/package.json", import.meta.url);
 
 test("every EAS development-client profile includes the native runtime dependency", async () => {
   const [eas, mobilePackage] = await Promise.all([

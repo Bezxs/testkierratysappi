@@ -241,7 +241,15 @@
 - Decision: honor Roope's explicit renewal using the existing Personal Team, bundle ID, matched pods and Xcode 26.6 SDK. Preserve a verified rollback app and move only the validated old app-specific cached profile into a recoverable backup; automatic provisioning obtains a genuinely new October 19 expiry. Keep Xcode beta scoped to device/automation tooling. Install over the existing app, without uninstall/reset, dependency/private-code import, global configuration change, account purchase or GitHub push.
 - Evidence boundary: verify the embedded profile, 12 frameworks, entitlements/device binding and actual Home separately from future GPS/map/permission/dark/large-text acceptance. Restore local Metro/API because this is a Debug client; do not promise Mac-independent operation or a renewed profile from installation success alone. Changed container paths do not prove data retention/loss. No recurring renewal is scheduled; Roope requests the next before the recorded expiry.
 
-## Remaining pending decisions (historical / production)
+## D-035 — Three ownership roots with real contracts, not isolated-looking copies
+
+- Date: 2026-10-12
+- Status: implemented and locally validated; no push/remote settings change
+- Decision: use mobile/app+localization, backend/API+application+providers+database, and shared/contracts+domain+sorting policy. Extract contract schemas from application; mobile/API use public shared exports and preserve the v1 wire endpoint/method/body/results. Derive backend request JSON schema from the same contract, do not duplicate model logic. Enforce lane dependencies, declared public imports, cycles and compiler/symlink escape checks; run independent part/dependency validations plus mandatory whole integration and CI part jobs.
+- Limits: folders do not create three pinned independent releases or prevent intended shared policy/contract effects. Breaking v1 changes require coordinated versioning; use separate branches/worktrees for people rather than editing one checkout concurrently. Root tools/lockfile/CI/docs are shared integration ownership. Roope assigns actual teammates and authorizes pushes/settings separately; no fabricated CODEOWNERS identities or branch-protection enforcement.
+- Continuity: move existing code/assets without private imports or dependency-version changes. Preserve data/rule/migration bytes and native app identity; keep an ignored local compatibility link for existing generated Xcode paths, while clean source/CI uses the new paths. Restore local services and verify browser/host bundle/current phone Home separately from fresh native builds and remaining GPS/camera/accessibility acceptance.
+
+## Remaining pending decisions (historical / production, continued)
 
 - October 8 publication outcome: explicit non-force push succeeds to existing public KierratysAppi main, verified remotely. Do not change visibility/settings or KeepItGreen; source sharing does not publish a running production service or certify stores/native pending flows.
 

@@ -1,5 +1,15 @@
 # Architecture
 
+Current three-part source organization (October 12): `mobile/` contains app and
+localization; `backend/` contains API, resolution/providers and database;
+`shared/` contains pure domain/contracts/sorting engine. Mobile consumes
+`@kierratysappi/contracts`, not the server application's package. The v1 wire
+contract is unchanged. Mandatory AST/public-export/dependency-DAG checks reject
+consumer coupling and private paths; scoped validation/CI plus full integration
+retain compatibility. Exact responsibility and change procedure:
+`docs/project/TEAM_STRUCTURE.md`. Folders do not guarantee zero consumer effects
+from deliberate shared changes. No GitHub settings/push is implied.
+
 ```text
 Expo SDK 57 app
   local Decision 97/129/EC material-code parser → explicit user confirmation

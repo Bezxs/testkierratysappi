@@ -1,5 +1,12 @@
 # Release decision
 
+October 12 source partition: mobile/backend/shared organization, mandatory
+boundaries, 307 tests, all scoped checks, browser journeys and existing-client
+Home reload pass locally. Source separation does not establish remote CI/branch
+protection, eliminate intended shared-contract effects, produce a fresh native
+release build or change public-production **NO-GO**. No GitHub push/settings,
+private import, new data/secret/account or production migration/publication.
+
 October 12: the owner's development signing renewal passes native Debug build,
 new embedded expiry (October 19, 12:49:04 Helsinki), strict app/12-framework
 signatures, replacement install, physical launch and current Finnish Home.

@@ -8,10 +8,11 @@
       "!**/dist",
       "!**/coverage",
       "!**/.expo",
-      "!apps/mobile/android",
-      "!apps/mobile/ios",
-      "!apps/mobile/expo-env.d.ts",
-      "!apps/mobile/assets/expo.icon",
+      "!apps",
+      "!mobile/app/android",
+      "!mobile/app/ios",
+      "!mobile/app/expo-env.d.ts",
+      "!mobile/app/assets/expo.icon",
       "!work",
       "!outputs"
     ]

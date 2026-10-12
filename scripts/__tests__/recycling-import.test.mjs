@@ -83,7 +83,7 @@ test("OSM area centres and bounded cleaned labels retain source binding", () => 
 });
 test("checked-in OSM snapshot is nonempty, finite, unique and explicitly licensed", () => {
   const snapshot = JSON.parse(
-    readFileSync(new URL("../../apps/mobile/assets/data/finland-recycling.json", import.meta.url)),
+    readFileSync(new URL("../../mobile/app/assets/data/finland-recycling.json", import.meta.url)),
   );
   assert.ok(snapshot.points.length > 0 && snapshot.points.length <= 20_000);
   assert.equal(snapshot.license, "ODbL-1.0");
@@ -97,7 +97,7 @@ test("checked-in OSM snapshot is nonempty, finite, unique and explicitly license
 
 test("cached import refuses to pretend a saved source was freshly retrieved", () => {
   const snapshotUrl = new URL(
-    "../../apps/mobile/assets/data/finland-recycling.json",
+    "../../mobile/app/assets/data/finland-recycling.json",
     import.meta.url,
   );
   const before = readFileSync(snapshotUrl, "utf8");

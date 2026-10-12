@@ -9,7 +9,7 @@ const baseUrl = process.env.NEARBY_QA_URL ?? "http://127.0.0.1:8093";
 const evidenceDir = path.resolve("work/nearby-ux-qa");
 fs.mkdirSync(evidenceDir, { recursive: true });
 const directory = JSON.parse(
-  fs.readFileSync("apps/mobile/assets/data/finland-recycling.json", "utf8"),
+  fs.readFileSync("mobile/app/assets/data/finland-recycling.json", "utf8"),
 );
 const sample = directory.points.find(
   (p) => !p.name && !p.address && p.reportedMaterials.length > 0 && p.reportedMaterials.length <= 3,
@@ -99,7 +99,7 @@ async function noOverflow(page) {
       await page.getByTestId("nearby-details-toggle-0").getAttribute("aria-expanded"),
       "false",
     );
-    const labels = (await import("../../packages/localization/dist/index.js")).messages.fi;
+    const labels = (await import("../../mobile/localization/dist/index.js")).messages.fi;
     const labelKeys = {
       glass: "pointGlass",
       glassBottles: "pointGlassBottles",

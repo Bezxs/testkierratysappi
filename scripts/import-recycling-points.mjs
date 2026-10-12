@@ -170,7 +170,7 @@ async function importSnapshot(inputPath, cachedRetrievedAt) {
     JSON.parse(raw.toString("utf8")),
     inputPath ? new Date(cachedRetrievedAt).toISOString() : new Date().toISOString(),
   );
-  const directory = new URL("../apps/mobile/assets/data/", import.meta.url);
+  const directory = new URL("../mobile/app/assets/data/", import.meta.url);
   await mkdir(directory, { recursive: true });
   await writeFile(new URL("finland-recycling.json", directory), `${JSON.stringify(snapshot)}\n`);
   console.log(`Imported ${snapshot.points.length} source-backed points. No user location used.`);

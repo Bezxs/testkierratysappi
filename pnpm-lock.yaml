@@ -27,7 +27,7 @@ importers:
         specifier: 4.1.10
         version: 4.1.10(@types/node@24.13.3)(@vitest/coverage-v8@4.1.10)(vite@8.2.1(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0))
 
-  apps/api:
+  backend/api:
     dependencies:
       '@fastify/cors':
         specifier: 11.3.0
@@ -43,13 +43,16 @@ importers:
         version: 9.8.1(supports-color@8.1.1)
       '@kierratysappi/application':
         specifier: workspace:*
-        version: link:../../packages/application
+        version: link:../application
+      '@kierratysappi/contracts':
+        specifier: workspace:*
+        version: link:../../shared/contracts
       '@kierratysappi/data-providers':
         specifier: workspace:*
-        version: link:../../packages/data-providers
+        version: link:../data-providers
       '@kierratysappi/domain':
         specifier: workspace:*
-        version: link:../../packages/domain
+        version: link:../../shared/domain
       fastify:
         specifier: 5.11.3
         version: 5.11.3
@@ -61,7 +64,43 @@ importers:
         specifier: 4.21.0
         version: 4.21.0
 
-  apps/mobile:
+  backend/application:
+    dependencies:
+      '@kierratysappi/contracts':
+        specifier: workspace:*
+        version: link:../../shared/contracts
+      '@kierratysappi/data-providers':
+        specifier: workspace:*
+        version: link:../data-providers
+      '@kierratysappi/domain':
+        specifier: workspace:*
+        version: link:../../shared/domain
+      '@kierratysappi/recycling-engine':
+        specifier: workspace:*
+        version: link:../../shared/recycling-engine
+      zod:
+        specifier: 4.4.3
+        version: 4.4.3
+
+  backend/data-providers:
+    dependencies:
+      '@kierratysappi/domain':
+        specifier: workspace:*
+        version: link:../../shared/domain
+      zod:
+        specifier: 4.4.3
+        version: 4.4.3
+
+  backend/database:
+    devDependencies:
+      '@electric-sql/pglite':
+        specifier: 0.5.4
+        version: 0.5.4
+      '@types/node':
+        specifier: 24.13.3
+        version: 24.13.3
+
+  mobile/app:
     dependencies:
       '@expo-google-fonts/atkinson-hyperlegible-next':
         specifier: 0.4.1
@@ -69,18 +108,18 @@ importers:
       '@expo-google-fonts/ibm-plex-mono':
         specifier: 0.4.1
         version: 0.4.1
-      '@kierratysappi/application':
+      '@kierratysappi/contracts':
         specifier: workspace:*
-        version: link:../../packages/application
+        version: link:../../shared/contracts
       '@kierratysappi/domain':
         specifier: workspace:*
-        version: link:../../packages/domain
+        version: link:../../shared/domain
       '@kierratysappi/localization':
         specifier: workspace:*
-        version: link:../../packages/localization
+        version: link:../localization
       '@kierratysappi/recycling-engine':
         specifier: workspace:*
-        version: link:../../packages/recycling-engine
+        version: link:../../shared/recycling-engine
       '@react-native-async-storage/async-storage':
         specifier: 2.2.0
         version: 2.2.0(react-native@0.86.3(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.86.3(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))
@@ -158,20 +197,14 @@ importers:
         specifier: 4.1.10
         version: 4.1.10(@types/node@24.13.3)(@vitest/coverage-v8@4.1.10)(vite@8.2.1(@types/node@24.13.3)(esbuild@0.27.7)(terser@5.49.2)(tsx@4.21.0)(yaml@2.9.0))
 
-  database:
-    devDependencies:
-      '@electric-sql/pglite':
-        specifier: 0.5.4
-        version: 0.5.4
-      '@types/node':
-        specifier: 24.13.3
-        version: 24.13.3
-
-  packages/application:
+  mobile/localization:
     dependencies:
-      '@kierratysappi/data-providers':
+      '@kierratysappi/domain':
         specifier: workspace:*
-        version: link:../data-providers
+        version: link:../../shared/domain
+
+  shared/contracts:
+    dependencies:
       '@kierratysappi/domain':
         specifier: workspace:*
         version: link:../domain
@@ -182,28 +215,13 @@ importers:
         specifier: 4.4.3
         version: 4.4.3
 
-  packages/data-providers:
-    dependencies:
-      '@kierratysappi/domain':
-        specifier: workspace:*
-        version: link:../domain
-      zod:
-        specifier: 4.4.3
-        version: 4.4.3
-
-  packages/domain:
+  shared/domain:
     dependencies:
       zod:
         specifier: 4.4.3
         version: 4.4.3
 
-  packages/localization:
-    dependencies:
-      '@kierratysappi/domain':
-        specifier: workspace:*
-        version: link:../domain
-
-  packages/recycling-engine:
+  shared/recycling-engine:
     dependencies:
       '@kierratysappi/domain':
         specifier: workspace:*

@@ -5,7 +5,7 @@ import test from "node:test";
 // Source-policy coverage complements actual browser inspection; it is not a native render test.
 test("every native radio also exposes its checked state in the web renderer", () => {
   for (const screen of ["index.tsx", "component.tsx", "feedback.tsx"]) {
-    const source = readFileSync(`apps/mobile/src/app/${screen}`, "utf8");
+    const source = readFileSync(`mobile/app/src/app/${screen}`, "utf8");
     const radios = [...source.matchAll(/<Pressable\b[\s\S]*?(?=>)/g)].filter(([control]) =>
       control.includes('accessibilityRole="radio"'),
     );
@@ -18,7 +18,7 @@ test("every native radio also exposes its checked state in the web renderer", ()
 });
 
 test("redesigned Home retains accessible primary, fallback and utility actions in task order", () => {
-  const home = readFileSync("apps/mobile/src/app/index.tsx", "utf8");
+  const home = readFileSync("mobile/app/src/app/index.tsx", "utf8");
   const ids = [
     "home-scan-action",
     "home-manual-action",
@@ -45,7 +45,7 @@ test("redesigned Home retains accessible primary, fallback and utility actions i
     if (control.kind !== "Pressable") {
       assert.match(control.source, /label=\{t\(/);
       assert.match(control.source, /onPress=/);
-      const ui = readFileSync("apps/mobile/src/components/ui.tsx", "utf8");
+      const ui = readFileSync("mobile/app/src/components/ui.tsx", "utf8");
       const start = ui.indexOf(`export function ${control.kind}`);
       const row = ui.slice(start, ui.indexOf("export function", start + 16));
       assert.match(row, /accessibilityRole="button"/);
@@ -71,11 +71,11 @@ test("all subpages use the same labelled navigation without repeated brand cards
     "feedback",
     "legal",
   ]) {
-    const source = readFileSync(`apps/mobile/src/app/${screen}.tsx`, "utf8");
+    const source = readFileSync(`mobile/app/src/app/${screen}.tsx`, "utf8");
     assert.match(source, /<PageHeader\b/);
     assert.doesNotMatch(source, /BrandLockup/);
   }
-  const ui = readFileSync("apps/mobile/src/components/ui.tsx", "utf8");
+  const ui = readFileSync("mobile/app/src/components/ui.tsx", "utf8");
   const header = ui.slice(
     ui.indexOf("export function PageHeader"),
     ui.indexOf("export function PageIntro"),
@@ -86,7 +86,7 @@ test("all subpages use the same labelled navigation without repeated brand cards
 
 test("forms preserve readable scalable text and strong focus boundaries", () => {
   for (const screen of ["manual", "material-code", "feedback"]) {
-    const source = readFileSync(`apps/mobile/src/app/${screen}.tsx`, "utf8");
+    const source = readFileSync(`mobile/app/src/app/${screen}.tsx`, "utf8");
     assert.match(source, /palette.borderStrong/);
     assert.match(source, /onFocus=|onFocus =/);
     assert.match(source, /onBlur=|onBlur =/);
@@ -96,17 +96,17 @@ test("forms preserve readable scalable text and strong focus boundaries", () => 
 
 test("guide and legal are reading sections and history never prints an internal enum", () => {
   for (const screen of ["guide", "legal"])
-    assert.match(readFileSync(`apps/mobile/src/app/${screen}.tsx`, "utf8"), /<DocumentSection/);
-  const history = readFileSync("apps/mobile/src/app/history.tsx", "utf8");
+    assert.match(readFileSync(`mobile/app/src/app/${screen}.tsx`, "utf8"), /<DocumentSection/);
+  const history = readFileSync("mobile/app/src/app/history.tsx", "utf8");
   assert.match(history, /t\(historyStatusMessageKey\(entry.resultStatus\)\)/);
   assert.doesNotMatch(history, /\{entry.resultStatus\}/);
-  const legal = readFileSync("apps/mobile/src/app/legal.tsx", "utf8");
+  const legal = readFileSync("mobile/app/src/app/legal.tsx", "utf8");
   assert.match(legal, /t\("privacyInformation"\)/);
   assert.doesNotMatch(legal, /legalReview|termsDraft|privacyDraft|StatusPill/);
 });
 
 test("embedded sorting presentation retains uncertainty, preparation and all provenance fields", () => {
-  const source = readFileSync("apps/mobile/src/components/sorting-result.tsx", "utf8");
+  const source = readFileSync("mobile/app/src/components/sorting-result.tsx", "utf8");
   for (const expression of [
     "result.destination.label",
     "result.preparation",
@@ -131,7 +131,7 @@ test("embedded sorting presentation retains uncertainty, preparation and all pro
 });
 
 test("original decorative package marks do not claim an unknown material or enter screen-reader order", () => {
-  const source = readFileSync("apps/mobile/src/components/packaging-mark.tsx", "utf8");
+  const source = readFileSync("mobile/app/src/components/packaging-mark.tsx", "utf8");
   assert.equal((source.match(/importantForAccessibility="no-hide-descendants"/g) ?? []).length, 2);
   assert.equal((source.match(/accessibilityElementsHidden/g) ?? []).length, 2);
   assert.equal((source.match(/aria-hidden/g) ?? []).length, 2);
@@ -141,22 +141,19 @@ test("original decorative package marks do not claim an unknown material or ente
 
 test("privacy purpose stays at the relevant action, not as blanket Home/history reassurance", () => {
   for (const screen of ["index", "history"]) {
-    assert.doesNotMatch(
-      readFileSync(`apps/mobile/src/app/${screen}.tsx`, "utf8"),
-      /privacySummary/,
-    );
+    assert.doesNotMatch(readFileSync(`mobile/app/src/app/${screen}.tsx`, "utf8"), /privacySummary/);
   }
-  const home = readFileSync("apps/mobile/src/app/index.tsx", "utf8");
+  const home = readFileSync("mobile/app/src/app/index.tsx", "utf8");
   assert.match(home, /testID="home-legal-action"/);
   assert.doesNotMatch(home, /scanActionDetail|cameraPurpose/);
-  assert.match(readFileSync("apps/mobile/src/app/scan.tsx", "utf8"), /t\("cameraPurpose"\)/);
-  const nearby = readFileSync("apps/mobile/src/app/nearby.tsx", "utf8");
+  assert.match(readFileSync("mobile/app/src/app/scan.tsx", "utf8"), /t\("cameraPurpose"\)/);
+  const nearby = readFileSync("mobile/app/src/app/nearby.tsx", "utf8");
   assert.match(nearby, /t\("nearbyIntro"\)/);
   assert.match(
-    readFileSync("apps/mobile/src/components/nearby-point-card.tsx", "utf8"),
+    readFileSync("mobile/app/src/components/nearby-point-card.tsx", "utf8"),
     /t\("nearbyAddressConsent"\)/,
   );
-  const legal = readFileSync("apps/mobile/src/app/legal.tsx", "utf8");
+  const legal = readFileSync("mobile/app/src/app/legal.tsx", "utf8");
   for (const key of [
     "privacyInformation",
     "nearbyPrivacy",
@@ -167,17 +164,17 @@ test("privacy purpose stays at the relevant action, not as blanket Home/history 
 });
 
 test("loading and error states explain the task once without asserting a fresh rule review", () => {
-  const result = readFileSync("apps/mobile/src/app/result.tsx", "utf8");
+  const result = readFileSync("mobile/app/src/app/result.tsx", "utf8");
   assert.doesNotMatch(result, /loadingDetail|eyebrow=/);
   assert.match(result, /t\("loading"\)/);
   assert.match(result, /t\("offlineBody"\)/);
   assert.match(result, /testID="result-primary-action"/);
   assert.match(result, /testID="result-secondary-action"/);
-  assert.match(readFileSync("apps/mobile/src/app/feedback.tsx", "utf8"), /t\("draftNotSent"\)/);
+  assert.match(readFileSync("mobile/app/src/app/feedback.tsx", "utf8"), /t\("draftNotSent"\)/);
 });
 
 test("recognition icons are original, decorative native linework with no motion or emoji dependency", () => {
-  const icons = readFileSync("apps/mobile/src/components/action-icon.tsx", "utf8");
+  const icons = readFileSync("mobile/app/src/components/action-icon.tsx", "utf8");
   for (const kind of ["nearby", "guide", "history", "manual"])
     assert.ok(icons.includes(`"${kind}"`));
   assert.equal((icons.match(/importantForAccessibility="no-hide-descendants"/g) ?? []).length, 2);
@@ -192,13 +189,13 @@ test("recognition icons are original, decorative native linework with no motion 
 });
 
 test("Home tiles label real destinations and adapt without hiding or capping text", () => {
-  const home = readFileSync("apps/mobile/src/app/index.tsx", "utf8");
+  const home = readFileSync("mobile/app/src/app/index.tsx", "utf8");
   assert.equal((home.match(/<NavigationTile\b/g) ?? []).length, 2);
   assert.match(home, /<ScanPackageMark color=\{palette.onStrong\}/);
   for (const kind of ["manual", "nearby", "guide", "history"])
     assert.ok(home.includes(`<ActionIcon kind="${kind}"`));
   assert.match(home, /flexWrap: "wrap"/);
-  const ui = readFileSync("apps/mobile/src/components/ui.tsx", "utf8");
+  const ui = readFileSync("mobile/app/src/components/ui.tsx", "utf8");
   const tile = ui.slice(
     ui.indexOf("export function NavigationTile"),
     ui.indexOf("export function ChoiceIndicator"),

@@ -13,6 +13,27 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  parts:
+    name: Part / ${{ matrix.part }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [mobile, backend, shared]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
+        with:
+          version: 11.16.0
+          run_install: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 24.19.0
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm validate:${{ matrix.part }}
+
   validate:
     runs-on: ubuntu-latest
     timeout-minutes: 25
@@ -29,7 +50,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm validate
       - name: Expo project health
-        working-directory: apps/mobile
+        working-directory: mobile/app
         run: pnpm dlx expo-doctor@1.20.1
       - name: Dependency security policy
         run: pnpm security:audit

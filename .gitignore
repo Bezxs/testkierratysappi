@@ -8,7 +8,9 @@ coverage/
 .env
 .env.*
 !.env.example
-apps/mobile/android/
-apps/mobile/ios/
+mobile/app/android/
+mobile/app/ios/
+# Local-only compatibility link for previously generated native build paths.
+apps/mobile
 work/
 outputs/

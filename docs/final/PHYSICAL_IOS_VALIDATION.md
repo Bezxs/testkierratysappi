@@ -2,6 +2,19 @@
 
 Status date: 2026-10-12
 
+## Source partition smoke — 2026-10-12
+
+After relocation into mobile/backend/shared, restarted owned API/Metro from the
+new paths. Existing installed client accepts dev-client launch/reload and shows
+actual current Finnish Home; exact **Lähimmät pisteet** visible-button assertion
+and ignored 1284×2778 `work/three-part-iphone-home.png` visual inspection pass.
+No GPS/camera request or result capture. API/iOS manifest/exact JS asset HTTP 200;
+bundle 11,605,710 bytes with current LAN API/nearby code. No new native build,
+sign/install/uninstall or wider flow acceptance is inferred. Profile remains
+October 19, 12:49:04 Helsinki. New generation/build commands use `mobile/app`;
+the ignored local legacy-path symlink is not required by clean checkout/CI.
+Complete local tests/scoping: `PROJECT_PARTITION_EVIDENCE.md`. No push.
+
 ## Current owner-requested renewal — 2026-10-12
 
 Source `4e79895` on the independent team-baseline branch. This renewal does not

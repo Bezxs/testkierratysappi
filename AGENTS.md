@@ -10,6 +10,13 @@ KierrätysAppi may help a person identify packaging and find applicable sorting 
 
 ## Architecture boundaries
 
+### Three-part ownership
+
+- `mobile/` owns the app and localization; `backend/` owns API, resolution/providers and database; `shared/` owns pure contracts/domain/sorting policy. See `docs/project/TEAM_STRUCTURE.md` and each area's AGENTS.md.
+- Mobile/backend never import one another. Shared imports neither consumer. Cross-package access uses declared public exports; do not bypass this with private paths, relative cross-package imports or duplicated models.
+- Run `pnpm check:boundaries` and the relevant `pnpm validate:<part>`. Full `pnpm validate` remains mandatory before completion, particularly for shared-contract/rule changes. Shared changes require consumer compatibility, not a promise of zero effects.
+- Root tooling/lockfile/CI and project-control docs are coordinated integration work. Keep the existing technical app identity, secrets/data boundaries and repository-sharing authorization rules.
+
 - Mobile and admin UI depend on application contracts, never third-party response shapes.
 - Product identity/provider data, packaging observations, and sorting policy are separate domains.
 - Provider adapters normalize untrusted external data at the boundary.

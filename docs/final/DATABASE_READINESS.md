@@ -29,7 +29,7 @@ backup/restore and a public HTTPS API remain unimplemented release work.
 1. Point data: run `node scripts/import-recycling-points.mjs` only for an
    intentional maintainer refresh; inspect the diff and run `pnpm validate`.
    For an existing downloaded response, pass its file path as the first argument.
-   Keep `apps/mobile/assets/data/README.md`, the entire normalized JSON and its
+   Keep `mobile/app/assets/data/README.md`, the entire normalized JSON and its
    ODbL licence notice together. Do not send a user's location to Overpass.
 2. Product data: normal barcode lookups request only bounded identity/packaging
    fields. No bulk product mirror is installed. Source attribution is selected

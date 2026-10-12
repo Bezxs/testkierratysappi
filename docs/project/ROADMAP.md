@@ -2,6 +2,13 @@
 
 Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally blocked.
 
+## Current three-part ownership work — October 12
+
+- [x] Relocate code into mobile/backend/shared with explicit role READMEs/AGENTS; extract pure public contracts so consumers never import each other's internals. Preserve runtime IDs/data/rules/migration/dependency versions and v1 wire compatibility.
+- [x] Add mandatory import/exports/DAG/compiler-path boundary guards, eleven regressions, three frozen-v1 cases, scoped commands and three CI part jobs alongside full integration.
+- [x] Pass 307-test whole validation, all scoped validations, both actual-UI browser runners and physical existing-client Home reload/visual check after restarting API/Metro from relocated paths. No new native build/install, private import or push.
+- [~] Remaining native nearby/material/map/Privacy/permission/layout acceptance is next. Shared changes require coordinated consumer checks; role assignees/branch protection and any GitHub sharing are owner-controlled, not silently configured.
+
 ## Current development-device maintenance — October 12
 
 - [x] Owner-requested early renewal using the existing team/ID/Xcode 26.6, a recoverable single-profile cache move and unchanged native dependencies; renewed embedded profile expires October 19 at 12:49:04 Helsinki.

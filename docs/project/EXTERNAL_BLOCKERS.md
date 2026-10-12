@@ -1,5 +1,19 @@
 # External blockers
 
+October 12 three-part organization adds no external credential/account/payment
+or data-source blocker. Code is locally partitioned and validated. Roope assigns
+the three role holders and separately authorizes GitHub push/branch protection
+if wanted; missing role names/settings do not block the local organization and
+no fake GitHub teams/CODEOWNERS identities were supplied. New CI jobs are source
+configuration, not a remote-CI pass or enforced branch protection.
+
+Existing installed-client Home works through relocated Metro; fresh native build
+generation and the remaining device matrix are separate. Before a later clean
+native build, generate the project from `mobile/app`, not historical `apps/mobile`.
+Local-only ignored compatibility link preserves current cached Xcode paths;
+it is not required by clean checkout/CI. Profile remains October 19, 12:49:04
+Helsinki. No new signing/install/uninstall, GPS/camera acquisition or push.
+
 October 12 renewal is complete for the scoped development installation, with no
 new account/credential/payment/trust blocker: existing Xcode account renews the
 profile, build/sign/install/physical launch/current Home pass. Installed profile

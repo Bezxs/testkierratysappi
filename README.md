@@ -4,12 +4,47 @@ KeepItGreen is a Finnish-first, source-backed packaging sorting app. A user scan
 
 Previously named KierrätysAppi. The repository name, `@kierratysappi/*` packages, bundle/package identifier, URL scheme and local-storage namespace remain unchanged to preserve development and installed-app continuity. Native launcher names update only after rebuilding and reinstalling; changing the JavaScript UI alone does not relabel an installed binary.
 
+## Kolme selkeää osaa
+
+| Kansio | Vastuu | Oma tarkistus |
+| --- | --- | --- |
+| [mobile](mobile/README.md) | Puhelinsovellus, kamera/sijainti, näkymät, paikallinen historia ja FI/EN-käännökset | `pnpm validate:mobile` |
+| [backend](backend/README.md) | HTTP API, tuotehaku, ulkoisten tietolähteiden adapterit, välimuisti ja tietokantaskeema | `pnpm validate:backend` |
+| [shared](shared/README.md) | Yhteiset tietomallit, v1-rajapintasopimus, GTIN-tarkistus ja lähteistetty lajittelulogiikka | `pnpm validate:shared` |
+
+```text
+mobile/
+  app/                  puhelinsovellus
+  localization/         käyttöliittymän käännökset
+backend/
+  api/                  HTTP-palvelin
+  application/          tuotehaun sovelluslogiikka
+  data-providers/       Open Facts -adapterit
+  database/             migraatiot ja niiden testit
+shared/
+  contracts/            molempien osapuolten julkinen rajapinta
+  domain/               tietomallit ja validointi
+  recycling-engine/     lajittelusäännöt ja niiden selitykset
+```
+
+Mobile ja backend eivät tuo toistensa koodia: tuotehaku kulkee HTTP-rajapinnan
+kautta. Molemmat käyttävät shared-osan julkisia rajapintoja. `pnpm check:boundaries`
+estää kielletyt riippuvuudet, yksityisten tiedostopolkujen tuonnit ja kehät.
+Jokaisella osalla on omat testit/rakennuskomennot ja oma CI-tulos; koko projektin
+`pnpm validate` säilyy pakollisena yhteensopivuustarkistuksena.
+
+Kansioiden erottelu ei ole kolme erillistä kopiota eikä lupaus nollavaikutuksista:
+shared-sääntö tai rajapintamuutos voi tarkoituksella vaikuttaa käyttäjiinsä.
+Rikkova v1-muutos vaatii uuden version/yhteisen suunnitelman, ei hiljaista
+muutosta. Käytännön työnjako ja branch-ohjeet: [TEAM_STRUCTURE.md](docs/project/TEAM_STRUCTURE.md).
+Rootin työkalut, lockfile, CI ja dokumentaatio ovat yhteistä integraatioaluetta.
+
 ## What works
 
 - Expo SDK 57 app for Finnish and English, camera permission, barcode scanning, manual entry, offline recovery, opt-in app-local history, manual component confirmation, and correction drafts.
 - Fastify API with runtime validation, rate limits, secure headers, explicit CORS allowlist, OpenAPI output, privacy-conscious logging, and a POST lookup boundary.
 - Open Facts API v3 adapter with one allowlisted sibling hop, a shared deadline/quota, size limit, source-specific attribution/licence, selected fields and defensive packaging normalization.
-- Foreground-only nearest-point lookup against a separately licensed, bundled OSM Finland directory (5,753 points). Distance is calculated on-device; no GPS upload/background tracking, route or verified opening/material-acceptance claim. New native permission/GPS acceptance is pending.
+- Foreground-only lookup of up to five nearest points against a separately licensed, bundled OSM Finland directory (5,753 points). Distance is calculated on-device; explicit material reports and exclusions are labelled as community data, not verified reception. No GPS upload/background tracking or route claim. Latest native list/map acceptance remains pending.
 - Deterministic Finnish packaging rules sourced from Rinki and Palpa, with component-level provenance, confidence, explanations, and exceptions.
 - PostgreSQL migration covering 26 entities, forced row security for sensitive records, and immutable published rule versions. This is a tested schema, **not a deployed or runtime-wired database**; current product caching remains bounded process memory.
 - Automated unit, contract, integration, migration, API, mobile-state, build, audit, CodeQL, dependency-review, and secret-scanning gates.
@@ -20,10 +55,10 @@ Requirements: Node 24 LTS and pnpm 11.16.
 
 ```bash
 pnpm install --frozen-lockfile
-cp apps/api/.env.example apps/api/.env
-cp apps/mobile/.env.example apps/mobile/.env
-pnpm --filter @kierratysappi/api dev
-pnpm --filter @kierratysappi/mobile start
+cp backend/api/.env.example backend/api/.env
+cp mobile/app/.env.example mobile/app/.env
+pnpm dev:backend
+pnpm dev:mobile
 ```
 
 For an Android emulator, set `EXPO_PUBLIC_API_BASE_URL=http://10.0.2.2:3000`. A physical device needs an HTTPS development endpoint or the workstation's reachable LAN address. Do not put provider secrets in `EXPO_PUBLIC_*` variables.
@@ -39,7 +74,7 @@ September 10's Expo compatibility evidence passed `expo install --check` and Exp
 
 Current data inventory, free-access limitations and refresh procedures:
 [`DATABASE_READINESS.md`](docs/final/DATABASE_READINESS.md). The full OSM
-directory has its own [ODbL notice](apps/mobile/assets/data/README.md).
+directory has its own [ODbL notice](mobile/app/assets/data/README.md).
 
 The generated API contract is available at `GET /v1/openapi.json`; product lookup is `POST /v1/recycling/lookup` with `{ "gtin": "…", "language": "fi" }`.
 
@@ -47,4 +82,7 @@ The generated API contract is available at `GET /v1/openapi.json`; product looku
 
 The release decision is NO-GO. No paid EAS build, store submission, database deployment, analytics/crash vendor, map provider, GS1 data feed, or photo upload is activated. Those require the accounts, credentials, contracts, legal decisions, and approvals tracked in `docs/final/OWNER_ACTIONS.md` and `docs/project/RELEASE_READINESS.md`.
 
-The privacy notice and terms shown in the app are clearly marked drafts and must receive Finnish legal review before publication.
+The current school-project UI shows factual data-use/deletion information, not
+draft terms or a legal-review banner. Future public/store publication has separate
+unapproved privacy/content/operational gates; classroom work does not require
+that review. The repository structure change does not approve a production release.

@@ -9,7 +9,7 @@ test("generated native projects stay outside repository formatting and linting",
   const includes = config.files?.includes;
 
   assert.ok(Array.isArray(includes), "biome files.includes must be configured");
-  assert.ok(includes.includes("!apps/mobile/android"));
-  assert.ok(includes.includes("!apps/mobile/ios"));
-  assert.ok(includes.includes("!apps/mobile/expo-env.d.ts"));
+  assert.ok(includes.includes("!mobile/app/android"));
+  assert.ok(includes.includes("!mobile/app/ios"));
+  assert.ok(includes.includes("!mobile/app/expo-env.d.ts"));
 });

@@ -15,7 +15,7 @@ test("dependency resolution enforces the release-age gate without exclusions", a
 
 test("Expo compatibility remains a mandatory CI gate without package exclusions", async () => {
   const mobile = JSON.parse(
-    await readFile(new URL("../../apps/mobile/package.json", import.meta.url), "utf8"),
+    await readFile(new URL("../../mobile/app/package.json", import.meta.url), "utf8"),
   );
   const workflow = await readFile(
     new URL("../../.github/workflows/ci.yml", import.meta.url),

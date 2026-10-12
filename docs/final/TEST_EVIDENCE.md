@@ -1,5 +1,30 @@
 # Test evidence
 
+## Three-part source ownership — 2026-10-12
+
+- Full pinned `pnpm validate` exits 0: **307 tests (58 policy + 249 application)**,
+  mandatory AST/public-export/DAG/compiler-path guard, format/lint/strict types,
+  package/API builds and 13-route export. Eleven boundary cases and three frozen
+  v1 cases are new; moved collection tests retain coverage. Final ignored log:
+  `work/three-part-validate-final.log`.
+- All scoped validations pass: mobile 188 / backend 136 / shared 75 tests,
+  with overlapping shared dependencies, not additional unique tests. Mobile
+  closure excludes server/database and backend does not build Expo. Three CI
+  part jobs added alongside full integration; no remote CI/settings claim.
+- Offline/frozen dependency relinking passes without changing external versions/
+  integrities or age policy. OSM snapshot, SQL migration and rule file match
+  baseline bytes. No real database migration or secret/account action.
+- Both actual-Metro browser runners pass prior FI/EN/source/error/offline/local-
+  state/one-press/material/keyboard/dark/large-text flows; visuals inspected.
+  Runtime API/iOS manifest/exact launch asset HTTP 200, 11,605,710-byte JS bundle,
+  current API/nearby code and no known backend implementation classes in client.
+  Actual existing iPhone Home reload/button/1284×2778 screenshot check passes,
+  without GPS/camera acquisition, native rebuild/sign/install or wider acceptance.
+- Current web entry: 3,803,444 bytes / 720,054 gzip; warning budget still exceeded,
+  no performance pass. Detailed commands/scoping/compatibility/limits:
+  `PROJECT_PARTITION_EVIDENCE.md`. No GitHub push/private-code import or new blocker;
+  current development profile remains October 19, 12:49:04 Helsinki.
+
 ## Owner-requested development signing renewal — 2026-10-12
 
 - Source `4e79895`, unchanged native dependencies and matched pods. Xcode 26.6

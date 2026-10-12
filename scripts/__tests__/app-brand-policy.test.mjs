@@ -3,13 +3,13 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const readJson = (path) => JSON.parse(readFileSync(path, "utf8"));
-const { expo } = readJson("apps/mobile/app.json");
+const { expo } = readJson("mobile/app/app.json");
 
 // Configuration evidence only: installed launcher labels require a fresh native build.
 test("KeepItGreen is the default and both localized native display names", () => {
   assert.equal(expo.name, "KeepItGreen");
   for (const language of ["fi", "en"]) {
-    const locale = readJson(`apps/mobile/${expo.locales[language]}`);
+    const locale = readJson(`mobile/app/${expo.locales[language]}`);
     assert.equal(locale.ios.CFBundleDisplayName, expo.name);
     assert.equal(locale.android.app_name, expo.name);
   }
@@ -23,7 +23,7 @@ test("a display-name change preserves installed-app and deep-link identity", () 
 });
 
 test("the visual wordmark and its accessible name share the localized app-name key", () => {
-  const source = readFileSync("apps/mobile/src/components/ui.tsx", "utf8");
+  const source = readFileSync("mobile/app/src/components/ui.tsx", "utf8");
   assert.match(
     source,
     /<AppText variant=\{compact \? "heading" : "title"\}>\{t\("appName"\)\}<\/AppText>/,
