@@ -103,6 +103,7 @@ export const nearbyFi = {
   nearbySettingsHint: "Jos käytät selainta, muuta sijaintilupa selaimen sivustoasetuksissa.",
   nearbyPrivacy:
     "Vapaaehtoinen lähimpien pisteiden haku käsittelee sijaintia vain laitteen muistissa. Lukeminen loppuu tulokseen, peruutukseen tai aikakatkaisuun; näkymästä poistuminen tai sovelluksen siirtäminen taustalle tyhjentää tuloksen. Sijaintia tai siitä laskettua etäisyyttä ei tallenneta historiaan, lähetetä palvelimelle tai analytiikkaan. OpenStreetMap-linkit välittävät vain julkisen kierrätyspisteen tunnisteen tai koordinaatit, eivät omaa sijaintiasi; selaimen verkkopyyntöön sovelletaan ulkoisen palvelun tietosuojakäytäntöä.",
+  nearbyLocationPlaceholder: "00110 tai Kaduntie 5",
 };
 
 export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
@@ -209,4 +210,5 @@ export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
   nearbySettingsHint: "In a browser, change location permission in its site settings.",
   nearbyPrivacy:
     "The optional nearby-point search processes your location in device memory only. Acquisition ends on a result, cancellation or timeout; leaving the screen or backgrounding the app clears the result. Neither location nor calculated distance is saved to history, sent to a server or analytics. OpenStreetMap links contain only the public recycling point ID or coordinates, not your location; browser requests are subject to the external service's privacy policy.",
+  nearbyLocationPlaceholder: "00110 or Kaduntie 5",
 };
