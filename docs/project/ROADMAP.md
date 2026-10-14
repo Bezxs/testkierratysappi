@@ -2,6 +2,11 @@
 
 Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally blocked.
 
+## Nearby address lookup — October 13
+
+- [x] Preserve bounded postal-code and subregion fields from native reverse-geocoder responses, with regression tests and mobile typecheck passing.
+- [~] Verify the repaired estimate rendering and map handoff on the existing native client; this source change does not claim device-location evidence.
+
 ## Current authorized team publication — October 12
 
 - [x] Review seven independent local commits and the 195-file aggregate diff; verify origin URL/public visibility/main and fast-forward ancestry without importing KeepItGreen or changing repository settings.

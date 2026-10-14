@@ -1,5 +1,12 @@
 # Decision log
 
+## D-025 — Preserve postal codes in nearby address estimates
+
+- Date: 2026-10-13
+- Status: accepted
+- Decision: normalize device reverse-geocoder results as `street streetNumber, postalCode locality`, with `subregion` as a locality fallback. Keep the existing estimate/source disclosure and bounded input validation; do not treat the result as a verified collection-point address.
+- Reason: Expo's native address shape commonly supplies postal codes and subregions. Dropping them made the optional nearby address lookup incomplete without changing its privacy or uncertainty boundary.
+
 ## D-001 — Accuracy is a domain invariant
 
 - Date: 2026-08-10

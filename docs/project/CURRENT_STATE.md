@@ -1,5 +1,10 @@
 # Current state
 
+## Nearby address lookup repair — 2026-10-13
+
+- Reverse-geocoded nearby point estimates now retain `postalCode` and use `subregion` when no city/district is supplied, while continuing to reject malformed/unbounded provider fields and label the value as an unverified area estimate.
+- Added regression coverage for street, postal-code-only, locality fallback, provider failure, timeout and cancellation behavior. Mobile typecheck and the mobile Vitest suite pass; no native GPS or map handoff evidence is inferred.
+
 ## Authorized team main publication — 2026-10-12
 
 - Owner explicitly requested pushing the current independent KierratysAppi changes. Verified the actual origin fetch/push URL as `https://github.com/roopeaal/KierratysAppi.git`, existing public visibility and default `main`. Fresh fetch showed zero remote-only and seven local-only commits. Reviewed that history and the 195-file aggregate diff, including relocation, prior UI/nearby improvements and evidence. No private KeepItGreen synchronization, force/mirror push, new branch, repository setting change or production release.
