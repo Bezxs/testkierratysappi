@@ -23,7 +23,7 @@ export const nearbyFi = {
   nearbyAddressUnknown: "Katuosoitetta ei ole aineistossa. Näet pisteen sijainnin kartalta.",
   nearbyShowMap: "Näytä piste kartalla",
   nearbyMapHint:
-    "Avaa kierrätyspisteen karttamerkin OpenStreetMapissa. Oma sijaintisi ei sisälly linkkiin.",
+    "Avaa kierrätyspisteen karttamerkki OpenStreetMapissa. Oma sijaintisi ei sisälly linkkiin.",
   nearbyNameUnknown: "Pisteen nimeä ei ole aineistossa",
   nearbyPointType: "Pisteen tyyppi",
   nearbyTypeUnknown: "Tyyppiä ei ole ilmoitettu",
