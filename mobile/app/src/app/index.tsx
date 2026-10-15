@@ -27,7 +27,6 @@ export default function HomeScreen() {
 
   useFocusEffect(
     useCallback(() => {
-      // Ignore the async result if the screen lost focus before it resolved.
       let cancelled = false;
       reset();
       isHistoryEnabled()
