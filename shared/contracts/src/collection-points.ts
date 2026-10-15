@@ -115,6 +115,27 @@ export function nearestCollectionPoint(
   return nearest;
 }
 
+/**
+ * Nearest points whose directory explicitly reports at least one of `materials`.
+ * Exact reports only: a broad category never implies a narrower one, and an
+ * exclusion is never overridden. Filters before limiting so far-but-matching
+ * points are not hidden behind five near non-matching ones.
+ */
+export function nearestCollectionPointsAccepting(
+  points: readonly CollectionPoint[],
+  position: Coordinates,
+  materials: readonly CollectionMaterial[],
+  limit = 5,
+): readonly NearbyCollectionPoint[] {
+  if (materials.length === 0) throw new RangeError("At least one material is required");
+  const wanted = new Set<CollectionMaterial>(materials);
+  return nearestCollectionPoints(
+    points.filter((point) => point.reportedMaterials.some((m) => wanted.has(m))),
+    position,
+    limit,
+  );
+}
+
 export function collectionPointUrl(point: CollectionPoint): string {
   return `https://www.openstreetmap.org/${CollectionPointSchema.parse(point).id}`;
 }
