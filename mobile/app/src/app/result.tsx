@@ -179,13 +179,15 @@ function ProductResult({
           <SectionHeader title={t("packagingParts")} />
           {result.components.map(({ observation, sorting }, index) => (
             <Paper key={observation.id} style={styles.componentBlock}>
-              <View style={sharedStyles.row}>
+              <View style={styles.componentHeading}>
                 <PackagingMark material={observation.materialFamily?.value} />
-                <View style={sharedStyles.grow}>
+                <View style={[sharedStyles.grow, styles.componentLabel]}>
                   <AppText variant="small" muted>
                     {index + 1} / {result.components.length}
                   </AppText>
-                  <AppText variant="heading">{componentLabel(observation, t)}</AppText>
+                  <AppText variant="heading" accessibilityRole="header">
+                    {componentLabel(observation, t)}
+                  </AppText>
                 </View>
               </View>
               <Rule />
@@ -213,17 +215,12 @@ function ProductResult({
       <View style={styles.productSummary}>
         <Rule />
         <SectionHeader title={t("productDetailsTitle")} />
-        <View style={sharedStyles.tightStack}>
+        <View style={styles.sourceRow}>
           <AppText variant="mono" muted>
             {result.gtin}
           </AppText>
-        </View>
-        <View style={styles.sourceRow}>
           <AppText variant="small" muted>
             {result.cache.hit ? t("cachedLabel") : t("liveLabel")}
-          </AppText>
-          <AppText variant="small" muted>
-            {provenance.sourceName}
           </AppText>
         </View>
         <View style={sharedStyles.tightStack}>
@@ -346,11 +343,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexWrap: "wrap",
     gap: spacing.sm,
-    marginTop: spacing.md,
   },
   resultStack: { paddingTop: spacing.lg, gap: spacing.md },
   nextActions: { paddingTop: spacing.xl, gap: spacing.md },
   productSummary: { paddingTop: spacing.xl, gap: spacing.md },
   disclosureRow: { flexDirection: "row", alignItems: "center", flexWrap: "wrap", gap: spacing.xs },
-  componentBlock: { gap: spacing.sm },
+  componentBlock: { gap: spacing.md },
+  componentHeading: { flexDirection: "row", alignItems: "flex-start", gap: spacing.sm },
+  componentLabel: { gap: spacing.xxs },
 });

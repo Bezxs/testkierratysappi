@@ -113,15 +113,19 @@ export function PageHeader({
   const { palette } = useAppTheme();
   const { t } = useLanguage();
   const backLabel = label ?? t("back");
+  const [focused, setFocused] = useState(false);
   return (
     <View style={[styles.pageHeader, { borderColor: palette.borderSubtle }]}>
       <Pressable
         accessibilityRole="button"
         accessibilityLabel={backLabel}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
         onPress={onBack}
         testID={testID}
         style={({ pressed }) => [
           styles.backAction,
+          focused && [sharedStyles.focusOutline, { outlineColor: palette.actionLink }],
           { opacity: pressed ? interaction.pressedOpacity : 1 },
         ]}
       >
@@ -201,15 +205,19 @@ export function ActionRow({
   readonly testID?: string;
 }) {
   const { palette } = useAppTheme();
+  const [focused, setFocused] = useState(false);
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={label}
       accessibilityHint={detail}
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
       onPress={onPress}
       testID={testID}
       style={({ pressed }) => [
         styles.actionRow,
+        focused && [sharedStyles.focusOutline, { outlineColor: palette.actionLink }],
         { borderColor: palette.borderSubtle, opacity: pressed ? interaction.pressedOpacity : 1 },
       ]}
     >
@@ -223,7 +231,7 @@ export function ActionRow({
           {leading}
         </View>
       )}
-      <View style={sharedStyles.grow}>
+      <View style={[sharedStyles.grow, styles.actionRowText]}>
         <AppText variant="label">{label}</AppText>
         {detail && (
           <AppText variant="small" muted>
@@ -265,6 +273,7 @@ export function NavigationTile({
       testID={testID}
       style={({ pressed }) => [
         styles.navigationTile,
+        focused && [sharedStyles.focusOutline, { outlineColor: palette.actionLink }],
         {
           minWidth: minimumWidth,
           flexBasis: minimumWidth,
@@ -336,6 +345,7 @@ export function Button({
   testID,
 }: ButtonProps) {
   const { palette } = useAppTheme();
+  const [focused, setFocused] = useState(false);
   const backgrounds = {
     primary: palette.actionPrimary,
     secondary: palette.actionSecondary,
@@ -357,30 +367,32 @@ export function Button({
       aria-busy={busy}
       aria-disabled={disabled || busy}
       disabled={disabled || busy}
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
       onPress={onPress}
       testID={testID}
       style={({ pressed }) => [
         styles.button,
         style,
+        focused && [sharedStyles.focusOutline, { outlineColor: palette.actionLink }],
         {
           backgroundColor: backgrounds[variant],
           borderColor: variant === "secondary" ? palette.borderSubtle : backgrounds[variant],
-          opacity:
-            disabled || busy
-              ? interaction.disabledOpacity
-              : pressed
-                ? interaction.pressedOpacity
-                : 1,
+          opacity: disabled
+            ? interaction.disabledOpacity
+            : pressed
+              ? interaction.pressedOpacity
+              : 1,
         },
       ]}
     >
-      {busy ? (
-        <ActivityIndicator color={foregrounds[variant]} />
-      ) : (
-        <AppText variant="label" style={{ color: foregrounds[variant], textAlign: "center" }}>
-          {label}
-        </AppText>
-      )}
+      {busy && <ActivityIndicator color={foregrounds[variant]} />}
+      <AppText
+        variant="label"
+        style={{ color: foregrounds[variant], textAlign: "center", flexShrink: 1 }}
+      >
+        {label}
+      </AppText>
     </Pressable>
   );
 }
@@ -481,6 +493,7 @@ export function InlineLink({
   readonly expanded?: boolean;
 }) {
   const { palette } = useAppTheme();
+  const [focused, setFocused] = useState(false);
   return (
     <Pressable
       accessibilityRole={role}
@@ -488,14 +501,16 @@ export function InlineLink({
       accessibilityHint={accessibilityHint}
       accessibilityState={expanded === undefined ? undefined : { expanded }}
       aria-expanded={expanded}
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
       onPress={onPress}
       hitSlop={8}
       testID={testID}
-      style={({ pressed }) => ({
-        opacity: pressed ? interaction.pressedOpacity : 1,
-        minHeight: controls.minimumTouchTarget,
-        justifyContent: "center",
-      })}
+      style={({ pressed }) => [
+        styles.inlineLink,
+        focused && [sharedStyles.focusOutline, { outlineColor: palette.actionLink }],
+        { opacity: pressed ? interaction.pressedOpacity : 1 },
+      ]}
     >
       <AppText variant="label" style={{ color: color ?? palette.actionLink }}>
         {label}
@@ -509,6 +524,7 @@ export const sharedStyles = StyleSheet.create({
   tightStack: { gap: spacing.xs },
   row: { flexDirection: "row", alignItems: "center", gap: spacing.sm },
   grow: { flex: 1, minWidth: 0 },
+  focusOutline: { outlineStyle: "solid", outlineWidth: 2, outlineOffset: 3 },
 });
 
 const textStyles = StyleSheet.create<Record<TextVariant, TextStyle>>({
@@ -551,6 +567,8 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md,
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "row",
+    gap: spacing.xs,
   },
   paper: { borderWidth: 1, borderRadius: radius.lg, padding: 20, gap: spacing.md },
   pageHeader: {
@@ -569,9 +587,10 @@ const styles = StyleSheet.create({
     minHeight: controls.minimumTouchTarget,
     paddingRight: spacing.sm,
     flexShrink: 1,
+    borderRadius: radius.sm,
   },
   headerWordmark: { flexShrink: 1 },
-  pageIntro: { paddingTop: spacing.lg, paddingBottom: spacing.lg, gap: spacing.xs },
+  pageIntro: { paddingTop: spacing.lg, paddingBottom: spacing.lg, gap: spacing.sm },
   documentSection: { borderTopWidth: 1, paddingVertical: 20, gap: spacing.sm },
   chevron: {
     width: 8,
@@ -587,7 +606,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     minHeight: 60,
     paddingVertical: spacing.md,
+    borderRadius: radius.sm,
   },
+  actionRowText: { gap: spacing.xxs },
   navigationTile: {
     flexBasis: 160,
     flexGrow: 1,
@@ -615,6 +636,7 @@ const styles = StyleSheet.create({
   choiceDot: { width: 8, height: 8, borderRadius: 4 },
   sectionHeader: {
     flexDirection: "row",
+    flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "space-between",
     gap: spacing.md,
@@ -624,6 +646,7 @@ const styles = StyleSheet.create({
   pill: {
     alignSelf: "flex-start",
     flexShrink: 1,
+    maxWidth: "100%",
     flexDirection: "row",
     alignItems: "center",
     gap: spacing.xs,
@@ -631,5 +654,11 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     borderRadius: radius.sm,
   },
-  pillDot: { width: 8, height: 8, borderRadius: 4 },
+  pillDot: { width: 8, height: 8, borderRadius: 4, flexShrink: 0 },
+  inlineLink: {
+    minHeight: controls.minimumTouchTarget,
+    justifyContent: "center",
+    borderRadius: radius.sm,
+    paddingVertical: spacing.xxs,
+  },
 });

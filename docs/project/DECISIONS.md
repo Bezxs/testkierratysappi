@@ -1,5 +1,7 @@
 # Decision log
 
+2026-10-19: Keep the existing palette, fonts and scan-first layout. Use the shared subpage header for nearby, disclose the existing manual address request, and retain visible sorting explanations, uncertainty and sources. Leave the merged location behavior and unrelated CI failures outside this UI change; publication requires explicit approval. The current approval covers only `Bezxs/testkierratysappi`, not the original repository.
+
 ## D-025 — Preserve postal codes in nearby address estimates
 
 - Date: 2026-10-13

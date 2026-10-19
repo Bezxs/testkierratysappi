@@ -2,6 +2,9 @@
 
 Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally blocked.
 
+- [x] October 19: refine Home, nearby address form, sorting results and shared controls without changing location/backend/rules/data/dependencies; validate FI/EN, themes, narrow layouts and larger text in Chromium.
+- [ ] Test the UI in `Bezxs/testkierratysappi` before approving original-repository publication. Existing location-policy mismatches, unrelated formatting and dependency-audit failures need separate work; native acceptance remains unverified.
+
 ## Nearby address lookup — October 13
 
 - [x] Preserve bounded postal-code and subregion fields from native reverse-geocoder responses, with regression tests and mobile typecheck passing.

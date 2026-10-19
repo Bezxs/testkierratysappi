@@ -1,6 +1,5 @@
 export const nearbyFi = {
-  nearbyIntro:
-    "Haemme sijainnillasi enintään viisi lähintä aineistossa olevaa pistettä. Sijaintia ei tallenneta eikä lähetetä.",
+  nearbyIntro: "Etsi lähin aineistossa oleva piste laitteen sijainnilla tai osoitteella.",
   nearbyQuickCaution: "Tarkista pisteen materiaalit, käyttöoikeus ja aukiolo ennen lähtöä.",
   nearbyLocationOnMap: "Pisteen sijainti näkyy kartalla.",
   nearbyAddressConsent:
@@ -103,12 +102,19 @@ export const nearbyFi = {
   nearbySettingsHint: "Jos käytät selainta, muuta sijaintilupa selaimen sivustoasetuksissa.",
   nearbyPrivacy:
     "Vapaaehtoinen lähimpien pisteiden haku käsittelee sijaintia vain laitteen muistissa. Lukeminen loppuu tulokseen, peruutukseen tai aikakatkaisuun; näkymästä poistuminen tai sovelluksen siirtäminen taustalle tyhjentää tuloksen. Sijaintia tai siitä laskettua etäisyyttä ei tallenneta historiaan, lähetetä palvelimelle tai analytiikkaan. OpenStreetMap-linkit välittävät vain julkisen kierrätyspisteen tunnisteen tai koordinaatit, eivät omaa sijaintiasi; selaimen verkkopyyntöön sovelletaan ulkoisen palvelun tietosuojakäytäntöä.",
+  nearbyLocationLabel: "Osoite tai postinumero",
+  nearbyLocationHint:
+    "Suomalainen osoite tai viisinumeroinen postinumero. Hakuteksti lähetetään OpenStreetMapin Nominatim-palveluun.",
+  nearbyLocationAction: "Etsi tällä osoitteella",
+  nearbyLocationInvalid: "Kirjoita osoite tai viisinumeroinen postinumero (enintään 160 merkkiä).",
+  nearbyLocationNotFound:
+    "Osoitetta tai postinumeroa ei löytynyt. Tarkista kirjoitusasu ja yritä uudelleen.",
+  nearbyLocationError: "Osoitehaku ei onnistu juuri nyt. Tarkista verkkoyhteys ja yritä uudelleen.",
   nearbyLocationPlaceholder: "00110 tai Museokatu 5",
 };
 
 export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
-  nearbyIntro:
-    "Find up to five nearest points in the directory using your location. Your location is not saved or uploaded.",
+  nearbyIntro: "Find the nearest point in the directory using your device location or an address.",
   nearbyQuickCaution: "Check accepted materials, access and opening hours before travelling.",
   nearbyLocationOnMap: "View the point's location on the map.",
   nearbyAddressConsent:
@@ -210,5 +216,12 @@ export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
   nearbySettingsHint: "In a browser, change location permission in its site settings.",
   nearbyPrivacy:
     "The optional nearby-point search processes your location in device memory only. Acquisition ends on a result, cancellation or timeout; leaving the screen or backgrounding the app clears the result. Neither location nor calculated distance is saved to history, sent to a server or analytics. OpenStreetMap links contain only the public recycling point ID or coordinates, not your location; browser requests are subject to the external service's privacy policy.",
+  nearbyLocationLabel: "Address or postal code",
+  nearbyLocationHint:
+    "A Finnish address or five-digit postal code. Your search text is sent to OpenStreetMap's Nominatim service.",
+  nearbyLocationAction: "Find using this address",
+  nearbyLocationInvalid: "Enter an address or five-digit postal code (up to 160 characters).",
+  nearbyLocationNotFound: "Address or postal code not found. Check the spelling and try again.",
+  nearbyLocationError: "Address search is unavailable. Check your connection and try again.",
   nearbyLocationPlaceholder: "00110 or Museokatu 5",
 };

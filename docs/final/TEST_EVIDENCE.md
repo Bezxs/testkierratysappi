@@ -1,5 +1,12 @@
 # Test evidence
 
+2026-10-19 UI refinement, based on public main `44cc1b2`:
+
+- Before edits, [CI 38658432813](https://github.com/roopeaal/KierratysAppi/actions/runs/38658432813) failed mobile/full validation while backend/shared passed. Public job annotations were available; detailed remote logs required authentication. Local baseline: four formatting failures, eight type errors from six missing nearby keys, four policy failures, 249 application tests passing, and 11 high/critical audit records.
+- After edits: `pnpm lint`, `pnpm typecheck`, all 249 application tests and `pnpm build` pass, including the 13-route web export. Policy tests improve to 55/58: shared nearby navigation passes; three existing location/acquisition/list-policy mismatches remain. `pnpm validate:mobile` and `pnpm validate` still stop at existing formatting in `scan.tsx`, `point-address.ts` and its test. Dependencies and their baseline audit findings are unchanged.
+- Extended `scripts/qa/app-refinement-browser.cjs` passes against actual Metro in Chromium for FI/EN, light/dark, 320/390/1280px and 130% synthetic text. It covers nearby address/postal validation, focus, failure/retry, cancellation, map/source details; resolved/missing/ambiguous/unknown sorting states retain explanations, confidence and provenance. Existing scan/manual, local history/privacy and error flows pass. Controlled HTTP responses are QA fixtures, not runtime product data.
+- Screenshots inspected under ignored `work/app-refinement-qa`; logs are in `/workspace/.cloud-onboarding/kierratysappi/ui-*.log`. No new horizontal clipping in reviewed layouts. Native camera/GPS, Dynamic Type, signing and live-provider access were not verified. No backend/rules/data/location-calculation changes, new dependencies or comments. These checks preceded the owner-authorized test-only publication to `Bezxs/testkierratysappi`; original-repository publication remains unapproved.
+
 ## Explicit KierratysAppi main publication — 2026-10-12
 
 - Verified actual `origin` fetch/push URL, default `main` and unchanged public

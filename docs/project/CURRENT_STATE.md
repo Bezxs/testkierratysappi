@@ -1,5 +1,7 @@
 # Current state
 
+2026-10-19: Refined Home spacing, shared focus/loading states, nearby form and sorting-result hierarchy from public main `44cc1b2`. Added the six missing FI/EN nearby form/error keys. Geocoding, location calculations, backend, rules, data and dependencies are unchanged. The original checkout remains uncommitted; only `Bezxs/testkierratysappi` is authorized for test publication. Browser and validation evidence is in `docs/final/TEST_EVIDENCE.md`.
+
 ## Nearby address lookup repair — 2026-10-13
 
 - Reverse-geocoded nearby point estimates now retain `postalCode` and use `subregion` when no city/district is supplied, while continuing to reject malformed/unbounded provider fields and label the value as an unverified area estimate.
