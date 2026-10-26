@@ -2,6 +2,9 @@
 
 Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally blocked.
 
+- [x] October 26: prepare the test repository for Expo Go SDK 58; validate compatible dependencies, strict types/tests and web/iOS/Android JavaScript exports without changing app behavior or folder ownership.
+- [ ] Verify the upgraded app on the owner's SDK 58 Expo Go device before considering any original-repository migration. Existing dependency-audit findings remain a separate gate.
+
 ## Current authorized team-main integration — October 20
 
 - [x] Obtain explicit KierratysAppi/main confirmation; verify actual URL/public/default main and review nine remote-only/eleven local-only commits. Preserve both histories with a normal merge, no KeepItGreen import/force/settings change.

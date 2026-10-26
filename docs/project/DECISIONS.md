@@ -1,5 +1,7 @@
 # Decision log
 
+2026-10-26: Test the SDK 58 migration only in `Bezxs/testkierratysappi`. Align native dependencies through Expo's installer, retain Node 24.19.0/pnpm 11.16.0 and the strict release-age gate, and require the development-client major to match Expo. Keep existing photo-capture restrictions and all application behavior. Original-repository changes require separate approval after device testing.
+
 ## D-UPSTREAM-2026-10-13 — Preserve postal codes in nearby address estimates
 
 - Date: 2026-10-13

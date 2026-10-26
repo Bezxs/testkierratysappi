@@ -1,5 +1,14 @@
 # Test evidence
 
+2026-10-26 SDK 58 migration in `Bezxs/testkierratysappi`, based on `3d5899e`:
+
+- Expo 58.0.19 with React 19.3.0, React Native 0.88.0 and Expo-aligned modules installed through `expo install --fix`; frozen reinstall, `expo install --check` and `pnpm peers check` pass. The one-day release-age gate, signatures/checksums and TLS checks remain enabled. Expo added its status-bar config plugin; app IDs, permissions and application logic are unchanged.
+- Full `pnpm validate` passes: 70 policy + 294 application tests, boundaries, formatting, lint, strict types, package/API builds and 14-route web export. `pnpm validate:mobile` also passes. Doctor 1.21.5 passes 20/20; this cloud machine required Node's supported `NODE_USE_ENV_PROXY=1` setting for its proxy. The initial unproxied 18/20 result was a connectivity failure, not a skipped gate.
+- iOS and Android Hermes exports pass, 5,084,274 and 5,068,086 bytes respectively. Actual Expo Go manifests for both platforms report SDK 58.0.0 and a launch asset. These are JavaScript/bundler checks, not native compilation, signing or physical-device acceptance. API health/OpenAPI, allowed CORS and invalid-input smoke checks pass.
+- All three existing Chromium runners pass: app refinement, nearby UX and photo recognition. FI/EN, light/dark, narrow/large text, lookup loading/errors, uncertainty/provenance, local data, five points, cancellation/cleanup and isolated photo fixtures remain covered. Loading now uses a held HTTP fixture; navigation/screenshot checks wait for the target content instead of reading transient frames. Assertions remain enabled. No paid/live photo request occurred.
+- Fresh audit comparison: SDK 57 and SDK 58 both have 11 high and 1 critical advisory records, with unchanged affected versions and no introduced high/critical IDs. Moderate records drop from 25 to 23; six low remain. `pnpm security:audit` correctly still fails; this migration does not resolve the baseline security gate.
+- Logs are `/workspace/.cloud-onboarding/kierratysappi/sdk58-*.log`; ignored native exports and browser evidence are under `work/`. Test the owner's phone with SDK 58 Expo Go before original-repository approval. Existing photo capture still requires its compatible development build. The original repository and `mobile` / `backend` / `shared` ownership remain untouched.
+
 ## Authorized team-main integration — 2026-10-20
 
 - **Actual publication:** dry-run then non-force `HEAD:refs/heads/main` push succeeds **`44cc1b2..7ff234e`** to verified `https://github.com/roopeaal/KierratysAppi.git`. Independent `git ls-remote` returns **`7ff234e9b3801ed2dca482297d241d154d48fc84`**; both parents (`3233a3a`, `44cc1b2`) pass ancestor checks. No force/rebase/private import/settings/tag/other-branch push. Outcome documentation follows in the same authorized sharing step.
