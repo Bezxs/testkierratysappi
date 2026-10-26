@@ -1,5 +1,48 @@
 # Adversarial production-readiness audit
 
+## Material-review mitigation — 2026-10-15
+
+Scoped follow-up, not a repeated 30-lane audit. PHOTO-003's locally executable
+correction/unknown recovery is implemented: no preselected material, separate
+conditions checkbox, per-part isolation, change/uncheck removes stale guidance,
+unknown opens local markings and original inferred observations remain unchanged.
+Recorded Nutella error→glass-choice regression, 354 unique full tests, 209 scoped
+mobile tests and three actual-Metro fixture browser runners pass. Screenshots
+inspected. The model still made the recorded wrong material inference; **severity
+stays high and the empirical accuracy finding stays open**, with latest native
+acceptance pending. No new paid call, model/prompt/rule change or GitHub push.
+
+## Eight real product images — 2026-10-15
+
+Evaluation-only follow-up, not a new 30-lane audit. Same app/model/prompt, one
+owner-approved call per pinned public image. 8/8 transport completion is not an
+accuracy pass; only 4/8 responses name the brand/product family. Public-production
+NO-GO and prior findings remain. Evidence: `PHOTO_PRODUCT_EVALUATION.md`.
+
+| ID | Severity | Evidence and affected flow/files | Reproduction | Required remediation / executability / status |
+| --- | --- | --- | --- | --- |
+| PHOTO-003 | high | Nutella case image hash `56d48570...cc47f28e`: real result names Nutella but labels jar plastic, `clear`/`medium`; image's product reference and manufacturer classic-jar description say glass. Affected: provider observations and per-part review → sorting input (`backend/data-providers/src/photo-recognition.ts`, `mobile/app/src/app/photo.tsx`, photo sorting feature). Inferred status and explicit review do not establish accurate material | Inspect recorded `result-nutella.json` and replay the wrong observation via focused tests/photo browser runner without another paid call. Pre-fix generic confirmation used plastic. Now no material is preselected: choose glass + confirm conditions for sourced glass guidance; choose unknown or change/uncheck to remove it | **High/open for model accuracy; local mitigation implemented and tested:** independent choice/unknown recovery, physical/code-check wording and regression prevent raw AI material alone authorizing guidance. No brand hardcoding or Finnish rule change. Latest native review acceptance remains; engineering owns improvements/validation, Roope any actual device action and new capped paid-call approval. Future empirical accuracy comparison requires that approval; no more within the consumed cap |
+| PHOTO-004 | medium | Four answers omit visible product brands (Barilla/Heinz/Badoit/Quaker); Quaker FI label says porridge packaging while EN says cereal. Coarse keyword check alone would overstate quality. Affected recognizer labels/localized result display | Inspect case report and public-fixture response labels; all were accepted by the schema, so schema-only tests do not expose semantic imprecision | **Open. Local naming/wording/prompt work**, then a held-out, source-reviewed bilingual evaluation with fresh paid-call authorization if live testing is needed. Preserve tentative identity, no SKU/GTIN verification or grade leakage. No silent model switch/tuning during this baseline |
+
+## Physical photo-result inspection — 2026-10-15
+
+Not a new 30-lane audit. Beta CoreDevice screenshot support now independently
+shows the owner's existing native estimate; no original-photo accuracy or full
+native-guidance pass. XCTest helper credentials remain needed for interaction/
+semantic automation, not direct screen reading. Production NO-GO unchanged.
+
+| ID | Severity | Evidence and affected flow/files | Reproduction | Required remediation / executability / status |
+| --- | --- | --- | --- | --- |
+| PHOTO-002 | high | Physical estimate shows paper-packaging parts but no confirmation; shared `canConfirmPhotoPart` omits paper while existing `fi.packaging.carton` accepts paper packaging | Supply a clear/medium/ordinary paper-packaging estimate. Before repair confirmation returns false and confirmed sorting returns undefined; both new regressions fail | Locally repaired by adding paper to the allowlist, not inventing a rule or removing user confirmation. Focused contract 9/9 and mobile 8/8, shared/mobile scopes and expanded browser sourced-guidance/non-packaging/unsafe cases pass. Native post-fix human confirmation is still pending; original image never inspected or resent |
+
+## Native photo-entry follow-up — 2026-10-15
+
+Not a new 30-lane audit; production NO-GO and earlier findings remain.
+
+| ID | Severity | Evidence and affected flow/files | Reproduction | Required remediation / executability / status |
+| --- | --- | --- | --- | --- |
+| PHOTO-001 | high | Owner reports Ota tuotekuva does not open camera. `mobile/app/src/app/photo.tsx` reads removed `Constants.nativeBuildVersion`; installed Expo Constants exports iOS `platform.ios.buildNumber`. Guard rejects new build 2; earlier string-only tests and upstream catch-all type missed the wiring defect | Pre-fix iOS build 2 + current JS: Home → Tunnista kuvasta → Ota tuotekuva; guard reports update required instead of mounting camera | Locally repaired using validated immutable native platform metadata, no mutable manifest fallback; added installed-shape/old-build and wiring regressions plus busy feedback. 342-test full/204-test mobile validation and expanded photo browser runner pass. Owner confirms camera/capture/send after relaunch; actual recognition result/error, native cleanup and guidance remain unverified. Android metadata is absent and fails closed, requiring a supported native version source/build before Android capture can be accepted |
+
 ## Scoped UX findings repaired — 2026-10-08
 
 Not a new 30-lane audit; production NO-GO unchanged.

@@ -1,6 +1,264 @@
 # Physical iOS validation
 
-Status date: 2026-10-12
+Status date: 2026-10-20
+
+## Trust completed; actual same-app startup verified — 2026-10-20
+
+Source `419f572`, application source unchanged since `fc433bc`. No further build,
+install, reset, security bypass, account/dependency/native change or cleanup.
+
+| Check | Actual result |
+| --- | --- |
+| Changed owner prerequisite | Roope reports **luotettu** after the requested iPhone Trust/Verify step |
+| Fresh physical launch | Beta CoreDevice `device process launch --activate --payload-url` of the same installed bundle with current Metro URL exits 0, JSON outcome success |
+| Process persistence | Two subsequent targeted process queries each find the exact PID returned by launch, not just a successful install/host response |
+| Rendered Home | One native screenshot visually shows current FI Home: scan/manual/photo, plural nearby, guide/history and Privacy controls. Unrelated OS picture-in-picture partly occludes header; not complete visual/interaction acceptance |
+| Screen-data minimization | Removed only that newly generated mixed-content PNG after exact regular-file/realpath checks. No original phone content touched, no mixed screenshot retained, no further capture. Capture-command metadata and bounded observation receipt remain ignored |
+| Profile | Unchanged new actual expiry **October 27 15:27:13 UTC / 17:27:13 Helsinki (UTC+2)**. No recurring renewal |
+| Source validation | Fresh pinned full `pnpm validate` exits 0, 354 unique tests (69 policy + 285 application), boundaries/format/lint/strict types/package/API builds and 14 routes. No behavior change or new test cases |
+| Not established | Retained history, current material-review interaction/camera/VoiceOver/dark/large-text/performance, cable-disconnected/Mac-independent use or production readiness. No photo/GPS acquisition or paid inference. Debug needs Mac Metro/API/LAN |
+
+EB-IOS-TRUST-01 / OA-IOS-TRUST-01 are resolved for this startup only; earlier
+rejection remains below. Evidence: ignored `work/ios-renewal-2026-10-20.xwM2qA/`
+`launch-after-trust.{json,log}`, `processes-after-trust.json`,
+`processes-trusted-later.json`, `screenshot-after-trust.json`,
+`trusted-launch-verification.json`, `validate-trusted-launch.log` and
+post-documentation `validate-trusted-final.log`.
+No helper renewal, GitHub push or production GO. Product provisioning works;
+the older helper account failure is historical, not newly reproduced.
+
+## New profile and installation verified; first launch rejected — 2026-10-20
+
+Source `f31c476` (application source unchanged since `fc433bc`), same app ID/
+version 0.1.0/build 2/Personal Team, unchanged generated native permissions/locks.
+
+| Check | Actual result |
+| --- | --- |
+| Approved cleanup | Exactly the three obsolete DeviceSupport roots, 13,744 files/12,558 directories/zero links, removed after fresh path/type/open-file checks. No traversal/force/retry. Current 24A5430a support/source/app/live build/rollback/simulator/phone data excluded. Receipt has 26,302 removed objects; immediate available bytes 213,450,752 → 19,452,891,136. Removed copies are not in Trash; old debug support may need reacquisition |
+| Account/device | Existing Apple Account now available; same previously provisioned phone connected/DDI-ready/Developer Mode enabled. Generic build reaches Apple but reports no device. Stable-Xcode destinations independently lists this phone as eligible |
+| Actual native build | Same stable Xcode 26.6/iOS 26.5, verified physical destination, allowProvisioningUpdates + documented allowProvisioningDeviceRegistration, same ID/team/locked pods/two jobs. Exit 0 / BUILD SUCCEEDED |
+| Actual profile | Created **2026-10-20 15:27:13 UTC**, expires **2026-10-27 15:27:13 UTC / 17:27:13 Europe/Helsinki**. Expiry is UTC+2 after DST change; no year-end/distribution or recurring-renewal claim |
+| Signature/binding/purpose | Strict recursive app and all 12 frameworks pass. App/profile team and application entitlements match; expected phone is included; version/build/SDK match; default and compiled FI/EN camera purpose match config. Foreground location only, no Always/background location |
+| Replacement install/inventory | CoreDevice outcome success; targeted exact bundle ID shows KeepItGreen 0.1.0/build 2, developer-built. No uninstall/reset/private-data inspection or retention guarantee |
+| First launch | **Rejected**: CoreDevice 10002 → FBS Security names signature/entitlement/profile-not-trusted alternatives. Local integrity/binding pass does not establish the exact phone-side cause. Owner Trust/Verify check requested; no unchanged retry or bypass |
+| Host runtime | Correct-worktree API/Metro listener working directories; localhost/LAN health/capabilities/iOS manifest and its exact 11,744,969-byte asset pass. Expected API origin/current material-review keys present. This is not phone startup or performance evidence |
+| Repository | After cleanup scoped mobile 209 overlapping/full 354 unique tests and all gates/builds/14 web routes pass. Earlier ENOSPC and generic/No Accounts failures remain separately recorded |
+| Not established | Rendered Home/retained history/current camera/material-review/VoiceOver/dark/large-text/performance/untethered or Mac-independent use. No new photo/GPS/paid inference, helper renewal or GitHub push |
+
+Ignored evidence under `work/ios-renewal-2026-10-20.xwM2qA/`:
+`device-support-{inventory,cleanup}.json`, `build-device{.log,-result.json}`,
+`renewed-native-verification.json`, `renewed-profile.plist`, `install.json`,
+`installed-app.json`, `launch.{json,log}`, `runtime-verification.json`,
+`mobile-after-cleanup.log`, `validate-after-cleanup.log` and old signed recovery.
+No raw profile/device ID/app binary enters Git. EB-IOS-TRUST-01 and OWNER_ACTIONS
+define the exact owner and engineering resume steps.
+
+## Renewal requested — not yet signed or installed, 2026-10-20
+
+Source `fc433bc`, unchanged ID/version 0.1.0/build 2, matched Podfile.lock/Pods
+manifest. Actual old profile confirms October 19 09:49:04 UTC / 12:49:04 Helsinki
+expiry. Strict old-app signature and APFS recovery copy pass; embedded profile
+stays byte-identical after the failed build. Expired recovery is not a launch pass.
+
+Stable Xcode 26.6/iOS 26.5, generic iOS destination, current team, two jobs and
+automatic provisioning fail exit 65: No Accounts/no matching development profile,
+zero compile/sign steps. GUI independently initially has no account; its existing
+Apple login sheet is opened, with credentials/verification left to Roope. Follow-up
+GUI now shows the existing account and Personal Team; CoreDevice observes the
+owner-connected iPhone, iOS 27.0/24A5430a. This is changed prerequisite evidence,
+not proof that provisioning succeeds; no new build retry until storage is sufficient.
+
+Full pinned 354-test validation passes first. Later mobile-scope validation fails
+ENOSPC creating Vitest temp output; available space is only about 140–202 MiB.
+Owner asks for a storage inventory, not deletion. Three obsolete DeviceSupport
+versions total about 17.8 GiB measured; exact-target removal approval is pending.
+Current 24A5430a support, source/live build, rollback, simulators and phone data
+are excluded. No profile/cache deletion or new profile/expiry/install/launch/UI/
+retention pass; no additional paid inference, SDK/account purchase or GitHub push.
+Logs/backup/inspection helper: ignored `work/ios-renewal-2026-10-20.xwM2qA/`.
+Resume procedure/owners: EB-IOS-RENEW-01 and OWNER_ACTIONS.
+
+## Latest material-choice controls — native acceptance pending
+
+JS-only follow-up adds independent unselected per-part material, separate
+conditions confirmation and unknown-to-local-markings recovery. Focused/unit,
+354-test full validation and three browser runners pass, not a new native UI
+pass. No new screenshot, capture/upload, paid inference, native build/signing/
+installation or profile renewal in this unit. Existing build 2/October 19 expiry
+remains. Material-choice/unknown/safety-reset/source-guidance, native large text,
+VoiceOver and file cleanup still need actual device evidence. Roope operates
+physical-package confirmation; engineering may inspect only stable in-scope app
+screens. A new assistant inference needs separate capped approval; do not replay
+synthetic product responses into the phone or claim inferred material verified.
+
+## Existing native estimate screen inspected — 2026-10-15
+
+Beta CoreDevice help exposes the supported `device capture screenshot` command.
+It succeeds without the expired XCTest helper. The actual result screenshot
+shows an OpenAI-inferred estimate, indicative confidence, expected pinned model/
+photo version/time and two paper-packaging parts. Combined with the owner's
+earlier capture/send report, this observes response rendering on the real device;
+original-photo accuracy, native file cleanup and full native guidance are not
+verified. No assistant photograph/upload/inference or new native installation.
+
+The screen reveals a local paper-confirmation omission; existing carton policy
+already covers paper packaging. Repaired with two red-before/green-after tests
+and browser explicit-confirmation/source/non-packaging/unsafe checks. Native
+post-fix confirmation remains pending: subsequent captures were another-app/
+OS-transition views, not stable app evidence. Removed only those two generated
+copies after exact file validation. Activation succeeds with the same PID, but
+transition imagery is not proof of background clearing or updated native layout.
+No further captures while the owner uses other apps. No original phone data
+changed; in-scope screenshot stays ignored in
+`work/photo-native-test-2026-10-15.W1gGnB/current-screen.png`.
+
+EB-IOS-UI-01 remains for XCTest interactions/semantic trees only, not all screen
+reading. Native signing/profile/build are unchanged; no credential/account action,
+security bypass, new source date or GitHub push. Repository/browser test evidence
+is recorded in `TEST_EVIDENCE.md`, separately from this physical observation.
+
+## Camera-opening guard repair and owner-reported retry — 2026-10-15
+
+Owner reports **Ota tuotekuva** fails before capture. Source inspection finds
+removed `Constants.nativeBuildVersion` access falsely blocking installed build 2;
+the current iOS service provides immutable `platform.ios.buildNumber` instead.
+Repaired the JS guard, retaining old/unknown/Expo Go denial and avoiding mutable
+manifest fallback. No native rebuild, reinstall, signing renewal or permission
+change; current profile still expires October 19 at 12:49:04 Helsinki.
+
+Full 342-test validation, 204-test mobile scope and expanded synthetic photo
+browser runner pass. CoreDevice relaunch of the existing app with the current
+Metro URL succeeds. **Owner confirms camera opens, photo taken and send pressed.**
+This is reported physical progress, not an independently observed recognition
+result, native image cleanup or sorting-guidance pass. Actual result/error is
+awaiting the owner's text; no additional image/upload requested. Native helper
+remains unavailable as below; a read-only Metro debugger connection also rejects
+with HTTP 401 and was not bypassed. No native screen/semantic tree obtained,
+photo in chat, assistant billable request or GitHub push.
+
+Ignored evidence: `work/photo-camera-entry-native-launch.{json,log}`, validation
+and browser logs referenced in `TEST_EVIDENCE.md`.
+
+## Client 2 build/signatures/install/launch pass; photo acceptance pending — 2026-10-15
+
+Source `6b855f6`, unchanged application source/dependencies and independent team
+branch. Owner explicitly approved the exact cache-copy cleanup and had already
+authorized the updated installation. **Build/signatures, installed build 2 and
+launch are verified; rendered UI/camera and local-data retention are not.**
+
+| Check | Observed result |
+| --- | --- |
+| Scoped cleanup | Fresh exact path/type/child/creation-date inventory: ten previously listed cache directories, 8,826 files, nine internal symlinks not followed, 1,000,746,369 logical bytes. Foreground postorder unlink/rmdir without force/retries succeeds; installed pod lock and manifest unchanged. No program/source/app-product/phone data removal |
+| Immediate space measurement | Available bytes 1,035,653,120 → 2,064,412,672. Later free-space readings vary and are not all credited to this cleanup. Removed cache copies can be downloaded again, not recovered from Trash |
+| Rollback preservation | APFS-cloned current cached build 1 to ignored `rollback-build-1.app`; strict recursive signature and expected team/app entitlements pass before compiling |
+| Native build | Xcode 26.6 `17F113`, iOS 26.5 SDK, same app/team, matched locked pods, Debug generic iOS destination, cached DerivedData, `-jobs 2`, `COMPILER_INDEX_STORE_ENABLE=NO`, automatic existing-team signing: exit 0 and `BUILD SUCCEEDED` |
+| Built identity/purpose | Actual Info.plist version 0.1.0/build 2, unchanged bundle ID. Default and compiled FI/EN camera-purpose resources match source. Foreground location purpose retained; no Always purpose/background location |
+| Signing/binding | Strict recursive app plus all 12 embedded frameworks pass. Embedded profile and app team/application entitlements match; intended physical device is included |
+| Profile lifetime | Existing profile reused: created 2026-10-12 09:49:04 UTC; expires **2026-10-19 09:49:04 UTC / 12:49:04 Helsinki**. Not a renewal/distribution or year-end profile |
+| Replacement install | Initial bounded beta CoreDevice attempt fails: 4000 → invalidated connection → network 54/reset. A later fresh query observes connected/DDI-ready state; second bounded attempt succeeds. Targeted app inventory confirms version 0.1.0/build 2. No uninstall/reset; private contents/retention not inspected |
+| Physical launch/process | Explicit current Metro dev-client launch succeeds; later exact-PID query finds the app. Failed helper sessions were closed and the installed app relaunched; final launch/another PID-specific query pass. This is not rendered Home/camera proof |
+| Host runtime | LAN API health/photo capabilities/Metro status, iOS manifest and exact 11,734,094-byte launch asset return 200; current API origin/photo contract present. No photo inference request; host checks are not physical startup |
+| Repository checks | Fresh scoped mobile validation passes 203 overlapping tests; full pinned validation passes **340 unique tests (61 policy + 279 application)**, format/lint/types/boundaries, API/package builds, 14 web routes |
+
+Cleanup helper/dry run/receipt, native build log, native verification summary,
+profile/rollback metadata, both install attempts, targeted build-2 inventory,
+launch/process and post-build validation logs remain ignored under
+`work/ios-photo-2026-10-15.CmF8TO/`. The build-only verification receipt retains
+`physicalInstallVerified:false`; the separate `install-verification.json` proves
+installation/launch/process, with UI/camera flags still false. No raw secret, device ID/profile/binary,
+photo or private app contents are committed. No extra billable AI request,
+billing/account change, global Xcode switch, GitHub push or production release.
+
+### Native inspection limitation and next acceptance
+
+The first current agent-device session fails on default helper provisioning
+(`No Accounts`/missing profiles). The owner-specific helper ID was discovered
+from existing installed/cache metadata, not invented. A scoped session reuses
+an expired September 4 helper profile and cannot install the runner. Other
+cached owner profiles are also expired, including the newer October 14 fixture.
+An explicit stable-Xcode build-for-testing with existing team/helper IDs fails
+`No Accounts`/missing profiles; log: `helper-rebuild.log`. No tool source/global
+Xcode setting/account was changed, no authentication bypass or broader cache
+removal. This is separate from the verified product app and its October 19
+profile. Failed automation sessions were closed; no actual native screenshot
+or readable semantic tree was obtained, so no visual/VoiceOver/camera pass.
+
+Roope can reauthorize the existing Apple Account in Xcode Settings → Accounts
+for helper renewal if automated inspection is needed. Manual native testing
+does not depend on that helper. One owner-operated test was requested: open
+photo identification, capture an empty ordinary carton without people/personal
+details, explicitly approve one upload, and report the actual estimate/error.
+Do not send photos into chat or upload automatically. Source-backed guidance
+still needs per-part confirmation. Background/file deletion/permission recovery,
+accessibility, real-product accuracy and broader matrix remain separate.
+
+## Earlier client 2 generation and storage preflight — 2026-10-15
+
+Source `93d3149`, independent team branch; owner authorized the new installation.
+**No new native compile/sign/install or camera/visual acceptance yet.** Existing
+phone and cached app remain version 0.1.0/build 1. Nothing pushed to GitHub.
+
+- Xcode 26.6 `17F113`, iOS 26.5 SDK; no global Xcode selection change. Beta
+  CoreDevice confirms the owner's paired wired iPhone with Developer Mode and
+  DDI available after the owner connected/unlocked it. A targeted app inventory
+  confirms the unchanged bundle ID and build 1; no app data was read or deleted.
+- `pnpm exec expo prebuild --platform ios --no-install` from `mobile/app`
+  regenerated the ignored iOS tree, clearing its old generated pods even without
+  explicit `--clean`. No source/phone contents were removed. Reverted its two
+  incidental tracked package-script edits. Generated Info.plist has version
+  0.1.0/build 2 and the new camera purpose; generated FI/EN InfoPlist.strings
+  match the explicitly approved upload purpose. SDK/build-settings inspection
+  resolves the same app target/ID and cached product directory, not a build pass.
+- Saved Podfile.lock was restored. First `pod install --deployment
+  --no-repo-update` failed with `No space left on device` while extracting
+  Hermes. After installer temporary files were released, one retry succeeded:
+  113 declared dependencies/112 installed pods, native lock byte-identical to
+  the saved file and equal to Pods/Manifest.lock. No version/repository update.
+  The existing app and older rollback artifact still pass strict recursive
+  signature checks; this does not establish an unexpired rollback profile.
+- Host free space remained about **977 MiB**. Do not start a large native build
+  or claim signing/install passed. API health/photo capabilities and Metro
+  status return 200; no photo request was made in this build-preflight unit.
+- Fresh scoped `pnpm validate:mobile` passes 203 overlapping dependency tests;
+  full pinned `pnpm validate` exits 0 with 340 unique tests (61 policy + 279
+  application), boundaries/format/lint/strict types, package/API builds and 14
+  web routes. No new runtime changes/test cases/browser/native visual claims.
+
+### Pending cleanup approval and exact limits
+
+At this earlier preflight, owner approval was pending. It was later explicitly
+received and the scoped cleanup completed, as recorded above.
+Only the following ten newly created directory targets were enumerated under
+`/Users/roopeaaltonen/Library/Caches/CocoaPods/Pods/External/`:
+
+- `ExpoCamera`
+- `ExpoCameraBarcodeScanning`
+- `ExpoFileSystem`
+- `ExpoFont`
+- `ExpoLocation`
+- `ExpoModulesCore`
+- `ExpoModulesWorklets`
+- `React-Core-prebuilt`
+- `ReactNativeDependencies`
+- `hermes-engine`
+
+These are this attempt's reloadable cache copies, not `mobile/app/ios/Pods`,
+source, installed applications or cached signed app products. Creation metadata
+matches this run. Dry run: ten directory targets, 8,826 regular files, about
+1,000,746,369 logical bytes; nine internal framework symlinks were detected and
+not traversed. All nine lexical link destinations remain within this cache
+root. At that initial preflight no cleanup had occurred. Metadata can change: revalidate exact paths,
+types, count, children and links in the same foreground process after approval;
+do not follow symlinks. Stop on any mismatch/locked-file/deletion failure, with
+no stronger or broader retry. Cache contents can be downloaded again using the
+locked dependencies. Free-space gain must be measured; it may not alone cover
+the eventual native build. The owner can instead free space independently.
+
+Ignored evidence: `work/ios-photo-2026-10-15.CmF8TO/` contains prebuild, failed and
+successful pod logs; saved original lock/project/plist; filtered device/app
+metadata; build settings; and scoped/full validation logs. Device identifiers,
+profiles, binaries and local metadata are not committed. No production release,
+signing renewal, physical photo upload or extra billable request is inferred.
 
 ## Source partition smoke — 2026-10-12
 

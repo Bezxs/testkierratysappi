@@ -1,5 +1,21 @@
 # Acceptance criteria
 
+## Consented photo recognition
+
+1. Capture/preview never uploads automatically; recipient/retention/purpose are disclosed in FI/EN, followed by an explicit send action with versioned server-validated consent.
+2. Only bounded JPEG data is accepted. Strip APP/COM metadata before device upload and again before the provider; remove the native camera's own temporary file. No remote URLs, arbitrary prompts, photo/estimate history, analytics, server persistence or offline upload queue.
+3. AI identity is tentative; output contains observations only, bounded runtime schemas and inferred source/model/version/time. No model-supplied bins, source claims or verified status. Risky/non-packaging/uncertain cases cannot get ordinary packaging instructions.
+4. Each eligible ordinary packaging part has an independent material choice with no default; raw AI material alone cannot authorize sorting. Require a separate unchecked shape/empty/non-hazardous/non-pressurized confirmation. Changing material or unchecking conditions clears old guidance; other parts remain independent. “I don't know” produces no sorting answer and offers local marking inspection. Unsupported/unknown raw observations cannot bypass existing eligibility via a manual choice. Original AI identity/material stays inferred and unchanged; the selected material is a local user observation. The existing rule engine supplies sourced/explained guidance; deposit remains unknown for bottles/cans and rule provenance/confidence are preserved.
+5. Server-only credential and explicit development opt-in; production disabled. Enforce payload/response/token/deadline/IP/concurrency/process limits, safe cancellation/late-result/credit errors, no automatic retry or raw provider/request logging.
+6. Purpose-matched native build 2 is required; old build 1/Expo Go cannot capture. Source/browser tests do not prove native capture, metadata/file cleanup, permissions/background recovery, accessibility, battery or real-product accuracy. One owner-authorized real adapter estimate now passes after funding; neither this synthetic-image request, a key nor local green tests establishes a working physical feature.
+
+## Real-image recognition evidence
+
+1. Record/inspect public test images, source/licence/attribution, hashes and expected identity before live calls; never pass reference answers, source record codes or image URLs as recognition hints.
+2. Report transport/schema completion, named product family, generic type, bilingual wording and material correctness separately. A matching keyword or an HTTP 200 is not semantic/material accuracy or verified SKU/GTIN identity.
+3. Retain wrong/partial outputs, manually inspect FI/EN disagreements and disclose sample size/selection, one-shot variability and missing physical material checks. Do not tune silently on the test set or generalize eight clean front images to real camera accuracy.
+4. Use only explicitly authorized paid-call counts, no automatic retry/new model/account/budget reset, no private image or secret disclosure, and no paid inference in ordinary CI. Later live rechecks need their own bounded approval. The October 15 baseline does not satisfy material-readiness acceptance; PHOTO-003 remains high/open.
+
 ## Three-part source ownership
 
 1. Tracked implementation has exactly three ownership roots: mobile, backend and shared; public entry points, responsibilities and commands are documented. Root integration tooling/docs remain common.
@@ -29,6 +45,17 @@
 5. Recognition provenance and confidence remain distinct from user-confirmed observation and the Finnish sorting-rule provenance.
 
 ## Free-data and nearest-point addition
+
+October 20 address-search integration additionally requires an explicit native
+OS-map-service disclosure before submitting an address/postcode, with no direct
+public-geocoder request or address cache/history/log. Bounds, ambiguity refusal,
+single-flight native work, timeout/cancel/background cleanup and late-permission
+protection must pass. Native geocoding cannot be forcibly cancelled after dispatch;
+ignore late output and do not start another request until settlement. Manual
+distances use a labelled estimated address origin, not GPS/±1 m precision. Retain
+the five-point/material/source/map UI; web clearly says address search is native-only
+and collects no address. Unit/browser evidence does not certify actual native OS
+geocoding, Android permissions or map handoff.
 
 October 11 school-scope addition supersedes the earlier runtime legal-banner
 retention requirements below: Privacy contains factual recipients, retention,

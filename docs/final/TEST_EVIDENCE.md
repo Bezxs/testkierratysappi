@@ -1,11 +1,173 @@
 # Test evidence
 
-2026-10-19 UI refinement, based on public main `44cc1b2`:
+## Authorized team-main integration — 2026-10-20
 
-- Before edits, [CI 38658432813](https://github.com/roopeaal/KierratysAppi/actions/runs/38658432813) failed mobile/full validation while backend/shared passed. Public job annotations were available; detailed remote logs required authentication. Local baseline: four formatting failures, eight type errors from six missing nearby keys, four policy failures, 249 application tests passing, and 11 high/critical audit records.
-- After edits: `pnpm lint`, `pnpm typecheck`, all 249 application tests and `pnpm build` pass, including the 13-route web export. Policy tests improve to 55/58: shared nearby navigation passes; three existing location/acquisition/list-policy mismatches remain. `pnpm validate:mobile` and `pnpm validate` still stop at existing formatting in `scan.tsx`, `point-address.ts` and its test. Dependencies and their baseline audit findings are unchanged.
-- Extended `scripts/qa/app-refinement-browser.cjs` passes against actual Metro in Chromium for FI/EN, light/dark, 320/390/1280px and 130% synthetic text. It covers nearby address/postal validation, focus, failure/retry, cancellation, map/source details; resolved/missing/ambiguous/unknown sorting states retain explanations, confidence and provenance. Existing scan/manual, local history/privacy and error flows pass. Controlled HTTP responses are QA fixtures, not runtime product data.
-- Screenshots inspected under ignored `work/app-refinement-qa`; logs are in `/workspace/.cloud-onboarding/kierratysappi/ui-*.log`. No new horizontal clipping in reviewed layouts. Native camera/GPS, Dynamic Type, signing and live-provider access were not verified. No backend/rules/data/location-calculation changes, new dependencies or comments. These checks preceded the owner-authorized test-only publication to `Bezxs/testkierratysappi`; original-repository publication remains unapproved.
+- **Actual publication:** dry-run then non-force `HEAD:refs/heads/main` push succeeds **`44cc1b2..7ff234e`** to verified `https://github.com/roopeaal/KierratysAppi.git`. Independent `git ls-remote` returns **`7ff234e9b3801ed2dca482297d241d154d48fc84`**; both parents (`3233a3a`, `44cc1b2`) pass ancestor checks. No force/rebase/private import/settings/tag/other-branch push. Outcome documentation follows in the same authorized sharing step.
+- **Final checks:** post-documentation/final-Privacy full validation exits 0 in `validate-prepush.log` with the same **364 unique tests**, gates/builds/14 routes. `app-browser-final.log` rechecks the final Privacy wording and exits 0. All three browser runs pass. Entire staged publish delta has 65 files; limited prohibited-path and key-pattern check of eleven local commit patches + staged delta yields zero candidates. No raw secrets/private environment/profile/binary/work artifacts are committed; this limited check is not a Gitleaks/security-audit claim.
+- **Initial remote CI snapshot:** source commit `7ff234e` launches CI **39461165652** (queued) and Security **39461165262** (in progress). No completed conclusion at that snapshot; remote checks are not certified by local green tests. Final outcome/follow-up SHA is verified separately if available; broader native/production gates remain open.
+- Owner explicitly confirms **KierratysAppi/main**. URL/public/default/main verified; fresh remote `44cc1b2` is nine commits ahead of the common base, local `3233a3a` has eleven separate commits. Normal merge preserves both, with project-state/NEXT/ROADMAP conflicts reconciled rather than dropping either history. Source sharing is not production publication; no private KeepItGreen import, force/rebase or settings change.
+- Initial merged mobile typecheck fails on eight missing-translation references in upstream manual search. Its old single-point screen also drops plural/material/one-press/accuracy behavior and adds direct unbounded public Nominatim requests. Reconciled it with existing cards/intent/provenance and installed native `Location.geocodeAsync` (local SDK source/type contract inspected). Explicit FI/EN recipient/retention disclosure, 160-character query/control validation, bounded typed coordinates, ambiguous-match refusal, five-second deadline, single-flight uncancellable native request, cancel/late-result/late-permission protection and non-GPS estimated-origin label added. Web never collects an address for an unavailable geocoder. Postal/subregion correction, Home async cleanup, heading and shared filter retained. Shared exclusion filtering/regression and a namespaced upstream decision ID avoid trust/ID collisions.
+- Focused initial helper/address tests pass 11/11; added deadline/late-permission case makes helper 8 plus address 4. Scoped shared **85**, scoped mobile **218 overlapping** tests pass. Full pinned `pnpm validate` passes **364 unique = 70 policy + 294 application** (domain 52/database 5/localization 7/engine 8/contracts 25/providers 42/mobile 126/application 8/API 21), all boundaries/format/lint/strict types/package/API builds and 14 routes. Initial test-double arity type error is repaired, not a passing run; old logs retained. Existing non-failing lint notices remain; no gate relaxed.
+- All three actual-Metro/installed-Chrome browser runners exit 0: nearby preserves one-press versus direct URL, five-point distance/material/exclusion/source/map behavior, offline/denied/cancel/timeout cleanup, dark/narrow/synthetic large text and FI/EN native-only address notice with no address input; broader app and photo fixture regressions pass. Inspected `work/nearby-ux-qa/manual-web-fi.png` and `fi-dark.png`; no overlap/overflow observed in those scoped views. Public fixture positions and isolated camera/API responses only, no user GPS/photo/geocoder or live inference. Browser success does not establish native address form/provider/permission/map/VoiceOver behavior.
+- Ignored integration evidence: `work/team-main-push-2026-10-20.D1ww05/{validate.log,validate-final.log,validate-prepush.log,mobile.log,mobile-final.log,shared.log,nearby-browser.log,app-browser.log,app-browser-final.log,photo-browser.log}`. Initial failing checks are retained separately from their passing reruns. No real geocoding query/GPS/photo, paid provider call, native build/install/signing change or new dependency/account. Native address acceptance remains pending under OA-NEARBY-ADDRESS-01; public NO-GO/PHOTO-003 high unchanged.
+
+## Owner trust and actual same-app startup — 2026-10-20
+
+- Owner reports **luotettu**. Without reinstall/reset, beta CoreDevice launches the same installed build 2 using the current Metro dev-client payload; exit 0 / JSON outcome success. Two later targeted process queries find the returned PID. This is actual startup evidence after changed trust state, not an inference from signatures/host health. No camera/GPS/paid request, helper renewal or GitHub push.
+- One native screenshot visually shows current FI Home (scan/manual/photo, plural nearby, guide/history, Privacy), partly occluded by an unrelated OS picture-in-picture overlay. Removed only the exact newly generated mixed-content regular file after path/type checks; no original phone content, no mixed image retained or further capture. This is rendered-Home evidence, not unobstructed visual acceptance, interaction, retention, camera/material-review/accessibility/performance or untethered/Mac-independent evidence.
+- Fresh full pinned **`pnpm validate` exits 0, 354 unique tests (69 policy + 285 application)**, boundaries/format/lint/strict types/package/API builds and 14 routes. No behavior/test/dependency/native/prompt/model/rule change or new security-audit/Doctor/remote-CI claim. Existing-account product provisioning now passes; the older helper No Accounts error is historical, not a currently reproduced blocker.
+- Ignored `work/ios-renewal-2026-10-20.xwM2qA/`: `launch-after-trust.{json,log}`, `processes-after-trust.json`, `processes-trusted-later.json`, `screenshot-after-trust.json`, bounded `trusted-launch-verification.json`, `validate-trusted-launch.log` and post-documentation `validate-trusted-final.log`. First failed launch/profile/build receipts remain separate. Actual expiry **October 27 17:27:13 Helsinki (UTC+2)** unchanged, manual renewal not scheduled. Debug still requires Mac Metro/API/LAN. EB-IOS-TRUST-01 resolved for startup; PHOTO-003 high/PHOTO-004/wider native and production NO-GO remain.
+
+## Approved three-cache cleanup and actual renewal/install — 2026-10-20
+
+- Fresh approved-target preflight: three exact old DeviceSupport directories, real directory/root identity and exact expected children, no open files, 13,744 files/12,558 directories/zero symlinks, allocated 19,225,964,544 bytes. Safe postorder unlink/rmdir completes **26,302 objects** with current 24A5430a support root identity preserved, no traversal/force/retry. Immediate free bytes 213,450,752 → 19,452,891,136; no claim every background variation is cleanup. Source/Xcode/simulators/app/live build/rollback/phone data excluded; removed cache copies are not in Trash and old beta reacquisition is not guaranteed.
+- Prior No Accounts is superseded by available existing account. Generic build then fails Apple no-device provisioning; stable `-showdestinations` lists the same connected phone, whose UDID matches prior provisioned-device evidence. Documented `-allowProvisioningDeviceRegistration` with that physical destination and existing provisioning permission yields **exit 0 / BUILD SUCCEEDED**. No SDK/account/team/app/native-config/lock/dependency change, force or profile deletion.
+- Strict app + **all 12 embedded-framework** signatures, current ID/version 0.1.0/build 2/iOS 26.5 SDK, default/compiled FI/EN camera purpose, foreground-only location, app/profile/team/application/device bindings pass. Actual profile created **2026-10-20T15:27:13Z**, expires **2026-10-27T15:27:13Z / 27.10.2026 17:27:13 Helsinki** (UTC+2). New actual dates, not inferred seven-day math; no year-end/distribution readiness or automation.
+- Replacement install outcome **success**; exact-bundle physical inventory confirms 0.1.0/build 2. No uninstall/reset or private-content read; retention not proven. Initial explicit dev-client launch is **rejected** (CoreDevice 10002/FBS Security alternatives). Mac signatures do not establish trust or rendered UI; owner Trust/Verify check is pending before another launch attempt. No in-scope or other-app screenshot captured in this unit.
+- Correct-worktree listener cwd, LAN API health/capabilities and iOS manifest/asset pass. Bundle HTTP 200, **11,744,969 bytes**, expected API origin/new material-choice keys; no provider inference POST or budget reset. Host success is not phone-startup/performance evidence.
+- After cleanup **`pnpm validate:mobile` exits 0, 209 overlapping tests**; **`pnpm validate` exits 0, 354 unique tests (69 policy + 285 application)** and all format/lint/types/boundaries/package/API/14-route build gates. Earlier ENOSPC is resolved for these reruns. No new test cases/source/dependency, live security audit/Doctor/remote-CI or physical camera/VoiceOver claim. Logs/receipts/backup remain ignored under `work/ios-renewal-2026-10-20.xwM2qA/`; no raw profile/device ID/binary in Git. No paid AI request, secret/billing/private-repository/global-Xcode change or push; production NO-GO unchanged.
+
+## Signing/install renewal preflight and storage inventory — 2026-10-20
+
+- Clean `fc433bc`, matched native locks, same app ID/version/build 2, Xcode 26.6/iOS 26.5 confirmed. Actual embedded profile expires October 19 09:49:04 UTC / 12:49:04 Helsinki. Strict app signature before/after failed build, APFS recovery-copy signature and profile equality pass. Stable automatic provisioning build exits 65, No Accounts/no matching development profile, with zero compile/sign steps; **renewal/install/launch are not passed**.
+- Native Xcode GUI initially has no account; existing-account login sheet is opened without entering credentials. Owner follow-up now shows existing account/Personal Team; CoreDevice observes connected intended phone, iOS 27.0/24A5430a. Credential usability still needs a new provisioning result. No screenshot of the phone, camera/GPS acquisition or physical app flow was run.
+- Fresh full pinned `pnpm validate` exits 0: **354 tests (69 policy + 285 application)**, boundaries/format/lint/types/package/API builds and 14 routes. A later `pnpm validate:mobile` exits 1: **ENOSPC during shared-domain Vitest temp-directory creation**, not a scoped pass or a newly isolated application defect. Free space fell from about 3.1 GiB initially to 140–202 MiB; cause not attributed and further builds stop. Existing non-failing lint/build notices remain.
+- Read-only `du`/exact directory inspection identifies obsolete DeviceSupport versions 26.1/23B82 (5.2 GiB), 27.0/24A5418b (6.3 GiB), 27.0/24A5424a (6.3 GiB). Top-level children are symbol-processing markers, Info.plist and Symbols. Current phone's 24A5430a support (about 18 GiB), simulator data, source/live DerivedData/recovery are excluded. Some protected general cache paths deny inspection; no access bypass. Sizes may include shared APFS blocks; no promised reclaimed-byte count. **No deletion yet; owner approval requested for only those three roots.**
+- Evidence remains ignored under `work/ios-renewal-2026-10-20.xwM2qA/`: `build.log`, `validate.log`, `mobile-validation.log`, device/build settings and rollback app. Source/dependencies/model/API/rules/database/native config are unchanged; no paid inference/key/account purchase/private import or GitHub push. Complete storage recovery, then rerun checks and actual signing/install/launch; production NO-GO unchanged.
+
+## Independent photo-part material correction — 2026-10-15
+
+- Started clean at `d4ae7d2`; actual generic confirmation used raw `part.material`. Three added mobile tests replay the recorded Nutella plastic-jar error and verify independent glass choice, untouched inferred identity, sourced glass policy/medium rather than verified observation, missing/unknown/invalid choices and unsupported/non-packaging refusal. With new confirmation inputs against the old implementation, four test cases fail; after repair **11/11** focused photo tests pass. Existing risky/uncertain/deposit/paper cases remain.
+- `pnpm validate:mobile`: exit 0, **209 overlapping tests** (domain 52, localization 7, engine 8, contracts 24, mobile 118), scoped format/lint/types/builds. `pnpm validate`: exit 0, **354 unique tests = 69 repository-policy + 285 application** (52 + 5 + 7 + 8 + 24 + 42 + 118 + 8 + 21), mandatory boundary/format/lint/strict types, all package/API builds and 14 web routes. Existing informational Biome template-literal suggestions and NO_COLOR build warnings remain non-failing; no gate was removed. Pinned pnpm 11.16.0, local Node 26.4.0; CI's Node 24 was not newly run remotely.
+- Actual Metro 8093 / installed Chrome / Playwright **photo, app-refinement and nearby browser runners all exit 0**. Photo runner intercepts every capability/inference request using isolated synthetic camera/public-response fixtures; no real provider call. Checks no default material, separate false→true safety state and disabled control, keyboard unknown selection, original wrong plastic suggestion→local glass guidance, independent lid/third part, removal on uncheck/material change, same-radio no-op, unknown→existing markings route, source/confidence, unsafe/uncertain/non-packaging/unknown raw refusal, consent/metadata/cancel/late-result/background/offline/disabled/quota behavior, FI/EN/light/dark/reduced-motion and 320-point/130% text layout. Initial harness assertions were corrected to use actual enabled semantics (RN Web omits false aria-disabled) and scope material radios rather than the retained Home language radio. Large-text emulation snapshots computed text sizes before scaling, avoiding compounded relative percentages; it is not native Dynamic Type. Broader runners retain previous barcode/product/history/privacy/nearby regressions without live provider or user GPS data.
+- Screenshots inspected: `work/photo-qa/fi-material-unselected.png`, `fi-material-unknown.png`, `fi-nutella-corrected.png`, `fi-material-320-large.png`, `fi-confirmed-dark.png`, `fi-rule-dark.png`, `en-material-unknown.png`, `en-material-corrected.png`. Existing visual tokens, compact material labels, checked/focus cues and 44-point targets; no new decorative animation, dependency or tracking. Synthetic screenshots are not runtime data or a fresh real-image recognition score.
+- Reproduce from repository root with the existing pinned toolchain: `pnpm --filter @kierratysappi/mobile test src/features/photo/__tests__/sorting.test.ts`, `pnpm validate:mobile`, `pnpm validate`. For browser runners set the documented installed `PLAYWRIGHT_MODULE_PATH` and `BROWSER_EXECUTABLE_PATH`, then run `node scripts/qa/photo-recognition-browser.cjs`, `node scripts/qa/app-refinement-browser.cjs`, `node scripts/qa/nearby-ux-browser.cjs` against local Metro 8093. Logs: `work/photo-material-{mobile-validation,validate,browser,app-browser,nearby-browser}.log`; post-documentation full rerun: `work/photo-material-final-validate.log`.
+- Scope: **local correction/unknown mitigation, not improved model material accuracy**. PHOTO-003 stays high/open and PHOTO-004 naming unchanged. No new paid request/key/model/prompt/API/wire/rule/date/database/native build/sign/install, real phone photograph, private-repository import or GitHub push. Latest native controls/file cleanup/VoiceOver/large text remain unverified under existing acceptance; public production NO-GO is unchanged. Prior eight-call permission is exhausted; further empirical inference requires fresh bounded approval.
+
+## Eight real product front images, owner-approved live evaluation — 2026-10-15
+
+- Existing-key reuse explicitly approved. Eight source images inspected and expected labels recorded before testing. Exactly eight app `POST /v1/recycling/photo` requests, no retries, at least 25-second spacing, same recognizer/model/prompt and development budget. All return HTTP 200/`estimated`; ledger has eight attempts/eight results. Four mention the brand/product family. Seven FI product types appropriate; Quaker's FI wording is imprecise versus its broader EN label. Exact table, references, SHA-256 and caveats: `PHOTO_PRODUCT_EVALUATION.md`.
+- **Model-quality failure retained:** Nutella's jar inferred plastic rather than the glass reference corroborated by the manufacturer; not treated as safe verified sorting. PHOTO-003 high remains open. Coarse category-keyword matches are 8/8 but not semantic correctness: Quaker exposes the distinction. No representative success percentage, material-completeness/accuracy, verified GTIN or new native-camera pass is claimed.
+- Added pinned public-only eight-case manifest and explicit-opt-in harness: no answer/code/name URL in request, bounded JPEG/response, hash verification, fixed loopback app endpoint, exclusive run marker, spacing/deadline/no retry/no secret access. Seven free regressions pass for opt-in/cap/source isolation/answer separation/name-vs-type/fake verification/coarse keyword limits. No production app/model/rule/dependency behavior changed; no raw photos in Git.
+- Full pinned `pnpm validate` exits 0 with **351 unique tests (69 policy + 282 application)**, all format/lint/strict types/boundaries, package/API builds and 14 web routes. Both `validate.log` and the post-documentation `final-validate.log` pass. Logs and public input/response/attempt receipts remain ignored in `work/photo-products-2026-10-15.KstrPe/`. Final read-only verification confirms eight attempts/eight responses and unchanged adapter/route/contracts/rule content. Eight-call permission is consumed; no further paid test/model switch, account/billing/native change or GitHub push.
+
+## Direct physical result inspection and paper-confirmation repair — 2026-10-15
+
+- Supported beta CoreDevice help documents `device capture screenshot --device ... --destination ...`. Bounded capture succeeds and the actual app-result image is inspected: inferred estimate, indicative confidence, expected pinned model/photo-observation version/time and two paper-packaging parts. No original photograph inspected or new capture/upload/inference initiated; user previously reported taking/sending the image. This verifies native response rendering, not precise product/material accuracy, native file cleanup or post-confirmation guidance.
+- Paper parts incorrectly displayed the uncertain fallback because `canConfirmPhotoPart` omitted paper while existing `fi.packaging.carton` includes it. Added two regressions and observed failures: shared expected true/got false, mobile expected resolved/got undefined. After the one-value allowlist repair, focused contracts **9/9** and mobile photo **8/8** pass. Loose/non-packaging/unknown paper and hazardous/uncertain estimates remain blocked; unconfirmed input cannot issue guidance. Existing rule source/date/version/confidence remain intact.
+- Shared scope **84 overlapping tests** and mobile scope **206** pass, including boundaries/format/lint/types/builds. Expanded actual-Metro browser runner passes explicit paper confirmation → source-backed carton guidance, no instruction before confirmation, non-packaging-paper refusal and existing camera/preview/consent/unsafe/uncertain/cancellation/visibility/offline/disabled/quota/FI/EN checks. Fixtures are browser-only; no native estimate injection or provider call. Paper-rule screenshot inspected separately from the physical result.
+- Initial in-scope native screenshot retained only under ignored `work/photo-native-test-2026-10-15.W1gGnB/current-screen.png`. Two later captures showed another app/OS transition; their generated copies were removed with exact path/type/realpath/inode validation, not used as app evidence and no original phone data changed. Activation succeeds with the same PID, but no stable post-fix native guidance/background-clearing claim is made. No more screenshots while the owner is using other apps. XCTest helper provisioning remains separate; the direct screenshot path needs no helper renewal/auth bypass.
+- Full pinned `pnpm validate` exits 0 with **344 unique tests (62 policy + 282 application)**, all format/lint/strict types/boundaries, package/API builds and 14 web routes. No skipped/downgraded gate. Logs: `validate.log`, `shared.log`, `mobile.log`, `paper-{contract,mobile}-{before,after}.log`, `browser-paper-final.log` in the ignored evidence directory. No secret, raw image/estimate, device identifier/profile or native binary committed; no new dependency, model/rule/date/native signing change or GitHub push.
+
+## Photo camera-entry regression repair — 2026-10-15
+
+- User-reported failure occurs at **Ota tuotekuva**, not a demonstrated provider failure. Installed `expo-constants` source/changelog independently shows removed top-level `nativeBuildVersion`; current iOS native service exports `platform.ios.buildNumber` directly from Info.plist. Former guard received undefined and rejected installed build 2 despite earlier green checks.
+- Replaced string-only compatibility wiring with a narrow native-runtime object guard. Actual native-shape, old/unknown/malformed build, Expo Go, mutable-manifest disagreement and screen-to-guard wiring regressions pass. Android's empty native platform map fails closed; no Android camera readiness claim.
+- Focused photo suite **7/7** and policy suite **4/4** pass. Scoped mobile validation **204 overlapping tests** passes; pinned full `pnpm validate` exits 0 with **342 unique tests (62 policy + 280 application)**, format/lint/strict types/boundaries, package/API builds and 14 web routes. Initial typecheck caught excess fixture fields; fixed the fixture without weakening runtime or compiler checks.
+- Expanded actual-Metro photo browser runner passes pending-opening busy/disabled/localized-label checks, no pre-consent POST, synthetic capture/metadata/preview/send/confirmation, hazardous/uncertain blocking, cancellation/late output, visibility/offline/disabled/quota, FI/EN/dark/layout. Inspected `work/photo-qa/fi-opening.png`; fixtures are not native camera/provider evidence.
+- Existing build 2 relaunched successfully using the current Metro URL, no rebuild/reinstall/signing change. Owner subsequently reports camera opens, a photo was taken and send pressed. **No actual result/error text or successful provider/sorting outcome observed yet.** Native deletion, metadata, permission/background and accessibility acceptance remain separate. No user image in chat or assistant billable call.
+- Native helper remains blocked as documented. Read-only Metro inspector WebSocket rejects with HTTP 401; no runtime values/UI/photo were read and no authentication bypass attempted. Host API/capabilities/Metro remain healthy. No GitHub push or new external account/payment action.
+- Ignored logs: `work/photo-camera-entry-{mobile,validate,final-validate,browser}.log`, native relaunch JSON/log. Final full validation after the documentation/QA changes also exits 0 with the same 342 tests and all gates. Existing native signatures/profile/build evidence retains its earlier scope and October 19 expiry.
+
+## Approved cache cleanup and native build 2 — 2026-10-15
+
+- Explicit owner approval followed by fresh exact-target/type/child/creation/
+  link validation. Removed ten download-cache-copy directories, 8,826 files and
+  nine symlinks without traversing links, force/retries or touching installed
+  pods/source/phone data. Measured available bytes 1,035,653,120 → 2,064,412,672;
+  installed native locks unchanged. Receipt: `cache-cleanup.jsonl`.
+- Preserved signature-verified APFS build-1 clone. Fresh Xcode 26.6/iOS 26.5
+  Debug build exits 0 / BUILD SUCCEEDED. Version 0.1.0/build 2, same ID, strict
+  app/all 12 framework signatures, compiled default/FI/EN camera purpose and
+  foreground-only location, app/profile/team/device bindings pass. Existing
+  profile expires October 19 at 12:49:04 Helsinki; not renewed.
+- First bounded install fails at CoreDevice 4000/reset. Later fresh metadata
+  confirms connected/DDI-ready state; second bounded replacement install passes.
+  Targeted inventory confirms version 0.1.0/build 2, current dev-client launch
+  and later PID-specific query pass. Final relaunch/process check also passes.
+  No uninstall/reset or native UI/camera/private-content-retention inference.
+- Native inspection helper fails separately: default signing configuration,
+  expired observed owner-specific cached profile, then explicit existing-ID
+  rebuild reports No Accounts/missing profiles. No native tree/screenshot
+  obtained; failed tool sessions closed, product relaunched. Manual owner photo
+  smoke requested with explicit upload approval; no assistant capture/upload.
+- LAN API/capabilities/Metro/iOS manifest/exact 11,734,094-byte JS asset return
+  200; expected current origin/photo contract. These are host checks only.
+  No new AI inference request, public service or GitHub push.
+- Fresh scoped mobile command passes 203 overlapping dependency tests. Full
+  pinned `pnpm validate` exits 0 with **340 unique tests (61 + 279)** and all
+  format/lint/types/boundaries/package/API/web build gates; 14 routes. No new
+  application source/dependency/test changes or browser/device visual claims.
+  Logs/verification summaries remain under ignored
+  `work/ios-photo-2026-10-15.CmF8TO/`; exact procedure in physical evidence.
+
+## Native client 2 preflight — 2026-10-15
+
+- Generated ignored iOS project from `mobile/app`: Info.plist build 2, same
+  version/ID, FI/EN purpose text. Reverted incidental tracked script edits.
+  Saved native lock restored; first pod extraction failed ENOSPC, one retry
+  after temporary-file release passed deployment/no-repo-update installation.
+  Native lock byte-identical and equal to installed manifest.
+- Stable Xcode 26.6/iOS 26.5 build-settings query passes, not native compilation.
+  Targeted CoreDevice inventory confirms connected/paired Developer Mode and
+  actual installed build 1. Existing cached app/older rollback signatures pass;
+  no new signature/profile/installation/launch/camera/visual acceptance.
+- Scoped mobile validation passes 203 overlapping dependency tests; fresh full
+  pinned `pnpm validate` exits 0: **340 unique tests (61 + 279)**, all boundaries,
+  format/lint/strict types, package/API builds and 14-route web export. No new
+  runtime/dependency/test changes or browser QA rerun. Logs and metadata under
+  ignored `work/ios-photo-2026-10-15.CmF8TO/`.
+- About 977 MiB free; build deferred before compilation. Exact ten newly created
+  reloadable cache-copy targets and dry-run symlink checks are recorded in
+  `PHYSICAL_IOS_VALIDATION.md`; owner cleanup approval is pending. No deletion,
+  broader cleanup, additional paid AI request, source publication or push.
+
+## Owner-funded live adapter recheck — 2026-10-15
+
+- Owner reported completing the billing step and authorized the offered single
+  test. Existing approved key, pinned model and code-drawn 512×512 JPEG only.
+  Direct real adapter request: HTTP 200, calls 1, result `estimated` after full
+  runtime schemas. Safe summary: `work/photo-credit-restored-2026-10-15.json`.
+- Supersedes the initial exhausted-credit outcome below for this observation.
+  No user photo/estimate text/raw provider body/key/payment history exposed, no
+  agent purchase/billing change/key rotation/model switch/automatic retry.
+  Remaining balance and real-product accuracy are not established.
+- This is provider-adapter evidence, not a fresh app HTTP/browser/native test.
+  Native client 2 build/install and physical camera/permission/file-deletion/
+  background/accessibility acceptance remain pending. No production enablement,
+  signing renewal or GitHub push.
+- Fresh pinned `pnpm validate` exits 0 after the status updates: **340 tests
+  (61 policy + 279 application)**, boundaries/format/lint/strict types, all
+  package/API builds and 14-route web export. Documentation/evidence only;
+  no runtime/dependency changes or added tests. Ignored full log:
+  `work/photo-credit-restored-validate.log`.
+
+## Development-only photo recognition — 2026-10-15
+
+- Full pinned `pnpm validate` passes **340 tests (61 policy + 279 application)**,
+  boundaries/format/lint/strict types, package/API builds and 14-route web export.
+  All three scoped commands pass: mobile 203 / backend 159 / shared 83 overlapping
+  tests. Added 33 unique tests since the prior 307. Ignored logs:
+  `work/photo-validate-final.log`, `photo-mobile.log`, `photo-backend.log`,
+  `photo-shared.log`. No skipped/downgraded gates or external dependency updates.
+- Actual-Metro photo browser runner passes synthetic camera/isolated API flows:
+  explicit preview/send/confirmation, metadata, hazard/uncertainty blocking,
+  cancel/late-result/visibility/offline/disabled/quota, FI/EN, light/dark and web
+  width checks. Both existing app and nearby runners still pass their previous
+  source/error/local-state/material/keyboard/offline/dark/synthetic-text flows.
+  Photo screenshots inspected; not physical-camera or native text-scale proof.
+- Actual API: model access 200; provider diagnostics first exposed schema
+  compatibility, then 429 `credit_balance_exhausted`, type `insufficient_quota`.
+  Conservative wire schema plus full runtime checking and distinct credit error
+  handling/regressions implemented. At this initial stage no successful real
+  model estimate was obtained; the later funded recheck above supersedes this
+  credit blocker, not the unverified product-accuracy/device scope.
+- Approved key stored only in ignored backend env file (0600), never printed or
+  committed. No agent funds purchased, native prebuild/build/install/signing,
+  physical camera attempt, production enablement or GitHub push. Native config/locales
+  now require build 2; old build 1/Expo Go are gated for truthful permission use.
+- Full source references, commands, actual failure scope and next native task:
+  `PHOTO_RECOGNITION_EVIDENCE.md`, `../research/photo-ai-boundary-2026-10-15.md`.
 
 ## Explicit KierratysAppi main publication — 2026-10-12
 

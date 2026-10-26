@@ -1,5 +1,57 @@
 # External blockers
 
+## October 20 team-main integration
+
+No new credential/account/payment/native-build requirement. Upstream manual search had local compile/behavior/privacy-boundary defects; integration repairs them using already-installed native OS geocoding, not a new public provider. Web address geocoding is explicitly unavailable, while device-location search remains available. This is a feature limitation, not a secret/funding blocker. Native address/postcode/permission/cancellation/background/map acceptance remains a separate engineering + device-owner evidence task (OA-NEARBY-ADDRESS-01); earlier Home/signing success does not establish it. No real address/GPS/photo or paid inference was acquired in integration; existing production/photo-accuracy gates remain unchanged.
+
+## EB-IOS-TRUST-01 — resolved for same-app startup, 2026-10-20
+
+- Cleanup, account/provisioning, native build/new profile and replacement installation pass. Profile expires **October 27 at 17:27:13 Helsinki**, not October 19. Initial launch was rejected with CoreDevice 10002 → FBS Security despite passing local signatures/binding; the later owner-trust/startup evidence below supersedes that rejection without attributing a precise phone-side cause from Mac checks alone.
+- **Completed / Roope + engineering:** owner reports **luotettu**; fresh same-installed-app launch against current Metro succeeds, and two later queries find the same PID. Current Finnish native Home is visually observed, partly occluded by an unrelated OS picture-in-picture overlay. Removed only the newly generated mixed screenshot after exact-file/path checks; no original phone data or further capture. No reinstall/reset/security bypass/camera/GPS/paid call/push. This supersedes the initial rejection for this startup, not the wider native/retention/full-visual/production gaps.
+- **Next renewal / Roope + engineering:** request manual renewal before October 27 at 17:27 Helsinki, keep the intended phone available/unlocked and personally handle any actual account/keychain/trust prompt. Engineering verifies the new embedded dates, signatures/device binding, replacement install and startup separately. No recurring renewal exists; current Debug still needs the Mac's Metro/API and LAN. No current owner Trust/Verify question remains.
+- **EB-IOS-RENEW-01 resolved for storage/account/signing/install:** exact three-root approval/removal succeeds, current support preserved, about 18 GiB free. Actual-device provisioning yields a new valid profile; targeted install inventory passes; post-cleanup mobile 209/full 354 checks pass. No new funding/tool/account blocker. Startup/Home evidence is separately established above, not inferred from signing/install; no renewed XCTest helper or broader native UI pass.
+
+## EB-IOS-RENEW-01 — historical pre-cleanup checkpoint, resolved above
+
+- Current same-app renewal has not succeeded. Actual old profile expired October 19 at 12:49:04 Helsinki. One stable build fails exit 65 with No Accounts/no matching profile before compile/sign. GUI later shows the existing account/Personal Team, and the owner-connected iPhone is now observed connected; credential resolution still needs a fresh provisioning result, not repeated blind login requests.
+- **Roope / owner approval:** authorize or decline removal of only the three individually enumerated obsolete iOS DeviceSupport directories in OWNER_ACTIONS (roughly 17.8 GiB measured). Inventory request alone is not deletion permission. Preserve current iOS 27/24A5430a support, Xcode, simulators, app/source/rollback, credentials and phone data. Removed old support may need reacquiring for old-version debugging; do not promise old beta availability or exact reclaimed bytes.
+- **Engineering:** validate exact paths/types/counts/links/open files again after approval, never traverse symlinks, use force, broaden scope or retry a removal failure. Verify real free space; rerun failed scoped/full checks and then same stable build, verify a genuinely new profile and strict app/framework/device binding, replace-install and launch. If signing still requests real authentication/keychain/device action, owner handles it; no secrets in chat or security bypass.
+- Evidence: earlier fresh full validation 354 tests passes; later scoped mobile test fails ENOSPC. Logs/verified old-app recovery copy/read-only cleanup inventory are ignored under `work/ios-renewal-2026-10-20.xwM2qA/`. No deletion, renewal, install or new expiry is claimed yet; no paid AI call, new account/payment, private import or push.
+
+## October 15 photo-recognition delta
+
+- **Material-review mitigation implemented, no new external blocker:** each eligible part now needs an independent, unselected material choice and separate conditions confirmation. Unknown goes to local markings; change/uncheck clears stale guidance. Recorded Nutella regression, 354-test validation and three fixture-based browser runners pass without another paid call. Engineering still owns model/material/naming improvements and latest native acceptance; Roope handles actual device/permission/account steps and any new capped paid-call authorization. PHOTO-003 remains high/open for empirical material accuracy, not solved by local correction or falsely reassigned as a funding/signing blocker. No new secret, account, database or payment is needed for this completed local unit.
+- **Eight-image evaluation completed, no new credential/data blocker:** Roope approved reusing the existing key; eight real app calls pass transport, but PHOTO-003 material accuracy and PHOTO-004 naming remain open. These are not solved by more balance, a database install or renewed signing. The locally executable material-correction/unknown mitigation is completed above; engineering owns follow-up accuracy/acceptance, not a new funding request. The eight-call approval is exhausted; Roope must separately authorize a new capped paid recheck for any later model/prompt experiment. No new funding/account action is requested and no further call is scheduled. Detailed evidence/attribution: `docs/final/PHOTO_PRODUCT_EVALUATION.md`.
+- **Native result reading resolved without credentials:** beta CoreDevice's supported screenshot command reads the already-existing inferred result. Owner outcome text is no longer required for that observation. Paper confirmation was independently blocked by a local allowlist omission despite an existing paper-packaging rule; repaired with failing-before/passing-after tests and browser guidance/safety checks. No new assistant photo/upload/inference, payment, renewal or reinstall. Native post-fix human part confirmation remains acceptance work; Android's missing native version metadata is still a local engineering follow-up, not a payment blocker.
+- **EB-IOS-UI-01 — XCTest helper acceptance gap, not a currently reproduced account blocker:** October 15 helper attempts failed No Accounts/missing profiles and its cached profile was expired. October 20 existing-account provisioning now succeeds for the product; do not ask for login again on the old helper error alone. Engineering owns rechecking/rebuilding/verifying only the existing owner helper IDs when automated interactions/semantics are needed; Roope handles an actual new authentication/keychain/device prompt if one occurs. No helper renewal or semantic pass was run during this maintenance. Owner-operated controls and supported beta CoreDevice screenshots are independently available. No password/key in chat, new account/payment, security bypass or inference that the screen cannot be read.
+- **EB-IOS-DEVICE-01 — resolved for this installation:** initial CoreDevice
+  4000/reset was followed by an observed restored connected/DDI-ready state.
+  A second bounded replacement install succeeds, inventory confirms build 2,
+  launch and later PID-specific process query pass. No uninstall/reset, OS
+  update or signing renewal. This does not certify native UI/camera/retention.
+- **EB-IOS-SPACE-01 — resolved for this build:** owner approved the ten exact
+  newly created download-cache copies. Revalidation/removal succeeded without
+  symlink traversal, force/retries or installed-lock changes; about 1 GB freed
+  immediately and native Debug build 2 subsequently succeeds. No broader cache,
+  program, source, app-product or phone-data removal. See physical evidence for
+  exact targets/counters; later host free-space fluctuations are not attributed
+  to this cleanup.
+- **EB-AI-01 — API credit (account owner), resolved for the October 15 recheck:**
+  initial Responses returned 429 `credit_balance_exhausted` /
+  `insufficient_quota`. After the owner reported completing funding, exactly one
+  authorized synthetic-image request returned HTTP 200 and runtime-validated
+  `estimated`. No balance/payment-history inspection, agent purchase, billing
+  change, model change or automatic retry. Real-product and native photo acceptance
+  remain unverified; see `docs/final/PHOTO_RECOGNITION_EVIDENCE.md`.
+- **Engineering + device user:** client 2 is built, signatures/embedded
+  permissions verified, installed and launch-checked. Complete explicit
+  owner-operated photo acceptance; old build 1/Expo Go remain gated. Native
+  capture/deletion/permissions/VoiceOver/large-text and full product accuracy
+  remain acceptance tasks. Existing October 19 profile expiry is unchanged.
+- No public photo service is enabled. Production requires durable authenticated
+  quotas and the existing hosting/privacy/store acceptance; this is not a new
+  lawyer-review requirement for the school-scope task. No GitHub push.
+
 October 12 source publication adds no external blocker: the explicitly authorized
 non-force main push succeeds and the remote SHA is verified. GitHub checks were
 in progress when inspected, not accepted as passed. No repository settings,
@@ -109,7 +161,7 @@ automation cannot read the screen. Distance/permission acceptance is still open.
 | Store screenshots/feature graphic/forms/validation | blocker/high | Depends on signed builds, accounts and approvals | OA-10 |
 | Private branch protection/CodeQL | high governance | GitHub plan/Code Security approval; API currently returns 403 and no variable exists | OA-12 |
 
-Photo/OCR/cloud AI remains disabled and is not a launch blocker. Enabling it would create a new privacy, safety, moderation, device-evaluation and legal workstream requiring separate approval.
+Historical launch scope excluded photo/OCR/cloud AI. October 15 supersedes that for explicitly approved development-only photo recognition: source implementation, local tests and one real adapter estimate pass; native acceptance remains pending as above. Production photo use and on-device OCR are still disabled/unimplemented.
 
 Resolved 2026-09-10: the npm audit endpoint responds again. It exposed 20 high XML/YAML records, repaired locally through compatible patches; the final live `pnpm security:audit` passes with zero high/critical and six moderate/one low. OA-11 remains a recurring dependency-review gate, not an active external timeout blocker. The new Expo/Router patch set requires a local native rebuild and physical smoke; no new account or paid service is needed merely for these source repairs.
 

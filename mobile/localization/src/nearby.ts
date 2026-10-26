@@ -1,5 +1,6 @@
 export const nearbyFi = {
-  nearbyIntro: "Etsi lähin aineistossa oleva piste laitteen sijainnilla tai osoitteella.",
+  nearbyIntro:
+    "Haemme sijainnillasi enintään viisi lähintä aineistossa olevaa pistettä. Sijaintia ei tallenneta eikä lähetetä.",
   nearbyQuickCaution: "Tarkista pisteen materiaalit, käyttöoikeus ja aukiolo ennen lähtöä.",
   nearbyLocationOnMap: "Pisteen sijainti näkyy kartalla.",
   nearbyAddressConsent:
@@ -101,20 +102,27 @@ export const nearbyFi = {
   nearbyLinkError: "Lähdelinkkiä ei voitu avata. Tarkista verkkoyhteys ja yritä uudelleen.",
   nearbySettingsHint: "Jos käytät selainta, muuta sijaintilupa selaimen sivustoasetuksissa.",
   nearbyPrivacy:
-    "Vapaaehtoinen lähimpien pisteiden haku käsittelee sijaintia vain laitteen muistissa. Lukeminen loppuu tulokseen, peruutukseen tai aikakatkaisuun; näkymästä poistuminen tai sovelluksen siirtäminen taustalle tyhjentää tuloksen. Sijaintia tai siitä laskettua etäisyyttä ei tallenneta historiaan, lähetetä palvelimelle tai analytiikkaan. OpenStreetMap-linkit välittävät vain julkisen kierrätyspisteen tunnisteen tai koordinaatit, eivät omaa sijaintiasi; selaimen verkkopyyntöön sovelletaan ulkoisen palvelun tietosuojakäytäntöä.",
-  nearbyLocationLabel: "Osoite tai postinumero",
-  nearbyLocationHint:
-    "Suomalainen osoite tai viisinumeroinen postinumero. Hakuteksti lähetetään OpenStreetMapin Nominatim-palveluun.",
-  nearbyLocationAction: "Etsi tällä osoitteella",
-  nearbyLocationInvalid: "Kirjoita osoite tai viisinumeroinen postinumero (enintään 160 merkkiä).",
-  nearbyLocationNotFound:
-    "Osoitetta tai postinumeroa ei löytynyt. Tarkista kirjoitusasu ja yritä uudelleen.",
-  nearbyLocationError: "Osoitehaku ei onnistu juuri nyt. Tarkista verkkoyhteys ja yritä uudelleen.",
+    "Laitteen sijainnilla tehtävä haku käsittelee sijaintia vain laitteen muistissa. Lukeminen loppuu tulokseen, peruutukseen tai aikakatkaisuun; näkymästä poistuminen tai sovelluksen siirtäminen taustalle tyhjentää tuloksen. Sijaintia tai siitä laskettua etäisyyttä ei tallenneta historiaan, lähetetä palvelimelle tai analytiikkaan. OpenStreetMap-linkit välittävät vain julkisen kierrätyspisteen tunnisteen tai koordinaatit, eivät omaa sijaintiasi; selaimen verkkopyyntöön sovelletaan ulkoisen palvelun tietosuojakäytäntöä.",
   nearbyLocationPlaceholder: "00110 tai Museokatu 5",
+  nearbyLocationLabel: "Osoite tai postinumero Suomessa",
+  nearbyLocationAction: "Hae osoitteella",
+  nearbyLocationHint:
+    "Hae lähettää kirjoittamasi osoitteen tai postinumeron puhelimen karttapalvelulle. Syötä vain hakupaikka, ei nimeä tai muita henkilötietoja. Osoitetta ei tallenneta sovellukseen. Androidissa palvelu tarvitsee sijaintiluvan; GPS-sijaintia ei lueta tässä haussa.",
+  nearbyLocationNativeOnly:
+    "Osoitehaku toimii iPhone- ja Android-sovelluksessa. Selaimessa voit hakea laitteen sijainnilla.",
+  nearbyLocationInvalid: "Kirjoita osoite tai postinumero, enintään 160 merkkiä.",
+  nearbyLocationAmbiguous: "Osoite vastaa useaa paikkaa. Lisää katu, numero ja paikkakunta.",
+  nearbyLocationBusy:
+    "Edellinen osoitehaku on yhä karttapalvelussa kesken. Odota hetki tai hae laitteen sijainnilla.",
+  nearbyLocationError:
+    "Osoitteen sijaintia ei saatu. Tarkista osoite ja verkkoyhteys tai hae laitteen sijainnilla.",
+  nearbyManualEstimate:
+    "Etäisyydet lasketaan osoitehaun arvioidusta paikasta, eivät omasta GPS-sijainnistasi. Postinumero voi kattaa laajan alueen; tarkista piste kartalta.",
 };
 
 export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
-  nearbyIntro: "Find the nearest point in the directory using your device location or an address.",
+  nearbyIntro:
+    "Find up to five nearest points in the directory using your location. Your location is not saved or uploaded.",
   nearbyQuickCaution: "Check accepted materials, access and opening hours before travelling.",
   nearbyLocationOnMap: "View the point's location on the map.",
   nearbyAddressConsent:
@@ -215,13 +223,20 @@ export const nearbyEn: Record<keyof typeof nearbyFi, string> = {
   nearbyLinkError: "The source link could not be opened. Check your connection and try again.",
   nearbySettingsHint: "In a browser, change location permission in its site settings.",
   nearbyPrivacy:
-    "The optional nearby-point search processes your location in device memory only. Acquisition ends on a result, cancellation or timeout; leaving the screen or backgrounding the app clears the result. Neither location nor calculated distance is saved to history, sent to a server or analytics. OpenStreetMap links contain only the public recycling point ID or coordinates, not your location; browser requests are subject to the external service's privacy policy.",
-  nearbyLocationLabel: "Address or postal code",
-  nearbyLocationHint:
-    "A Finnish address or five-digit postal code. Your search text is sent to OpenStreetMap's Nominatim service.",
-  nearbyLocationAction: "Find using this address",
-  nearbyLocationInvalid: "Enter an address or five-digit postal code (up to 160 characters).",
-  nearbyLocationNotFound: "Address or postal code not found. Check the spelling and try again.",
-  nearbyLocationError: "Address search is unavailable. Check your connection and try again.",
+    "Device-location search processes your location in device memory only. Acquisition ends on a result, cancellation or timeout; leaving the screen or backgrounding the app clears the result. Neither location nor calculated distance is saved to history, sent to a server or analytics. OpenStreetMap links contain only the public recycling point ID or coordinates, not your location; browser requests are subject to the external service's privacy policy.",
   nearbyLocationPlaceholder: "00110 or Museokatu 5",
+  nearbyLocationLabel: "Address or postcode in Finland",
+  nearbyLocationAction: "Search by address",
+  nearbyLocationHint:
+    "Search sends the address or postcode you enter to your phone's map service. Enter only the search location, not a name or other personal details. The app does not save the address. On Android the service requires location permission; this search does not read GPS location.",
+  nearbyLocationNativeOnly:
+    "Address search is available in the iPhone and Android app. In a browser, use device location instead.",
+  nearbyLocationInvalid: "Enter an address or postcode, up to 160 characters.",
+  nearbyLocationAmbiguous: "The address matches multiple places. Add the street, number and town.",
+  nearbyLocationBusy:
+    "The previous address lookup is still running in the map service. Wait a moment or use device location.",
+  nearbyLocationError:
+    "Could not locate the address. Check the address and connection, or use device location.",
+  nearbyManualEstimate:
+    "Distances are from the estimated address location, not your GPS position. A postcode can cover a large area; check the point on the map.",
 };

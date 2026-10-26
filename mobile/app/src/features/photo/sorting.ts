@@ -1,0 +1,115 @@
+import {
+  canConfirmPhotoPart,
+  type PhotoEstimate,
+  type PhotoPart,
+} from "@kierratysappi/contracts/photo-recognition";
+import type { FieldProvenance, Language } from "@kierratysappi/domain";
+import { type SortingResult, sortPackagingComponent } from "@kierratysappi/recycling-engine";
+
+export const photoMaterialChoices = [
+  "plastic",
+  "carton",
+  "paper",
+  "glass",
+  "metal",
+  "unknown",
+] as const;
+export type PhotoMaterialChoice = (typeof photoMaterialChoices)[number];
+
+export function isSortingPhotoMaterial(
+  material: unknown,
+): material is Exclude<PhotoMaterialChoice, "unknown"> {
+  return photoMaterialChoices.some((choice) => choice !== "unknown" && choice === material);
+}
+
+export type PhotoPartConfirmation = {
+  readonly material: PhotoMaterialChoice | undefined;
+  readonly conditionsConfirmed: boolean;
+};
+
+/** The selected material is a separate local observation, never a mutation of the AI estimate. */
+export function sortConfirmedPhotoPart(
+  estimate: PhotoEstimate,
+  part: PhotoPart,
+  confirmation: PhotoPartConfirmation,
+  language: Language,
+  now: string,
+): SortingResult | undefined {
+  if (
+    confirmation?.conditionsConfirmed !== true ||
+    !isSortingPhotoMaterial(confirmation.material) ||
+    !estimate.observation.parts.includes(part) ||
+    !canConfirmPhotoPart(estimate, part)
+  )
+    return undefined;
+  const provenance: FieldProvenance = {
+    sourceId: "photo-user-confirmation",
+    sourceName: "User-selected material and confirmed packaging after an AI estimate",
+    sourceRecordId: "transient-photo-part",
+    sourceUrl: "https://kierratysappi.local/photo-confirmation",
+    retrievedAt: now,
+    lastConfirmedAt: now,
+    confidence: 0.65,
+    verificationStatus: "user_confirmed",
+    license: {
+      id: "private-local-observation",
+      name: "Private local observation",
+      attributionText: "User confirmation on this device; not verified product data",
+      shareAlike: false,
+    },
+  };
+  const observed = <T>(value: T) => ({ value, provenance });
+  return sortPackagingComponent({
+    component: {
+      id: "confirmed-photo-part",
+      packagingStatus: observed("packaging"),
+      materialFamily: observed(confirmation.material),
+      shape: observed(part.shape),
+      depositReturnStatus: observed(
+        part.shape === "bottle" || part.shape === "can" ? "unknown" : "not_applicable",
+      ),
+      conditions: { hazardousResidue: "no", pressurized: "no", emptied: "yes" },
+    },
+    context: { country: "FI", language, evaluatedAt: now },
+  });
+}
+
+export function choosePhotoSize(sizes: readonly string[]): string | undefined {
+  return sizes
+    .map((value) => ({
+      value,
+      pixels: /^\d+x\d+$/u.test(value)
+        ? Number(value.split("x")[0]) * Number(value.split("x")[1])
+        : 0,
+    }))
+    .filter((size) => size.pixels >= 300_000 && size.pixels <= 2_000_000)
+    .sort((a, b) => b.pixels - a.pixels)[0]?.value;
+}
+
+export function canUsePhotoCapture(
+  platform: string,
+  runtime: {
+    readonly executionEnvironment?: unknown;
+    readonly platform?: {
+      readonly ios?: { readonly buildNumber?: unknown };
+      readonly android?: { readonly versionCode?: unknown };
+    };
+  },
+): boolean {
+  if (platform === "web") return true;
+  // Read the installed binary, never the remotely replaceable expoConfig.
+  // expo-constants removed its top-level nativeBuildVersion property.
+  const build =
+    platform === "ios"
+      ? runtime.platform?.ios?.buildNumber
+      : platform === "android"
+        ? runtime.platform?.android?.versionCode
+        : undefined;
+  return (
+    (runtime.executionEnvironment === "bare" || runtime.executionEnvironment === "standalone") &&
+    (typeof build === "string" || typeof build === "number") &&
+    /^\d+$/u.test(String(build)) &&
+    Number.isSafeInteger(Number(build)) &&
+    Number(build) >= 2
+  );
+}

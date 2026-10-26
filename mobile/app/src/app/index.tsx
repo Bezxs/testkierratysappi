@@ -24,7 +24,6 @@ export default function HomeScreen() {
   const { reset } = useScanSession();
   const { requestSearch } = useNearbySearch();
   const [historyEnabled, setHistoryState] = useState(false);
-  const [focusedAction, setFocusedAction] = useState<string | null>(null);
 
   useFocusEffect(
     useCallback(() => {
@@ -48,10 +47,7 @@ export default function HomeScreen() {
       <View style={styles.topbar}>
         <BrandLockup compact />
         <View
-          style={[
-            styles.languageSwitch,
-            { borderColor: palette.borderSubtle, backgroundColor: palette.surface },
-          ]}
+          style={[styles.languageSwitch, { borderColor: palette.borderSubtle }]}
           accessibilityRole="radiogroup"
           accessibilityLabel={t("languageLabel")}
         >
@@ -63,15 +59,9 @@ export default function HomeScreen() {
               aria-checked={language === item}
               accessibilityLabel={item === "fi" ? t("finnish") : t("english")}
               onPress={() => setLanguage(item)}
-              onFocus={() => setFocusedAction(item)}
-              onBlur={() => setFocusedAction(null)}
               testID={`language-${item}`}
               style={({ pressed }) => [
                 styles.languageChoice,
-                focusedAction === item && [
-                  sharedStyles.focusOutline,
-                  { outlineColor: palette.actionLink },
-                ],
                 language === item && { backgroundColor: palette.pineSoft },
                 pressed && { opacity: interaction.pressedOpacity },
               ]}
@@ -101,14 +91,8 @@ export default function HomeScreen() {
         accessibilityLabel={t("scanAction")}
         testID="home-scan-action"
         onPress={() => router.push("/scan")}
-        onFocus={() => setFocusedAction("scan")}
-        onBlur={() => setFocusedAction(null)}
         style={({ pressed }) => [
           styles.scanAction,
-          focusedAction === "scan" && [
-            sharedStyles.focusOutline,
-            { outlineColor: palette.actionLink },
-          ],
           {
             backgroundColor: palette.actionPrimary,
             opacity: pressed ? interaction.pressedOpacity : 1,
@@ -132,6 +116,12 @@ export default function HomeScreen() {
       <AppText variant="small" muted style={styles.scope}>
         {t("scanScope")}
       </AppText>
+      <ActionRow
+        label={t("photoTitle")}
+        detail={t("photoHome")}
+        onPress={() => router.push("/photo")}
+        testID="home-photo-action"
+      />
 
       <View style={styles.utilities}>
         <NavigationTile
@@ -195,20 +185,20 @@ const styles = StyleSheet.create({
   },
   intro: { paddingTop: spacing.lg, paddingBottom: spacing.lg, gap: spacing.sm },
   scanAction: {
-    minHeight: 144,
+    minHeight: 134,
     flexDirection: "row",
     alignItems: "center",
     borderRadius: radius.lg,
     padding: 20,
     gap: spacing.md,
   },
-  scope: { paddingTop: spacing.sm, lineHeight: 22 },
+  scope: { paddingTop: spacing.sm },
   utilities: {
     paddingTop: spacing.lg,
     paddingBottom: spacing.xs,
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: spacing.md,
+    gap: spacing.sm,
   },
   footer: { marginTop: spacing.lg, gap: spacing.xs },
   footerLinks: {

@@ -1,4 +1,4 @@
-import { CoordinatesSchema, straightLineMeters, type Coordinates } from "@kierratysappi/domain";
+import { type Coordinates, CoordinatesSchema, straightLineMeters } from "@kierratysappi/domain";
 import { z } from "zod";
 
 export const CollectionMaterialSchema = z.enum([
@@ -128,9 +128,12 @@ export function nearestCollectionPointsAccepting(
   limit = 5,
 ): readonly NearbyCollectionPoint[] {
   if (materials.length === 0) throw new RangeError("At least one material is required");
+  for (const material of materials) CollectionMaterialSchema.parse(material);
   const wanted = new Set<CollectionMaterial>(materials);
   return nearestCollectionPoints(
-    points.filter((point) => point.reportedMaterials.some((m) => wanted.has(m))),
+    points.filter((point) =>
+      point.reportedMaterials.some((m) => wanted.has(m) && !point.reportedExclusions.includes(m)),
+    ),
     position,
     limit,
   );

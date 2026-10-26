@@ -43,8 +43,7 @@ export default function ScannerScreen() {
   if (!permission?.granted) {
     return (
       <Screen testID="scanner-permission-screen">
-        <PageHeader onBack={() => router.back()} label={t("close")} testID="scanner-close-action"
-          />
+        <PageHeader onBack={() => router.back()} label={t("close")} testID="scanner-close-action" />
         <PageIntro
           title={t("cameraPermissionTitle")}
           body={permission?.canAskAgain === false ? t("cameraDenied") : t("cameraPermissionBody")}

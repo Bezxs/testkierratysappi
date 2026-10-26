@@ -17,12 +17,17 @@ afterEach(() => vi.useRealTimers());
 it("normalizes bounded street/locality without mistaking POI names for point identity", () => {
   expect(
     normalizePointAddress({
-      street: " Example ", streetNumber: "2", postalCode: "00100", city: "Town", name: "Shop",
+      street: " Example ",
+      streetNumber: "2",
+      postalCode: "00100",
+      city: "Town",
+      name: "Shop",
     }),
   ).toBe("Example 2, 00100 Town");
   expect(normalizePointAddress({ name: "Shop" })).toBeNull();
   expect(normalizePointAddress({ street: "x".repeat(161) })).toBeNull();
-  expect(normalizePointAddress({ streetNumber: "4", postalCode: "00100", city: "Town" })).toBe("00100 Town",
+  expect(normalizePointAddress({ streetNumber: "4", postalCode: "00100", city: "Town" })).toBe(
+    "00100 Town",
   );
   expect(normalizePointAddress({ postalCode: "00100" })).toBe("00100");
   expect(normalizePointAddress({ subregion: "Subregion" })).toBe("Subregion");

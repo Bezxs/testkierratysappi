@@ -1,5 +1,121 @@
 # Release decision
 
+October 20 source integration/publication is **not a production GO**. Owner
+explicitly confirms KierratysAppi/main. Both team/local histories are preserved;
+manual address search is reconciled with five-point/material/provenance behavior
+and the existing native OS-map boundary, with explicit address disclosure,
+bounded/cancellable UI, ambiguity refusal, single-flight native work and honest
+web limitation. Shared 85/mobile 218/full 364-test validation passes. Earlier Home
+and signing evidence predates this integration; actual native geocoding/permissions/
+background/map acceptance remains OA-NEARBY-ADDRESS-01. No real address/GPS/photo,
+paid AI call, new account or native/signing change. PHOTO-003 high and wider
+production gates remain; publication/CI outcome must be observed separately.
+
+Latest October 20 renewal: approved exact three-root cleanup succeeds, about
+18 GiB free; post-cleanup mobile 209/full 354 tests pass. Same-app/team stable
+physical-device build, actual new profile/app+12-framework/device/purpose
+verification and replacement installation succeed. New expiry **October 27 at
+17:27:13 Helsinki**. After the first FBS Security rejection, Roope reports Trust
+completed: fresh same-app current-Metro launch succeeds, two later queries find
+the same PID and current FI Home is visually observed. EB-IOS-TRUST-01 resolved
+for startup. OS picture-in-picture partly occludes Home; only the new mixed
+screenshot is removed after exact-file checks, no original phone data. Full
+visual/interaction/retention/camera/material accuracy/untethered acceptance is
+not established. Fresh full 354-test validation passes. No uninstall/reset,
+camera/GPS/paid inference, SDK/source/dependency change or push. Debug still
+needs Mac Metro/API/LAN; public **NO-GO** and PHOTO-003 high remain unchanged.
+
+Earlier October 20 pre-cleanup checkpoint: requested renewal was **not complete**. Old
+profile expired October 19 at 12:49:04 Helsinki; old app signature/recovery copy
+pass. Stable build fails No Accounts/no profile before compile/sign. Existing
+account/Personal Team and connected iPhone later observed; fresh provisioning
+still needed. Host ENOSPC blocks further builds: full 354-test validation passed
+before a later scoped failure. Three obsolete DeviceSupport roots (about 17.8 GiB)
+identified for exact owner approval, not yet removed; current phone support/source/
+app/recovery/simulator data preserved. No new profile/install/launch/native pass,
+paid inference or push. EB-IOS-RENEW-01/OWNER_ACTIONS govern the next maintenance
+step; public production **NO-GO** and photo-accuracy findings remain unchanged.
+
+Latest October 15 material-review change: the locally executable PHOTO-003
+correction/unknown mitigation is implemented. Eligible parts require independent,
+initially unselected material and separate empty/non-hazardous/non-pressurized/
+shape confirmation. Changing inputs clears stale guidance; unknown offers local
+markings instead of a destination. Original AI identity/material/risk, deposit
+uncertainty and rule provenance remain separate. Recorded Nutella regression,
+354-test full validation, 209-test mobile scope and three actual-Metro fixture
+browser runners pass; FI/EN/dark/narrow/large-text screenshots inspected.
+**PHOTO-003 remains high/open for empirical material accuracy and physical
+acceptance, PHOTO-004 naming remains open, production remains NO-GO.**
+This is not a model/prompt accuracy fix, latest native pass or permission for
+more paid calls. No API/contract/rule/dependency/signing/install/account change
+or GitHub push. Detailed evidence: `TEST_EVIDENCE.md`.
+
+Earlier October 15 real-product baseline: eight owner-approved app requests complete,
+but only four name the product family, Quaker's FI label is imprecise and the Nutella
+jar is wrongly inferred plastic against its glass reference. **PHOTO-003 remains
+high and open**, not downgraded by transport success or 351 green software tests.
+At that checkpoint the inferred/confirmation boundary remains and local independent
+material correction/unknown recovery is next (implemented above). No runtime/prompt/model/rule/native change
+or new extra call beyond the approved eight. Full case report/attribution/hashes:
+`PHOTO_PRODUCT_EVALUATION.md`. Production **NO-GO** unchanged; no GitHub push,
+store/public-service readiness or representative recognition accuracy is claimed.
+
+Earlier October 15 direct test: beta CoreDevice screenshots independently show
+the existing native inferred response. No new capture/upload/inference or helper
+renewal. This exposed paper's accidental exclusion from photo confirmation,
+although the unchanged carton rule already covers paper packaging. Repaired
+with two failing-before/passing-after tests, scoped validation and browser
+source-guidance/non-packaging/unsafe checks; full pinned validation passes 344
+unique tests and all format/lint/types/boundaries/build gates. Native post-fix part confirmation,
+accuracy and cleanup remain unverified. Only the in-scope result screenshot
+retained ignored; unrelated/transition generated copies removed and not used as
+evidence. Screenshot reading works; XCTest control/semantics and Android native
+version-source limitations remain. Production **NO-GO**, no signing/install,
+account/payment/model/rule-source change or GitHub push.
+
+Earlier October 15 camera retry: fixed the removed Expo Constants build-field
+access that incorrectly blocked the installed native client. Narrow native-shape
+and wiring regressions, 342 unique full tests, 204 scoped mobile tests and expanded
+browser QA pass; existing signed build 2 relaunched. Owner reports camera opening,
+capture and pressing send, but no actual recognition result/error or confirmed
+guidance observed yet. Native UI automation remains unavailable and Android has
+no supported installed-build metadata in the current adapter, so capture there
+remains disabled pending engineering follow-up. No new paid assistant request,
+native rebuild/install, signing/account change or push. Production **NO-GO**
+unchanged; the original green checks did not prove native camera entry.
+
+Earlier October 15: explicitly approved exact download-cache cleanup resolves
+storage for this run. Native Debug build 2, app/all 12 framework signatures,
+embedded default/FI/EN camera purpose and profile/team/device binding pass with
+the existing October 19 expiry. Initial transport failure is resolved after an
+observed restored connection: replacement install, actual build-2 inventory,
+launch and later PID checks pass. Native camera/visual acceptance remains open;
+the separate UI helper cannot renew without an available Xcode Apple Account.
+Owner-operated native photo smoke is pending. Fresh scoped mobile
+and full 340-test validation pass. Public production **NO-GO** is unchanged;
+compile/signing and host runtime checks do not certify a working phone feature.
+
+Earlier October 15 native preflight generated client 2's ignored project and
+restored locked pods after a recovered ENOSPC extraction. At that stage no
+native compilation was started with about 977 MiB free; cache-cleanup approval
+was pending and the phone remained build 1. The latest update above supersedes
+those storage/installation statuses. Scoped mobile and full
+340-test validation pass; generation/settings/connected-device metadata are not
+build/sign/install/camera acceptance. Public production **NO-GO** is unchanged.
+
+Initial October 15 photo recognition was locally implemented with consent, strict
+observation-only contracts, metadata removal, safe confirmation and 340 tests.
+Public production remains **NO-GO**; photo processing is deliberately disabled
+in production. After owner-confirmed funding, one real synthetic-image provider
+request returns HTTP 200 and a runtime-validated estimate; this supersedes the
+initial credit blocker, not product-accuracy or app/device acceptance. Native
+permission disclosure/build numbers advanced to 2; at that stage no
+fresh native build/install or physical acceptance was claimed. The latest
+update above supersedes build/install status, not camera/visual acceptance; old build 1/Expo
+Go are gated. A secure key and passing fixtures do not establish a usable camera
+feature on the installed phone. No automatic payment, GitHub push, public photo
+service, store declaration or readiness approval. See `PHOTO_RECOGNITION_EVIDENCE.md`.
+
 October 12 source partition: mobile/backend/shared organization, mandatory
 boundaries, 307 tests, all scoped checks, browser journeys and existing-client
 Home reload pass locally. Source separation does not establish remote CI/branch
@@ -63,11 +179,11 @@ The product is not production-ready. The current September 10 dependency set pas
 
 | Gate | Result | Release consequence |
 | --- | --- | --- |
-| No unresolved locally executable blocker/critical/high | **Not satisfied for GO** | Source-level high findings found in this run were repaired, but manually executable iPhone camera/accessibility/performance rows and native E2E remain incomplete |
-| Mandatory local tests | **Pass on 2026-10-07** | Format, lint, typecheck, 208 application/32 policy tests (240 total), API/package builds and 13-route web export pass with nested pnpm 11.16.0. No timeout was relaxed |
-| Expo compatibility | **Doctor pass dated 2026-09-10; October build passes** | Expo 57.0.21/Router 57.0.20/RN 0.86.3 and added ExpoLocation 57.0.16 compile with matched pod lock/manifest. No fresh October Doctor pass is claimed; current native runtime is pending |
+| No unresolved locally executable blocker/critical/high | **Not satisfied for GO** | PHOTO-003 high material-accuracy/native acceptance remains open despite the local correction/unknown mitigation; iPhone camera/accessibility/performance rows and native E2E remain incomplete |
+| Mandatory local tests | **Pass on 2026-10-20** | Pinned pnpm 11.16.0 full validation: 354 unique tests (69 policy + 285 application), boundaries/format/lint/strict types, API/package builds and 14-route web export. No gate/timeout relaxed; remote CI not newly run |
+| Expo compatibility | **Doctor pass dated 2026-09-10; October build/startup pass** | Expo 57.0.21/Router 57.0.20/RN 0.86.3 and ExpoLocation 57.0.16 compile with matched pod lock/manifest. No fresh October Doctor pass is claimed; current Home renders, not the wider native matrix |
 | Android release build | **No evidence** | No JDK/SDK/ADB/signing/AAB/device run |
-| iOS development/release build | **October compile/signatures/install/Home/nearby introduction pass; GPS pending; no release evidence** | Source `487af03`, Xcode 26.6, app and 12 framework signatures pass. Profile expires October 13 21:21:19 Finland time. Owner trust cleared startup; retry now yields actual native Home/nearby semantic and visual evidence. Starting location hits a helper system-modal timeout, so permission/result, background clearing, product-source UI and local-content retention remain unverified. Archive/TestFlight and wider matrix stay open |
+| iOS development/release build | **October 20 Debug build/signatures/install/startup/Home pass; no release evidence** | App source `fc433bc`, Xcode 26.6/iOS 26.5, same build 2 and app/all 12 framework/profile/device checks pass. Actual renewed profile expires October 27 17:27:13 Helsinki; owner trust followed by same-app current-Metro launch and two later same-PID checks pass. Home is partly occluded by OS picture-in-picture; mixed copy removed, no full visual/interaction/retention pass. Archive/TestFlight, latest material-review/native matrix and Mac-independent runtime remain open; older nearby permission evidence is separately dated |
 | Physical barcode test | **Partial** | One real EAN-13, permission/recovery and scanner-control semantics pass; EAN-8, UPC-A, unsupported UPC-E, actual torch toggle and adverse/rapid/multiple-code conditions remain |
 | Production API/database | **Absent** | Mobile production URL intentionally fails closed; no deployed service or restore drill |
 | Privacy/GDPR/terms | **Unapproved draft** | No controller/legal sign-off or hosted URLs |

@@ -1,5 +1,59 @@
 # Owner actions
 
+## October 20 — team-main integration acceptance
+
+- **OA-NEARBY-ADDRESS-01 / Roope operates, engineering validates, pending:** on the existing app open nearby → Hae osoitteella, read the OS-map recipient disclosure and submit only a public-place address/postcode, never a home address or personal details. Check the estimated-address-origin warning, up to five real points/material reports, no fabricated GPS accuracy, cancel/background clearing and a map link to the public point only. Engineering records pass/fail without query/coordinates/location-derived screenshots; stop for any actual device/permission action. No camera/photo/paid inference, new account, reinstall or further push is authorized by this acceptance procedure. Browser and helper fixtures do not complete it.
+- Roope explicitly authorized this source publication to **roopeaal/KierratysAppi/main**. Actual push/remote/CI outcome is in TEST_EVIDENCE; this does not authorize future automatic synchronization or production publication. KeepItGreen unchanged.
+
+## October 20 — signing renewal / storage
+
+- **OA-HOST-02 completed / owner approved, engineering executed:** only the three enumerated obsolete DeviceSupport directories removed after fresh checks, 26,302 objects, no links/open files/force/retry. Current phone support/source/app/build/rollback/simulators/phone data preserved; immediate free space about 18 GiB. Removed copies are not in Trash; old-version debug support may need reacquisition. No further cleanup is authorized by this step.
+- **OA-IOS-RENEW-01 signing/install completed / engineering:** physical-destination existing-team stable build succeeds; strict app/12-framework/profile/device/purpose verification and replacement install/targeted build-2 inventory pass. New actual profile expires **27.10.2026 at 17:27:13 Helsinki**. No uninstall/reset; data retention not independently checked. Source validation mobile 209/full 354 passes after cleanup; no paid AI request or push.
+- **OA-IOS-TRUST-01 completed / Roope + engineering:** owner reports **luotettu**. Fresh same-installed-app launch through current Metro succeeds; two later process queries retain the same PID, and current FI Home is visually observed. OS picture-in-picture partly covers the header, so this is not unobstructed visual/interaction acceptance; only the new mixed screenshot is removed after exact-file checks. No reinstall/reset/security bypass/camera/GPS/paid call/push. No Trust question remains; manual renewal before **27.10.2026 at 17:27 Helsinki** is not automatically scheduled. Debug still needs the Mac services/LAN; no Mac-independent or cable-disconnected pass.
+
+Exact approved roots under `/Users/roopeaaltonen/Library/Developer/Xcode/iOS DeviceSupport/` were `iPhone13,4 26.1 (23B82)`, `iPhone13,4 27.0 (24A5418b)` and `iPhone13,4 27.0 (24A5424a)`. The inventory request itself did not authorize deletion; Roope separately approved these three before removal. Earlier No Accounts/no-device, ENOSPC and first-launch failures are historical; signing/install/tests and post-owner-trust startup now pass, not wider native/retention/release acceptance.
+
+## October 15 — AI credit and native acceptance
+
+- **OA-PHOTO-EVAL-01 / Roope + engineering, eight-call test complete:** owner approved current-key reuse and eight real product-image requests were made, without retries, extra paid judging or account/billing changes. Result is not an accuracy pass: 4/8 named families, a clear material contradiction and one bilingual imprecision. Engineering has implemented independent material-choice/unknown recovery and fixture regressions (354-test full validation/three browser runners); model material accuracy remains high/open and naming follow-up belongs to engineering. No further funding is requested; any later paid prompt/model comparison needs a new explicit cap/approval. Full case report: `PHOTO_PRODUCT_EVALUATION.md`. No GitHub sharing authority is implied.
+- **OA-PHOTO-REVIEW-01 / Roope operates, engineering validates, native review pending:** in an eligible existing native estimate, check the actual empty ordinary package/marking, verify that no material starts selected, select the correct material and check the separate shape/empty/non-hazardous/non-pressurized box, then show guidance. Check source/confidence; change material or uncheck the box and verify the old answer disappears. Choose En tiedä / I don't know and verify no destination, then open the local material-marking form. Never confirm an invented fixture as a physical observation or accept a hazardous/uncertain item. If a new image/inference is needed, stop for an explicit new capped-call approval first; no silent capture/send/retry or photograph in chat. Stable in-scope screenshots may be read without helper renewal; XCTest controls/semantics still use OA-UI-01. Browser evidence does not complete this action.
+- **OA-PHOTO-01 update / Roope + engineering:** camera entry is repaired; owner confirms capture/send, and engineering now reads the actual inferred result through beta CoreDevice screenshots. No result-text question is pending. Testing exposed/repaired the paper-confirmation omission against the unchanged carton/paper rule, with red/green and browser guidance/safety regressions. Remaining native acceptance: Roope opens photo identification, checks an ordinary empty/non-hazardous paper-package part, explicitly approves any needed new image/upload and personally confirms its material; engineering inspects the sourced guidance only with the app stably foregrounded. No assistant photo/send/confirmation, original photograph in chat, new funding or silent retry. Accuracy/native cleanup remain unverified.
+- **OA-HOST-01 / computer owner, completed for this build:** explicit approval
+  received; engineering revalidated and removed only the ten enumerated newly
+  created cache-copy directories, without following symlinks/force/retries.
+  About 1 GB freed immediately; installed locks unchanged. No program/personal/
+  installed-pod/app-product/phone-data removal or broader cleanup. Cache copies
+  can be downloaded again. Native build 2 subsequently succeeds.
+- **OA-DEVICE-02 / Roope + engineering, installation completed:** after the
+  initial transport reset, connected/DDI-ready state was observed, replacement
+  installation and targeted build-2 inventory pass. Explicit current dev-client
+  launch and later PID-specific query pass; no uninstall/reset. No further
+  reconnect request is pending for this completed install.
+- **OA-UI-01 / engineering, XCTest interaction/semantic inspection pending:** October 15 helper No Accounts/missing-profile errors are historical; the existing account now successfully provisions the product. Engineering first rechecks/rebuilds/verifies only the existing helper IDs when automated interaction is needed, without another blind login request. Roope handles only an actual new login/keychain/device prompt; no secret in chat/new account/payment. Direct beta CoreDevice screenshots already work without helper renewal. No fresh helper/semantic pass is claimed; product signing/install/startup passes independently.
+- **OA-AI-01 / API account owner, completed for the recheck:** the owner reported
+  completing the billing step; one explicitly authorized real synthetic-image
+  Responses request returned HTTP 200 and runtime-validated `estimated`.
+  Initial `credit_balance_exhausted` is superseded for this check. No additional
+  funding is requested now; remaining balance/payment history were not inspected.
+  The owner retains control of [billing](https://platform.openai.com/settings/organization/billing)
+  and [usage limits](https://platform.openai.com/settings/organization/limits).
+  No agent purchase, billing/recharge change, key rotation, model substitution
+  or automatic retry. Never put secrets/payment details in chat/Git.
+- **Engineering:** client 2 now passes native build, embedded default/FI/EN
+  camera purpose, app/12-framework signatures and profile/device binding checks.
+  Installed build 2 and launch/process checks now pass. Complete physical
+  photo/visual acceptance without deleting app data. Native build 1/Expo Go
+  are intentionally blocked from photo
+  capture, not silently treated as updated by Metro. Existing October 19 profile
+  expiry remains; it has not been renewed in this feature unit.
+- **Device user:** connection was restored and installed build 2 confirmed.
+  Handle further trust/camera prompts only when needed;
+  later choose one non-personal test package and explicitly approve its image
+  upload. Do not send faces, personal details or precise location. Native file
+  deletion/background/denial/large-text/VoiceOver and post-fix confirmed guidance remain
+  unaccepted. A native estimate screen is now inspected. Only the explicitly
+  requested owner-operated test may capture/upload after separate approval.
+
 October 12 development renewal is complete under Roope's explicit request.
 Current profile expires **October 19 at 12:49:04 Helsinki**, not October 13.
 Build/signatures/install/physical launch/latest Home pass. **Roope** requests

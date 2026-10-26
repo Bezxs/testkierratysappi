@@ -5,7 +5,15 @@ import { CollectionPointSchema } from "@kierratysappi/contracts/collection-point
 export function normalizePointAddress(value: unknown): string | null {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
   const a = value as Record<string, unknown>;
-  const fields = ["street", "streetNumber", "postalCode", "city", "district", "subregion", "region",] as const;
+  const fields = [
+    "street",
+    "streetNumber",
+    "postalCode",
+    "city",
+    "district",
+    "subregion",
+    "region",
+  ] as const;
   for (const key of fields) {
     const part = a[key];
     if (part != null && (typeof part !== "string" || part.trim().length > 160)) return null;

@@ -32,22 +32,20 @@ export function SortingResultCard({
   if (result.status === "resolved") {
     return (
       <Paper style={embedded && styles.embedded} testID="sorting-result-resolved">
-        <View style={styles.answerSummary}>
-          <View style={styles.destination}>
-            <AppText variant="small" muted>
-              {t("destinationLabel")}
-            </AppText>
-            <AppText variant="title" accessibilityRole="header">
-              {localizedText(language, result.destination.label)}
-            </AppText>
-          </View>
-          <ConfidenceRow
-            label={t(confidenceKey[result.confidence.tier])}
-            score={result.confidence.score}
-            tone={tone}
-            accessibilityLabel={t("confidenceLabel")}
-          />
+        <View style={styles.destination}>
+          <AppText variant="small" muted>
+            {t("destinationLabel")}
+          </AppText>
+          <AppText variant="heading" accessibilityRole="header">
+            {localizedText(language, result.destination.label)}
+          </AppText>
         </View>
+        <ConfidenceRow
+          label={t(confidenceKey[result.confidence.tier])}
+          score={result.confidence.score}
+          tone={tone}
+          accessibilityLabel={t("confidenceLabel")}
+        />
         <Rule />
         <GuidanceBlock
           label={t("preparationLabel")}
@@ -108,9 +106,7 @@ export function SortingResultCard({
         tone="brick"
         accessibilityLabel={t("confidenceLabel")}
       />
-      <AppText variant="heading" accessibilityRole="header">
-        {localizedText(language, result.nextAction)}
-      </AppText>
+      <AppText accessibilityRole="header">{localizedText(language, result.nextAction)}</AppText>
       <AppText variant="small" muted>
         {t(unknownReasonMessageKey(result.reason))}
       </AppText>
@@ -144,7 +140,6 @@ function ConfidenceRow({
       <AppText
         variant="mono"
         muted
-        style={styles.confidenceScore}
         accessibilityLabel={`${accessibilityLabel}: ${label}, ${percentage}%`}
       >
         {percentage}%
@@ -155,33 +150,25 @@ function ConfidenceRow({
 
 function RuleReferences({ sources }: { readonly sources: readonly SortingRuleReference[] }) {
   const { t } = useLanguage();
-  const { palette } = useAppTheme();
   return (
-    <View style={styles.sources}>
-      <AppText variant="label">{t("ruleSourceLabel")}</AppText>
+    <View style={sharedStyles.tightStack}>
+      <AppText variant="small" muted>
+        {t("ruleSourceLabel")}
+      </AppText>
       {sources.map((source) => (
-        <View
-          key={source.id}
-          style={[styles.sourceReference, { borderColor: palette.borderSubtle }]}
-        >
+        <View key={source.id} style={sharedStyles.tightStack}>
           <InlineLink
             label={source.sourceName}
             onPress={() => void Linking.openURL(source.sourceUrl)}
           />
-          <View style={styles.sourceMetadata}>
-            <AppText variant="small" muted>
-              {t("ruleJurisdictionLabel")}: {source.jurisdiction}
-            </AppText>
-            <AppText variant="small" muted>
-              {t("checkedLabel")}: {source.checkedAt}
-            </AppText>
-            <AppText variant="small" muted>
-              {t("ruleVersionLabel")}: {source.version}
-            </AppText>
-            <AppText variant="small" muted>
-              {t("ruleVerificationLabel")}: {t("verificationVerified")}
-            </AppText>
-          </View>
+          <AppText variant="small" muted>
+            {t("ruleJurisdictionLabel")}: {source.jurisdiction} · {t("checkedLabel")}:{" "}
+            {source.checkedAt}
+          </AppText>
+          <AppText variant="small" muted>
+            {t("ruleVersionLabel")}: {source.version} · {t("ruleVerificationLabel")}:{" "}
+            {t("verificationVerified")}
+          </AppText>
         </View>
       ))}
     </View>
@@ -198,25 +185,20 @@ function GuidanceBlock({ label, body }: { readonly label: string; readonly body:
 }
 
 const styles = StyleSheet.create({
-  answerSummary: { gap: spacing.sm },
   destination: { gap: spacing.xxs },
   embedded: {
     borderWidth: 0,
     padding: 0,
     borderRadius: 0,
     backgroundColor: "transparent",
-    gap: spacing.md,
+    gap: spacing.sm,
   },
   statusRow: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: spacing.xs,
+    gap: spacing.md,
     flexWrap: "wrap",
   },
-  confidenceScore: { flexShrink: 0 },
-  sources: { gap: spacing.xs },
-  sourceReference: { borderLeftWidth: 2, paddingLeft: spacing.sm, gap: spacing.xxs },
-  sourceMetadata: { gap: spacing.xxs },
   exception: { padding: spacing.md, borderRadius: radius.md },
 });

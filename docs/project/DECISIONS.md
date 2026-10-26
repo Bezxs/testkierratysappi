@@ -1,10 +1,9 @@
 # Decision log
 
-2026-10-19: Keep the existing palette, fonts and scan-first layout. Use the shared subpage header for nearby, disclose the existing manual address request, and retain visible sorting explanations, uncertainty and sources. Leave the merged location behavior and unrelated CI failures outside this UI change; publication requires explicit approval. The current approval covers only `Bezxs/testkierratysappi`, not the original repository.
-
-## D-025 — Preserve postal codes in nearby address estimates
+## D-UPSTREAM-2026-10-13 — Preserve postal codes in nearby address estimates
 
 - Date: 2026-10-13
+- Integration note: upstream called this D-025, which already identifies the September CI decision; namespaced on integration without changing its decision or authorship.
 - Status: accepted
 - Decision: normalize device reverse-geocoder results as `street streetNumber, postalCode locality`, with `subregion` as a locality fallback. Keep the existing estimate/source disclosure and bounded input validation; do not treat the result as a verified collection-point address.
 - Reason: Expo's native address shape commonly supplies postal codes and subregions. Dropping them made the optional nearby address lookup incomplete without changing its privacy or uncertainty boundary.
@@ -271,6 +270,104 @@
 - Status: source main push succeeded and remote SHA verified
 - Decision: the owner's new push request authorizes this branch's current independent KierratysAppi history and outcome documentation to the verified existing `origin` main. Fresh fetch has zero remote-only commits; non-force fast-forward preserves existing history. Keep local feature branch and KeepItGreen untouched; do not mirror, alter authors/history, create remote experiment branches, change settings or publish a production release.
 - Evidence: fresh 307-test full local validation; source push `b9c3ac7..7e6d5bd` and matching remote `7e6d5bd919e7a0cb0cf2095797575e751c3a1ac5`. Remote runs are only an in-progress snapshot, not a green claim. Future publication needs separate explicit authorization; native acceptance and production gates remain unchanged.
+
+## D-038 — Consented AI observations never replace sorting policy
+
+- Date: 2026-10-15
+- Status: locally implemented/tested; one real adapter estimate passes after owner funding; native acceptance pending
+- Decision: a separate photo route obtains purpose/recipient/retention consent, strips JPEG metadata before upload, previews locally and sends only through a server-side OpenAI adapter. Use the documented GPT-4.1 mini snapshot and a conservative supported structured-output wire schema; full runtime contracts retain strict bounds/Unicode validation. No tool execution, remote image URLs, arbitrary prompts, verified identity or model-supplied collection destination.
+- Sorting: only clear ordinary packaging parts can be explicitly user-confirmed; then the existing engine supplies source/jurisdiction/date/version/confidence/explanation. Deposit is never visually asserted. Risky/non-packaging/uncertain cases require manual/local guidance rather than fabricated waste advice. No photo/estimate persistence or analytics.
+- Deployment/privacy: server default/production stay disabled. Local dev opt-in has three/client/minute, two concurrent and twenty/process caps, not durable production billing protection. `store:false` is not zero retention or EU-only processing. API credit initially blocked validation; the owner later reported funding and one authorized request succeeded. Do not purchase funds or silently switch models. A key name is not evidence of account funding.
+- Native continuity: purpose text/localizations and build numbers move to 2; old installed build 1/Expo Go cannot capture for this feature. A future correct native build/install is required before physical acceptance. Preserve actual prior evidence, storage identity, unchanged rules/migration/OSM and repository-sharing boundary; no push in this feature unit.
+
+## D-039 — Funded recheck is one bounded request, not device acceptance
+
+- Date: 2026-10-15
+- Decision: reuse the previously approved server key and pinned vision model for exactly one synthetic-image request after the owner reports completing funding. Do not purchase credit, change billing/recharge, rotate keys, switch models, send personal photos or make automatic retries.
+- Evidence: HTTP 200 and runtime-validated `estimated` from the real adapter. This resolves EB-AI-01 for the observed check only; it does not reveal balance/payment history, prove real-product accuracy, exercise the app's HTTP/mobile flow or replace native client 2 acceptance. Continue with the native build without another live request in that work unit; no push.
+
+## D-040 — Preserve locked native recovery and require scoped cache-cleanup approval
+
+- Date: 2026-10-15
+- Decision: regenerate client 2 from `mobile/app` with stable Xcode 26.6, preserve the saved Podfile.lock and restore pods in deployment/no-repo-update mode. The first ENOSPC extraction recovered on one retry after temporary files were released; native lock bytes and installed manifest match. Revert Expo's incidental tracked package-script edits, not the intended generated permission/build metadata.
+- Boundary: with about 977 MiB free, do not start the native compile or claim build/sign/install success. Request permission before deleting ten newly created CocoaPods cache-copy directories, individually enumerated in physical evidence. No broad caches, programs, existing app products, source, personal files or phone data are included. Validate exact targets and symlinks afresh after approval; never follow links or retry a failed deletion with a stronger/broader operation.
+- Evidence: connected/paired iPhone still has build 1, purpose-matched generated Info.plist has build 2, scoped mobile and full 340-test validation pass. Native compilation, install and physical photo acceptance remain pending. No extra paid inference, account change, signing renewal, SDK switch or push.
+
+## D-041 — Scoped cache removal enables verified build, not assumed installation
+
+- Date: 2026-10-15
+- Authority/action: owner explicitly approved the ten named newly created CocoaPods cache-copy directories. Fresh validation matched the exact paths, children, creation dates, 8,826 files/9 internal symlinks/1,000,746,369 bytes. A foreground postorder operation unlinked links without following them and stopped on errors, with no force/retries. Only cache copies were removed; installed native locks stayed identical. Future recovery is a locked download, not a claim of recoverable deleted bytes from Trash.
+- Native decision: preserve a strictly verified APFS clone of build 1, build against Xcode 26.6/iOS 26.5 with existing team/ID and matched pods, two jobs and no index store. Build 2/app/12-framework signatures/default+FI/EN camera purpose and profile/device binding pass; existing profile expires October 19 at 12:49:04 Helsinki and was not renewed.
+- Acceptance: first install fails with CoreDevice transport 4000/reset. Only after a fresh query confirms connected/DDI-ready state, a second bounded install succeeds; actual inventory has build 2 and launch/later PID check pass. These still do not prove rendered UI, camera or retained private contents. No other cleanup, billable inference, account/SDK change or GitHub publication.
+
+## D-042 — Separate UI-helper credentials from product acceptance
+
+- Date: 2026-10-15
+- Evidence: the product's build-2 signatures/profile/install/launch pass. Native UI automation independently fails: default helper IDs lack profiles/account, the observed owner-specific cached runner profile is expired, and an explicit existing-ID Xcode rebuild reports No Accounts/missing profiles. Do not reclassify that as a product startup failure or claim a visual/camera pass.
+- Decision: close failed tool sessions and restore the installed app in the foreground. Offer one owner-operated empty ordinary-package photo test with explicit image-upload approval; do not capture/send silently or request photos in chat. Automated inspection may resume only after the account owner reauthorizes the existing Xcode Apple Account and engineering rebuilds/verifies the existing helper IDs. No new account/payment, main-app ID change, broad cleanup or security bypass.
+
+## D-043 — Verify native compatibility wiring against installed SDK exports
+
+- Date: 2026-10-15
+- Evidence: owner reports the photo-opening button fails. Installed Expo Constants source/changelog confirms top-level `nativeBuildVersion` was removed; iOS exports the installed binary's build under `platform.ios.buildNumber`. Upstream catch-all types let the invalid access compile, and pure string-input tests did not exercise the screen's actual wiring.
+- Decision: pass the real constants object to the tested runtime guard, validate native platform metadata and accepted execution environments, and never fall back to remotely updateable `expoConfig`. Keep old/unknown/Expo Go builds blocked. Android exports an empty native platform map in the current dependency, so unknown Android builds remain disabled rather than falsely certified; obtaining a supported native Android version source/build is follow-up work, not an external payment gate.
+- Validation: installed-shape/old-build plus route-wiring regressions, localized busy feedback, 204 scoped/342 unique full tests and expanded fixture browser QA pass. Relaunch existing signed build 2 without native regeneration/reinstallation; owner confirms opening/capture/send, but result/error and native cleanup remain unverified. No assistant paid inference, photo in chat, auth bypass, additional account action or GitHub push.
+
+## D-044 — Inspect existing native results and reuse existing paper-packaging policy
+
+- Date: 2026-10-15
+- Evidence: the supported beta CoreDevice screenshot command reads the already-existing native estimate without renewing the XCTest helper or submitting a new image. It shows an inferred response and paper parts blocked by the photo confirmation allowlist. The existing versioned carton rule already includes paper packaging, so the exclusion is an integration defect, not a missing database or a reason to invent a new bin/rule.
+- Decision: add paper to the ordinary-package confirmation allowlist only; preserve explicit human confirmation, hazard/uncertainty/non-packaging rejection, provenance and confidence. Add red-before/green-after contract/mobile regressions plus actual browser paper/loose-paper cases. Do not change sorting content, source dates, model/prompt, v1 schema, native permissions/signatures or dependencies. Clarify historical research wording without advancing the access date.
+- Validation: full pinned `pnpm validate` passes 344 unique tests (62 policy + 282 application), all format/lint/types/boundaries/build gates and 14 web routes; shared 84/mobile 206 are overlapping scoped counts. Expanded browser paper-rule visuals inspected; actual native part-confirmed guidance remains pending.
+- Privacy/evidence: no new assistant capture/upload/inference. Native original-image accuracy, cleanup and post-fix guidance confirmation remain unverified. After another-app/transition screenshots appeared, remove only those two generated copies after exact file checks and stop further captures without stable in-scope foreground. Retain only the initial app-result screenshot ignored; no original phone data or GitHub publication. Screenshot reading works independently; helper-account gating still applies to XCTest interactions and semantic trees.
+
+## D-045 — Freeze the recognizer for a capped real-image baseline
+
+- Date: 2026-10-15
+- Authority: owner selects the existing key for at most eight live image tests. Use the already-running app API, not this assistant's own vision as a substitute, another model, a fabricated response or a paid judge. Pre-inspect eight public licensed images; keep expected names/source barcodes/URLs outside the inference body. Record revisions, authors, licence and byte hashes; originals stay QA-only/ignored.
+- Method: unchanged model/prompt/contracts, one call per image, no retries or server quota reset, at least 25 seconds between calls, bounded input/output/deadlines, explicit --live and exclusive one-run marker. Seven no-cost harness regressions and full 351-test validation pass. The approval is used up; additional paid testing requires a new bounded owner decision.
+- Evidence: all eight HTTP responses complete; only four mention the expected brand/product family. Broad category keywords match eight, but manual FI/EN review catches Quaker's porridge/cereal imprecision. Nutella jar is wrongly inferred plastic against the glass reference/primary manufacturer description. Do not equate HTTP/schema/keyword/CI success with semantic or material correctness, calibrated confidence, GTIN identity or real-camera readiness.
+- Scope: this request is an evaluation, so preserve product behavior rather than silently tuning on the test set. Keep PHOTO-003 high and production NO-GO; next local mitigation is independent material correction/unknown recovery with recorded-fixture tests. No model change, rule hardcoding/date update, private import, native signing/install or GitHub publication. Future prompt/model comparison needs new empirical authorization, not more warnings presented as an accuracy fix.
+
+## D-046 — Correct material independently without laundering AI identity
+
+- Date: 2026-10-15
+- Authority: Roope approves implementing the proposed first safety/UX improvement, not changing models, making more paid calls or pushing. The current UI's single confirmation cannot correct the empirical Nutella jar error.
+- Decision: keep wire/provider/shared contracts and Finnish rules unchanged. Require a separate per-part material choice with no preselected AI value and a separate shape/empty/non-hazardous/non-pressurized checkbox. Unknown gives no destination and opens the existing local marking route. Material changes and condition revocation clear guidance immediately and require re-confirmation; derive displayed guidance from current local inputs so it cannot go stale across language/input changes. Preserve the raw inferred estimate, conservative original eligibility, unknown deposit and existing rule evidence/confidence. Do not treat brand recognition as material or GTIN verification.
+- Validation: three added free regressions, including the recorded wrong plastic-jar observation corrected to glass without modifying it. Four assertions fail before the helper change; focused 11/11, mobile 209 overlapping and full 354 unique tests pass. Expanded actual-Metro browser QA verifies FI/EN, per-part isolation, unselected/checked/disabled/keyboard states, stale clearing, unknown navigation, sourced guidance and dark/narrow/130% computed-text/reduced-motion layout; all three runners pass. No latest native/VoiceOver or improved recognition-accuracy claim.
+- Status: local correction mitigation complete, PHOTO-003 remains high/open for actual material accuracy and physical acceptance; PHOTO-004 naming is next local work. The eight paid calls are already consumed. No new live call, secret/billing/native/dependency/source-date/private-repository change or GitHub publication. Native acceptance and future capped empirical comparison remain separately owned/evidenced.
+
+## D-047 — Bound same-app renewal and require exact space-cleanup authorization
+
+- Date: 2026-10-20
+- Authority: Roope requests renewing signing/installation, then asks to find recoverable space after ENOSPC. Neither request authorizes broad data/program/cache deletion, private code imports, paid AI calls or a GitHub push.
+- Decision: preserve/verify the exact existing app before automatic stable-Xcode renewal with current ID/team/matched native locks. The old profile expired October 19. One build fails No Accounts/no profile before compile/sign; open existing-account sign-in and hand authentication to the owner. Later GUI account/Personal Team and connected iPhone are observed, but require a fresh build to confirm credentials. Do not change SDK/global Xcode defaults or silently uninstall/reset.
+- Space: fresh full 354-test validation passes, then scoped mobile validation fails ENOSPC. Inspect metadata only; propose three explicit obsolete DeviceSupport version directories, about 17.8 GiB, excluding current 24A5430a support, simulators, source/live build/recovery and phone data. Request exact approval before removal. Preflight targets/link/open-file state; stop on any failure rather than force/retry/broaden. No current deletion or new profile/install/launch claim; no guarantee of old-beta reacquisition or exact APFS space savings.
+- Status: pending owner cleanup authorization and sufficient storage; engineering owns fresh validation/build/profile verification/replacement install/launch, owner any actual authentication/unlock/trust action. Ignored evidence under the named October 20 renewal directory; no secret values in docs/Git.
+
+## D-048 — Remove only approved obsolete support, bind renewal to the actual phone
+
+- Date: 2026-10-20
+- Authority/action: owner explicitly approves only the three named obsolete DeviceSupport roots. Fresh literal-path/realpath/type/open-file/child/count checks pass; 13,744 files + 12,558 directories, no links. Postorder unlink/rmdir removes exactly those objects without force/retry/traversal; current 24A5430a support and source/app/live build/rollback/simulators/phone data are excluded. Copies are not Trash-recoverable; old-version debug support might need reacquisition. Immediate measured free space rises to about 18 GiB; not every fluctuation is attributed to deletion.
+- Provisioning: generic destination now reaches Apple but cannot generate a profile without a device. Stable Xcode lists the same previously provisioned connected phone; use its verified UDID and documented allowProvisioningDeviceRegistration alongside existing provisioning permission, same team/ID/SDK/locks. Native Debug build and strict app/12-framework/profile/device/default-FI-EN-purpose verification pass. New profile: created October 20 15:27:13 UTC, expires October 27 15:27:13 UTC / 17:27:13 Helsinki (UTC+2).
+- Acceptance: replacement install and targeted build-2 inventory pass, not data retention. First launch fails FBS Security despite local signatures; require the actual owner Trust/Verify check, then fresh launch/Home evidence. Never bypass, repeatedly retry unchanged state, uninstall/reset or claim runtime from installation alone. Native-helper, camera/VoiceOver/material accuracy and public production acceptance remain separate.
+- Validation: after cleanup scoped mobile 209/full 354 tests and build/format/lint/types/boundary/14-route gates pass. Correct-worktree API/Metro, LAN manifest/current material-review iOS asset pass; no new paid call, key/model/prompt/rule/dependency/native-config change, private import, global Xcode switch or GitHub push. Renewal remains manual; no automation created.
+
+## D-049 — Close trust only with actual same-app startup; minimize screen evidence
+
+- Date: 2026-10-20
+- Authority: Roope reports completing the requested physical Trust/Verify action. This changes the first-launch prerequisite, not the scope to camera/GPS/paid calls, security bypass, reinstall or GitHub publication.
+- Decision/evidence: launch the same installed build 2 with the current Metro dev-client URL; CoreDevice reports success and two later process queries retain the returned PID. Inspect one native screenshot: current Finnish Home renders but an unrelated OS picture-in-picture partly occludes the header. Record only this limited observation, remove the exact newly generated mixed-content regular file after path/type checks, retain no mixed image and stop further capture. Command receipts and bounded generated acceptance summary remain ignored, not device IDs/profiles/binaries/screenshots in Git.
+- Status: EB-IOS-TRUST-01 and the requested signing/install/startup maintenance are complete; actual profile expiry stays October 27 17:27:13 Helsinki (UTC+2). Fresh full validation passes 354 unique tests and all gates/builds/14 routes. No source/behavior/dependency/native/model/rule change or new test cases. Full visual/native material-review/camera/retention/untethered/performance/production acceptance stays separate; PHOTO-003 remains high/open. Product provisioning now works, so prior helper No Accounts is historical; helper renewal is still untested, not newly externally blocked. Resume the queued free FI/EN prompt/label work without live calls or push.
+
+## D-050 — Integrate team history without restoring regressions or a silent location recipient
+
+- Date: 2026-10-20
+- Authority: Roope explicitly confirms publication to KierratysAppi/main after the generic push request; not KeepItGreen synchronization, force/rebase, settings or production release. Fresh public main `44cc1b2` has nine new commits; preserve it alongside the eleven local commits through a normal merge.
+- Decision: keep the upstream postal/subregion correction, async Home cleanup, heading/material-filter work and manual address-search intent. Restore current one-press/five-point/material/source UI instead of accepting the old-screen replacement. Existing native Expo Location supports forward geocoding; use its OS boundary, not the newly introduced unbounded public Nominatim endpoint. Disclose address recipient and app retention in FI/EN before explicit submission/Privacy. Bound queries and result shape, reject ambiguity, set a five-second UI deadline, ignore late results and gate uncancellable OS work until settlement. Deadline abort also prevents late Android permission approval from starting geocoding. No address cache/history/logging, automatic retry, background initiation or new service/key/dependency.
+- Accuracy/acceptance: preserve actual GPS accuracy in device search; manual origin is explicitly an address estimate with no invented GPS precision. Keep exact source-material reports/exclusions, map only public point coordinates, and native-only address availability on web without collecting unusable input. Eight helper regressions/one shared filter/one policy test supplement existing browser tests. Shared 85/mobile 218/full 364 unique tests pass; initial missing translations and a test-double type error are recorded, not waived. Native provider/permission/layout/map behavior is not inferred from fixtures or the earlier Home pass. D-025 upstream label is namespaced solely to avoid the existing ID collision; authorship/history unchanged.
+- Scope: no real address/GPS/photo acquisition, paid inference, secret/model/rule/directory/native/signing/database change or new account. Actual publication and CI observations are separate receipts; future sharing still requires separate permission. Production stays NO-GO and PHOTO-003 remains high/open.
+- Publication outcome: non-force `44cc1b2..7ff234e` push to the verified team main succeeds; independent remote SHA is `7ff234e9b3801ed2dca482297d241d154d48fc84`. Both original merge parents are ancestors. Source CI/Security initially queued/in progress; no remote pass inferred. The outcome-only follow-up belongs to this same explicitly authorized sharing step; no future automatic push authority.
 
 ## Remaining pending decisions (historical / production, continued)
 
