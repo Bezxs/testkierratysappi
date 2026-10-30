@@ -7,7 +7,7 @@ const executablePath = process.env.BROWSER_EXECUTABLE_PATH;
 if (!modulePath || !executablePath) throw new Error("Set installed Playwright and browser paths.");
 const { chromium } = require(modulePath);
 const origin = process.env.APP_QA_URL ?? "http://127.0.0.1:8093";
-const evidence = path.resolve("work/photo-qa");
+const evidence = path.resolve(process.env.APP_QA_EVIDENCE_DIR ?? "work/photo-qa");
 fs.mkdirSync(evidence, { recursive: true });
 const estimate = {
   status: "estimated",
@@ -48,6 +48,7 @@ const get = (page, id) => page.getByTestId(id);
     });
     const page = await context.newPage();
     let posts = 0,
+      capabilityChecks = 0,
       mode = "clear",
       release,
       releaseOpening,
@@ -61,6 +62,7 @@ const get = (page, id) => page.getByTestId(id);
       "access-control-allow-headers": "content-type",
     };
     await page.route("**/v1/recycling/photo-capabilities", async (route) => {
+      if (route.request().method() !== "OPTIONS") capabilityChecks++;
       if (mode === "opening")
         await new Promise((resolve) => {
           releaseOpening = resolve;
@@ -144,9 +146,15 @@ const get = (page, id) => page.getByTestId(id);
       }
     });
     await page.goto(origin, { waitUntil: "networkidle" });
-    await get(page, "home-photo-action").click();
+    await get(page, "home-identify-action").click();
+    await get(page, "identify-screen").waitFor();
+    assert.equal(posts, 0, "Opening the identification hub must not upload a photo");
+    assert.equal(capabilityChecks, 0, "Opening the hub must not check photo capabilities");
+    assert.equal(await get(page, "tab-identify").getAttribute("aria-selected"), "true");
+    await get(page, "identify-photo-action").click();
     await get(page, "photo-open-camera").waitFor();
     assert.equal(posts, 0);
+    assert.equal(capabilityChecks, 0, "The photo introduction waits for explicit camera action");
     await page.screenshot({ path: path.join(evidence, "fi-intro.png"), fullPage: true });
 
     // The local availability check must not look like an unresponsive button.
@@ -381,7 +389,9 @@ const get = (page, id) => page.getByTestId(id);
 
     await page.goto(origin, { waitUntil: "networkidle" });
     await get(page, "language-en").click();
-    await get(page, "home-photo-action").click();
+    await get(page, "home-identify-action").click();
+    await get(page, "identify-screen").waitFor();
+    await get(page, "identify-photo-action").click();
     await page.getByText("OpenAI may retain data", { exact: false }).waitFor();
     assert.ok((await page.locator("body").innerText()).includes("OpenAI may retain data"));
     await page.screenshot({ path: path.join(evidence, "en-intro.png"), fullPage: true });

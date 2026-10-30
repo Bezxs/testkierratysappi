@@ -1,5 +1,62 @@
 # Acceptance criteria
 
+## Matching patched iPhone installation
+
+1. Preserve a verified prior binary and complete native-tree snapshot before generation; native lock/installed Manifest and JS package versions agree. Native/app/build identity and default/FI/EN camera/foreground-only location declarations are checked against source.
+2. Verify current app/all frameworks, signed/profile/device binding and real profile dates. Replacement inventory proves build4 before delivering patched JS. A build bump/reinstall does not prove a new signing expiry or private-data retention.
+3. Restore development networking only with explicit owner approval and bounded current-address/loopback listeners. Existing credential stays server-side; no paid model call, capture/location or new key is needed merely to verify startup.
+4. Record actual launch/process/Home/Identify rendering separately from button/back/Dynamic Type/VoiceOver/camera/accuracy and public release gates. No historical or browser pass substitutes for unrun native acceptance.
+
+## SDK 58 dependency maintenance
+
+1. Current official SDK 58 patch expectations, frozen supply-chain install, peers, online Expo check, pinned Doctor and no-exceptions high/critical audit pass without changing app behavior, identity or contributor history. Preserve strict age and CI gates.
+2. Tests retain the patched package floors and actual Expo-selected CLI/Zod schema behavior. Any scoped cross-major tooling override has explicit rationale and invalid-input/strict/readonly/output/JSON-schema coverage, not an untested alias.
+3. Full/scoped tests, builds and existing browser safety/navigation/visual flows pass; remaining low/moderate records remain visible. Source success is not remote CI, production GO or an updated native binary.
+4. Do not deliver patched-native JS to an old development binary. A fresh matching native build/sign/profile/install/navigation check is required before claiming phone compatibility; no photo/GPS/paid inference is needed merely to verify entry/back/layout.
+
+## Contributor preservation before sharing
+
+1. Verify account-associated commits and current remote head, then inspect each patch/current call site; ancestry alone and broad commit titles are insufficient.
+2. Retained/refined/replaced/not-wired behavior is distinguished honestly. Existing native-only address lookup is not presented as browser support; an exported helper is not a finished UI filter.
+3. Fresh validation, online platform expectations and security gates are recorded separately. Preservation success does not imply green CI, physical acceptance, publication authority or production GO.
+
+## Combined identification hub
+
+1. Home's Skannaa tuote / Lue viivakoodi tai käytä tekoälytunnistusta card opens the existing Identify tab, not a camera or direct-photo flow. Matching EN, accessible name/hint and current direct barcode/manual shortcuts remain.
+2. Reading/keyboard/visual order is barcode scanning first and largest, manual barcode second, AI recognition third. Each distinct action reaches its current route and returns to the hub; route-driven selected-tab state remains correct.
+3. Hub rendering/direct URL/tab selection does not request camera/GPS permission, acquire media/location, call lookup/capabilities/recognition or upload. Camera and provider work remain behind their existing explicit actions.
+4. Current FI/EN theme, 44-point targets, focus, reduced-motion behavior and uncapped text remain. Narrow/native-large layout prioritizes reading width over redundant secondary icons; no clipped label or hidden AI uncertainty/material-review notice.
+5. Five new source-policy regressions plus actual browser order/prominence/all-three entry/back/passive-entry/FI/EN/dark/narrow/large checks pass with scoped/full validation and all five suites. These do not establish native Dynamic Type/VoiceOver/camera quality, material accuracy or production readiness.
+
+## App-wide design consistency
+
+1. Home and all thirteen functional pages share one platform sans and live canvas/ink/secondary/link palette. Monospaced identifiers remain intentional; no legacy sans override, clipped text or scaling cap. Home's palette alias cannot drift independently.
+2. Compact leaf/back navigation, rounded surfaces/controls and original semantic action symbols are consistent. Brand artwork stays decorative; reading/source sections and camera overlays remain focused, without a second hero or invented content.
+3. Keyboard focus remains visible beside filled/secondary/quiet actions, controls retain 44-point targets, disabled/busy semantics and FI/EN. Dark mode is reactive. Error/uncertainty/source/consent/material-confirmation and local-data boundaries are not simplified away.
+4. Source regressions plus actual-Metro computed-style, FI/EN, 320/390/1280, dark and synthetic 130% reading/form/Identify/Settings/Nearby checks pass alongside all five existing fixture suites and full/scoped validation. Browser evidence is explicitly separate from the latest native all-page, Dynamic Type/VoiceOver/camera/accuracy acceptance.
+
+## Reference fidelity and native symbols
+
+1. The leafy primary card opens the existing AI photo flow; explicit upload consent, inferred identity, separate material/condition confirmation and unknown/unsafe recovery remain unchanged. No image, precise location, fake nearest/open/last-viewed data or paid model request is added by rendering Home.
+2. Seven original symbol sources compile to bounded local 192×192 alpha PNGs; no script/remote SVG/image/text/animation or runtime package. Source titles exist; runtime images are decorative. Recycling has three separate visible arrows and transparent center.
+3. Home-only ink/muted/link pairs meet tested 4.5:1 token contrast; existing semantic result colors stay unchanged. Photo backdrop fits measured width/height and does not display neighboring baked cards. Native large text keeps the non-overlaid fallback and all controls remain scalable/44-point targets.
+4. Full/scoped validation and five fixture browser suites pass; new native Home render is separately observed on the actual client. This never implies native all-flow/large-text/accessibility/accuracy or store acceptance.
+
+## Reference Home refinement
+
+1. Follow the supplied illustrated Home hierarchy with real current actions; photo recognition is primary, barcode shortcut/manual entry remain. No reference places/distances/open status, coffee/bottle sorting examples, invented popularity or accounts as real data.
+2. Bounded FI/EN local search and chips select only the four existing editorial guides. Unknown/unsupported/malformed/repeated route input gives no fabricated match; reset restores all guides, with source/date/deposit caveat unchanged.
+3. Recent previews are empty when history is off and show at most two validated distinct records when on. No invented bin/material/photo; refresh clears stale names, late reads are ignored, and only explicit reopen calls a provider. Home/search never starts GPS.
+4. Native large text reflows tiles/chips/history and removes overlapping art/arrow; labels stay scalable, controls at least 44 points. FI/EN/dark/keyboard/narrow/large browser QA is separate from native acceptance. Existing photo consent/correction/unknown/unsafe/provenance behavior remains.
+
+## Illustrated integration pilot
+
+1. Start from current KierratysAppi functionality/SDK 58/three roots. Reuse only the approved KeepItGreen visuals, with asset provenance; keep all real actions and current contracts/rules/provider licences. No invented nearest points, opening hours, account, impact score or universal name search.
+2. Home and Koti/Identify/Points/Settings tabs work in FI/EN. Barcode/manual/photo choices remain distinct; settings reflect actual local history and link to the current deletion/privacy flow. Returning between tabs does not duplicate Home routes or lose root navigation.
+3. No tabs in capture/preview/result/material-confirmation flows. Direct URLs never acquire location; an explicit non-selected Points press uses the current single-use intent. Leaving/backgrounding preserves existing photo/GPS cleanup. No user location/photo in browser fixtures or analytics.
+4. Decorative local images remain hidden from assistive technology. Native large text uses an independent heading, labels are not capped/truncated, narrow/large tabs wrap, target size is at least 44 points, keyboard focus/selection is visible, dark mode is reactive and reduced-motion behavior remains unchanged. CSS scaling is not native Dynamic Type evidence.
+5. New regression cases plus scoped/full validation and actual-UI browser flows pass. Separately verify current native build/signatures/profile/device binding, replacement install without reset and native startup/appearance. No browser/compile/signing-only result implies complete camera/location/VoiceOver/performance/store acceptance.
+
 ## Consented photo recognition
 
 1. Capture/preview never uploads automatically; recipient/retention/purpose are disclosed in FI/EN, followed by an explicit send action with versioned server-validated consent.

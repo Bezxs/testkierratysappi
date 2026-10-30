@@ -1,6 +1,78 @@
 # Decision log
 
-2026-10-26: Test the SDK 58 migration only in `Bezxs/testkierratysappi`. Align native dependencies through Expo's installer, retain Node 24.19.0/pnpm 11.16.0 and the strict release-age gate, and require the development-client major to match Expo. Keep existing photo-capture restrictions and all application behavior. Original-repository changes require separate approval after device testing.
+## D-059 — Share the preserved integration only under the owner's exact destination approval
+
+- Date: 2026-10-29. Roope explicitly authorizes KierratysAppi publication if the fresh contributor check passes and requests Home's Suositut haut heading. Verify actual origin URL/main, current author/PR history, all ten ancestor IDs and current call sites, not merely old audit prose. Current changes introduce no teammate-function loss; preserve the prior native-only address/unwired helper qualifications instead of claiming literal historical equivalence.
+- Keep the four existing editorial material shortcuts and change only the FI/EN heading, with localization and semantic browser regressions. No invented popularity measurements, tracking or provider query. The approved visual import remains selective; do not merge private KeepItGreen history/services or publish ignored native/credential/device artifacts.
+- Require fresh full/mobile validation and live compatibility/Doctor/security gates, selected-delta/history review and an immediate remote fast-forward check. Push explicitly to the verified team `HEAD:refs/heads/main`, never the branch's private default push target; no force, mirror, settings or other-branch change. Outcome-only documentation belongs to this same authorized step. Remote CI is observed separately; local tests are not remote CI.
+- Production remains NO-GO and native button/back/larger-text/address/camera/AI evidence remains separate. No new paid inference, secret read, account, signing renewal or phone-data action. This single source-sharing authorization does not permit future automatic team pushes.
+- Outcome: normal `28e0f32..091d962` push succeeds to the verified team main. Independent ls-remote confirms091d962389a56ec5c52386cfbaf4a8bddef6b013 at2026-10-29T20:41:13Z. No KeepItGreen/other-branch/history/settings/production mutation. Actual source CI40951228125 and Security40951228098 initially in progress, not passed by local evidence; this follow-up records only the observed sharing result.
+
+## D-058 — Match the native installation and bound development-network restoration
+
+- Date: 2026-10-29. Roope requests updating the phone, then explicitly approves the current trusted LAN and reuse of the existing server-only key. No GitHub publication, new key or paid evaluation request.
+- Use client4 metadata to distinguish the patched RN/Expo binary; retain technical identity/data namespace/Android2 and ordinary photo-purpose eligibility. Preserve a signature-verified app and complete generated-native snapshot before prebuild; do not restore old dependency locks over new native versions. Reuse DerivedData only with an explicit build4/hash/native-lock verifier rejecting the old artifact.
+- Verify strict app/all-framework signatures, real profile dates/bindings, matching installed pod graph and device inventory separately from launch/render evidence. A reused valid profile remains November4 expiry; build4 is not a renewal. Never uninstall/reset or inspect private history merely to establish update success.
+- After an attempted all-interface API bind is rejected before execution, require owner permission and narrow the service to the current LAN address. Expo stays loopback with a current-address-only/no-payload-log forwarder; enable delivery only after matching build4 inventory. Existing credential remains server-side; no assistant image/paid call.
+- Native Home/Identify screenshots, passive deep links and repeated same-PID queries prove named startup/render observations, not actual button/back/large-text/VoiceOver/camera/GPS/material accuracy or release readiness. Keep that remaining controlled acceptance as one next action and preserve existing production NO-GO.
+
+## D-057 — Repair dependency gates without hiding a CLI migration or native mismatch
+
+- Date: 2026-10-29. Roope approves repairing the audit's local dependency gates, not pushing or making paid calls.
+- Retain SDK 58/RN 0.88/React 19.3 and all app behavior. Apply official compatible native patches, Fastify 5.x/Zod 4.x security updates and compatible transitive fixes. Pin supported Vite as the test runner's explicit development peer; align Vitest/coverage patches, not a test-runner major migration.
+- Expo CLI still requires vulnerable Zod 3. A narrow `@expo/cli>zod: 4.6.7` migration is explicit, supported by tests against its two actual consuming schema modules and full config/export/Metro/Doctor/browser checks. Do not globally replace consumers, alias old v3 code or waive advisories. Revisit/remove when supported upstream adopts safe Zod.
+- Keep strict 1,440-minute age and every diagnostic/security gate. Twelve security-floor/parser/SDK and seven CLI runtime regressions complement existing v1/API/provider/source tests. Fresh online security/Doctor evidence is separate from remote CI and production GO; eighteen lower-severity records remain visible.
+- Old client 3 contains different native code. Stop only its verified development servers before package changes; use isolated loopback web QA. Require a matching native build/install/smoke before resuming phone delivery. No new native, expiry, recognition-accuracy or paid-call claim; no GitHub write. The responsive QA measurement repair reads same-frame geometry without loosening layout requirements.
+
+## D-056 — Audit contribution intent separately from ancestry and sharing readiness
+
+- Date: 2026-10-29. Roope asks whether teammates' work survives before deciding on a push; this authorizes investigation, not implementation, package changes or publication.
+- Verify GitHub account associations, PRs, fresh remote heads, exact ancestry and each actual patch/current call site. Git author `unknown` is not proof a contribution disappeared. Commit titles are not implementation evidence; documentation next actions can legitimately be superseded.
+- Preserve distinctions: Rdotcom's native address intent/postal/subregion work remains, but earlier published main replaced original public Nominatim/web lookup; a retained unused material helper is not a completed UI feature. Current UI work changed neither implementation. ITbes-dev's dependency/CI set is retained byte-for-byte, apart from separately identified native build-number metadata and later QA/doc additions.
+- Fresh 410-test validation does not override failing online Expo expectations or dependency security. Treat main source sharing as HOLD pending repair/revalidation, not as production readiness or missing teammate work. Current-main failed CI is confirmed at its security-policy step; a separate successful Security workflow does not cancel that result.
+- Keep the audit non-mutating for application/test/config/dependency/history/publication. Record evidence and the next local repair action; owner must separately approve any later team sharing step.
+
+## D-055 — Group identification choices without merging their trust boundaries
+
+- Date: 2026-10-29. Authority: Roope explicitly asks for Home's combined Skannaa tuote action to open Identify, with barcode, manual barcode and AI in that order. No paid inference, GitHub sharing or native renewal authority.
+- Replace Home's direct-photo card with a labelled `/identify` gateway and neutral scan-frame symbol. Keep the small direct barcode shortcut/manual fallback. Use the existing route-driven selected-tab state and ordinary back path; do not create a second account/demo/camera flow or auto-start recognition just by entering a tab.
+- Make barcode visually primary (176-point minimum/22-point title), manual its next fallback and AI the third choice. Keep the current common palette, typography and surfaces; use independent localized names/details and retain AI's explicit estimated/material-review description. Narrow/native-large layouts hide only secondary decoration, not words, controls or safety notices.
+- The gateway changes discovery, not functionality or authority: barcode/manual still validate GTIN and call current services; photo keeps explicit capture/send/consent, inferred identity, independent material/condition confirmation and unsafe/unknown recovery. No combined background image classification or automatic permission/network action.
+- Guard source-order/routes/localization and actual browser selected-tab/order/prominence/no-implicit-effects/three entry-and-back journeys. Browser synthetic large text is not physical Dynamic Type/VoiceOver/camera acceptance; record that separately. Supersedes the photo-first hierarchy in D-054 only, not its shared theme or evidence boundaries.
+
+## D-054 — Extend the approved Home language without decorating the answer
+
+- Date: 2026-10-29. Authority: Roope approves the proposed whole-app visual unification after an explicit review found Home and detail pages inconsistent. No push, native renewal or paid-inference authority.
+- Promote the existing Home platform sans/navy/slate/mint palette to shared theme tokens and derive Home's aliases from that palette. Retain scalable system text and monospaced codes; remove legacy sans overrides/loading but do not churn dependency versions or lockfile. This supersedes the Home-only font/color scope in D-052/D-053, not semantic result statuses or source rules.
+- Use one compact decorative leaf/back header and existing original symbols, 22-point reading surfaces and rounded primary controls. Identify prioritizes the real AI-photo entry, with distinct barcode/manual alternatives; Settings uses actual local controls, never an invented account. Preserve reading/list structure for guide/legal/history and focused high-contrast camera overlays instead of spreading hero artwork across every page.
+- Add a canvas-gap/outer keyboard ring so focus is visible beside filled as well as quiet actions. Retain 44-point controls, FI/EN, dark mode, uncapped text, explicit disabled/busy states, uncertainty and full provenance. No new motion, runtime library, raster asset, copied provider or fake example data.
+- Validate shared computed browser typography/palette, narrow/wide and synthetic large-text layouts alongside existing photo/nearby/local-state fixtures and full/scoped checks. Record native acceptance separately: no current phone interaction, VoiceOver, camera, material accuracy, battery or production pass follows from this presentation work.
+
+## D-053 — Improve reference fidelity with native-safe source-controlled artwork
+
+- Date: 2026-10-29, continuing the owner-approved reference refinement begun October 28. No push or paid app-inference authority.
+- Match real composition rather than only colors: centered smaller wordmark/leaf, neutral caption, leafy photo card, filled shaded symbols and smaller utility/section hierarchy. Keep the primary photo entry explicit about AI, but no verified-result or speed claim. Preserve all current actions, real opt-in history, explicit GPS and non-fabricated nearby state.
+- Use seven original code-native SVGs compiled to committed alpha PNGs with installed sharp 0.35.5/libvips 8.18.7. No runtime SVG/native package, copied icon set, new image generation, remote image or app dependency. Retain source titles and hide redundant runtime symbols from assistive technology. Test bounded local assets, alpha/PNG structure and three separate recycling arrows; re-render byte check with the same toolchain.
+- Home-only colors have eight AA token-pair cases; semantic sorting/status colors and provider/rule/AI contracts remain unchanged. Leaf-panel crop scales to measured card height without leaking neighboring baked artwork; native large text retains existing non-overlaid fallback.
+- Full 396-case/mobile-240 validation and five browser suites pass. Fresh native build-3 activation/Home screenshot/later PID pass, not a renewed installation, all-flow/large-text/VoiceOver or model-accuracy acceptance. No change to November 4 profile expiry, production NO-GO or repository sharing boundary.
+
+## D-052 — Match the illustrated reference without making its examples real
+
+- Date: 2026-10-28. Authority: Roope asks to follow the supplied Home screenshot; no GitHub or paid app-inference authority.
+- Presentation: existing stack/artwork plus one built-in-tool transparent bottle cutout; match hierarchy, platform typography, surfaces, camera emphasis and material shortcuts. Retain current services; Settings remains truthful, not a nonexistent Profile/account.
+- Data: local four-material editorial search with bounded/runtime-validated parameters and unknown/reset recovery; aliases do not identify a verified product or material. Nearby stays explicit, without assumed Helsinki/default GPS/opening status. Recent cards show only validated real opt-in records and lookup status, no invented photo/bin. Clear stale previews before asynchronous refresh and ignore blurred results.
+- Quality: expanded native text removes decorative arrow/art and reflows chips/cards; no font cap or looping motion. Eight pure/two policy regressions and full/scoped/browser outcomes are recorded separately. Old native acceptance does not certify the new composition; existing high photo/security/release findings remain. No backend/shared/rule/model/dependency/signature change or publication.
+
+## D-051 — Port presentation onto current functionality, not entire divergent histories
+
+- Date: 2026-10-28
+- Status: accepted by explicit owner implementation/install request
+- Use KierratysAppi `28e0f32` as the functional/SDK 58/three-part baseline and KeepItGreen `0142bb0` only as selected visual input. Keep current API/contracts, providers, OSM directory, rules/provenance, photo consent/material review and technical app identity. Reuse unchanged decorative artwork with its origin documented; do not add old profile scores, guessed nearby/opening data or an implied general product-name search.
+- First unit is illustrated Home/shared visual tokens/four-tab shell with real Identify/Settings pages. Tabs are absent in capture/review flows; explicit Points presses use the existing one-shot intent, while URL/render/selected-tab presses do not. Use supported `dismissTo` to avoid duplicated Home routes, verified against the actual SDK declaration and a browser regression; safe root-page Home fallback remains available.
+- Larger native text uses a non-overlaid heading and narrow/large navigation has two rows. All answers retain current uncertainty/source metadata. No new UI framework, dependency, model, credential or paid call. iOS build 3 distinguishes the SDK 58 client from the old build 2; minimum photo-purpose restrictions remain enforced.
+- Local installation authorization is not GitHub publication authorization. Preserve old branches, unset the new branch's team-main upstream and explicitly target KeepItGreen for any separately authorized future development push. The October 6 no-import boundary is superseded only for this selected owner-requested integration.
+
+2026-10-26: Apply the owner-tested SDK 58 dependency set from test commit `b578137` to KierratysAppi without unrelated refinements. Retain Node 24.19.0/pnpm 11.16.0, the strict release-age gate, existing photo-capture restrictions and all application behavior. Require the development-client major to match Expo. The owner approved committing and pushing this upgrade to `roopeaal/KierratysAppi/main` after successful test-repository device testing.
 
 ## D-UPSTREAM-2026-10-13 — Preserve postal codes in nearby address estimates
 

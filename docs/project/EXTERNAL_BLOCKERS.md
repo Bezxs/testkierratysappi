@@ -1,5 +1,96 @@
 # External blockers
 
+October29 team-source sharing: fresh contributor recheck and dependency/platform
+gates introduce no new credential/account/manual blocker. Roope explicitly
+authorizes this reviewed KierratysAppi/main source push. Existing native acceptance,
+photo accuracy and production operations/privacy/licensing/store gates remain;
+source sharing does not close them or permit future automatic team publication.
+
+## October29 patched client4
+
+No new external blocker: build/signature/profile/native-lock/replacement install,
+exact build4 inventory, native launch/Home/Identify render and repeated-process
+checks pass. Existing November4 profile is reused; no renewal/trust/login/funding
+request arose. Initial broad LAN-server start was blocked before execution;
+Roope explicitly approves the current trusted LAN/current key and restricted
+address listeners now work. No key exposure or paid call. Engineering owns
+remaining button-flow/larger-text acceptance; Roope handles real physical camera/
+settings prompts if needed. Installed binary success does not close PHOTO-003,
+Android/release/infrastructure/privacy/licensing/store gates. No cleanup or
+GitHub publication authorized by this installation.
+
+## October 29 dependency maintenance
+
+No new external blocker. Local SDK compatibility and high/critical dependency
+gates are repaired and freshly pass; twelve moderate and six low records remain
+tracked, not hidden. Engineering owns a matching native rebuild/install/smoke
+because patched RN/Expo JS is not accepted on old client 3. The previous verified
+phone identity/profile remains; no new account, funding, signing, device-read or
+trust failure was observed here. Roope handles an actual physical/account prompt
+only if the next installation encounters one. Legacy Metro/API were deliberately
+paused to avoid mismatch; isolated web QA is on 8094, not phone acceptance.
+Existing PHOTO-003, Android/release/operations/store gates remain. No publication
+or paid inference is authorized by this repair request.
+
+## October 29 contributor-preservation audit
+
+No new external blocker. Teammate changes/history are preserved as documented
+in CONTRIBUTOR_PRESERVATION_AUDIT; native-only manual address lookup and the
+unwired material-filter helper are existing implementation limits. Fresh online
+Expo compatibility expects 12 patch updates, and security:audit rejects 12
+high/critical records on the unchanged main lockfile. These are local dependency
+maintenance/validation work, not a missing account, database or funding issue.
+Review did not authorize package fixes or a push. Latest physical acceptance
+and existing production-owner gates remain separate. No current secret leak is
+inferred from older annotations; latest main's separate Security workflow passed
+while its CI dependency-security step failed.
+
+## October 29 identification hub
+
+No new external blocker. Grouping the existing barcode/manual/photo choices
+uses current routes, symbols and localization; it needs no key, account,
+payment, database, native dependency or renewed signature. Entering Identify
+does not activate a camera, acquire location or call a provider. Engineering owns
+latest physical navigation/large-text acceptance; Roope handles an actual unlock
+or OS prompt only if needed. Build-3 expiry and all existing security/photo-
+accuracy/public-production gates remain unchanged. No new paid inference or
+GitHub publication is authorized.
+
+## October 29 whole-app consistency
+
+No new external blocker. The approved visual unification uses existing fonts,
+symbols, services and native capabilities without a new package, key, account,
+payment or signature renewal. Existing build 3 can load these JS changes through
+Metro; this is not a fresh observed native all-page pass. Engineering owns the
+remaining physical visual/navigation check; Roope handles an actual unlock or
+system prompt only if needed. Existing SDK/security/photo-accuracy/production
+gates and the November 4 signing deadline remain unchanged. No GitHub sharing or
+paid recognition is authorized by this UI request.
+
+## October 29 reference fidelity continuation
+
+No new external blocker. Current Mac services and the existing client 3 are
+available; exact-app activation/Home render/inventory/later process check pass.
+No renewal, account, native dependency or paid recognition is needed for this
+visual unit. Wider native interactions/large-text/VoiceOver, recognition accuracy
+and existing SDK/security/production gates remain unverified, not solved by
+decorative assets or browser checks.
+
+## October 28 reference Home refinement
+
+No new external blocker. Closer composition, local guide search and real-history
+previews need no new account, backend, paid app inference or native dependency.
+Latest native large-text/navigation acceptance remains pending, not certified
+by the earlier build-3 Home screenshot or browser fixtures. Existing platform,
+photo-accuracy, security and production gates remain. No automatic GPS or
+reference-place fixtures were added; directory coverage/metadata limits remain.
+
+## October 28 illustrated integration and installation
+
+- **Storage approval resolved:** first native build failed ENOSPC. Roope explicitly approved only the old `work/location-2026-10-06/DerivedData` (team worktree) and `work/ios-scene-2026-09-27.KYLHaN/DerivedData` (original private checkout). Exact two-root/type/count/open-file checks passed: 44,852 objects, no symlinks. Removal succeeded without force/retry; generated artifacts can be rebuilt, not restored from Trash. Source, new build, separate verified rollback, Xcode and phone data were excluded. No additional cleanup is approved.
+- **Current install/trust resolved:** SDK 58 native build, strict app/11-framework signatures and profile/device/purpose checks pass; replacement 0.1.0/build-3 installation is inventoried. First launch is genuinely denied with FBS Security. Roope reports **luotettu**; a fresh same-app launch succeeds, two later queries retain the returned PID and native Home/artwork/four tabs are visually observed. No current account/trust/passcode request remains. Actual profile expires **November 4 at 20:28:39 Helsinki**. Later native navigation/camera/GPS/retention/performance acceptance remains separate, not a newly demonstrated external credential blocker.
+- **Local dependency maintenance remains:** fresh compatibility check expects 11 newer SDK 58 patches; baseline security audit and photo material/naming findings remain. This UI integration does not fix or disguise those gates. No new account, paid service or database is needed for the completed UI unit; no live paid inference was made.
+
 ## October 20 team-main integration
 
 No new credential/account/payment/native-build requirement. Upstream manual search had local compile/behavior/privacy-boundary defects; integration repairs them using already-installed native OS geocoding, not a new public provider. Web address geocoding is explicitly unavailable, while device-location search remains available. This is a feature limitation, not a secret/funding blocker. Native address/postcode/permission/cancellation/background/map acceptance remains a separate engineering + device-owner evidence task (OA-NEARBY-ADDRESS-01); earlier Home/signing success does not establish it. No real address/GPS/photo or paid inference was acquired in integration; existing production/photo-accuracy gates remain unchanged.

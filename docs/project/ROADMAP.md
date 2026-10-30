@@ -1,9 +1,82 @@
 # Roadmap
 
+## Owner-authorized preserved source sharing — October29
+
+- [x] Re-fetch actual team main, paginate contributor/PR metadata and independently trace all ten ITbes-dev/Rdotcom ancestor IDs/current behaviors; no new regression, no private-history merge. Keep native-only address/unwired filter qualifications visible.
+- [x] Rename Home's existing material shortcut heading to Suositut haut / Popular searches without analytics/fake ranking; add localization and semantic browser assertions. Fresh full431 tests/all builds/16 routes, online Expo, Doctor20/20 and high/critical dependency policy pass.
+- [x] Pass mobile242 validation and both affected Home/integrated-browser suites; inspect FI/EN heading screenshots and review selected history/delta without native/credential/device artifacts. Record initial cache/timeout failures and strict passing reruns.
+- [x] Execute the explicitly authorized fast-forward `28e0f32..091d962` KierratysAppi/main push and independently confirm remote SHA091d962389a56ec5c52386cfbaf4a8bddef6b013. Source CI40951228125/Security40951228098 initially in progress; local validation is not remote CI or public production GO. Publish this outcome-only follow-up under the same authorization.
+- [ ] Complete installed-client4 controlled button/back/larger-native-text acceptance; earlier screenshots, source sharing and browser fixtures do not establish it.
+
+## Patched iPhone client4 — October29
+
+- [x] Preserve verified old app/native-tree snapshots before generation; bump only iOS build4 and add native-build metadata regression, retaining purpose minimum/Android identity.
+- [x] Install122 matching patched pods, verify native locks/JS versions; stable serial Xcode26.6 build, exact app/all11-framework/profile/purpose/device checks pass. Existing November4 profile reused, not a renewal.
+- [x] Replace-install and confirm targeted0.1.0/build4 inventory; native launch/later same-PID/Home/passive Identify render/return-to-Home pass, no camera/GPS/image/paid call. Full430 validation passes; detailed IOS_PATCH_CLIENT4 evidence.
+- [x] Obtain explicit LAN/current-key approval after wildcard start is blocked; bind only loopback/current approved address, verify actual iOS launch asset/current API origin and restore services without exposing the key.
+- [ ] Complete controlled native button-entry/back/larger-text acceptance on installed client4; physical camera/VoiceOver/AI accuracy/Android/production remain separate.
+
+## SDK 58 dependency maintenance — October 29
+
+- [x] Repair the twelve official patch expectations and all twelve blocking high/critical advisory records, retaining the audited SDK generation and teammate behavior. Do not weaken age/security/Doctor gates.
+- [x] Add twelve security/SDK/lock-parser and seven actual CLI/Zod compatibility regressions. Fresh frozen install, peers, online Expo check, Doctor 20/20, live high/critical policy, full 429 tests/builds/16 routes and all three part validations pass.
+- [x] Keep eighteen lower-severity records visible and separate local gates from actual remote CI/publication. Record exact sources, CLI-only major override and native-runtime incompatibility boundary.
+- [x] Pass all five existing fixture browser suites after repairing a diagnosed same-frame measurement race; inspect Home/dark Identify/narrow-large material-review visuals without changing app source or weakening assertions.
+- [ ] Build/install/smoke the new native dependency set before serving it to the old iPhone client; no signing, native/device acceptance, new expiry or GitHub push follows from source/browser success.
+
+## Contributor preservation / pre-sharing review — October 29
+
+- [x] Resolve GitHub identities and main/PR history; trace ITbes-dev's one SDK commit and Rdotcom's eight patches/merge into current code, separately from ancestry.
+- [x] Confirm five UI commits introduce no teammate-function loss; record prior native-only address reconciliation and still-unused material-filter helper honestly.
+- [x] Re-run full 410-case validation and current CI/online compatibility/security checks without installing/updating packages or publishing.
+- [x] Repair the SDK patch expectations and high/critical security gate in the separately owner-approved maintenance above; the earlier audit itself did not implement them.
+- [ ] Complete latest physical hub/address/large-text acceptance separately; signing or browser fixtures do not establish native behavior. No sharing is authorized by review alone.
+
+## Identification hub — October 29
+
+- [x] Route the illustrated Home Skannaa tuote card to the real Identify tab with the owner-proposed combined FI copy and equivalent EN; preserve direct shortcuts.
+- [x] Prioritize barcode scanning, then manual entry, then explicit AI recognition; retain current safeguards and improve narrow/native-large reading width without text caps.
+- [x] Add five source-policy cases and expand the existing browser order/prominence/route/back/passive-entry matrix. Full 410/mobile 240 checks and all five browser suites pass; outcomes in IDENTIFY_HUB_EVIDENCE and TEST_EVIDENCE.
+- [ ] Verify the latest Home → Identify → three-method/back flow at normal and larger native text on installed client 3; no image capture/upload, real location or paid call is needed for this navigation check.
+
+## Whole-app visual consistency — October 29
+
+- [x] Extend Home's font, ink/secondary/link/canvas tokens to all thirteen functional pages; centralize fonts and Home palette aliases without changing semantic statuses or dependencies.
+- [x] Unify compact leaf/back navigation, surfaces, controls, focus and original symbols; refine Identify/Settings and keep reading/capture/provenance content focused.
+- [x] Repair reviewed dark navigation corners; add nine source-policy regressions and expand the actual-Metro typography/palette/focus/narrow/wide browser matrix. Scoped 240/full 405 checks and all five fixture suites pass. Exact outcomes: APP_DESIGN_CONSISTENCY and TEST_EVIDENCE.
+- [ ] Accept this latest all-page design on installed client 3 at normal and larger native text, with real navigation/VoiceOver recorded separately from browser evidence. No photo upload/GPS/paid call is needed.
+
+## Reference fidelity continuation — October 29
+
+- [x] Compare proportional reference gaps; implement improved branding, leafy photo-card crop, filled native-compatible symbols, Home-only colors and compact hierarchy while retaining current AI/photo safeguards and actual data.
+- [x] Add four asset/PNG/topology, eight contrast and two crop regressions; full 396 cases/mobile 240, vector byte check and all five browser suites pass. Record first lint/type/policy failures and repairs.
+- [x] Relaunch existing client 3, confirm targeted inventory, inspect actual latest native Home and verify later matching process, without reinstall/capture/upload/GPS/paid call.
+- [ ] Complete latest physical navigation and large-text acceptance; Home rendering alone does not establish camera entry, VoiceOver, native interactions or recognition accuracy.
+
+## Reference composition follow-up — October 28
+
+- [x] Follow the supplied Home's illustrated header/search/photo-card/compact-tile/chip/nearby/history hierarchy without fabricating its example data.
+- [x] Implement local FI/EN four-material guide search/filters and validated opt-in history previews; retain all current flows and add eight pure/two policy cases.
+- [x] Repair reviewed large-text/stale-preview risks; record asset generation provenance and validation evidence.
+- [ ] Accept this latest Home/search/photo-entry/navigation at default and large native text on client 3; previous Home evidence predates the refinement. No private photo/GPS or paid recognition call is needed for visual QA.
+
 Status markers: `[ ]` pending, `[~]` active, `[x]` complete, `[!]` externally blocked.
 
-- [x] October 26: prepare the test repository for Expo Go SDK 58; validate compatible dependencies, strict types/tests and web/iOS/Android JavaScript exports without changing app behavior or folder ownership.
-- [ ] Verify the upgraded app on the owner's SDK 58 Expo Go device before considering any original-repository migration. Existing dependency-audit findings remain a separate gate.
+## Current illustrated integration — October 28
+
+- [x] Obtain explicit selective visual-import/iPhone-install approval; branch from `28e0f32` without merging private history or publishing either repository.
+- [x] Reuse unchanged owner artwork; implement FI/EN illustrated Home and four real tabs over existing functionality. Preserve explicit location intent, photo safety, sources, dark mode, large text and technical identity.
+- [x] Repair observed artwork/stack/selector issues; four new unit + four policy regressions, full 372-test validation/mobile 222 scope and four browser runners pass. Browser synthetic tests are not native acceptance.
+- [x] Generate SDK 58 iOS client 3 and install 122 pods. Record ENOSPC failure; remove only the owner's exact two approved old build roots and preserve a verified independent old-app recovery artifact.
+- [x] Serial Xcode 26.6/iOS 26.5 Debug build succeeds; strict app/11-framework signatures, actual profile/team/device/purpose checks, exact-bundle replacement install and 0.1.0/build-3 inventory pass. Profile expires November 4 at 20:28:39 Helsinki. First Security rejection resolves after owner Trust; fresh launch, two same-PID observations and current native Home/artwork/four-tab screenshot pass. No uninstall/reset or all-flow/native-camera/retention claim.
+- [ ] Complete installed-build native navigation acceptance separately from the browser matrix; keep Mac Metro/API available and do not collect real photo/location data merely to test navigation.
+- [ ] Continue the remaining guide/search and page-specific visual port as later coherent work; old municipality provider/welcome/profile/points are not part of this first pilot.
+- [ ] Resolve renewed SDK 58 patch expectations and baseline dependency-security/photo-accuracy gates before any production claim. No push or paid photo call is authorized.
+
+- [x] October 26: upgrade the test repository to Expo SDK 58 and complete host validation; owner confirms Expo Go works.
+- [x] Apply the same dependency/configuration and QA fixes locally to KierratysAppi main `73fed83`, preserving application behavior and folder ownership.
+- [x] Obtain owner approval to commit and push the tested SDK 58 upgrade to `roopeaal/KierratysAppi/main`.
+- [ ] Check the upgraded original-repository app on the owner's phone. Existing dependency-audit findings remain a separate gate.
 
 ## Current authorized team-main integration — October 20
 

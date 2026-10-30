@@ -1,13 +1,326 @@
 # Test evidence
 
-2026-10-26 SDK 58 migration in `Bezxs/testkierratysappi`, based on `3d5899e`:
+## October29 — fresh contributor recheck and owner-authorized main sharing
+
+- **Publication receipt:** coherent heading/recheck commit091d962389a56ec5c52386cfbaf4a8bddef6b013 follows the seven reviewed integration/maintenance commits. Documentation-inclusive final full validation also passes431 cases (`validate-final.log`). Immediate fresh fetch still has0 remote-only/8 local-only; working tree clean and actual destination/ref verified. Normal explicit `git push origin HEAD:refs/heads/main` succeeds **28e0f32..091d962**. Independent `git ls-remote --heads origin main` at2026-10-29T20:41:13Z equals the exact local SHA. No force, private KeepItGreen write, tag/other branch/settings or production release.
+- Actual GitHub runs for that source SHA: [CI40951228125](https://github.com/roopeaal/KierratysAppi/actions/runs/40951228125) and [Security40951228098](https://github.com/roopeaal/KierratysAppi/actions/runs/40951228098) initially **in progress**. These are new runs, not the older main's failed CI; no remote pass inferred. This source-only publication/outcome follow-up is within the same explicit owner authorization; future team sharing still needs a new request.
+- Actual origin is `https://github.com/roopeaal/KierratysAppi.git`; private
+  KeepItGreen remote/default push target is not used. Fresh fetch, independent
+  ls-remote heads and paginated GitHub main-author/PR metadata still confirm
+  main28e0f32, ITbes-dev1 commit, Rdotcom8 plus merged#37. All ten IDs remain
+  ancestors at efbf28b (0 behind/7 ahead). Two independent source/patch reviews
+  find no new contributor behavior loss or private-history merge. Native-only
+  address lookup and still-unwired material helper remain explicit pre-existing
+  limits; see CONTRIBUTOR_PRESERVATION_AUDIT for current vs dated baseline.
+- Rename only Home's four existing editorial-shortcut heading to **Suositut
+  haut / Popular searches**; no measured ranking/tracking/provider change.
+  New localized regression:8/8 localization cases pass. Full pinned
+  `pnpm validate` passes **431 unique cases (113 policy + 318 application)**,
+  boundaries/format/lint/types/all builds/16 routes. Mobile scope passes
+  **242 overlapping cases**. Independent contributor-focused24 mobile,
+  13 collection-contract and10 location-policy cases also pass; not new totals.
+- Fresh online Expo install check passes; pinned Doctor1.21.5 **20/20**;
+  unchanged live security policy passes with **0 high/critical**, twelve
+  moderate/six low records retained. No dependency update, exception or CI
+  gate bypass in this heading/sharing unit. Auto-install before diagnostic
+  commands is disabled; mandatory validation commands are unchanged.
+- Actual-Metro reference Home suite passes in FI/EN: new semantic heading,
+  four real shortcuts/local search/recovery, opt-out history protection and
+  explicit reopen, combined Identify entry, no implicit API/GPS and44pt targets.
+  Inspect FI/EN390px screenshots: heading fits and actions remain readable.
+  Strict integrated suite passes barcode/manual/AI entry/back, selected tabs,
+  direct-URL noGPS vs one-shot Points press/five sourced records, FI/EN/dark/
+  320/390/1280 and130% synthetic text. No actual barcode/photo/location/provider
+  or paid call. Earlier five-suite evidence remains separately dated above/below;
+  this unit reruns these two affected navigation/Home suites, not all five.
+- First new heading assertion fails because the long-running test Metro
+  serves **Selaa materiaaleja**; DOM diagnostic confirms stale text. Restart
+  only verified loopback8094 with cleared cache; unchanged heading assertion
+  passes. First concurrent cold integration sequence times out at direct
+  `/nearby`; isolated diagnostic returns200/no page errors/noGPS, and the same
+  complete strict suite passes alone after builds finish. No app workaround,
+  assertion loosening, added retries or hidden failure. Phone services untouched.
+- Aggregate selected history/path review finds no work/native/profile/key/
+  device artifacts or source deletions. Limited redacted-pattern scan across
+  all seven pending patches finds zero candidates, not full Gitleaks acceptance.
+  Roope explicitly authorizes the normal team-main source push; actual remote
+  SHA and GitHub CI outcomes are recorded after execution, not inferred here.
+  Public production remains NO-GO; no new external blocker or native/paid action.
+- Ignored receipts/screenshots: `work/team-push-2026-10-29.92TZOw/` contains
+  validate.log, validate-mobile.log, security-audit.log, expo-check.log,
+  expo-doctor.log, failed reference-home.log/integration.log, passing
+  reference-home-repaired.log/integration-recheck.log, local DOM diagnostics,
+  metro-8094.log, reference-home/ and integration/ fixture PNGs. No private
+  user/device data, credential values, signed app or generated native files in Git.
+
+## October29 — patched iPhone build4 installed and started
+
+- Source baseline `e815522`; only iOS build4 metadata plus corresponding policy
+  and one immutable-native-Constants guard regression. Initial added fixture
+  failed strict TS2353; repaired with a structural variable, no suppression.
+  Full validation passes **430 unique tests (113 policy+317 application)**,
+  all builds/16 routes; mobile typecheck,12 photo cases/4 policy cases pass.
+  Final documentation-inclusive rerun also passes: mobile241 overlapping cases
+  (`validate-mobile.log`) and full430 (`validate-final.log`) in the same root.
+- Completed verified app3/entire-native-tree APFS snapshots before Expo cleared
+  the ignored iOS directory. New generation and CocoaPods1.17 install122 pods;
+  new lock equals Manifest. React-Core0.88.1 and all twelve Expo/RN patch targets
+  match JS. No old-lock restoration, cleanup, new runtime dependency or ID change.
+- Stable Xcode26.6/iOS26.5 Debug serial **BUILD SUCCEEDED**. Explicit new verifier
+  checks actual build4/config4/0.1.0/ID/name/scheme, default/FI/EN camera/location,
+  no microphone/Always/background location, strict app/all11-framework signatures,
+  profile/signed team/app/device/task-allow binding and patched native lock.
+  Reused valid profile: **created2026-10-28T18:28:39Z; expires2026-11-04T18:28:39Z /
+  November4 at20:28:39 Helsinki**. No new seven-day renewal is claimed.
+- Replacement install succeeds. Exact-bundle device inventory confirms0.1.0/
+  build4, without uninstall/reset. No private app data/history inspected; data
+  retention is not independently certified. Current iOS manifest/actual launch
+  asset are200/build4/SDK58,12,156,274 bytes, current LAN API and no server-key
+  markers. These are host checks, separate from physical observations below.
+- Native launch succeeds without a new trust prompt; three targeted queries
+  retain its PID. Actual in-scope Home and passive `/identify` deep-link images
+  inspected: current artwork/combined card/four tabs and barcode/manual/AI order
+  with uncertainty text. Return-home link succeeds. Not a physical button/back,
+  largest-text/VoiceOver/camera/GPS/recognition-accuracy/all-flow pass.
+- Initial all-interface API start was blocked before execution. Roope explicitly
+  approves current trusted LAN and current key. API binds only that address3003;
+  Metro127.0.0.1:8093 plus address-only forwarding8093, no payload logging.
+  Services run only after matching client4 install; no wildcard listener. Existing
+  key stays server-side/unchanged, not printed or in the bundle. Only health/
+  capability GETs, no image, actual location/barcode, provider or paid inference.
+- Ignored root `work/ios-patch-2026-10-29.jsZhvk/`: original-clone/profile receipt,
+  client3.app/ios-client3, prebuild/pods/build, first validate.log and repaired
+  validate-repaired.log; native-verification.json, install.json, installed-after.json,
+  dev-runtime-verification.json, launch.json, process-{1,2,3}.json, native-home.png,
+  native-identify.png, return-home.json. Main app hash/lock hash in verifier receipt.
+  Source-only documentation: IOS_PATCH_CLIENT4; no profiles/identifiers/binaries/
+  screenshots in Git, no GitHub push or production GO.
+
+## October 29 — SDK 58 compatibility/security repair
+
+- Owner-approved maintenance from `ceedb6a`. Frozen install/supply-chain age
+  verification, peers and fresh online Expo check pass. CI-pinned **Doctor
+  1.21.5: 20/20**. Live unchanged security policy passes: **zero high/critical,
+  12 moderate + 6 low** retained. Raw audit exits1 for monitored records, not a
+  policy failure. No exception/exclusion or severity downgrade.
+- Full validation passes **429 unique cases (113 policy + 316 application)**,
+  boundaries/format/lint/types/all builds/16 routes. All three independent
+  scopes pass; overlapping tests, not additional totals. Nineteen new SDK/
+  security-floor/parser/actual Expo CLI-Zod regressions complement existing v1/
+  API/provider tests. Independent focused29/29 overlaps the full count.
+  Final documentation-inclusive full rerun also passes: `validate-final.log`.
+- **All five actual-Metro browser suites pass** on isolated loopback8094:
+  navigation, reference Home, whole-app refinement, photo safety and nearby.
+  Synthetic camera/GPS and intercepted product/photo responses only; no real
+  user data, paid inference or live provider lookup. Existing FI/EN, all-method
+  entry/back, passive entry, consent/material correction/provenance, recovery,
+  local state, keyboard, dark, 320/390/1280 and130% synthetic-text checks remain.
+  Inspected Home, dark Identify and narrow/large material-review screenshots.
+- Initial navigation failure was a mixed-frame responsive measurement race:
+  stale manual y405/h137 against AI y528; atomic measurement gave actual
+  manual bottom512/AI top528, a16px gap. Wait for the scoped narrow branch and
+  read all geometry/fonts together; exact assertions remain. First repair's
+  broad icon selector was corrected to current Identify actions. Original
+  failure/diagnostic retained, not treated as app overlap or ignored.
+- Built API smoke with photo AI explicitly disabled: health/OpenAPI/
+  capabilities HTTP200, synthetic malformed lookup HTTP400. Corrected first
+  smoke's wrong OpenAPI URL to unchanged `/v1/openapi.json`. No valid lookup.
+  App source/localization/assets/rules/directory/SQL/identity/model/prompt/CI/
+  audit implementation unchanged; intentional package/lock/CLI migration explicit.
+- Ignored root: `work/sdk58-security-maintenance-2026-10-29/`. Core logs:
+  `frozen-install`, `peers`, `expo-check`, `expo-doctor`, `security-audit`,
+  `validate`, `validate-{shared,backend,mobile}`, `api-smoke` (`.log`);
+  `audit-{before,after}.json`. Browser: `navigation-final.log`, `reference.log`,
+  `refinement.log`, `photo.log`, `nearby.log`, `browser/`; initial failure is
+  `navigation.log`. SDK58_SECURITY_MAINTENANCE records procedures/failed attempts.
+- **Not a phone/native/signing/install or remote CI pass.** Verified old
+  Metro8093/API3003 paused before native-dependency changes; matching client
+  rebuild/install/smoke is next. Old November4 profile not renewed. No GitHub
+  write/paid call; production NO-GO and PHOTO-003 remain.
+
+## October 29 — contributor preservation / pre-sharing audit
+
+- Inspected app `ceedb6a`, fresh team main `28e0f32`; 0 remote-only/5
+  local-only commits. GitHub account queries verify ITbes-dev's one commit and
+  Rdotcom's eight nonmerge commits plus merged PR #37. All are ancestors;
+  actual patches/call sites and unchanged core files were also checked.
+  Matrix and qualifications: CONTRIBUTOR_PRESERVATION_AUDIT.
+- Fresh pinned full validation **410 unique cases (94 policy + 316 app)**,
+  all gates/builds/16 routes passes. Independent mobile 148/contracts 25/
+  location-policy 10/SDK-policy 10 checks also pass; overlapping, not additive.
+- Fresh **online Expo install --check exits 1: 12 expected patch updates**.
+  Earlier offline-map fallback is not accepted. Fresh **security:audit exits
+  1: 12 high/critical advisory records**, no exceptions. Current-main lockfile/
+  manifest/workflows are unchanged; findings are not visual-branch additions.
+- Actual main CI 40403403764 failed Dependency security policy on October 26;
+  its three part jobs and separate Security 40403403577 succeeded. Do not
+  equate these different workflows or infer an active secret leak from an older
+  annotation. GET metadata only, no workflow rerun.
+- Ignored logs: `work/contributor-audit-2026-10-29/{validate,security-audit}.log`.
+  Final documentation-inclusive full rerun also passes in
+  `validate-post-audit-docs.log`; app HEAD remains `ceedb6a`.
+  pnpm 11.16.0 with automatic pre-command dependency installation disabled to
+  keep review non-mutating; actual mandatory checks were not weakened.
+  No new browser/native/accuracy pass, real user data, paid call, app/package
+  correction, merge, commit, push or PR. Only audit/state documentation updated.
+
+## October 29 — combined barcode/manual/AI hub
+
+- Full pinned `pnpm validate`: **410 unique cases (94 policy + 316 application)**,
+  all mandatory gates/builds and 16 routes; scoped mobile **240 overlapping
+  cases**. Logs: `work/identify-hub-2026-10-29/validate-final.log` and
+  `validate-mobile.log`. Standalone mobile typecheck/7 localization cases also pass.
+- Five source-policy regressions plus expanded actual browser assertions verify
+  Home gateway→selected Identify tab, barcode/manual/AI reading/keyboard/visual
+  order, larger barcode action, each entry/back path, passive hub and FI/EN
+  names/AI uncertainty. Narrow/native-large layout prioritizes text over
+  secondary icon columns; final 320-pixel browser labels retain usable width.
+- All five actual-Metro suites pass final source: `navigation.log`,
+  `reference.log`, `refinement.log`, `photo.log`, `nearby.log` in the same
+  ignored root; first visual pass preserved separately. FI/EN/light/dark,
+  320/390/1280 and 130% synthetic text, current source/error/local-state/photo/
+  nearby safeguards remain. Exact snapshot locations in IDENTIFY_HUB_EVIDENCE.
+- No real image/barcode/location/address or paid inference, backend/shared/model/
+  rule/dependency/native/signing/install change or GitHub write. Latest physical
+  hub/navigation/large-text/VoiceOver/camera/accuracy remain unverified; earlier
+  phone Home evidence is not generalized. November 4 expiry and production NO-GO
+  gates remain unchanged.
+
+## October 29 — Home-aligned functional pages
+
+- Final pinned `pnpm validate` passes **405 unique cases (89 policy + 316
+  application)**, all mandatory boundaries/format/lint/strict types/builds and
+  **16 web routes**; final scoped mobile passes **240 overlapping cases**.
+  Logs: `work/app-design-consistency-2026-10-29/validate-complete.log` and
+  `validate-mobile-final.log`.
+- Nine new source-policy regressions guard shared font/mono distinction,
+  derived Home palette, thirteen functional pages, leaf/back/icon semantics,
+  retained warnings/consent, separated keyboard focus and dark root surface.
+  Expanded actual browser checks compare Home/subpage computed fonts/heading
+  colors/canvas, guide/feedback sans fields, focus ring and navigation background.
+- All five runners pass on the current styles: `refinement-verified.log`,
+  `reference-accepted.log`, `navigation-accepted.log`, `photo-accepted.log`,
+  `nearby-accepted.log` in that root. FI/EN, dark, 130% synthetic text and
+  reading/form/Identify/Settings/Nearby 320/390/1280 layouts; existing recovery,
+  provenance, local history/drafts/deletion, consent/material correction and
+  explicit location boundaries remain. No real GPS/image/address or paid call.
+- Latest whole-app snapshots are in `accepted/refinement/`; original runner
+  snapshot locations and scope are recorded in APP_DESIGN_CONSISTENCY.
+  Independent review found white corners behind rounded dark navigation; root
+  theme paint and source/computed-style regressions repair this. Initial
+  formatting/import-order errors were fixed, not bypassed.
+- One concurrent browser attempt timed out waiting for manual input after the
+  offline scenario (`refinement-final-pass.log` retained). Added bounded
+  route/readiness/heading/page-error diagnostics and a failure screenshot, with
+  no automatic retry, timeout relaxation or skipped assertion; reran separately
+  after builds/other browser jobs. Exact cause is not established and no
+  flake-free-CI claim is made. Existing two source-literal lint warnings remain.
+- No new native build/sign/install, current full-app phone/Dynamic Type/
+  VoiceOver/camera/accuracy/performance or production acceptance. Earlier native
+  Home evidence is not generalized. November 4 profile expiry and NO-GO gates
+  remain unchanged; no dependency/model/rule/backend/shared change or GitHub write.
+
+## October 29 — reference-fidelity and existing-client Home
+
+- Full pinned `pnpm validate`: **396 unique cases (80 policy + 316 application)**,
+  all boundaries/format/lint/strict types/builds/16 routes; mobile **240 overlapping
+  cases**. Final exits 0: `work/reference-polish-2026-10-29/validate-final.log`
+  and `validate-mobile-final.log`.
+- Four new built-in-only asset/PNG/topology/wiring cases, eight AA token-pair
+  cases and two bounded responsive-crop cases. Original SVGs/native alpha PNGs
+  are source-controlled, no new app dependency; same sharp 0.35.5/libvips 8.18.7
+  byte re-render `--check` passes (`symbols-check.log`).
+- All five actual-Metro runners pass: `browser-final.log`,
+  `refinement-final.log`, `navigation.log`, `nearby.log`, `photo.log`.
+  New Home AI card routes to the unchanged photo flow. All existing opt-in
+  history/local search/explicit GPS and photo consent/material correction/
+  unknown/unsafe/cancellation/source evidence remains. Fixtures are isolated;
+  no actual image/GPS/address or paid app-recognition request.
+- Final FI/EN/Home/large/narrow/dark snapshots reviewed, plus actual latest native
+  Home: fresh exact-app activation succeeds, targeted inventory reports 0.1.0/
+  build 3, later query finds the launch PID, and the screenshot shows current
+  artwork/card/symbols/tabs. No private history entry or other app content shown;
+  development gear and OS status/back label are not app-store visuals.
+- Native lock/launch/capture/app/process receipts and `native-home.png` remain
+  ignored in the same evidence root. No new sign/install/profile/credential or
+  native camera/navigation/large-text/VoiceOver/accuracy/standalone claim.
+  Existing November 4 profile expiry and production NO-GO remain unchanged.
+- Repaired actual initial failures: unsupported weight 750, missing source SVG
+  titles and stale source-policy geometry/icon assumptions; did not skip lint,
+  add exclusions or weaken failure-mode checks. Reference comparison, source/
+  export methodology, exact limits and artifact paths: REFERENCE_VISUAL_POLISH.
+
+## October 28 — closer supplied-reference Home
+
+- Full pinned `pnpm validate`: **382 unique cases (76 repository policy + 306
+  application)**; boundaries/format/lint/strict types, package/API builds and
+  **16 web routes**. Mobile scope: **230 overlapping cases**. Final exit receipts:
+  `work/reference-home-2026-10-28/validate-final.log` and
+  `validate-mobile-final.log`.
+- Eight new pure cases (5 guide-search, 3 history-preview), two new source-policy
+  cases. Existing source policies retain accessible labels, current actions,
+  scaling/focus/provenance/no-placeholder/no-implicit-GPS/photo boundaries.
+- Five actual-Metro browser runners pass on the final source: new
+  `reference-home-browser.cjs`, existing app-refinement, integrated navigation,
+  nearby and photo suites. Ignored logs: `browser-final.log`,
+  `refinement-final.log`, `navigation-final.log`, `nearby-final.log`,
+  `photo-final.log` in the same evidence root.
+- New browser cases cover FI/EN local guide search, four material chips,
+  unknown/reset/duplicate parameters, opted-out stale-history suppression, a
+  real-shaped opt-in saved preview, explicit single re-query and no inferred bin,
+  no implicit GPS/provider calls and 44-point controls. Saved values are isolated
+  QA fixtures, not user history or runtime seed data.
+- Reviewed Home top/footer/history/search, dark, 320/390/1280 and 130% synthetic
+  text screenshots. The old large-text word split is reproduced and repaired by
+  allocating more text space, without font caps. Native large-text arrow/chip/
+  stale-refresh risks found in independent review are repaired and source-guarded.
+- Earlier obsolete-ID/prior-route-heading/duplicate-icon/renderer-wait failures
+  were repaired before final passes; initial failed logs remain where available.
+  One test-only duplicate variable declaration was fixed before final validation.
+  First browser launch without host permission failed before page load; reruns
+  used approved host access. These facts are not native product failures or a
+  claim of flake-free CI.
+- Transparent decorative bottle PNG: alpha/dimensions/byte count/hash checked,
+  exact built-in tool prompt/input roles/project asset in
+  `REFERENCE_HOME_REFINEMENT.md`. Original assets unchanged.
+- No real capture/GPS/address or paid app-recognition call. Host Metro/API health
+  and `photo-capabilities.enabled=true` pass; no new native build/install/
+  signature/accuracy/VoiceOver/standalone claim. Existing release/security/photo
+  gates and build-3 November 4 expiry remain. No GitHub push.
+
+
+## October 28 illustrated integration
+
+Team `28e0f32` functionality/SDK 58 is retained while explicitly approved selected
+KeepItGreen `0142bb0` presentation is ported on a separate local branch. New
+Home/Identify/Settings/tab routing, one-shot location intent and immersive-flow
+separation have four pure + four policy regressions. Full pinned validation
+passes **372 unique tests (74 policy + 298 application)** and all mandatory
+checks/builds/16 web routes; mobile scope passes **222 overlapping tests**. Four
+actual-UI browser runners pass; inspected FI/EN/dark/narrow/large images, synthetic
+GPS and photo fixtures remain distinct from native acceptance. No live paid
+request or private photo/location acquired. Detailed repairs, artifact paths,
+exact owner-approved two-root storage cleanup and native build outcome:
+`ILLUSTRATED_INTEGRATION.md`. The serial stable-Xcode native build, strict app/11
+framework signatures/profile/device/purpose checks, replacement install/build-3
+inventory pass. Actual expiry is **November 4 at 20:28:39 Helsinki**. First FBS
+Security refusal resolves after owner **luotettu**: fresh launch, two same-PID
+queries and inspected native Home/artwork/four tabs pass. Other native controls,
+camera/GPS/retention/a11y/performance remain unaccepted. A fresh 11-package Expo
+patch expectation fails closed. No remote write, dependency/security bypass or
+production GO; current Debug still needs the Mac Metro/API/LAN.
+
+2026-10-26 SDK 58 migration, tested in `Bezxs/testkierratysappi` at `b578137` and applied locally to KierratysAppi main `73fed83` after the owner confirmed Expo Go works:
 
 - Expo 58.0.19 with React 19.3.0, React Native 0.88.0 and Expo-aligned modules installed through `expo install --fix`; frozen reinstall, `expo install --check` and `pnpm peers check` pass. The one-day release-age gate, signatures/checksums and TLS checks remain enabled. Expo added its status-bar config plugin; app IDs, permissions and application logic are unchanged.
 - Full `pnpm validate` passes: 70 policy + 294 application tests, boundaries, formatting, lint, strict types, package/API builds and 14-route web export. `pnpm validate:mobile` also passes. Doctor 1.21.5 passes 20/20; this cloud machine required Node's supported `NODE_USE_ENV_PROXY=1` setting for its proxy. The initial unproxied 18/20 result was a connectivity failure, not a skipped gate.
 - iOS and Android Hermes exports pass, 5,084,274 and 5,068,086 bytes respectively. Actual Expo Go manifests for both platforms report SDK 58.0.0 and a launch asset. These are JavaScript/bundler checks, not native compilation, signing or physical-device acceptance. API health/OpenAPI, allowed CORS and invalid-input smoke checks pass.
 - All three existing Chromium runners pass: app refinement, nearby UX and photo recognition. FI/EN, light/dark, narrow/large text, lookup loading/errors, uncertainty/provenance, local data, five points, cancellation/cleanup and isolated photo fixtures remain covered. Loading now uses a held HTTP fixture; navigation/screenshot checks wait for the target content instead of reading transient frames. Assertions remain enabled. No paid/live photo request occurred.
 - Fresh audit comparison: SDK 57 and SDK 58 both have 11 high and 1 critical advisory records, with unchanged affected versions and no introduced high/critical IDs. Moderate records drop from 25 to 23; six low remain. `pnpm security:audit` correctly still fails; this migration does not resolve the baseline security gate.
-- Logs are `/workspace/.cloud-onboarding/kierratysappi/sdk58-*.log`; ignored native exports and browser evidence are under `work/`. Test the owner's phone with SDK 58 Expo Go before original-repository approval. Existing photo capture still requires its compatible development build. The original repository and `mobile` / `backend` / `shared` ownership remain untouched.
+- Before this change, original main `73fed83` had a [failed CI run](https://github.com/roopeaal/KierratysAppi/actions/runs/39461372769): frozen install and `pnpm validate` passed, Expo project health failed, and the audit step was skipped. Public Doctor details were unavailable. The [October 26 scheduled Security run](https://github.com/roopeaal/KierratysAppi/actions/runs/40306584979) on the same commit passed CodeQL but failed Gitleaks with a leak-detection annotation. Candidate values were not inspected; that finding remains unresolved and predates this patch.
+- Fresh original-checkout frozen install, `pnpm validate` (364 tests, all required checks and builds), `pnpm validate:mobile` (218 overlapping tests), Expo compatibility, peer checks and Doctor 20/20 pass. The first sandboxed run failed because the importer regression could not spawn Node (`EPERM`); the unchanged test passes with subprocess access.
+- All three browser suites also pass against the original checkout. Initial runs timed out on manual/nearby controls; a second app run read the Home legal control before it was visible. Sequential warm runs pass every unchanged assertion. The app diagnostic copy adds failure capture only under ignored `work/`; no application code, assertions or tracked waits changed during these reruns. Home/manual/nearby-dark-large/photo-English screenshots were inspected. Both original-checkout iOS/Android Expo Go manifests report SDK 58.0.0 with launch assets. Logs are `/workspace/.cloud-onboarding/kierratysappi/original-sdk58-*`, including `browser-app-diagnostic.log`, `browser-nearby-attempt2.log` and `browser-photo.log` with that prefix. These checks do not replace original-checkout phone acceptance.
+- Test-repository logs are `/workspace/.cloud-onboarding/kierratysappi/sdk58-*.log`; ignored native exports and browser evidence are under `work/`. The original-repository implementation/configuration/lockfile/QA changes match the tested commit exactly. The owner reports that Expo Go works in the test repository; original-checkout phone checks remain pending. Existing photo capture still requires its compatible development build. The `mobile` / `backend` / `shared` ownership is unchanged. The owner approved committing and pushing this upgrade to `roopeaal/KierratysAppi/main` after successful test-repository device testing. Publication receipts are retained under ignored `work/sdk58-publication/`; remote CI results must be checked separately.
 
 ## Authorized team-main integration — 2026-10-20
 

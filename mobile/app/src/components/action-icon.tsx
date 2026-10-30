@@ -1,13 +1,39 @@
 import { StyleSheet, View } from "react-native";
 import { useAppTheme } from "@/theme/tokens";
 import { BarcodeMark } from "./packaging-mark";
+import { ReferenceSymbol } from "./reference-symbol";
 
-export type ActionIconKind = "nearby" | "guide" | "history" | "manual";
+export type ActionIconKind =
+  | "nearby"
+  | "guide"
+  | "history"
+  | "manual"
+  | "home"
+  | "scan"
+  | "settings"
+  | "photo";
 
-/** Original native linework. The surrounding control supplies its accessible name. */
-export function ActionIcon({ kind }: { readonly kind: ActionIconKind }) {
-  const { palette } = useAppTheme();
-  const stroke = { borderColor: palette.actionLink };
+const referenceIcons = {
+  nearby: "location",
+  guide: "recycling",
+  home: "home",
+  scan: "scan",
+  settings: "settings",
+  photo: "camera",
+} as const;
+
+/** The same original symbols as Home; the surrounding control supplies the name. */
+export function ActionIcon({
+  kind,
+  color,
+}: {
+  readonly kind: ActionIconKind;
+  readonly color?: string;
+}) {
+  const { palette, isDark } = useAppTheme();
+  const ink = color ?? palette.actionLink;
+  const stroke = { borderColor: ink };
+  const symbol = kind === "history" || kind === "manual" ? null : referenceIcons[kind];
   return (
     <View
       style={styles.icon}
@@ -18,20 +44,16 @@ export function ActionIcon({ kind }: { readonly kind: ActionIconKind }) {
       pointerEvents="none"
       testID={`action-icon-${kind}`}
     >
-      {kind === "nearby" ? (
-        <View style={[styles.pin, stroke]}>
-          <View style={[styles.pinCentre, stroke]} />
-        </View>
-      ) : kind === "guide" ? (
-        <>
-          <View style={[styles.bookLeft, stroke]} />
-          <View style={[styles.bookRight, stroke]} />
-          <View style={[styles.bookSpine, stroke]} />
-        </>
+      {symbol ? (
+        <ReferenceSymbol
+          name={symbol}
+          size={28}
+          color={color ?? (isDark ? (kind === "photo" ? palette.cobalt : palette.pine) : undefined)}
+        />
       ) : kind === "history" ? (
         <View style={[styles.clock, stroke]}>
-          <View style={[styles.clockMinute, { backgroundColor: palette.actionLink }]} />
-          <View style={[styles.clockHour, { backgroundColor: palette.actionLink }]} />
+          <View style={[styles.clockMinute, { backgroundColor: ink }]} />
+          <View style={[styles.clockHour, { backgroundColor: ink }]} />
         </View>
       ) : (
         <View style={styles.keypad}>
@@ -66,47 +88,7 @@ export function ScanPackageMark({ color }: { readonly color: string }) {
 const strokeWidth = 1.8;
 const styles = StyleSheet.create({
   icon: { width: 28, height: 28, alignItems: "center", justifyContent: "center" },
-  pin: {
-    width: 19,
-    height: 19,
-    borderWidth: strokeWidth,
-    borderRadius: 10,
-    borderBottomRightRadius: 2,
-    transform: [{ rotate: "45deg" }],
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: -4,
-  },
-  pinCentre: { width: 6, height: 6, borderWidth: strokeWidth, borderRadius: 3 },
-  bookLeft: {
-    position: "absolute",
-    left: 2,
-    top: 5,
-    width: 12,
-    height: 19,
-    borderWidth: strokeWidth,
-    borderTopLeftRadius: 3,
-    borderBottomLeftRadius: 2,
-    transform: [{ rotate: "-5deg" }],
-  },
-  bookRight: {
-    position: "absolute",
-    right: 2,
-    top: 5,
-    width: 12,
-    height: 19,
-    borderWidth: strokeWidth,
-    borderTopRightRadius: 3,
-    borderBottomRightRadius: 2,
-    transform: [{ rotate: "5deg" }],
-  },
-  bookSpine: { height: 20, borderLeftWidth: strokeWidth, marginTop: 3 },
-  clock: {
-    width: 23,
-    height: 23,
-    borderWidth: strokeWidth,
-    borderRadius: 12,
-  },
+  clock: { width: 23, height: 23, borderWidth: strokeWidth, borderRadius: 12 },
   clockMinute: { position: "absolute", left: 9, top: 4, width: strokeWidth, height: 7 },
   clockHour: { position: "absolute", left: 9, top: 9, width: 6, height: strokeWidth },
   keypad: { width: 21, flexDirection: "row", flexWrap: "wrap", gap: 3 },

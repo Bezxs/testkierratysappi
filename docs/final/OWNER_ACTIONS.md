@@ -1,5 +1,140 @@
 # Owner actions
 
+## October29 — client4 installed, source remains local
+
+- **Engineering completed:** matching patched native build4, same app/version,
+  strict app/all11-framework/profile/native-lock/purpose checks, replacement
+  install/targeted inventory, actual launch/Home/passive Identify rendering/
+  repeated process/return-home evidence. Full430 checks pass. Existing profile
+  reused; **request renewal before November4 at20:28 Helsinki**, no automation.
+- **Roope completed permission choices:** current trusted LAN and same server
+  key explicitly approved. Final listeners use only loopback/current LAN IP,
+  not wildcard interfaces; key stays on server. No paid request by engineering.
+- **Engineering + Roope next:** follow NEXT_ACTION on client4, default/larger
+  native text and controlled button entry/back. Cover camera/no barcode for
+  any scanner preview; no image/upload/GPS/paid request. Actual physical
+  settings/actions are owner-operated when needed; screenshots only nonprivate
+  intro screens. Native Home/deep-link rendering is not complete interaction QA.
+- Mac Metro/API/LAN still required; leaving the current network stops access.
+  No public release or GitHub push; separate owner authorization remains needed.
+
+## October 29 — dependency gates repaired; native client next
+
+- **Engineering complete:** twelve official SDK/RN expectations and twelve
+  blocking advisory records repaired. Frozen install, peers, online Expo,
+  Doctor20/20, security policy, full429 tests/builds, three independent scopes
+  and five browser suites pass. Eighteen lower-severity records remain visible;
+  no teammate implementation removed. See SDK58_SECURITY_MAINTENANCE.
+- **Engineering next:** preserve/verify client3 rollback; generate the patched
+  native project from `mobile/app` using the same technical ID/team and stable
+  Xcode26.6, install matching pods, compile and verify app/framework signatures,
+  purpose strings, native/JS versions and actual profile dates. Replace-install
+  without uninstall/reset; verify inventory/startup and NEXT_ACTION navigation/
+  larger text. Restore phone-serving Metro/API only with matching binary. No
+  real GPS/photo upload/paid inference is needed for this acceptance.
+- **Roope only if needed:** connect/unlock the intended phone and handle actual
+  trust/keychain/account prompts personally. No new account/funding requirement
+  was demonstrated. Old profile expires November4 at20:28:39 Helsinki until a
+  new profile is verified; never send credentials/codes in chat.
+- **Separate Roope sharing decision:** this repair is not push permission.
+  Source is locally validated, remote CI unobserved; publication requires
+  explicit destination/ref approval. Production/PHOTO-003/store gates remain.
+
+## October 29 — teammate preservation / source-sharing assessment
+
+- **Engineering audit complete:** GitHub identity/history and all nine
+  substantive contributor commits traced; current five UI commits introduce no
+  teammate-function regression found. Prior web-address removal/native OS
+  replacement and unused material-filter helper are explicitly qualified in
+  CONTRIBUTOR_PRESERVATION_AUDIT.
+- **Engineering next maintenance:** repair the 12 current SDK patch
+  expectations and high/critical dependency-policy failure without discarding
+  contributor behavior, then run frozen-install, online Expo health, security
+  and full tests. Do not waive gates or treat old CI as new proof.
+- **Roope:** this review is not push approval. After reviewed maintenance and
+  latest native acceptance, separately decide whether to share the selected
+  history to the verified team main. Signing's November 4 deadline concerns
+  phone tests, not whether Git permits a source push; no renewal is required
+  merely to review code.
+
+## October 29 — combined identification hub
+
+- **Engineering complete locally:** combined Home entry, barcode-first Identify,
+  FI/EN labels, narrow/native-large reading layout, five source regressions and
+  full 410/scoped 240 checks and all five browser suites. Evidence: IDENTIFY_HUB_EVIDENCE.
+- **Engineering + Roope for any actual device action:** follow NEXT_ACTION once
+  on installed client 3: Home gateway, selected tab, three-method entry/back and
+  readable labels at normal/larger native text. Show no real barcode and do not
+  capture/upload a photo, use actual GPS/address or make paid calls for this QA.
+- No new account/key/database/payment/reinstallation/GitHub action is needed
+  for this UI unit. Existing November 4 at 20:28:39 Helsinki signing deadline,
+  Debug Mac/LAN dependency and wider production procedures remain unchanged.
+
+## October 29 — app-wide consistency
+
+- **Engineering complete:** shared Home/detail font and palette, coherent
+  headers/controls/symbols/Identify/Settings, dark-root repair, nine source
+  regressions, full 405/scoped-mobile 240 checks and five browser suites.
+  Details and ignored screenshots: APP_DESIGN_CONSISTENCY / TEST_EVIDENCE.
+- **Engineering + Roope if physical interaction is needed:** run the single
+  NEXT_ACTION smoke on installed client 3 at normal and larger native text.
+  Check actual navigation/labels and record observed outcomes; do not upload a
+  photo, use real location/address or call paid inference just for visual QA.
+  Handle an actual unlock/permission prompt personally only if it appears.
+- No new account/payment/GitHub/signature action is needed for this JS work.
+  Existing November 4 at 20:28:39 Helsinki renewal deadline and Mac/LAN Debug
+  dependence remain. Wider camera/material accuracy/production procedures below
+  are unchanged.
+
+## October 29 — reference fidelity
+
+- **Engineering complete:** source-controlled native symbol export, scoped/full
+  checks, five browser suites and latest actual client-3 Home render/inventory/
+  process acceptance. No native install or new trust/credential action needed.
+- **Roope or engineering with existing tools:** complete the physical smoke in
+  NEXT_ACTION at default and larger text; do not capture/upload a photo or use
+  real GPS just to check navigation. Camera accuracy and broader native release
+  acceptance remain separate from this visual Home pass.
+- Same November 4, 20:28:39 Helsinki manual-renewal deadline and Mac/LAN Debug
+  dependence. No extra account/payment/publication is authorized or required
+  by this visual task.
+
+## October 28 — reference Home follow-up
+
+- **Engineering:** changes stay local; no account/payment/key/GitHub action is
+  needed. Run/inspect the five fixture browser runners and full/scoped validation
+  as recorded in TEST_EVIDENCE. Do not turn fixture places/history into app data.
+- **Roope or engineering with existing native tools:** on client 3 open the
+  refined Home, try a local material search/back, photo-entry/back without taking
+  a picture, manual entry/back and Settings language persistence; repeat at
+  larger native text. Record observed UI, not private history/location/images.
+  Earlier Home acceptance predates this refinement. Report permission/recovery
+  issues before any reinstall/reset or helper/credential expansion.
+- Existing renewal, real-AI evaluation, hosting/security and store procedures
+  remain below. This visual request does not authorize paid image-recognition
+  calls, production release or GitHub sharing.
+
+## October 28 — installed integrated client 3
+
+- **Renewal/install/trust completed — Roope + engineering:** after exact two-root
+  cleanup approval, build/sign/profile verification and replacement install pass.
+  Owner reports **luotettu** after actual FBS Security rejection; fresh launch,
+  two same-PID observations and native illustrated Home/four-tab screenshot pass.
+  Same app 0.1.0/build 3; no current trust/account/passcode question remains.
+- **Next acceptance — Roope operates or engineering uses existing tools:** on
+  build 3 verify Identify → manual entry/back, Settings language persistence and
+  non-acquiring direct-link nearby/back. Record actual outcome separately from
+  passing browser tests. No private photo/address/GPS or paid upload is needed.
+- **Future manual renewal — Roope + engineering:** current actual profile expires
+  **November 4, 2026 at 20:28:39 Helsinki**. Request renewal before then, keep the
+  intended phone connected/unlocked and handle any real device/account/keychain
+  prompt personally. No scheduled renewal or free year-end validity exists.
+  Current Debug still needs the Mac's Metro/API and LAN. Do not uninstall/reset
+  to renew; do not share credentials/codes or assume all native tests passed.
+- Source stays local on `codex/illustrated-functional-integration`; no GitHub push
+  is requested or made. Wider security/SDK-patch/photo-accuracy/production gates
+  are unchanged; see `ILLUSTRATED_INTEGRATION.md`.
+
 ## October 20 — team-main integration acceptance
 
 - **OA-NEARBY-ADDRESS-01 / Roope operates, engineering validates, pending:** on the existing app open nearby → Hae osoitteella, read the OS-map recipient disclosure and submit only a public-place address/postcode, never a home address or personal details. Check the estimated-address-origin warning, up to five real points/material reports, no fabricated GPS accuracy, cancel/background clearing and a map link to the public point only. Engineering records pass/fail without query/coordinates/location-derived screenshots; stop for any actual device/permission action. No camera/photo/paid inference, new account, reinstall or further push is authorized by this acceptance procedure. Browser and helper fixtures do not complete it.

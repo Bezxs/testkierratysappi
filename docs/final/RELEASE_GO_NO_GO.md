@@ -1,5 +1,100 @@
 # Release decision
 
+Actual owner-authorized source push succeeds **28e0f32..091d962**; independent
+remote SHA matches091d962389a56ec5c52386cfbaf4a8bddef6b013. Source CI40951228125
+and Security40951228098 initially in progress, not certified green. Publishing
+source preserves teammate history but does not alter the production **NO-GO**
+or constitute a store/server release. Outcome follow-up uses the same approval.
+
+October29 owner-authorized source-sharing recheck: **contributor preservation
+PASS**, not public-production GO. Fresh main remains28e0f32; all ten contributor
+IDs/current behaviors remain, with the previously published native-only address
+and unwired material-filter qualifications. Full431 tests/all builds/16 routes,
+online Expo, Doctor20/20 and live high/critical policy pass; eighteen lower records
+remain monitored. Suositut haut / Popular searches changes an existing shortcut
+heading, not provider behavior or measured ranking. Owner expressly authorizes
+this team's main push; actual publication/browser/remote CI results are recorded
+in TEST_EVIDENCE. Older HOLD/no-authority statements below describe earlier work,
+not this new sharing step. Native full-flow/large-text/VoiceOver/camera/AI accuracy,
+Android, operations/licensing/privacy/store gates keep production **NO-GO**.
+
+October29 patched iPhone client4: **development build/install/startup scope
+passes**, not production GO. Stable build, strict app/all11-framework/profile/
+device/native-lock/purpose checks, replacement0.1.0/build4 inventory, actual
+native Home/passive Identify rendering and repeated process observations pass.
+Full430 tests pass. Valid November4 profile is reused, not renewed. Owner grants
+current LAN/current-key restoration; restricted listeners run without exposing
+the key or performing paid requests. Exact scope: IOS_PATCH_CLIENT4. Actual
+button-flow/large-text/VoiceOver/camera/GPS/AI accuracy and existing release/
+operations/licensing/privacy/store gates remain; production **NO-GO**, no push.
+
+October29 maintenance: **local SDK/high-critical dependency HOLD repaired**,
+not public-production GO. Frozen install, peers, online compatibility,
+Doctor20/20, live security policy, full429 cases/all builds/16 routes, all
+three scopes and five browser suites pass. App source/teammate behavior remain;
+twelve moderate/six low records stay visible, no exception/bypass. See
+SDK58_SECURITY_MAINTENANCE. Source is a locally validated sharing candidate,
+but no push or remote CI run occurred. Native patches are **not accepted on
+old installed client3**; matching rebuild/install/smoke is next. Old profile
+expiry unchanged. Existing PHOTO-003/platform/operations/licensing/privacy/
+store gates keep production **NO-GO**; owner sharing approval remains separate.
+
+October 29 contributor-preservation audit: **no teammate-function loss found in
+the five current UI commits**, but **HOLD the recommendation for a team-main
+push** until existing local dependency gates are repaired/revalidated. Fresh
+410-case validation passes; online Expo check fails with 12 expected patches
+and security:audit fails on 12 high/critical advisory records. Actual main CI
+40403403764 already failed Dependency security policy. Source preservation,
+source sharing and public production readiness are distinct decisions.
+Native-only manual address lookup and the unwired material helper are
+pre-existing qualifications, not losses caused by this redesign. No push,
+package correction or native action is authorized/performed by the audit.
+
+October 29 combined identification hub is **not production GO**. Home now leads
+to passive Identify choices in the owner-requested barcode/manual/AI order,
+without changing actual camera/provider/consent/material/source behavior.
+Full 410-case/mobile-240 validation and all five actual-Metro fixture browser
+suites pass; exact scope is recorded in IDENTIFY_HUB_EVIDENCE.
+No new native interaction/Dynamic Type/VoiceOver/camera/recognition-accuracy,
+signature/install, security or store acceptance. Existing NO-GO findings remain.
+No paid call, real image/location collection or GitHub publication.
+
+October 29 app-wide consistency is **not production GO**. Home's design now
+covers all thirteen functional pages, preserving semantic warnings, provenance,
+photo consent and material correction. Final 405-case/mobile-240 validation and
+five fixture browser suites pass, including computed typography/palette, dark
+navigation-root, keyboard focus, narrow/wide and synthetic large-text checks.
+Latest native all-page/VoiceOver/camera/accuracy/performance acceptance remains
+separate; existing SDK/security/PHOTO-003/infrastructure/store gates are not
+closed by visual polish. No new sign/install, paid inference or GitHub write.
+
+October 29 reference-fidelity pass is **not production GO**. Full 396-case/
+mobile-240 validation, five isolated browser suites and a fresh native Home
+render/inventory/process check pass. Current photo consent/material correction,
+real-data/no-implicit-GPS boundaries and technical identity remain. No new model
+accuracy, native interaction/large-text/VoiceOver, release-build, SDK/security,
+infrastructure or store acceptance; previous high findings stay open. No
+GitHub publication or paid app-recognition call.
+
+October 28 reference-Home follow-up remains **NO-GO for public production**.
+The closer composition, local four-material search and validated real-history
+preview preserve current services, source evidence and photo safeguards. Full
+382-case/mobile-230 validation and five fixture browser runners are recorded in
+TEST_EVIDENCE. These do not close existing security/SDK-patch/PHOTO-003 accuracy,
+native/platform/infrastructure/store gates or certify the newest native layout.
+No backend/dependency/native/signature change or publication; old native Home
+evidence is not inherited as acceptance of the new composition.
+
+October 28 illustrated Home/navigation integration is an owner-approved local
+school-app pilot, **not production GO**. It preserves current functionality,
+contracts/provenance/privacy/photo safety and SDK 58 while selectively reusing
+approved artwork. Full 372-test validation/mobile 222 scope and four actual-UI
+fixture browser runners pass. Current native build/sign/install evidence must
+be read separately in `ILLUSTRATED_INTEGRATION.md`; no old phone pass is inherited.
+Eleven newly expected Expo patches and the existing security/photo-accuracy,
+native/platform/infrastructure/store gates remain. No GitHub publication or paid
+AI call is included. Do not lower existing findings based on a visual refresh.
+
 October 20 source integration/publication is **not a production GO**. Owner
 explicitly confirms KierratysAppi/main. Both team/local histories are preserved;
 manual address search is reconciled with five-point/material/provenance behavior

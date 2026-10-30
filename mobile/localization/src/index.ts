@@ -1,8 +1,12 @@
 import type { Language, LocalizedText } from "@kierratysappi/domain";
+import { guideSearchEn, guideSearchFi } from "./guide-search";
+import { navigationEn, navigationFi } from "./navigation";
 import { nearbyEn, nearbyFi } from "./nearby";
 import { photoEn, photoFi } from "./photo";
 
 const fi = {
+  ...guideSearchFi,
+  ...navigationFi,
   ...photoFi,
   ...nearbyFi,
   appName: "KeepItGreen",
@@ -212,6 +216,8 @@ const fi = {
 } as const;
 
 const en: Record<keyof typeof fi, string> = {
+  ...guideSearchEn,
+  ...navigationEn,
   ...photoEn,
   ...nearbyEn,
   appName: "KeepItGreen",

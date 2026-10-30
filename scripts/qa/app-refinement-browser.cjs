@@ -7,7 +7,7 @@ const executablePath = process.env.BROWSER_EXECUTABLE_PATH;
 if (!modulePath || !executablePath) throw new Error("Set installed Playwright and browser paths.");
 const { chromium } = require(modulePath);
 const baseUrl = process.env.APP_QA_URL ?? "http://127.0.0.1:8093";
-const evidence = path.resolve("work/app-refinement-qa");
+const evidence = path.resolve(process.env.APP_QA_EVIDENCE_DIR ?? "work/app-refinement-qa");
 fs.mkdirSync(evidence, { recursive: true });
 const gtin = "3017620422003"; // Public example, not a user's scan.
 const provenance = {
@@ -114,6 +114,7 @@ async function layout(page) {
   const overflow = await page.evaluate(() =>
     [...document.querySelectorAll("div, input, textarea")]
       .filter((el) => {
+        if (el.closest('[aria-hidden="true"]')) return false;
         const box = el.getBoundingClientRect();
         return (
           box.width > 0 && box.height > 0 && (box.left < -1 || box.right > window.innerWidth + 1)
@@ -213,12 +214,13 @@ async function largeText(page) {
         ),
       );
       assert.ok(await page.getByTestId("home-legal-action").isVisible());
-      assert.equal(await page.getByTestId("scan-package-mark").getAttribute("aria-hidden"), "true");
-      for (const kind of ["manual", "nearby", "guide", "history"])
-        assert.equal(
-          await page.getByTestId("action-icon-" + kind).getAttribute("aria-hidden"),
-          "true",
-        );
+      assert.equal(await page.getByTestId("scan-illustration").getAttribute("aria-hidden"), "true");
+      for (const kind of ["manual", "nearby", "guide", "history"]) {
+        const icons = page.getByTestId("home-screen").getByTestId("action-icon-" + kind);
+        assert.ok(await icons.count());
+        for (const icon of await icons.all())
+          assert.equal(await icon.getAttribute("aria-hidden"), "true");
+      }
       await page.getByTestId("home-nearby-action").waitFor({ state: "visible" });
       await page.getByTestId("home-guide-action").waitFor({ state: "visible" });
       await page.evaluate(() => document.fonts.ready);
@@ -229,7 +231,7 @@ async function largeText(page) {
       await page.waitForFunction(
         () =>
           getComputedStyle(document.querySelector('[data-testid="home-guide-action"]'))
-            .borderTopColor === "rgb(36, 77, 60)",
+            .borderTopColor === "rgb(67, 93, 149)",
       );
       await page.getByTestId("home-guide-action").press("Enter");
       await page
@@ -241,7 +243,16 @@ async function largeText(page) {
       await page.goto(baseUrl);
       await page.getByTestId("home-screen").waitFor();
       await shot(page, language + "-home");
+      const homeType = await page
+        .getByTestId("home-identify-action")
+        .getByText(language === "fi" ? "Skannaa tuote" : "Scan an item", { exact: true })
+        .evaluate((el) => ({
+          font: getComputedStyle(el).fontFamily,
+          color: getComputedStyle(el).color,
+          canvas: getComputedStyle(document.getElementById("app-screen-surface")).backgroundColor,
+        }));
       for (const id of [
+        "home-identify-action",
         "home-scan-action",
         "home-manual-action",
         "home-nearby-action",
@@ -276,6 +287,13 @@ async function largeText(page) {
       );
       await page.getByTestId("manual-gtin-input").fill("123");
       await page.getByTestId("manual-submit-action").focus();
+      assert.match(
+        await page
+          .getByTestId("manual-submit-action")
+          .evaluate((el) => getComputedStyle(el).boxShadow),
+        /rgb\(67, 93, 149\)/,
+        "Primary action keeps a separated visible keyboard-focus ring",
+      );
       await page.getByTestId("manual-submit-action").press("Enter");
       await page.getByRole("alert").waitFor();
       assert.equal(requests, 0, "Invalid code never reaches API");
@@ -289,7 +307,27 @@ async function largeText(page) {
       ]) {
         scenario = state;
         await page.goto(baseUrl + "/manual");
-        await page.getByTestId("manual-gtin-input").fill(gtin);
+        try {
+          await page.getByTestId("manual-gtin-input").fill(gtin);
+        } catch (error) {
+          const diagnostic = await page.evaluate(() => ({
+            path: location.pathname,
+            ready: document.readyState,
+            screen: document.querySelector("[data-testid$='-screen']")?.getAttribute("data-testid"),
+            headings: [...document.querySelectorAll("[role='heading']")].map(
+              (el) => el.textContent,
+            ),
+          }));
+          await page.screenshot({
+            path: path.join(evidence, language + "-manual-load-failure-" + state + ".png"),
+            fullPage: true,
+          });
+          throw new Error(
+            JSON.stringify({ language, state, diagnostic, pageErrors: errors }) +
+              ": " +
+              error.message,
+          );
+        }
         await page.getByTestId("manual-submit-action").click();
         if (state === "not_found") {
           await page.getByTestId("result-loading-screen").waitFor();
@@ -319,7 +357,7 @@ async function largeText(page) {
         await shot(page, language + "-result-" + state);
       }
       await page.goto(baseUrl + "/guide");
-      await page.getByRole("heading").first().waitFor();
+      await page.getByTestId("guide-section-metal").waitFor();
       await context.setOffline(true);
       assert.equal(await page.getByRole("heading").count(), 5);
       await shot(page, language + "-guide-offline");
@@ -462,6 +500,9 @@ async function largeText(page) {
       await shot(page, language + "-legal");
       for (const route of [
         "",
+        "identify",
+        "settings",
+        "nearby",
         "manual",
         "component",
         "feedback",
@@ -472,6 +513,31 @@ async function largeText(page) {
       ]) {
         await page.goto(baseUrl + "/" + route);
         await page.getByText("KeepItGreen", { exact: true }).first().waitFor();
+        await page.emulateMedia({ colorScheme: "light" });
+        await page.waitForFunction(
+          (canvas) =>
+            getComputedStyle(document.getElementById("app-screen-surface")).backgroundColor ===
+            canvas,
+          homeType.canvas,
+        );
+        if (route) {
+          const heading = page.getByRole("heading").first();
+          const style = await heading.evaluate((el) => ({
+            font: getComputedStyle(el).fontFamily,
+            color: getComputedStyle(el).color,
+          }));
+          assert.equal(style.font, homeType.font, route + " shares Home's sans family");
+          assert.equal(style.color, homeType.color, route + " shares Home's heading ink");
+          await shot(page, language + "-consistent-" + route);
+          if (route === "guide" || route === "feedback") {
+            const field = page.getByRole("textbox").first();
+            assert.equal(
+              await field.evaluate((el) => getComputedStyle(el).fontFamily),
+              homeType.font,
+              route + " input shares Home's sans family",
+            );
+          }
+        }
         await page.emulateMedia({ colorScheme: "dark" });
         await page
           .waitForFunction(
@@ -491,6 +557,13 @@ async function largeText(page) {
             throw new Error(`${error.message}: ${JSON.stringify(observed)}`);
           });
         await shot(page, language + "-dark-" + (route || "home"));
+        assert.equal(
+          await page
+            .locator("#app-navigation-surface")
+            .evaluate((el) => getComputedStyle(el).backgroundColor),
+          "rgb(20, 34, 27)",
+          "Rounded navigation corners must not expose a white root surface in dark mode",
+        );
         await largeText(page);
         await shot(page, language + "-large-" + (route || "home"));
         if (route === "") {
@@ -515,6 +588,15 @@ async function largeText(page) {
           );
         }
         await page.emulateMedia({ colorScheme: "light" });
+        if (route) {
+          for (const width of [320, 1280]) {
+            await page.setViewportSize({ width, height: 844 });
+            await page.reload();
+            await page.getByText("KeepItGreen", { exact: true }).first().waitFor();
+            await shot(page, language + "-consistent-" + route + "-" + width);
+          }
+          await page.setViewportSize({ width: 390, height: 844 });
+        }
       }
       await page.goto(baseUrl);
       await page.setViewportSize({ width: 320, height: 740 });
@@ -535,7 +617,7 @@ async function largeText(page) {
       await context.close();
     }
     console.log(
-      "PASS: isolated FI/EN UI flows, invalid-no-request, missing/unavailable/offline/resolved/unknown, provenance, confirmation, ambiguity, local history/draft/factual privacy, touch targets, dark/130% synthetic text, 320/390/1280 widths. No user GPS or production fixture data.",
+      "PASS: isolated FI/EN UI flows, shared Home/subpage type and palette, invalid-no-request, missing/unavailable/offline/resolved/unknown, provenance, confirmation, ambiguity, local history/draft/factual privacy, touch targets, dark/130% synthetic text, all reading/form/Identify/Settings/Nearby pages at 320/390/1280 widths. No user GPS or production fixture data.",
     );
   } finally {
     await browser.close();
