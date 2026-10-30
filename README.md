@@ -54,6 +54,7 @@ Rootin työkalut, lockfile, CI ja dokumentaatio ovat yhteistä integraatioaluett
 ## What works
 
 - Expo SDK 58 app for Finnish and English, camera permission, barcode scanning, manual entry, offline recovery, opt-in app-local history, manual component confirmation, and correction drafts.
+- Local Overview with explicitly recorded recycled packaging parts, material percentages, persistent totals and removable recent records. Percentages describe packaging-part counts.
 - Fastify API with runtime validation, rate limits, secure headers, explicit CORS allowlist, OpenAPI output, privacy-conscious logging, and a POST lookup boundary.
 - Open Facts API v3 adapter with one allowlisted sibling hop, a shared deadline/quota, size limit, source-specific attribution/licence, selected fields and defensive packaging normalization.
 - Foreground-only lookup of up to five nearest points against a separately licensed, bundled OSM Finland directory (5,753 points). Distance is calculated on-device; explicit material reports and exclusions are labelled as community data, not verified reception. No GPS upload/background tracking or route claim. Latest native list/map acceptance remains pending.

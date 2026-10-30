@@ -1,5 +1,7 @@
 # Decision log
 
+2026-10-30: Build the requested Overview only in the test repository. Percentages describe self-reported packaging-part counts, using largest-remainder rounding to total 100%. Preserve the actual selected material, including paper separately from carton and corrected photo material. Use one versioned app-local AsyncStorage key with serialized writes, lifetime aggregate counts, 100 recent records, retained-intent duplicate protection and explicit failures that preserve unreadable data. Records contain a material, quantity, optional bounded label, timestamp and intent ID; no barcode, location or image is stored. Include Overview in confirmed app-wide data deletion. Keep the existing four tabs and expose the new screen from Home and Settings. No new dependency, backend/shared change, impact estimate or original-repository publication.
+
 ## D-059 — Share the preserved integration only under the owner's exact destination approval
 
 - Date: 2026-10-29. Roope explicitly authorizes KierratysAppi publication if the fresh contributor check passes and requests Home's Suositut haut heading. Verify actual origin URL/main, current author/PR history, all ten ancestor IDs and current call sites, not merely old audit prose. Current changes introduce no teammate-function loss; preserve the prior native-only address/unwired helper qualifications instead of claiming literal historical equivalence.

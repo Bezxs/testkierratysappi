@@ -1,5 +1,7 @@
 # Current state
 
+2026-10-30, test repository only: Added Overview in `Bezxs/testkierratysappi` from `aaa3720`. Users explicitly record recycled packaging parts from resolved product/manual/code/photo results or the Overview material form. The view shows lifetime material counts and percentages, plus the last 100 records with confirmed removal/reset. Existing AsyncStorage keeps totals between launches; old recent records do not reduce lifetime totals. Home and Settings open Overview while the four tabs remain. Unknown/ambiguous results and product lookups never add records automatically. Backend, shared contracts/rules, dependencies and the original repository are unchanged. Validation is recorded in `docs/final/TEST_EVIDENCE.md`.
+
 ## Contributor recheck and authorized team-source sharing — 2026-10-29
 
 - **Team-main push verified:** normal `28e0f32..091d962` push to the inspected `https://github.com/roopeaal/KierratysAppi.git`, explicit `HEAD:refs/heads/main`, succeeds. Independent ls-remote at20:41:13UTC confirms **091d962389a56ec5c52386cfbaf4a8bddef6b013**. No force/private remote/other-branch/settings/store change. Source CI40951228125 and Security40951228098 initially in progress, not assumed passed. This outcome documentation belongs to the same authorized source-sharing step, not permission for future automatic pushes.

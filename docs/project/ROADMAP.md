@@ -1,5 +1,8 @@
 # Roadmap
 
+- [x] Test repository: implement persistent Overview material percentages and explicit recycled-part recording, with Home/Settings entry points and confirmed deletion.
+- [ ] Check Overview recording, force-close/reopen persistence, text scaling and deletion on the owner's SDK 58 Expo Go phone after the test-repository checks. Original-repository work remains outside this prototype.
+
 ## Owner-authorized preserved source sharing — October29
 
 - [x] Re-fetch actual team main, paginate contributor/PR metadata and independently trace all ten ITbes-dev/Rdotcom ancestor IDs/current behaviors; no new regression, no private-history merge. Keep native-only address/unwired filter qualifications visible.
