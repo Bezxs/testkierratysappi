@@ -27,12 +27,12 @@
     "validate": "pnpm check:boundaries && pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.7",
+    "@biomejs/biome": "2.6.6",
     "@types/node": "24.13.3",
     "@vitest/coverage-v8": "4.1.12",
     "tsup": "8.5.1",
     "typescript": "6.0.3",
-    "vite": "8.3.5",
+    "vite": "8.3.6",
     "vitest": "4.1.12"
   }
 }
